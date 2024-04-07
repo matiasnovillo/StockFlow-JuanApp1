@@ -37,12 +37,12 @@
             groupBoxEntrada = new GroupBox();
             btnEntradaCargarExcel = new Button();
             btnEntradaConsulta = new Button();
+            btnEntradaFormulario = new Button();
             groupBoxSalida = new GroupBox();
             btnSalidaConsulta = new Button();
             btnSalidaFormulario = new Button();
             groupBoxHerramientas = new GroupBox();
             btnEstadisticas = new Button();
-            btnEntradaFormulario = new Button();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             groupBoxEntrada.SuspendLayout();
@@ -113,6 +113,7 @@
             btnEntradaCargarExcel.TabIndex = 4;
             btnEntradaCargarExcel.Text = "Cargar Excel";
             btnEntradaCargarExcel.UseVisualStyleBackColor = true;
+            btnEntradaCargarExcel.Click += btnEntradaCargarExcel_Click;
             // 
             // btnEntradaConsulta
             // 
@@ -122,6 +123,17 @@
             btnEntradaConsulta.TabIndex = 3;
             btnEntradaConsulta.Text = "Consultas";
             btnEntradaConsulta.UseVisualStyleBackColor = true;
+            btnEntradaConsulta.Click += btnEntradaConsulta_Click;
+            // 
+            // btnEntradaFormulario
+            // 
+            btnEntradaFormulario.Location = new Point(57, 59);
+            btnEntradaFormulario.Name = "btnEntradaFormulario";
+            btnEntradaFormulario.Size = new Size(142, 54);
+            btnEntradaFormulario.TabIndex = 2;
+            btnEntradaFormulario.Text = "Formulario";
+            btnEntradaFormulario.UseVisualStyleBackColor = true;
+            btnEntradaFormulario.Click += btnEntradaFormulario_Click;
             // 
             // groupBoxSalida
             // 
@@ -142,6 +154,7 @@
             btnSalidaConsulta.TabIndex = 3;
             btnSalidaConsulta.Text = "Consultas";
             btnSalidaConsulta.UseVisualStyleBackColor = true;
+            btnSalidaConsulta.Click += btnSalidaConsulta_Click;
             // 
             // btnSalidaFormulario
             // 
@@ -151,6 +164,7 @@
             btnSalidaFormulario.TabIndex = 2;
             btnSalidaFormulario.Text = "Formulario";
             btnSalidaFormulario.UseVisualStyleBackColor = true;
+            btnSalidaFormulario.Click += btnSalidaFormulario_Click;
             // 
             // groupBoxHerramientas
             // 
@@ -171,16 +185,6 @@
             btnEstadisticas.Text = "Estadisticas";
             btnEstadisticas.UseVisualStyleBackColor = true;
             btnEstadisticas.Click += btnEstadisticas_Click;
-            // 
-            // btnEntradaFormulario
-            // 
-            btnEntradaFormulario.Location = new Point(57, 59);
-            btnEntradaFormulario.Name = "btnEntradaFormulario";
-            btnEntradaFormulario.Size = new Size(142, 54);
-            btnEntradaFormulario.TabIndex = 2;
-            btnEntradaFormulario.Text = "Formulario";
-            btnEntradaFormulario.UseVisualStyleBackColor = true;
-            btnEntradaFormulario.Click += btnEntradaFormulario_Click;
             // 
             // Main
             // 

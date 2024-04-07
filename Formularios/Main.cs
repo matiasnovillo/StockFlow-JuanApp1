@@ -28,15 +28,41 @@ namespace JuanApp
         private void btnEstadisticas_Click(object sender, EventArgs e)
         {
             Hide();
-            ConsultaEntrada Estadisticas = new();
+            Estadisticas Estadisticas = new();
             Estadisticas.ShowDialog();
         }
 
         private void btnEntradaFormulario_Click(object sender, EventArgs e)
         {
             Hide();
-            FormularioEntrada formularioEntrada = new();
+            Formularios.Entrada.FormularioEntrada formularioEntrada = new();
             formularioEntrada.ShowDialog();
+        }
+
+        private void btnEntradaConsulta_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Formularios.Entrada.ConsultaEntrada ConsultaEntrada = new();
+            ConsultaEntrada.ShowDialog();
+        }
+
+        private void btnEntradaCargarExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalidaFormulario_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Formularios.Salida.FormularioSalida FormularioSalida = new();
+            FormularioSalida.ShowDialog();
+        }
+
+        private void btnSalidaConsulta_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Formularios.Salida.ConsultaSalida ConsultaSalida = new();
+            ConsultaSalida.ShowDialog();
         }
     }
 }

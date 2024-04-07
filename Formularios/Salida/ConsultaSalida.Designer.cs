@@ -1,6 +1,6 @@
-﻿namespace JuanApp.Formularios.Entrada
+﻿namespace JuanApp.Formularios.Salida
 {
-    partial class ConsultaEntrada
+    partial class ConsultaSalida
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaEntrada));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaSalida));
             toolStrip1 = new ToolStrip();
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             menuItemMain = new ToolStripMenuItem();
@@ -37,12 +37,13 @@
             dataGridView1 = new DataGridView();
             lblTitulo = new Label();
             btnBuscar = new Button();
-            lblFechaInicio = new Label();
-            dateTimePickerFechaInicio = new DateTimePicker();
+            btnGenerarPDF = new Button();
+            txtBuscar = new TextBox();
+            lblBarraDeBusqueda = new Label();
             dateTimePickerFechaFin = new DateTimePicker();
             lblFechaFin = new Label();
-            lblBarraDeBusqueda = new Label();
-            txtBuscar = new TextBox();
+            dateTimePickerFechaInicio = new DateTimePicker();
+            lblFechaInicio = new Label();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -79,7 +80,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 528);
+            statusStrip1.Location = new Point(0, 527);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 26);
             statusStrip1.TabIndex = 1;
@@ -94,97 +95,107 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 203);
+            dataGridView1.Location = new Point(12, 205);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(776, 322);
+            dataGridView1.Size = new Size(776, 319);
             dataGridView1.TabIndex = 2;
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(12, 38);
+            lblTitulo.Location = new Point(12, 41);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(230, 31);
+            lblTitulo.Size = new Size(211, 31);
             lblTitulo.TabIndex = 3;
-            lblTitulo.Text = "Consulta de entradas";
+            lblTitulo.Text = "Consulta de salidas";
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(694, 147);
+            btnBuscar.Location = new Point(691, 150);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(94, 50);
+            btnBuscar.Size = new Size(97, 50);
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // lblFechaInicio
+            // btnGenerarPDF
             // 
-            lblFechaInicio.AutoSize = true;
-            lblFechaInicio.Location = new Point(12, 83);
-            lblFechaInicio.Name = "lblFechaInicio";
-            lblFechaInicio.Size = new Size(108, 20);
-            lblFechaInicio.TabIndex = 5;
-            lblFechaInicio.Text = "Fecha de inicio";
+            btnGenerarPDF.Location = new Point(567, 150);
+            btnGenerarPDF.Name = "btnGenerarPDF";
+            btnGenerarPDF.Size = new Size(118, 50);
+            btnGenerarPDF.TabIndex = 5;
+            btnGenerarPDF.Text = "Generar PDF";
+            btnGenerarPDF.UseVisualStyleBackColor = true;
             // 
-            // dateTimePickerFechaInicio
+            // txtBuscar
             // 
-            dateTimePickerFechaInicio.Location = new Point(12, 106);
-            dateTimePickerFechaInicio.Name = "dateTimePickerFechaInicio";
-            dateTimePickerFechaInicio.Size = new Size(250, 27);
-            dateTimePickerFechaInicio.TabIndex = 6;
-            // 
-            // dateTimePickerFechaFin
-            // 
-            dateTimePickerFechaFin.Location = new Point(294, 106);
-            dateTimePickerFechaFin.Name = "dateTimePickerFechaFin";
-            dateTimePickerFechaFin.Size = new Size(250, 27);
-            dateTimePickerFechaFin.TabIndex = 8;
-            // 
-            // lblFechaFin
-            // 
-            lblFechaFin.AutoSize = true;
-            lblFechaFin.Location = new Point(294, 83);
-            lblFechaFin.Name = "lblFechaFin";
-            lblFechaFin.Size = new Size(89, 20);
-            lblFechaFin.TabIndex = 7;
-            lblFechaFin.Text = "Fecha de fin";
+            txtBuscar.Location = new Point(12, 172);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(532, 27);
+            txtBuscar.TabIndex = 16;
             // 
             // lblBarraDeBusqueda
             // 
             lblBarraDeBusqueda.AutoSize = true;
-            lblBarraDeBusqueda.Location = new Point(12, 147);
+            lblBarraDeBusqueda.Location = new Point(12, 149);
             lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
             lblBarraDeBusqueda.Size = new Size(134, 20);
-            lblBarraDeBusqueda.TabIndex = 9;
+            lblBarraDeBusqueda.TabIndex = 15;
             lblBarraDeBusqueda.Text = "Barra de búsqueda";
             // 
-            // txtBuscar
+            // dateTimePickerFechaFin
             // 
-            txtBuscar.Location = new Point(12, 170);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(532, 27);
-            txtBuscar.TabIndex = 10;
+            dateTimePickerFechaFin.Location = new Point(294, 108);
+            dateTimePickerFechaFin.Name = "dateTimePickerFechaFin";
+            dateTimePickerFechaFin.Size = new Size(250, 27);
+            dateTimePickerFechaFin.TabIndex = 14;
             // 
-            // ConsultaEntrada
+            // lblFechaFin
+            // 
+            lblFechaFin.AutoSize = true;
+            lblFechaFin.Location = new Point(294, 85);
+            lblFechaFin.Name = "lblFechaFin";
+            lblFechaFin.Size = new Size(89, 20);
+            lblFechaFin.TabIndex = 13;
+            lblFechaFin.Text = "Fecha de fin";
+            // 
+            // dateTimePickerFechaInicio
+            // 
+            dateTimePickerFechaInicio.Location = new Point(12, 108);
+            dateTimePickerFechaInicio.Name = "dateTimePickerFechaInicio";
+            dateTimePickerFechaInicio.Size = new Size(250, 27);
+            dateTimePickerFechaInicio.TabIndex = 12;
+            // 
+            // lblFechaInicio
+            // 
+            lblFechaInicio.AutoSize = true;
+            lblFechaInicio.Location = new Point(12, 85);
+            lblFechaInicio.Name = "lblFechaInicio";
+            lblFechaInicio.Size = new Size(108, 20);
+            lblFechaInicio.TabIndex = 11;
+            lblFechaInicio.Text = "Fecha de inicio";
+            // 
+            // ConsultaSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 554);
+            ClientSize = new Size(800, 553);
             Controls.Add(txtBuscar);
             Controls.Add(lblBarraDeBusqueda);
             Controls.Add(dateTimePickerFechaFin);
             Controls.Add(lblFechaFin);
             Controls.Add(dateTimePickerFechaInicio);
             Controls.Add(lblFechaInicio);
+            Controls.Add(btnGenerarPDF);
             Controls.Add(btnBuscar);
             Controls.Add(lblTitulo);
             Controls.Add(dataGridView1);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
-            Name = "ConsultaEntrada";
-            Text = "Consulta de entradas - Pesajes";
+            Name = "ConsultaSalida";
+            Text = "Consulta de salidas - Clientes";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
@@ -204,11 +215,12 @@
         private DataGridView dataGridView1;
         private Label lblTitulo;
         private Button btnBuscar;
-        private Label lblFechaInicio;
-        private DateTimePicker dateTimePickerFechaInicio;
+        private Button btnGenerarPDF;
+        private TextBox txtBuscar;
+        private Label lblBarraDeBusqueda;
         private DateTimePicker dateTimePickerFechaFin;
         private Label lblFechaFin;
-        private Label lblBarraDeBusqueda;
-        private TextBox txtBuscar;
+        private DateTimePicker dateTimePickerFechaInicio;
+        private Label lblFechaInicio;
     }
 }
