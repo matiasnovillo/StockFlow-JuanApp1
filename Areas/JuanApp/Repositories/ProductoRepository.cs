@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
-using JuanApp.Areas.CMSCore.Entities;
 using JuanApp.Areas.BasicCore;
 using JuanApp.Areas.JuanApp.Entities;
-using JuanApp.Areas.JuanApp.DTOs;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Library;
 using System.Data;
@@ -64,51 +61,6 @@ namespace JuanApp.Areas.JuanApp.Repositories
             try
             {
                 return _context.Producto.ToList();
-            }
-            catch (Exception) { throw; }
-        }
-
-        public paginatedProductoDTO GetAllByProductoIdPaginated(string textToSearch,
-            bool strictSearch,
-            int pageIndex, 
-            int pageSize)
-        {
-            try
-            {
-                //textToSearch: "novillo matias  com" -> words: {novillo,matias,com}
-                string[] words = Regex
-                    .Replace(textToSearch
-                    .Trim(), @"\s+", " ")
-                    .Split(" ");
-
-                int TotalProducto = _context.Producto.Count();
-
-                var query = from producto in _context.Producto
-                            join userCreation in _context.User on producto.UserCreationId equals userCreation.UserId
-                            join userLastModification in _context.User on producto.UserLastModificationId equals userLastModification.UserId
-                            select new { Producto = producto, UserCreation = userCreation, UserLastModification = userLastModification };
-
-                // Extraemos los resultados en listas separadas
-                List<Producto> lstProducto = query.Select(result => result.Producto)
-                        .Where(x => strictSearch ?
-                            words.All(word => x.ProductoId.ToString().Contains(word)) :
-                            words.Any(word => x.ProductoId.ToString().Contains(word)))
-                        .OrderByDescending(p => p.DateTimeLastModification)
-                        .Skip((pageIndex - 1) * pageSize)
-                        .Take(pageSize)
-                        .ToList();
-                List<User> lstUserCreation = query.Select(result => result.UserCreation).ToList();
-                List<User> lstUserLastModification = query.Select(result => result.UserLastModification).ToList();
-
-                return new paginatedProductoDTO
-                {
-                    lstProducto = lstProducto,
-                    lstUserCreation = lstUserCreation,
-                    lstUserLastModification = lstUserLastModification,
-                    TotalItems = TotalProducto,
-                    PageIndex = pageIndex,
-                    PageSize = pageSize
-                };
             }
             catch (Exception) { throw; }
         }

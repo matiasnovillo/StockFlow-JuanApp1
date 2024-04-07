@@ -200,7 +200,7 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("CodigoProducto", typeof(string));
                 
 
-                foreach (Client client in lstClient)
+                foreach (Producto producto in lstProducto)
                         {
                             DataTable.Rows.Add(
                                 producto.ProductoId,
@@ -351,7 +351,7 @@ namespace JuanApp.Areas.JuanApp.Services
                     Producto Producto = _context.Producto
                                             .Where(x => x.ProductoId == Convert.ToInt32(RowChecked))
                                             .FirstOrDefault();      
-                    lstProducto.Add(Client);
+                    lstProducto.Add(Producto);
                 }
             }
 

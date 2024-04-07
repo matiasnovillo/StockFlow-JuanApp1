@@ -1,6 +1,5 @@
 using System.Data;
 using JuanApp.Areas.JuanApp.Entities;
-using JuanApp.Areas.JuanApp.DTOs;
 using JuanApp.Library;
 
 /*
@@ -26,11 +25,6 @@ namespace JuanApp.Areas.JuanApp.Interfaces
         Producto? GetByProductoId(int productoId);
 
         List<Producto?> GetAll();
-
-        paginatedProductoDTO GetAllByProductoIdPaginated(string textToSearch,
-            bool strictSearch,
-            int pageIndex,
-            int pageSize);
         #endregion
 
         #region Non-Queries

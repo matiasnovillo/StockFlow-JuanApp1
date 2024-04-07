@@ -89,9 +89,13 @@
             // 
             // DataGridViewProducto
             // 
+            DataGridViewProducto.AllowUserToAddRows = false;
+            DataGridViewProducto.AllowUserToDeleteRows = false;
+            DataGridViewProducto.AllowUserToOrderColumns = true;
             DataGridViewProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridViewProducto.Location = new Point(12, 144);
             DataGridViewProducto.Name = "DataGridViewProducto";
+            DataGridViewProducto.ReadOnly = true;
             DataGridViewProducto.RowHeadersWidth = 51;
             DataGridViewProducto.Size = new Size(776, 381);
             DataGridViewProducto.TabIndex = 2;

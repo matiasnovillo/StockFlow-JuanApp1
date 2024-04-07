@@ -1,4 +1,6 @@
 ﻿using JuanApp.Areas.JuanApp.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Windows.Forms;
 
 namespace JuanApp.Formularios.Herramientas.Producto
@@ -8,11 +10,10 @@ namespace JuanApp.Formularios.Herramientas.Producto
         private readonly IProductoRepository _productoRepository;
         private readonly IProductoService _productoService;
 
-        public ConsultaProducto(IProductoService productoService,
-            IProductoRepository productoRepository)
+        public ConsultaProducto(ServiceProvider serviceProvider)
         {
-            _productoService = productoService;
-            _productoRepository = productoRepository;
+            _productoRepository = serviceProvider.GetRequiredService<IProductoRepository>();
+            _productoService = serviceProvider.GetRequiredService<IProductoService>();
 
             InitializeComponent();
         }
@@ -20,18 +21,26 @@ namespace JuanApp.Formularios.Herramientas.Producto
         private void menuItemMain_Click(object sender, EventArgs e)
         {
             Hide();
-            Main Main = new();
-            Main.Show();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             List<Areas.JuanApp.Entities.Producto> lstProducto = [];
-            lstProducto = _productoRepository
+
+            if (string.IsNullOrEmpty(txtBuscar.Text))
+            {
+                lstProducto = _productoRepository
+                .AsQueryable()
+                .ToList();
+            }
+            else
+            {
+                lstProducto = _productoRepository
                 .AsQueryable()
                 .Where(x => x.Nombre == txtBuscar.Text)
-            .ToList();
-
+                .ToList();
+            }
+            
             DataGridViewProducto.AutoGenerateColumns = true;
             DataGridViewProducto.DataSource = lstProducto;
         }

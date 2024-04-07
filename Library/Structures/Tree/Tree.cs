@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using static FiyiStackWeb2.Library.Structures.Tree.Utilities;
+using static JuanApp.Library.Structures.Tree.Utilities;
 
 namespace JuanApp.Library.Structures.Tree
 {
