@@ -42,6 +42,8 @@
             btnSalidaConsulta = new Button();
             btnSalidaFormulario = new Button();
             groupBoxHerramientas = new GroupBox();
+            btnProducto = new Button();
+            btnStock = new Button();
             btnEstadisticas = new Button();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -168,6 +170,8 @@
             // 
             // groupBoxHerramientas
             // 
+            groupBoxHerramientas.Controls.Add(btnProducto);
+            groupBoxHerramientas.Controls.Add(btnStock);
             groupBoxHerramientas.Controls.Add(btnEstadisticas);
             groupBoxHerramientas.Location = new Point(604, 46);
             groupBoxHerramientas.Name = "groupBoxHerramientas";
@@ -175,6 +179,26 @@
             groupBoxHerramientas.TabIndex = 5;
             groupBoxHerramientas.TabStop = false;
             groupBoxHerramientas.Text = "Herramientas";
+            // 
+            // btnProducto
+            // 
+            btnProducto.Location = new Point(56, 211);
+            btnProducto.Name = "btnProducto";
+            btnProducto.Size = new Size(142, 54);
+            btnProducto.TabIndex = 5;
+            btnProducto.Text = "Productos";
+            btnProducto.UseVisualStyleBackColor = true;
+            btnProducto.Click += btnProducto_Click;
+            // 
+            // btnStock
+            // 
+            btnStock.Location = new Point(56, 135);
+            btnStock.Name = "btnStock";
+            btnStock.Size = new Size(142, 54);
+            btnStock.TabIndex = 4;
+            btnStock.Text = "Stock";
+            btnStock.UseVisualStyleBackColor = true;
+            btnStock.Click += btnStock_Click;
             // 
             // btnEstadisticas
             // 
@@ -225,5 +249,7 @@
         private GroupBox groupBoxHerramientas;
         private Button btnEstadisticas;
         private Button btnEntradaFormulario;
+        private Button btnStock;
+        private Button btnProducto;
     }
 }

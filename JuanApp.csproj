@@ -9,10 +9,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Formularios\Entrada\ConsultaEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Entrada\FormularioEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Herramientas\Producto\ConsultaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Herramientas\Producto\FormularioProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Herramientas\Stock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Salida\ConsultaSalida.cs">

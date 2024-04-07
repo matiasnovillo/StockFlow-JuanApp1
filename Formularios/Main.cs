@@ -35,7 +35,7 @@ namespace JuanApp
         private void btnEntradaFormulario_Click(object sender, EventArgs e)
         {
             Hide();
-            Formularios.Entrada.FormularioEntrada formularioEntrada = new();
+            Formularios.Entrada.FormularioProducto formularioEntrada = new();
             formularioEntrada.ShowDialog();
         }
 
@@ -63,6 +63,20 @@ namespace JuanApp
             Hide();
             Formularios.Salida.ConsultaSalida ConsultaSalida = new();
             ConsultaSalida.ShowDialog();
+        }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Stock Stock = new();
+            Stock.ShowDialog();
+        }
+
+        private void btnProducto_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Formularios.Herramientas.Producto.ConsultaProducto ConsultaProducto = new();
+            ConsultaProducto.ShowDialog();
         }
     }
 }
