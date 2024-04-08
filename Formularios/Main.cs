@@ -32,8 +32,8 @@ namespace JuanApp
 
         private void btnEntradaFormulario_Click(object sender, EventArgs e)
         {
-            Formularios.Entrada.FormularioProducto formularioEntrada = new(_serviceProvider);
-            formularioEntrada.ShowDialog();
+            Formularios.Entrada.FormularioEntrada FormularioEntrada = new();
+            FormularioEntrada.ShowDialog();
         }
 
         private void btnEntradaConsulta_Click(object sender, EventArgs e)

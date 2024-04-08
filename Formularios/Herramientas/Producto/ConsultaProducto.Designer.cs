@@ -39,6 +39,7 @@
             btnBuscar = new Button();
             lblBarraDeBusqueda = new Label();
             txtBuscar = new TextBox();
+            btnAgregar = new Button();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewProducto).BeginInit();
@@ -99,6 +100,7 @@
             DataGridViewProducto.RowHeadersWidth = 51;
             DataGridViewProducto.Size = new Size(776, 381);
             DataGridViewProducto.TabIndex = 2;
+            DataGridViewProducto.CellContentClick += DataGridViewProducto_CellContentClick;
             // 
             // lblTitulo
             // 
@@ -136,11 +138,22 @@
             txtBuscar.Size = new Size(532, 27);
             txtBuscar.TabIndex = 10;
             // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(594, 88);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(94, 50);
+            btnAgregar.TabIndex = 11;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
             // ConsultaProducto
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 554);
+            Controls.Add(btnAgregar);
             Controls.Add(txtBuscar);
             Controls.Add(lblBarraDeBusqueda);
             Controls.Add(btnBuscar);
@@ -171,5 +184,6 @@
         private Button btnBuscar;
         private Label lblBarraDeBusqueda;
         private TextBox txtBuscar;
+        private Button btnAgregar;
     }
 }

@@ -1,5 +1,6 @@
 using JuanApp.Areas.JuanApp.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using JuanApp.Areas.JuanApp.Entities;
 
 namespace JuanApp.Formularios.Entrada
 {
@@ -7,18 +8,68 @@ namespace JuanApp.Formularios.Entrada
     {
         private readonly IProductoRepository _productoRepository;
         private readonly IProductoService _productoService;
+        private readonly int _productoId;
 
-        public FormularioProducto(ServiceProvider serviceProvider)
+        public FormularioProducto(IProductoRepository productoRepository,
+            IProductoService productoService,
+            int ProductoId)
         {
-            _productoRepository = serviceProvider.GetRequiredService<IProductoRepository>();
-            _productoService = serviceProvider.GetRequiredService<IProductoService>();
+            _productoRepository = productoRepository;
+            _productoService = productoService;
+            _productoId = ProductoId;
 
             InitializeComponent();
+
+            if (ProductoId > 0)
+            {
+                Producto Producto = _productoRepository.GetByProductoId(ProductoId);
+                txtCodigoDeProducto.Text = Producto.CodigoProducto;
+                txtNombreDeProducto.Text = Producto.Nombre;
+            }
+
+            statusLabel.Text = "";
         }
 
         private void menuItemMain_Click(object sender, EventArgs e)
         {
             Hide();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCodigoDeProducto.Text) || 
+                string.IsNullOrEmpty(txtNombreDeProducto.Text))
+            {
+                statusLabel.Text = "Faltan datos a completar";
+            }
+            else
+            {
+                if (_productoId == 0)
+                {
+                    //Agregar
+                    Producto Producto = new()
+                    {
+                        ProductoId = _productoId,
+                        Active = true,
+                        UserCreationId = 1,
+                        UserLastModificationId = 1,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Nombre = txtNombreDeProducto.Text,
+                        CodigoProducto = txtCodigoDeProducto.Text,
+                    };
+                    _productoRepository.Add(Producto);
+                }
+                else
+                {
+                    //Actualizar
+                    Producto Producto = _productoRepository.GetByProductoId(_productoId);
+
+                    _productoRepository.Update(Producto);
+                }
+
+                Hide();
+            }
         }
     }
 }

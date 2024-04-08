@@ -37,10 +37,8 @@
             groupBoxEntrada = new GroupBox();
             btnEntradaCargarExcel = new Button();
             btnEntradaConsulta = new Button();
-            btnEntradaFormulario = new Button();
             groupBoxSalida = new GroupBox();
             btnSalidaConsulta = new Button();
-            btnSalidaFormulario = new Button();
             groupBoxHerramientas = new GroupBox();
             btnProducto = new Button();
             btnStock = new Button();
@@ -99,7 +97,6 @@
             // 
             groupBoxEntrada.Controls.Add(btnEntradaCargarExcel);
             groupBoxEntrada.Controls.Add(btnEntradaConsulta);
-            groupBoxEntrada.Controls.Add(btnEntradaFormulario);
             groupBoxEntrada.Location = new Point(34, 46);
             groupBoxEntrada.Name = "groupBoxEntrada";
             groupBoxEntrada.Size = new Size(250, 290);
@@ -109,7 +106,7 @@
             // 
             // btnEntradaCargarExcel
             // 
-            btnEntradaCargarExcel.Location = new Point(57, 211);
+            btnEntradaCargarExcel.Location = new Point(57, 135);
             btnEntradaCargarExcel.Name = "btnEntradaCargarExcel";
             btnEntradaCargarExcel.Size = new Size(142, 54);
             btnEntradaCargarExcel.TabIndex = 4;
@@ -119,7 +116,7 @@
             // 
             // btnEntradaConsulta
             // 
-            btnEntradaConsulta.Location = new Point(57, 135);
+            btnEntradaConsulta.Location = new Point(57, 59);
             btnEntradaConsulta.Name = "btnEntradaConsulta";
             btnEntradaConsulta.Size = new Size(142, 54);
             btnEntradaConsulta.TabIndex = 3;
@@ -127,20 +124,9 @@
             btnEntradaConsulta.UseVisualStyleBackColor = true;
             btnEntradaConsulta.Click += btnEntradaConsulta_Click;
             // 
-            // btnEntradaFormulario
-            // 
-            btnEntradaFormulario.Location = new Point(57, 59);
-            btnEntradaFormulario.Name = "btnEntradaFormulario";
-            btnEntradaFormulario.Size = new Size(142, 54);
-            btnEntradaFormulario.TabIndex = 2;
-            btnEntradaFormulario.Text = "Formulario";
-            btnEntradaFormulario.UseVisualStyleBackColor = true;
-            btnEntradaFormulario.Click += btnEntradaFormulario_Click;
-            // 
             // groupBoxSalida
             // 
             groupBoxSalida.Controls.Add(btnSalidaConsulta);
-            groupBoxSalida.Controls.Add(btnSalidaFormulario);
             groupBoxSalida.Location = new Point(326, 46);
             groupBoxSalida.Name = "groupBoxSalida";
             groupBoxSalida.Size = new Size(250, 290);
@@ -150,23 +136,13 @@
             // 
             // btnSalidaConsulta
             // 
-            btnSalidaConsulta.Location = new Point(57, 135);
+            btnSalidaConsulta.Location = new Point(60, 59);
             btnSalidaConsulta.Name = "btnSalidaConsulta";
             btnSalidaConsulta.Size = new Size(142, 54);
             btnSalidaConsulta.TabIndex = 3;
             btnSalidaConsulta.Text = "Consultas";
             btnSalidaConsulta.UseVisualStyleBackColor = true;
             btnSalidaConsulta.Click += btnSalidaConsulta_Click;
-            // 
-            // btnSalidaFormulario
-            // 
-            btnSalidaFormulario.Location = new Point(57, 59);
-            btnSalidaFormulario.Name = "btnSalidaFormulario";
-            btnSalidaFormulario.Size = new Size(142, 54);
-            btnSalidaFormulario.TabIndex = 2;
-            btnSalidaFormulario.Text = "Formulario";
-            btnSalidaFormulario.UseVisualStyleBackColor = true;
-            btnSalidaFormulario.Click += btnSalidaFormulario_Click;
             // 
             // groupBoxHerramientas
             // 
@@ -243,12 +219,10 @@
         private Button btnEntradaCargarExcel;
         private GroupBox groupBoxSalida;
         private Button btnSalidaConsulta;
-        private Button btnSalidaFormulario;
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem menuItemSalir;
         private GroupBox groupBoxHerramientas;
         private Button btnEstadisticas;
-        private Button btnEntradaFormulario;
         private Button btnStock;
         private Button btnProducto;
     }
