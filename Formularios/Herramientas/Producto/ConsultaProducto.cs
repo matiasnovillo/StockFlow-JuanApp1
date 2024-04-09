@@ -109,6 +109,7 @@ namespace JuanApp.Formularios.Herramientas.Producto
             {
                 lstProducto = _productoRepository
                 .AsQueryable()
+                .OrderBy(x => x.ProductoId)
                 .ToList();
             }
             else
@@ -116,6 +117,7 @@ namespace JuanApp.Formularios.Herramientas.Producto
                 lstProducto = _productoRepository
                 .AsQueryable()
                 .Where(x => x.Nombre == txtBuscar.Text)
+                .OrderBy(x => x.ProductoId)
                 .ToList();
             }
 
