@@ -65,6 +65,11 @@ namespace JuanApp.Formularios.Entrada
                     //Actualizar
                     Producto Producto = _productoRepository.GetByProductoId(_productoId);
 
+                    Producto.CodigoProducto = txtCodigoDeProducto.Text;
+                    Producto.Nombre = txtNombreDeProducto.Text;
+                    Producto.UserLastModificationId = 1;
+                    Producto.DateTimeLastModification = DateTime.Now;
+
                     _productoRepository.Update(Producto);
                 }
 
