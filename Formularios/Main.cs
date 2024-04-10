@@ -7,12 +7,10 @@ namespace JuanApp
     public partial class Main : Form
     {
         private readonly ServiceProvider _serviceProvider;
-        private readonly IProductoRepository _productoRepository;
 
         public Main(ServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
-            _productoRepository = serviceProvider.GetRequiredService<IProductoRepository>();
 
             InitializeComponent();
 
@@ -30,15 +28,9 @@ namespace JuanApp
             Estadisticas.ShowDialog();
         }
 
-        private void btnEntradaFormulario_Click(object sender, EventArgs e)
-        {
-            Formularios.Entrada.FormularioEntrada FormularioEntrada = new();
-            FormularioEntrada.ShowDialog();
-        }
-
         private void btnEntradaConsulta_Click(object sender, EventArgs e)
         {
-            Formularios.Entrada.ConsultaEntrada ConsultaEntrada = new();
+            Formularios.Entrada.ConsultaEntrada ConsultaEntrada = new(_serviceProvider);
             ConsultaEntrada.ShowDialog();
         }
 
@@ -47,15 +39,9 @@ namespace JuanApp
 
         }
 
-        private void btnSalidaFormulario_Click(object sender, EventArgs e)
-        {
-            Formularios.Salida.FormularioSalida FormularioSalida = new();
-            FormularioSalida.ShowDialog();
-        }
-
         private void btnSalidaConsulta_Click(object sender, EventArgs e)
         {
-            Formularios.Salida.ConsultaSalida ConsultaSalida = new();
+            Formularios.Salida.ConsultaSalida ConsultaSalida = new(_serviceProvider);
             ConsultaSalida.ShowDialog();
         }
 

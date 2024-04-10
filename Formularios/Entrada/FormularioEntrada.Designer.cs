@@ -48,6 +48,7 @@
             lblTexContenido = new Label();
             lblNeto = new Label();
             numericUpDownNeto = new NumericUpDown();
+            lblInfo = new Label();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNeto).BeginInit();
@@ -114,6 +115,7 @@
             btnGuardar.TabIndex = 11;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // lblNroDeCodigoDeBarra
             // 
@@ -153,6 +155,7 @@
             txtCodigoDeProducto.Name = "txtCodigoDeProducto";
             txtCodigoDeProducto.Size = new Size(232, 27);
             txtCodigoDeProducto.TabIndex = 16;
+            txtCodigoDeProducto.KeyPress += txtCodigoDeProducto_KeyPress;
             // 
             // lblCodigoDeProducto
             // 
@@ -165,7 +168,7 @@
             // 
             // txtNombreDeProducto
             // 
-            txtNombreDeProducto.Location = new Point(12, 293);
+            txtNombreDeProducto.Location = new Point(12, 317);
             txtNombreDeProducto.Name = "txtNombreDeProducto";
             txtNombreDeProducto.Size = new Size(232, 27);
             txtNombreDeProducto.TabIndex = 18;
@@ -173,7 +176,7 @@
             // lblNombreDeProducto
             // 
             lblNombreDeProducto.AutoSize = true;
-            lblNombreDeProducto.Location = new Point(12, 270);
+            lblNombreDeProducto.Location = new Point(12, 294);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
             lblNombreDeProducto.Size = new Size(150, 20);
             lblNombreDeProducto.TabIndex = 17;
@@ -211,11 +214,21 @@
             numericUpDownNeto.Size = new Size(232, 27);
             numericUpDownNeto.TabIndex = 22;
             // 
+            // lblInfo
+            // 
+            lblInfo.AutoSize = true;
+            lblInfo.Location = new Point(12, 252);
+            lblInfo.Name = "lblInfo";
+            lblInfo.Size = new Size(349, 20);
+            lblInfo.TabIndex = 23;
+            lblInfo.Text = "Presione Enter para rellenar el nombre de producto";
+            // 
             // FormularioEntrada
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(546, 447);
+            Controls.Add(lblInfo);
             Controls.Add(numericUpDownNeto);
             Controls.Add(lblNeto);
             Controls.Add(txtTexContenido);
@@ -264,5 +277,6 @@
         private Label lblTexContenido;
         private Label lblNeto;
         private NumericUpDown numericUpDownNeto;
+        private Label lblInfo;
     }
 }

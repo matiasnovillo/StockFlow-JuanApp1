@@ -1,8 +1,6 @@
 ﻿using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Formularios.Entrada;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Windows.Forms;
 
 namespace JuanApp.Formularios.Herramientas.Producto
 {

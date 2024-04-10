@@ -34,7 +34,7 @@
             menuItemMain = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
-            dataGridView1 = new DataGridView();
+            DataGridViewEntrada = new DataGridView();
             lblTitulo = new Label();
             btnBuscar = new Button();
             lblFechaInicio = new Label();
@@ -43,9 +43,11 @@
             lblFechaFin = new Label();
             lblBarraDeBusqueda = new Label();
             txtBuscar = new TextBox();
+            btnAgregar = new Button();
+            chbBuscarPorFechas = new CheckBox();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).BeginInit();
             SuspendLayout();
             // 
             // toolStrip1
@@ -91,14 +93,15 @@
             statusLabel.Size = new Size(92, 20);
             statusLabel.Text = "Información:";
             // 
-            // dataGridView1
+            // DataGridViewEntrada
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 203);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(776, 322);
-            dataGridView1.TabIndex = 2;
+            DataGridViewEntrada.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DataGridViewEntrada.Location = new Point(12, 203);
+            DataGridViewEntrada.Name = "DataGridViewEntrada";
+            DataGridViewEntrada.RowHeadersWidth = 51;
+            DataGridViewEntrada.Size = new Size(776, 322);
+            DataGridViewEntrada.TabIndex = 2;
+            DataGridViewEntrada.CellContentClick += DataGridViewEntrada_CellContentClick;
             // 
             // lblTitulo
             // 
@@ -118,6 +121,7 @@
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // lblFechaInicio
             // 
@@ -167,11 +171,33 @@
             txtBuscar.Size = new Size(532, 27);
             txtBuscar.TabIndex = 10;
             // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(594, 147);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(94, 50);
+            btnAgregar.TabIndex = 11;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // chbBuscarPorFechas
+            // 
+            chbBuscarPorFechas.AutoSize = true;
+            chbBuscarPorFechas.Location = new Point(560, 106);
+            chbBuscarPorFechas.Name = "chbBuscarPorFechas";
+            chbBuscarPorFechas.Size = new Size(147, 24);
+            chbBuscarPorFechas.TabIndex = 12;
+            chbBuscarPorFechas.Text = "Buscar por fechas";
+            chbBuscarPorFechas.UseVisualStyleBackColor = true;
+            // 
             // ConsultaEntrada
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 554);
+            Controls.Add(chbBuscarPorFechas);
+            Controls.Add(btnAgregar);
             Controls.Add(txtBuscar);
             Controls.Add(lblBarraDeBusqueda);
             Controls.Add(dateTimePickerFechaFin);
@@ -180,7 +206,7 @@
             Controls.Add(lblFechaInicio);
             Controls.Add(btnBuscar);
             Controls.Add(lblTitulo);
-            Controls.Add(dataGridView1);
+            Controls.Add(DataGridViewEntrada);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Name = "ConsultaEntrada";
@@ -189,7 +215,7 @@
             toolStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -201,7 +227,7 @@
         private ToolStripMenuItem menuItemMain;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
-        private DataGridView dataGridView1;
+        private DataGridView DataGridViewEntrada;
         private Label lblTitulo;
         private Button btnBuscar;
         private Label lblFechaInicio;
@@ -210,5 +236,7 @@
         private Label lblFechaFin;
         private Label lblBarraDeBusqueda;
         private TextBox txtBuscar;
+        private Button btnAgregar;
+        private CheckBox chbBuscarPorFechas;
     }
 }

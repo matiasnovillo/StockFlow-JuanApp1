@@ -1,8 +1,10 @@
-﻿namespace JuanApp.Formularios.Salida
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace JuanApp.Formularios.Salida
 {
     public partial class ConsultaSalida : Form
     {
-        public ConsultaSalida()
+        public ConsultaSalida(ServiceProvider serviceProvider)
         {
             InitializeComponent();
         }

@@ -10,6 +10,7 @@ namespace JuanApp.Areas.BasicCore
         protected IConfiguration _configuration { get; }
 
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<Entrada> Entrada { get; set; }
 
         public JuanAppContext(IConfiguration configuration)
         {
@@ -42,6 +43,7 @@ namespace JuanApp.Areas.BasicCore
             try
             {
                 modelBuilder.ApplyConfiguration(new ProductoConfiguration());
+                modelBuilder.ApplyConfiguration(new EntradaConfiguration());
             }
             catch (Exception) { throw; }
         }
