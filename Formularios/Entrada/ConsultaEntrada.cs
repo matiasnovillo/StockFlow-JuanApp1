@@ -1,4 +1,5 @@
-﻿using JuanApp.Areas.JuanApp.Interfaces;
+﻿using DocumentFormat.OpenXml.ExtendedProperties;
+using JuanApp.Areas.JuanApp.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.RegularExpressions;
 
@@ -136,7 +137,9 @@ namespace JuanApp.Formularios.Entrada
 
                 lstEntrada = _entradaRepository
                 .AsQueryable()
-                .Where(x => words.Any(word => x.NombreDeProducto.Contains(word)))
+                .Where(x => words.Any(word => x.NombreDeProducto.Contains(word)) ||
+                words.Any(word => x.NroDePesaje.ToString().Contains(word)) ||
+                words.Any(word => x.CodigoDeProducto.ToString().Contains(word)))
                 .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
                 x.DateTimeLastModification <= dateTimePickerFechaFin.Value)
                 .OrderBy(x => x.NroDePesaje)

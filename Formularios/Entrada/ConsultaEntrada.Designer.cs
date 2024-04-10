@@ -44,7 +44,6 @@
             lblBarraDeBusqueda = new Label();
             txtBuscar = new TextBox();
             btnAgregar = new Button();
-            chbBuscarPorFechas = new CheckBox();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).BeginInit();
@@ -181,22 +180,11 @@
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // chbBuscarPorFechas
-            // 
-            chbBuscarPorFechas.AutoSize = true;
-            chbBuscarPorFechas.Location = new Point(560, 106);
-            chbBuscarPorFechas.Name = "chbBuscarPorFechas";
-            chbBuscarPorFechas.Size = new Size(147, 24);
-            chbBuscarPorFechas.TabIndex = 12;
-            chbBuscarPorFechas.Text = "Buscar por fechas";
-            chbBuscarPorFechas.UseVisualStyleBackColor = true;
-            // 
             // ConsultaEntrada
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 554);
-            Controls.Add(chbBuscarPorFechas);
             Controls.Add(btnAgregar);
             Controls.Add(txtBuscar);
             Controls.Add(lblBarraDeBusqueda);
@@ -237,6 +225,5 @@
         private Label lblBarraDeBusqueda;
         private TextBox txtBuscar;
         private Button btnAgregar;
-        private CheckBox chbBuscarPorFechas;
     }
 }

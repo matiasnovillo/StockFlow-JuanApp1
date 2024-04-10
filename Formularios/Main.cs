@@ -1,4 +1,7 @@
-﻿using JuanApp.Areas.JuanApp.Interfaces;
+﻿using ClosedXML.Excel;
+using JuanApp.Areas.JuanApp.Interfaces;
+using JuanApp.Areas.JuanApp.Repositories;
+using JuanApp.Areas.JuanApp.Services;
 using JuanApp.Formularios.Herramientas;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,10 +10,14 @@ namespace JuanApp
     public partial class Main : Form
     {
         private readonly ServiceProvider _serviceProvider;
+        private readonly IEntradaRepository _entradaRepository;
+        private readonly IEntradaService _entradaService;
 
         public Main(ServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+            _entradaRepository = serviceProvider.GetRequiredService<IEntradaRepository>();
+            _entradaService = serviceProvider.GetRequiredService<IEntradaService>();
 
             InitializeComponent();
 
@@ -36,7 +43,76 @@ namespace JuanApp
 
         private void btnEntradaCargarExcel_Click(object sender, EventArgs e)
         {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string FilePath = openFileDialog.FileName;
 
+                    var WorkBook = new XLWorkbook(FilePath);
+                    var Rows = WorkBook.Worksheet(1).RangeUsed().RowsUsed();
+
+                    foreach (var row in Rows)
+                    {
+                        string ExitWords = row.Cell(1).GetString();
+                        if (ExitWords == "Total KG")
+                        {
+                            break;
+                        }
+
+                        var rowNumber = row.RowNumber();
+
+                        if (rowNumber > 6)
+                        {
+                            int NroDePesaje = Convert.ToInt32(row.Cell(1).GetString());
+                            string CodigoDeProducto = row.Cell(2).GetString();
+                            string NombreDeProducto = row.Cell(3).GetString();
+                            int TexContenido = Convert.ToInt32(row.Cell(4).GetString());
+                            decimal Neto = Convert.ToDecimal(row.Cell(5).GetString()); ;
+
+                            //TODO Agregar el codigo de barra
+                            Areas.JuanApp.Entities.Entrada Entrada = new()
+                            {
+                                EntradaId = 0,
+                                Active = true,
+                                DateTimeCreation = DateTime.Now,
+                                DateTimeLastModification = DateTime.Now,
+                                UserCreationId = 1,
+                                UserLastModificationId = 1,
+                                CodigoDeBarra = "",
+                                NroDePesaje = NroDePesaje,
+                                CodigoDeProducto = CodigoDeProducto,
+                                NombreDeProducto = NombreDeProducto,
+                                TexContenido = TexContenido,
+                                Neto = Neto
+                            };
+
+                            Areas.JuanApp.Entities.Entrada EntradaDePrueba = _entradaRepository
+                                .AsQueryable()
+                                .Where(x => x.NroDePesaje == Entrada.NroDePesaje)
+                                .FirstOrDefault();
+
+                            if (EntradaDePrueba == null)
+                            {
+                                _entradaRepository.Add(Entrada);
+                            }
+                            else
+                            {
+                                MessageBox.Show($@"El registro con Nº de pesada {NroDePesaje} 
+ya existe en la base de datos", "Atención");
+                            }
+                            
+                        }
+                    }
+
+                    MessageBox.Show($@"Carga de datos realizada correctamente", "Información");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($@"Error: {ex.Message}", "Error");
+            }
         }
 
         private void btnSalidaConsulta_Click(object sender, EventArgs e)
