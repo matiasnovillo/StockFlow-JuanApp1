@@ -141,6 +141,11 @@ namespace JuanApp.Areas.JuanApp.Services
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Subtotal&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CodigoDeBarra&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
     </tr>
     {RowsAsHTML}
@@ -233,6 +238,11 @@ namespace JuanApp.Areas.JuanApp.Services
                     dtColumnSubtotalFordtSalidaCopy.ColumnName = "Subtotal";
                     dtSalidaCopy.Columns.Add(dtColumnSubtotalFordtSalidaCopy);
 
+                    DataColumn dtColumnCodigoDeBarraFordtSalidaCopy = new DataColumn();
+                    dtColumnCodigoDeBarraFordtSalidaCopy.DataType = typeof(string);
+                    dtColumnCodigoDeBarraFordtSalidaCopy.ColumnName = "CodigoDeBarra";
+                    dtSalidaCopy.Columns.Add(dtColumnCodigoDeBarraFordtSalidaCopy);
+
                     
                 #endregion
 
@@ -253,6 +263,7 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("KilosReales", typeof(string));
                 DataTable.Columns.Add("Precio", typeof(string));
                 DataTable.Columns.Add("Subtotal", typeof(string));
+                DataTable.Columns.Add("CodigoDeBarra", typeof(string));
                 
 
                 foreach (Salida salida in lstSalida)
@@ -270,7 +281,8 @@ namespace JuanApp.Areas.JuanApp.Services
                         salida.NombreDeProducto,
                         salida.KilosReales,
                         salida.Precio,
-                        salida.Subtotal
+                        salida.Subtotal,
+                        salida.CodigoDeBarra
                         
                                 );
                         }
@@ -366,6 +378,11 @@ namespace JuanApp.Areas.JuanApp.Services
                     dtColumnSubtotalFordtSalidaCopy.ColumnName = "Subtotal";
                     dtSalidaCopy.Columns.Add(dtColumnSubtotalFordtSalidaCopy);
 
+                    DataColumn dtColumnCodigoDeBarraFordtSalidaCopy = new DataColumn();
+                    dtColumnCodigoDeBarraFordtSalidaCopy.DataType = typeof(string);
+                    dtColumnCodigoDeBarraFordtSalidaCopy.ColumnName = "CodigoDeBarra";
+                    dtSalidaCopy.Columns.Add(dtColumnCodigoDeBarraFordtSalidaCopy);
+
                     
                     #endregion
 
@@ -390,6 +407,7 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("KilosReales", typeof(string));
                 DataTable.Columns.Add("Precio", typeof(string));
                 DataTable.Columns.Add("Subtotal", typeof(string));
+                DataTable.Columns.Add("CodigoDeBarra", typeof(string));
                 
                         
                         DataTable.Rows.Add(
@@ -405,7 +423,8 @@ namespace JuanApp.Areas.JuanApp.Services
                         salida.NombreDeProducto,
                         salida.KilosReales,
                         salida.Precio,
-                        salida.Subtotal
+                        salida.Subtotal,
+                        salida.CodigoDeBarra
                         
                                 );
                         #endregion

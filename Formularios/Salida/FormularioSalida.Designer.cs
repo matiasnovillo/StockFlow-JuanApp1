@@ -45,7 +45,7 @@
             txtNombreProducto = new TextBox();
             lblNombreProducto = new Label();
             lblKilosTotales = new Label();
-            textBox1 = new TextBox();
+            txtCodigoDeBarra = new TextBox();
             lblCodigoDeBarraDeProducto = new Label();
             numericUpDownKilosTotales = new NumericUpDown();
             lblPrecio = new Label();
@@ -117,9 +117,10 @@
             btnGuardar.Location = new Point(408, 368);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(126, 43);
-            btnGuardar.TabIndex = 11;
+            btnGuardar.TabIndex = 9;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // lblCodigoDeCliente
             // 
@@ -135,14 +136,14 @@
             txtCodigoDeCliente.Location = new Point(12, 93);
             txtCodigoDeCliente.Name = "txtCodigoDeCliente";
             txtCodigoDeCliente.Size = new Size(232, 27);
-            txtCodigoDeCliente.TabIndex = 12;
+            txtCodigoDeCliente.TabIndex = 1;
             // 
             // txtNombreDeCliente
             // 
             txtNombreDeCliente.Location = new Point(12, 162);
             txtNombreDeCliente.Name = "txtNombreDeCliente";
             txtNombreDeCliente.Size = new Size(232, 27);
-            txtNombreDeCliente.TabIndex = 14;
+            txtNombreDeCliente.TabIndex = 2;
             // 
             // lblNombreDeCliente
             // 
@@ -158,7 +159,7 @@
             txtCodigoDeProducto.Location = new Point(12, 299);
             txtCodigoDeProducto.Name = "txtCodigoDeProducto";
             txtCodigoDeProducto.Size = new Size(232, 27);
-            txtCodigoDeProducto.TabIndex = 16;
+            txtCodigoDeProducto.TabIndex = 4;
             // 
             // lblCodigoDeProducto
             // 
@@ -174,7 +175,7 @@
             txtNombreProducto.Location = new Point(12, 371);
             txtNombreProducto.Name = "txtNombreProducto";
             txtNombreProducto.Size = new Size(232, 27);
-            txtNombreProducto.TabIndex = 18;
+            txtNombreProducto.TabIndex = 5;
             // 
             // lblNombreProducto
             // 
@@ -194,12 +195,12 @@
             lblKilosTotales.TabIndex = 19;
             lblKilosTotales.Text = "Kilos totales";
             // 
-            // textBox1
+            // txtCodigoDeBarra
             // 
-            textBox1.Location = new Point(12, 232);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(232, 27);
-            textBox1.TabIndex = 21;
+            txtCodigoDeBarra.Location = new Point(12, 232);
+            txtCodigoDeBarra.Name = "txtCodigoDeBarra";
+            txtCodigoDeBarra.Size = new Size(232, 27);
+            txtCodigoDeBarra.TabIndex = 3;
             // 
             // lblCodigoDeBarraDeProducto
             // 
@@ -215,7 +216,7 @@
             numericUpDownKilosTotales.Location = new Point(284, 94);
             numericUpDownKilosTotales.Name = "numericUpDownKilosTotales";
             numericUpDownKilosTotales.Size = new Size(150, 27);
-            numericUpDownKilosTotales.TabIndex = 22;
+            numericUpDownKilosTotales.TabIndex = 6;
             // 
             // lblPrecio
             // 
@@ -231,7 +232,7 @@
             numericUpDownPrecio.Location = new Point(284, 163);
             numericUpDownPrecio.Name = "numericUpDownPrecio";
             numericUpDownPrecio.Size = new Size(150, 27);
-            numericUpDownPrecio.TabIndex = 24;
+            numericUpDownPrecio.TabIndex = 7;
             // 
             // lblSubtotal
             // 
@@ -247,7 +248,7 @@
             numericUpDownSubtotal.Location = new Point(284, 233);
             numericUpDownSubtotal.Name = "numericUpDownSubtotal";
             numericUpDownSubtotal.Size = new Size(150, 27);
-            numericUpDownSubtotal.TabIndex = 26;
+            numericUpDownSubtotal.TabIndex = 8;
             // 
             // FormularioSalida
             // 
@@ -259,7 +260,7 @@
             Controls.Add(numericUpDownPrecio);
             Controls.Add(lblPrecio);
             Controls.Add(numericUpDownKilosTotales);
-            Controls.Add(textBox1);
+            Controls.Add(txtCodigoDeBarra);
             Controls.Add(lblCodigoDeBarraDeProducto);
             Controls.Add(lblKilosTotales);
             Controls.Add(txtNombreProducto);
@@ -305,7 +306,7 @@
         private TextBox txtNombreProducto;
         private Label lblNombreProducto;
         private Label lblKilosTotales;
-        private TextBox textBox1;
+        private TextBox txtCodigoDeBarra;
         private Label lblCodigoDeBarraDeProducto;
         private NumericUpDown numericUpDownKilosTotales;
         private Label lblPrecio;

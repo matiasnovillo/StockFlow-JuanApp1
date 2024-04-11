@@ -34,7 +34,7 @@
             menuItemMain = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
-            dataGridView1 = new DataGridView();
+            DataGridViewSalida = new DataGridView();
             lblTitulo = new Label();
             btnBuscar = new Button();
             btnGenerarPDF = new Button();
@@ -45,9 +45,10 @@
             dateTimePickerFechaInicio = new DateTimePicker();
             lblFechaInicio = new Label();
             btnGenerarExcel = new Button();
+            btnAgregar = new Button();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).BeginInit();
             SuspendLayout();
             // 
             // toolStrip1
@@ -93,14 +94,15 @@
             statusLabel.Size = new Size(92, 20);
             statusLabel.Text = "Información:";
             // 
-            // dataGridView1
+            // DataGridViewSalida
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 205);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(776, 319);
-            dataGridView1.TabIndex = 2;
+            DataGridViewSalida.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DataGridViewSalida.Location = new Point(12, 205);
+            DataGridViewSalida.Name = "DataGridViewSalida";
+            DataGridViewSalida.RowHeadersWidth = 51;
+            DataGridViewSalida.Size = new Size(776, 319);
+            DataGridViewSalida.TabIndex = 2;
+            DataGridViewSalida.CellContentClick += DataGridViewSalida_CellContentClick;
             // 
             // lblTitulo
             // 
@@ -120,6 +122,7 @@
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // btnGenerarPDF
             // 
@@ -129,6 +132,7 @@
             btnGenerarPDF.TabIndex = 5;
             btnGenerarPDF.Text = "Generar PDF";
             btnGenerarPDF.UseVisualStyleBackColor = true;
+            btnGenerarPDF.Click += btnGenerarPDF_Click;
             // 
             // txtBuscar
             // 
@@ -186,12 +190,24 @@
             btnGenerarExcel.TabIndex = 17;
             btnGenerarExcel.Text = "Generar Excel";
             btnGenerarExcel.UseVisualStyleBackColor = true;
+            btnGenerarExcel.Click += btnGenerarExcel_Click;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(588, 149);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(97, 50);
+            btnAgregar.TabIndex = 18;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // ConsultaSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 553);
+            Controls.Add(btnAgregar);
             Controls.Add(btnGenerarExcel);
             Controls.Add(txtBuscar);
             Controls.Add(lblBarraDeBusqueda);
@@ -202,7 +218,7 @@
             Controls.Add(btnGenerarPDF);
             Controls.Add(btnBuscar);
             Controls.Add(lblTitulo);
-            Controls.Add(dataGridView1);
+            Controls.Add(DataGridViewSalida);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Name = "ConsultaSalida";
@@ -211,7 +227,7 @@
             toolStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,7 +239,7 @@
         private ToolStripMenuItem menuItemMain;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
-        private DataGridView dataGridView1;
+        private DataGridView DataGridViewSalida;
         private Label lblTitulo;
         private Button btnBuscar;
         private Button btnGenerarPDF;
@@ -234,5 +250,6 @@
         private DateTimePicker dateTimePickerFechaInicio;
         private Label lblFechaInicio;
         private Button btnGenerarExcel;
+        private Button btnAgregar;
     }
 }
