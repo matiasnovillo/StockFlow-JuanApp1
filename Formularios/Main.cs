@@ -1,7 +1,5 @@
 ﻿using ClosedXML.Excel;
 using JuanApp.Areas.JuanApp.Interfaces;
-using JuanApp.Areas.JuanApp.Repositories;
-using JuanApp.Areas.JuanApp.Services;
 using JuanApp.Formularios.Herramientas;
 using Microsoft.Extensions.DependencyInjection;
 

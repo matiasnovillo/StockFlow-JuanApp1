@@ -11,6 +11,7 @@ namespace JuanApp.Areas.BasicCore
 
         public DbSet<Producto> Producto { get; set; }
         public DbSet<Entrada> Entrada { get; set; }
+        public DbSet<Salida> Salida { get; set; }
 
         public JuanAppContext(IConfiguration configuration)
         {
@@ -44,6 +45,7 @@ namespace JuanApp.Areas.BasicCore
             {
                 modelBuilder.ApplyConfiguration(new ProductoConfiguration());
                 modelBuilder.ApplyConfiguration(new EntradaConfiguration());
+                modelBuilder.ApplyConfiguration(new SalidaConfiguration());
             }
             catch (Exception) { throw; }
         }
