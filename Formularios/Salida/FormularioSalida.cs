@@ -1,4 +1,5 @@
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using JuanApp.Areas.JuanApp.Entities;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Areas.JuanApp.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,7 +10,12 @@ namespace JuanApp.Formularios.Salida
     {
         private readonly ISalidaRepository _salidaRepository;
         private readonly ISalidaService _salidaService;
+
+        private readonly IClienteRepository _clienteRepository;
+        private readonly IClienteService _clienteService;
+
         private readonly IProductoRepository _productoRepository;
+
         private readonly int _salidaId;
         public FormularioSalida(IServiceProvider serviceProvider,
             int salidaId)
@@ -18,6 +24,10 @@ namespace JuanApp.Formularios.Salida
             {
                 _salidaRepository = serviceProvider.GetRequiredService<ISalidaRepository>();
                 _salidaService = serviceProvider.GetRequiredService<ISalidaService>();
+
+                _clienteRepository = serviceProvider.GetRequiredService<IClienteRepository>();
+                _clienteService = serviceProvider.GetRequiredService<IClienteService>();
+
                 _productoRepository = serviceProvider.GetRequiredService<IProductoRepository>();
 
                 _salidaId = salidaId;
@@ -133,6 +143,27 @@ namespace JuanApp.Formularios.Salida
                         .FirstOrDefault();
 
                     txtNombreProducto.Text = Producto.Nombre;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void txtCodigoDeCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    Cliente Cliente = _clienteRepository
+                        .AsQueryable()
+                        .Where(x => x.CodigoDeCliente == txtCodigoDeCliente.Text)
+                        .FirstOrDefault();
+
+                    txtNombreDeCliente.Text = Cliente.NombreDeCliente;
                 }
             }
             catch (Exception)

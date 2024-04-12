@@ -53,6 +53,7 @@
             lblSubtotal = new Label();
             numericUpDownSubtotal = new NumericUpDown();
             lblInfo = new Label();
+            label1 = new Label();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownKilosTotales).BeginInit();
@@ -138,10 +139,11 @@
             txtCodigoDeCliente.Name = "txtCodigoDeCliente";
             txtCodigoDeCliente.Size = new Size(232, 27);
             txtCodigoDeCliente.TabIndex = 1;
+            txtCodigoDeCliente.KeyPress += txtCodigoDeCliente_KeyPress;
             // 
             // txtNombreDeCliente
             // 
-            txtNombreDeCliente.Location = new Point(12, 162);
+            txtNombreDeCliente.Location = new Point(12, 182);
             txtNombreDeCliente.Name = "txtNombreDeCliente";
             txtNombreDeCliente.Size = new Size(232, 27);
             txtNombreDeCliente.TabIndex = 2;
@@ -149,7 +151,7 @@
             // lblNombreDeCliente
             // 
             lblNombreDeCliente.AutoSize = true;
-            lblNombreDeCliente.Location = new Point(12, 139);
+            lblNombreDeCliente.Location = new Point(12, 159);
             lblNombreDeCliente.Name = "lblNombreDeCliente";
             lblNombreDeCliente.Size = new Size(133, 20);
             lblNombreDeCliente.TabIndex = 13;
@@ -157,7 +159,7 @@
             // 
             // txtCodigoDeProducto
             // 
-            txtCodigoDeProducto.Location = new Point(12, 299);
+            txtCodigoDeProducto.Location = new Point(12, 319);
             txtCodigoDeProducto.Name = "txtCodigoDeProducto";
             txtCodigoDeProducto.Size = new Size(232, 27);
             txtCodigoDeProducto.TabIndex = 4;
@@ -166,7 +168,7 @@
             // lblCodigoDeProducto
             // 
             lblCodigoDeProducto.AutoSize = true;
-            lblCodigoDeProducto.Location = new Point(12, 276);
+            lblCodigoDeProducto.Location = new Point(12, 296);
             lblCodigoDeProducto.Name = "lblCodigoDeProducto";
             lblCodigoDeProducto.Size = new Size(144, 20);
             lblCodigoDeProducto.TabIndex = 15;
@@ -174,7 +176,7 @@
             // 
             // txtNombreProducto
             // 
-            txtNombreProducto.Location = new Point(12, 391);
+            txtNombreProducto.Location = new Point(12, 411);
             txtNombreProducto.Name = "txtNombreProducto";
             txtNombreProducto.Size = new Size(232, 27);
             txtNombreProducto.TabIndex = 5;
@@ -182,7 +184,7 @@
             // lblNombreProducto
             // 
             lblNombreProducto.AutoSize = true;
-            lblNombreProducto.Location = new Point(12, 368);
+            lblNombreProducto.Location = new Point(12, 388);
             lblNombreProducto.Name = "lblNombreProducto";
             lblNombreProducto.Size = new Size(150, 20);
             lblNombreProducto.TabIndex = 17;
@@ -199,7 +201,7 @@
             // 
             // txtCodigoDeBarra
             // 
-            txtCodigoDeBarra.Location = new Point(12, 232);
+            txtCodigoDeBarra.Location = new Point(12, 252);
             txtCodigoDeBarra.Name = "txtCodigoDeBarra";
             txtCodigoDeBarra.Size = new Size(232, 27);
             txtCodigoDeBarra.TabIndex = 3;
@@ -207,7 +209,7 @@
             // lblCodigoDeBarraDeProducto
             // 
             lblCodigoDeBarraDeProducto.AutoSize = true;
-            lblCodigoDeBarraDeProducto.Location = new Point(12, 209);
+            lblCodigoDeBarraDeProducto.Location = new Point(12, 229);
             lblCodigoDeBarraDeProducto.Name = "lblCodigoDeBarraDeProducto";
             lblCodigoDeBarraDeProducto.Size = new Size(208, 20);
             lblCodigoDeBarraDeProducto.TabIndex = 20;
@@ -223,7 +225,7 @@
             // lblPrecio
             // 
             lblPrecio.AutoSize = true;
-            lblPrecio.Location = new Point(284, 139);
+            lblPrecio.Location = new Point(284, 159);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(50, 20);
             lblPrecio.TabIndex = 23;
@@ -231,7 +233,7 @@
             // 
             // numericUpDownPrecio
             // 
-            numericUpDownPrecio.Location = new Point(284, 163);
+            numericUpDownPrecio.Location = new Point(284, 183);
             numericUpDownPrecio.Name = "numericUpDownPrecio";
             numericUpDownPrecio.Size = new Size(150, 27);
             numericUpDownPrecio.TabIndex = 7;
@@ -239,7 +241,7 @@
             // lblSubtotal
             // 
             lblSubtotal.AutoSize = true;
-            lblSubtotal.Location = new Point(284, 209);
+            lblSubtotal.Location = new Point(284, 229);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(65, 20);
             lblSubtotal.TabIndex = 25;
@@ -247,7 +249,7 @@
             // 
             // numericUpDownSubtotal
             // 
-            numericUpDownSubtotal.Location = new Point(284, 233);
+            numericUpDownSubtotal.Location = new Point(284, 253);
             numericUpDownSubtotal.Name = "numericUpDownSubtotal";
             numericUpDownSubtotal.Size = new Size(150, 27);
             numericUpDownSubtotal.TabIndex = 8;
@@ -255,17 +257,27 @@
             // lblInfo
             // 
             lblInfo.AutoSize = true;
-            lblInfo.Location = new Point(12, 329);
+            lblInfo.Location = new Point(12, 349);
             lblInfo.Name = "lblInfo";
             lblInfo.Size = new Size(349, 20);
             lblInfo.TabIndex = 26;
             lblInfo.Text = "Presione Enter para rellenar el nombre de producto";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 123);
+            label1.Name = "label1";
+            label1.Size = new Size(349, 20);
+            label1.TabIndex = 27;
+            label1.Text = "Presione Enter para rellenar el nombre de producto";
             // 
             // FormularioSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(546, 479);
+            Controls.Add(label1);
             Controls.Add(lblInfo);
             Controls.Add(numericUpDownSubtotal);
             Controls.Add(lblSubtotal);
@@ -326,5 +338,6 @@
         private Label lblSubtotal;
         private NumericUpDown numericUpDownSubtotal;
         private Label lblInfo;
+        private Label label1;
     }
 }
