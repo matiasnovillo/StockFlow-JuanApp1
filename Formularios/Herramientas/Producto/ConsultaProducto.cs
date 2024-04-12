@@ -44,6 +44,8 @@ namespace JuanApp.Formularios.Herramientas.Producto
             DataGridViewProducto.Columns.Add(colBorrar);
 
             DataGridViewProducto.AutoGenerateColumns = false;
+
+            GetTabla();
         }
 
         private void menuItemMain_Click(object sender, EventArgs e)

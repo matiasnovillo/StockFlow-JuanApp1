@@ -73,6 +73,9 @@ namespace JuanApp.Formularios.Salida
             DataGridViewSalida.AutoGenerateColumns = false;
 
             dateTimePickerFechaInicio.Value = DateTime.Now.AddDays(-30);
+            dateTimePickerFechaFin.Value = DateTime.Now.AddDays(1);
+
+            GetTabla();
         }
 
         private void menuItemMain_Click(object sender, EventArgs e)
@@ -97,7 +100,7 @@ namespace JuanApp.Formularios.Salida
 
         private void DataGridViewSalida_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 9)
+            if (e.ColumnIndex == 8)
             {
                 //Actualizar
                 int EntradaId = Convert.ToInt32(DataGridViewSalida.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -109,7 +112,7 @@ namespace JuanApp.Formularios.Salida
 
                 GetTabla();
             }
-            else if (e.ColumnIndex == 10)
+            else if (e.ColumnIndex == 9)
             {
                 //Borrar
                 DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",

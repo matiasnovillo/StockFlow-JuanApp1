@@ -55,7 +55,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(800, 27);
+            toolStrip1.Size = new Size(826, 27);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -82,7 +82,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
             statusStrip1.Location = new Point(0, 528);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(800, 26);
+            statusStrip1.Size = new Size(826, 26);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -98,7 +98,7 @@
             DataGridViewEntrada.Location = new Point(12, 203);
             DataGridViewEntrada.Name = "DataGridViewEntrada";
             DataGridViewEntrada.RowHeadersWidth = 51;
-            DataGridViewEntrada.Size = new Size(776, 322);
+            DataGridViewEntrada.Size = new Size(802, 322);
             DataGridViewEntrada.TabIndex = 2;
             DataGridViewEntrada.CellContentClick += DataGridViewEntrada_CellContentClick;
             // 
@@ -114,7 +114,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(694, 147);
+            btnBuscar.Location = new Point(720, 147);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(94, 50);
             btnBuscar.TabIndex = 4;
@@ -159,9 +159,9 @@
             lblBarraDeBusqueda.AutoSize = true;
             lblBarraDeBusqueda.Location = new Point(12, 147);
             lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
-            lblBarraDeBusqueda.Size = new Size(134, 20);
+            lblBarraDeBusqueda.Size = new Size(588, 20);
             lblBarraDeBusqueda.TabIndex = 9;
-            lblBarraDeBusqueda.Text = "Barra de búsqueda";
+            lblBarraDeBusqueda.Text = "Barra de búsqueda (Busque por Nº de pesaje, nombre de producto o cód. de producto)";
             // 
             // txtBuscar
             // 
@@ -172,7 +172,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(594, 147);
+            btnAgregar.Location = new Point(620, 147);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(94, 50);
             btnAgregar.TabIndex = 11;
@@ -184,7 +184,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 554);
+            ClientSize = new Size(826, 554);
             Controls.Add(btnAgregar);
             Controls.Add(txtBuscar);
             Controls.Add(lblBarraDeBusqueda);

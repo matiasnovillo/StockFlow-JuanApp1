@@ -46,6 +46,7 @@
             lblFechaInicio = new Label();
             btnGenerarExcel = new Button();
             btnAgregar = new Button();
+            label1 = new Label();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).BeginInit();
@@ -82,7 +83,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 527);
+            statusStrip1.Location = new Point(0, 561);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 26);
             statusStrip1.TabIndex = 1;
@@ -97,7 +98,7 @@
             // DataGridViewSalida
             // 
             DataGridViewSalida.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DataGridViewSalida.Location = new Point(12, 205);
+            DataGridViewSalida.Location = new Point(12, 239);
             DataGridViewSalida.Name = "DataGridViewSalida";
             DataGridViewSalida.RowHeadersWidth = 51;
             DataGridViewSalida.Size = new Size(776, 319);
@@ -116,7 +117,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(691, 150);
+            btnBuscar.Location = new Point(691, 183);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(97, 50);
             btnBuscar.TabIndex = 4;
@@ -136,7 +137,7 @@
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(12, 172);
+            txtBuscar.Location = new Point(12, 206);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(532, 27);
             txtBuscar.TabIndex = 16;
@@ -144,11 +145,11 @@
             // lblBarraDeBusqueda
             // 
             lblBarraDeBusqueda.AutoSize = true;
-            lblBarraDeBusqueda.Location = new Point(12, 149);
+            lblBarraDeBusqueda.Location = new Point(12, 163);
             lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
-            lblBarraDeBusqueda.Size = new Size(134, 20);
+            lblBarraDeBusqueda.Size = new Size(447, 20);
             lblBarraDeBusqueda.TabIndex = 15;
-            lblBarraDeBusqueda.Text = "Barra de búsqueda";
+            lblBarraDeBusqueda.Text = "Barra de búsqueda (Busque por cód. de cliente, cód. de producto, ";
             // 
             // dateTimePickerFechaFin
             // 
@@ -194,7 +195,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(588, 149);
+            btnAgregar.Location = new Point(588, 183);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(97, 50);
             btnAgregar.TabIndex = 18;
@@ -202,11 +203,21 @@
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 183);
+            label1.Name = "label1";
+            label1.Size = new Size(290, 20);
+            label1.TabIndex = 19;
+            label1.Text = "nombre de cliente o nombre de producto)";
+            // 
             // ConsultaSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 553);
+            ClientSize = new Size(800, 587);
+            Controls.Add(label1);
             Controls.Add(btnAgregar);
             Controls.Add(btnGenerarExcel);
             Controls.Add(txtBuscar);
@@ -251,5 +262,6 @@
         private Label lblFechaInicio;
         private Button btnGenerarExcel;
         private Button btnAgregar;
+        private Label label1;
     }
 }

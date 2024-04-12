@@ -69,6 +69,9 @@ namespace JuanApp.Formularios.Entrada
             DataGridViewEntrada.AutoGenerateColumns = false;
 
             dateTimePickerFechaInicio.Value = DateTime.Now.AddDays(-30);
+            dateTimePickerFechaFin.Value = DateTime.Now.AddDays(1);
+
+            GetTabla();
         }
 
         private void menuItemMain_Click(object sender, EventArgs e)

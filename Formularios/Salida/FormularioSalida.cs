@@ -104,5 +104,18 @@ namespace JuanApp.Formularios.Salida
                 Hide();
             }
         }
+
+        private void txtCodigoDeProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Areas.JuanApp.Entities.Producto Producto = _productoRepository
+                    .AsQueryable()
+                    .Where(x => x.CodigoProducto == txtCodigoDeProducto.Text)
+                    .FirstOrDefault();
+
+                txtNombreProducto.Text = Producto.Nombre;
+            }
+        }
     }
 }
