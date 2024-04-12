@@ -153,7 +153,7 @@ namespace JuanApp.Formularios.Entrada
                     .AsQueryable()
                     .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
                     x.DateTimeLastModification <= dateTimePickerFechaFin.Value)
-                    .OrderBy(x => x.NroDePesaje)
+                    .OrderBy(x => x.NombreDeProducto)
                     .Take(500)
                     .ToList();
                 }
@@ -171,7 +171,7 @@ namespace JuanApp.Formularios.Entrada
                     words.Any(word => x.CodigoDeProducto.ToString().Contains(word)))
                     .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
                     x.DateTimeLastModification <= dateTimePickerFechaFin.Value)
-                    .OrderBy(x => x.NroDePesaje)
+                    .OrderBy(x => x.NombreDeProducto)
                     .Take(500)
                     .ToList();
                 }
