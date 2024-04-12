@@ -106,7 +106,7 @@ namespace JuanApp.Formularios.Salida
 
         private void btnGenerarExcel_Click(object sender, EventArgs e)
         {
-
+            //_salidaService.ExportAsExcel(new() { AjaxForString = "" });
         }
 
         private void btnGenerarPDF_Click(object sender, EventArgs e)

@@ -155,8 +155,13 @@ namespace JuanApp
                             {
                                 MessageBox.Show($@"El registro con Nº de pesada {NroDePesaje} 
 ya existe en la base de datos", "Atención");
-                            }
 
+                                // Mostrar la ventana de confirmación
+                                if (MessageBox.Show("¿Desea cancelar el proceso?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    break;
+                                }
+                            }
                         }
                     }
 
