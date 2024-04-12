@@ -43,6 +43,7 @@
             btnProducto = new Button();
             btnStock = new Button();
             btnEstadisticas = new Button();
+            btnCliente = new Button();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             groupBoxEntrada.SuspendLayout();
@@ -146,12 +147,13 @@
             // 
             // groupBoxHerramientas
             // 
+            groupBoxHerramientas.Controls.Add(btnCliente);
             groupBoxHerramientas.Controls.Add(btnProducto);
             groupBoxHerramientas.Controls.Add(btnStock);
             groupBoxHerramientas.Controls.Add(btnEstadisticas);
             groupBoxHerramientas.Location = new Point(604, 46);
             groupBoxHerramientas.Name = "groupBoxHerramientas";
-            groupBoxHerramientas.Size = new Size(250, 290);
+            groupBoxHerramientas.Size = new Size(250, 355);
             groupBoxHerramientas.TabIndex = 5;
             groupBoxHerramientas.TabStop = false;
             groupBoxHerramientas.Text = "Herramientas";
@@ -185,6 +187,16 @@
             btnEstadisticas.Text = "Estadisticas";
             btnEstadisticas.UseVisualStyleBackColor = true;
             btnEstadisticas.Click += btnEstadisticas_Click;
+            // 
+            // btnCliente
+            // 
+            btnCliente.Location = new Point(56, 286);
+            btnCliente.Name = "btnCliente";
+            btnCliente.Size = new Size(142, 54);
+            btnCliente.TabIndex = 6;
+            btnCliente.Text = "Clientes";
+            btnCliente.UseVisualStyleBackColor = true;
+            btnCliente.Click += btnCliente_Click;
             // 
             // Main
             // 
@@ -225,5 +237,6 @@
         private Button btnEstadisticas;
         private Button btnStock;
         private Button btnProducto;
+        private Button btnCliente;
     }
 }

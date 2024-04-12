@@ -156,7 +156,7 @@ namespace JuanApp
                                 MessageBox.Show($@"El registro con Nº de pesada {NroDePesaje} 
 ya existe en la base de datos", "Atención");
                             }
-                            
+
                         }
                     }
 
@@ -249,6 +249,35 @@ ya existe en la base de datos", "Atención");
             {
                 Formularios.Herramientas.Producto.ConsultaProducto ConsultaProducto = new(_serviceProvider);
                 ConsultaProducto.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Failure Failure = new Failure()
+                {
+                    FailureId = 0,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace,
+                    Source = ex.Source,
+                    Comment = ""
+                };
+                _failureRepository.Add(Failure);
+
+                MessageBox.Show($@"Error: {ex.Message}", "Error");
+            }
+        }
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Formularios.Herramientas.Cliente.ConsultaCliente ConsultaCliente = new(_serviceProvider);
+                ConsultaCliente.ShowDialog();
             }
             catch (Exception ex)
             {
