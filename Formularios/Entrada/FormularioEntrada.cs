@@ -16,29 +16,37 @@ namespace JuanApp.Formularios.Entrada
         public FormularioEntrada(IServiceProvider serviceProvider,
             int entradaId)
         {
-
-            _entradaRepository = serviceProvider.GetRequiredService<IEntradaRepository>();
-            _entradaService = serviceProvider.GetRequiredService<IEntradaService>();
-            _productoRepository = serviceProvider.GetRequiredService<IProductoRepository>();
-
-            _entradaId = entradaId;
-
-            InitializeComponent();
-
-            if (entradaId > 0)
+            try
             {
-                Areas.JuanApp.Entities.Entrada Entrada = _entradaRepository
-                                                                    .GetByEntradaId(entradaId);
+                _entradaRepository = serviceProvider.GetRequiredService<IEntradaRepository>();
+                _entradaService = serviceProvider.GetRequiredService<IEntradaService>();
 
-                txtNroDeCodigoDeBarra.Text = Entrada.CodigoDeBarra;
-                txtNroDePesada.Text = Entrada.NroDePesaje.ToString();
-                txtCodigoDeProducto.Text = Entrada.CodigoDeProducto;
-                txtNombreDeProducto.Text = Entrada.NombreDeProducto;
-                txtTexContenido.Text = Entrada.TexContenido.ToString();
-                numericUpDownNeto.Value = Entrada.Neto;
+                _productoRepository = serviceProvider.GetRequiredService<IProductoRepository>();
+
+                _entradaId = entradaId;
+
+                InitializeComponent();
+
+                if (entradaId > 0)
+                {
+                    Areas.JuanApp.Entities.Entrada Entrada = _entradaRepository
+                                                                        .GetByEntradaId(entradaId);
+
+                    txtNroDeCodigoDeBarra.Text = Entrada.CodigoDeBarra;
+                    txtNroDePesada.Text = Entrada.NroDePesaje.ToString();
+                    txtCodigoDeProducto.Text = Entrada.CodigoDeProducto;
+                    txtNombreDeProducto.Text = Entrada.NombreDeProducto;
+                    txtTexContenido.Text = Entrada.TexContenido.ToString();
+                    numericUpDownNeto.Value = Entrada.Neto;
+                }
+
+                statusLabel.Text = "";
             }
+            catch (Exception)
+            {
 
-            statusLabel.Text = "";
+                throw;
+            }
         }
 
         private void menuItemMain_Click(object sender, EventArgs e)
@@ -48,68 +56,84 @@ namespace JuanApp.Formularios.Entrada
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNroDeCodigoDeBarra.Text) ||
-               string.IsNullOrEmpty(txtNroDePesada.Text) ||
-               string.IsNullOrEmpty(txtCodigoDeProducto.Text) ||
-               string.IsNullOrEmpty(txtTexContenido.Text) ||
-               numericUpDownNeto.Value == 0 ||
-               string.IsNullOrEmpty(txtNombreDeProducto.Text))
+            try
             {
-                statusLabel.Text = "Faltan datos a completar";
-            }
-            else
-            {
-                if (_entradaId == 0)
+                if (string.IsNullOrEmpty(txtNroDeCodigoDeBarra.Text) ||
+                       string.IsNullOrEmpty(txtNroDePesada.Text) ||
+                       string.IsNullOrEmpty(txtCodigoDeProducto.Text) ||
+                       string.IsNullOrEmpty(txtTexContenido.Text) ||
+                       numericUpDownNeto.Value == 0 ||
+                       string.IsNullOrEmpty(txtNombreDeProducto.Text))
                 {
-                    //Agregar
-                    Areas.JuanApp.Entities.Entrada Entrada = new()
-                    {
-                        EntradaId = _entradaId,
-                        Active = true,
-                        UserCreationId = 1,
-                        UserLastModificationId = 1,
-                        DateTimeCreation = DateTime.Now,
-                        DateTimeLastModification = DateTime.Now,
-                        CodigoDeBarra = txtNroDeCodigoDeBarra.Text,
-                        NroDePesaje = Convert.ToInt32(txtNroDePesada.Text),
-                        CodigoDeProducto = txtCodigoDeProducto.Text,
-                        NombreDeProducto = txtNombreDeProducto.Text,
-                        TexContenido = Convert.ToInt32(txtTexContenido.Text),
-                        Neto = numericUpDownNeto.Value
-                    };
-                    _entradaRepository.Add(Entrada);
+                    statusLabel.Text = "Faltan datos a completar";
                 }
                 else
                 {
-                    //Actualizar
-                    Areas.JuanApp.Entities.Entrada Entrada = _entradaRepository.GetByEntradaId(_entradaId);
+                    if (_entradaId == 0)
+                    {
+                        //Agregar
+                        Areas.JuanApp.Entities.Entrada Entrada = new()
+                        {
+                            EntradaId = _entradaId,
+                            Active = true,
+                            UserCreationId = 1,
+                            UserLastModificationId = 1,
+                            DateTimeCreation = DateTime.Now,
+                            DateTimeLastModification = DateTime.Now,
+                            CodigoDeBarra = txtNroDeCodigoDeBarra.Text,
+                            NroDePesaje = Convert.ToInt32(txtNroDePesada.Text),
+                            CodigoDeProducto = txtCodigoDeProducto.Text,
+                            NombreDeProducto = txtNombreDeProducto.Text,
+                            TexContenido = Convert.ToInt32(txtTexContenido.Text),
+                            Neto = numericUpDownNeto.Value
+                        };
+                        _entradaRepository.Add(Entrada);
+                    }
+                    else
+                    {
+                        //Actualizar
+                        Areas.JuanApp.Entities.Entrada Entrada = _entradaRepository.GetByEntradaId(_entradaId);
 
-                    Entrada.CodigoDeBarra = txtNroDeCodigoDeBarra.Text;
-                    Entrada.NroDePesaje = Convert.ToInt32(txtNroDePesada.Text);
-                    Entrada.CodigoDeProducto = txtCodigoDeProducto.Text;
-                    Entrada.NombreDeProducto = txtNombreDeProducto.Text;
-                    Entrada.TexContenido = Convert.ToInt32(txtTexContenido.Text);
-                    Entrada.Neto = numericUpDownNeto.Value;
-                    Entrada.UserLastModificationId = 1;
-                    Entrada.DateTimeLastModification = DateTime.Now;
+                        Entrada.CodigoDeBarra = txtNroDeCodigoDeBarra.Text;
+                        Entrada.NroDePesaje = Convert.ToInt32(txtNroDePesada.Text);
+                        Entrada.CodigoDeProducto = txtCodigoDeProducto.Text;
+                        Entrada.NombreDeProducto = txtNombreDeProducto.Text;
+                        Entrada.TexContenido = Convert.ToInt32(txtTexContenido.Text);
+                        Entrada.Neto = numericUpDownNeto.Value;
+                        Entrada.UserLastModificationId = 1;
+                        Entrada.DateTimeLastModification = DateTime.Now;
 
-                    _entradaRepository.Update(Entrada);
+                        _entradaRepository.Update(Entrada);
+                    }
+
+                    Hide();
                 }
+            }
+            catch (Exception)
+            {
 
-                Hide();
+                throw;
             }
         }
 
         private void txtCodigoDeProducto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            try
             {
-                Producto Producto = _productoRepository
-                    .AsQueryable()
-                    .Where(x => x.CodigoProducto == txtCodigoDeProducto.Text)
-                    .FirstOrDefault();
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    Producto Producto = _productoRepository
+                        .AsQueryable()
+                        .Where(x => x.CodigoProducto == txtCodigoDeProducto.Text)
+                        .FirstOrDefault();
 
-                txtNombreDeProducto.Text = Producto.Nombre;
+                    txtNombreDeProducto.Text = Producto.Nombre;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

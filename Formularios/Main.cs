@@ -1,4 +1,6 @@
 ﻿using ClosedXML.Excel;
+using JuanApp.Areas.BasicCore.Entities;
+using JuanApp.Areas.BasicCore.Interfaces;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Formularios.Herramientas;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,14 +10,22 @@ namespace JuanApp
     public partial class Main : Form
     {
         private readonly ServiceProvider _serviceProvider;
+
+        private readonly IFailureRepository _failureRepository;
+
         private readonly IEntradaRepository _entradaRepository;
         private readonly IEntradaService _entradaService;
 
         public Main(ServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+
+            _failureRepository = serviceProvider.GetRequiredService<IFailureRepository>();
+
             _entradaRepository = serviceProvider.GetRequiredService<IEntradaRepository>();
             _entradaService = serviceProvider.GetRequiredService<IEntradaService>();
+
+
 
             InitializeComponent();
 
@@ -29,14 +39,60 @@ namespace JuanApp
 
         private void btnEstadisticas_Click(object sender, EventArgs e)
         {
-            Estadisticas Estadisticas = new();
-            Estadisticas.ShowDialog();
+            try
+            {
+                Estadisticas Estadisticas = new();
+                Estadisticas.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Failure Failure = new Failure()
+                {
+                    FailureId = 0,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace,
+                    Source = ex.Source,
+                    Comment = ""
+                };
+                _failureRepository.Add(Failure);
+
+                MessageBox.Show($@"Error: {ex.Message}", "Error");
+            }
         }
 
         private void btnEntradaConsulta_Click(object sender, EventArgs e)
         {
-            Formularios.Entrada.ConsultaEntrada ConsultaEntrada = new(_serviceProvider);
-            ConsultaEntrada.ShowDialog();
+            try
+            {
+                Formularios.Entrada.ConsultaEntrada ConsultaEntrada = new(_serviceProvider);
+                ConsultaEntrada.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Failure Failure = new Failure()
+                {
+                    FailureId = 0,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace,
+                    Source = ex.Source,
+                    Comment = ""
+                };
+                _failureRepository.Add(Failure);
+
+                MessageBox.Show($@"Error: {ex.Message}", "Error");
+            }
         }
 
         private void btnEntradaCargarExcel_Click(object sender, EventArgs e)
@@ -109,26 +165,111 @@ ya existe en la base de datos", "Atención");
             }
             catch (Exception ex)
             {
+                Failure Failure = new Failure()
+                {
+                    FailureId = 0,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace,
+                    Source = ex.Source,
+                    Comment = ""
+                };
+                _failureRepository.Add(Failure);
+
                 MessageBox.Show($@"Error: {ex.Message}", "Error");
             }
         }
 
         private void btnSalidaConsulta_Click(object sender, EventArgs e)
         {
-            Formularios.Salida.ConsultaSalida ConsultaSalida = new(_serviceProvider);
-            ConsultaSalida.ShowDialog();
+            try
+            {
+                Formularios.Salida.ConsultaSalida ConsultaSalida = new(_serviceProvider);
+                ConsultaSalida.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Failure Failure = new Failure()
+                {
+                    FailureId = 0,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace,
+                    Source = ex.Source,
+                    Comment = ""
+                };
+                _failureRepository.Add(Failure);
+
+                MessageBox.Show($@"Error: {ex.Message}", "Error");
+            }
         }
 
         private void btnStock_Click(object sender, EventArgs e)
         {
-            Stock Stock = new();
-            Stock.ShowDialog();
+            try
+            {
+                Stock Stock = new();
+                Stock.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Failure Failure = new Failure()
+                {
+                    FailureId = 0,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace,
+                    Source = ex.Source,
+                    Comment = ""
+                };
+                _failureRepository.Add(Failure);
+
+                MessageBox.Show($@"Error: {ex.Message}", "Error");
+            }
         }
 
         private void btnProducto_Click(object sender, EventArgs e)
         {
-            Formularios.Herramientas.Producto.ConsultaProducto ConsultaProducto = new(_serviceProvider);
-            ConsultaProducto.ShowDialog();
+            try
+            {
+                Formularios.Herramientas.Producto.ConsultaProducto ConsultaProducto = new(_serviceProvider);
+                ConsultaProducto.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Failure Failure = new Failure()
+                {
+                    FailureId = 0,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace,
+                    Source = ex.Source,
+                    Comment = ""
+                };
+                _failureRepository.Add(Failure);
+
+                MessageBox.Show($@"Error: {ex.Message}", "Error");
+            }
         }
     }
 }

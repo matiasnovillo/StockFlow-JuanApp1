@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using JuanApp.Areas.JuanApp.Entities;
 using JuanApp.Areas.JuanApp.EntitiesConfiguration;
+using JuanApp.Areas.BasicCore.Entities;
+using JuanApp.Areas.BasicCore.Entities.EntitiesConfiguration;
 
 namespace JuanApp.Areas.BasicCore
 {
@@ -9,6 +11,7 @@ namespace JuanApp.Areas.BasicCore
     {
         protected IConfiguration _configuration { get; }
 
+        public DbSet<Failure> Failure { get; set; }
         public DbSet<Producto> Producto { get; set; }
         public DbSet<Entrada> Entrada { get; set; }
         public DbSet<Salida> Salida { get; set; }
@@ -43,6 +46,7 @@ namespace JuanApp.Areas.BasicCore
         {
             try
             {
+                modelBuilder.ApplyConfiguration(new FailureConfiguration());
                 modelBuilder.ApplyConfiguration(new ProductoConfiguration());
                 modelBuilder.ApplyConfiguration(new EntradaConfiguration());
                 modelBuilder.ApplyConfiguration(new SalidaConfiguration());

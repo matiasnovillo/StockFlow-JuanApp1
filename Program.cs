@@ -1,4 +1,6 @@
 using JuanApp.Areas.BasicCore;
+using JuanApp.Areas.BasicCore.Interfaces;
+using JuanApp.Areas.BasicCore.Repositories;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Areas.JuanApp.Repositories;
 using JuanApp.Areas.JuanApp.Services;
@@ -22,6 +24,8 @@ namespace JuanApp
             services.AddSingleton<IConfiguration>(configuration);
 
             services.AddDbContext<JuanAppContext>();
+
+            services.AddScoped<IFailureRepository, FailureRepository>();
 
             services.AddScoped<IProductoRepository, ProductoRepository>();
             services.AddScoped<IProductoService, ProductoService>();
