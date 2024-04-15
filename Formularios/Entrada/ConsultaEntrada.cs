@@ -182,7 +182,7 @@ namespace JuanApp.Formularios.Entrada
                 {
                     NetoTotal += entrada.Neto;
                 }
-                txtNetoTotal.Text += NetoTotal.ToString();
+                txtNetoTotal.Text = NetoTotal.ToString();
 
                 DataGridViewEntrada.DataSource = lstEntrada;
 

@@ -137,12 +137,15 @@ namespace JuanApp.Formularios.Salida
             {
                 if (e.KeyChar == (char)Keys.Enter)
                 {
-                    Areas.JuanApp.Entities.Producto Producto = _productoRepository
+                    Producto Producto = _productoRepository
                         .AsQueryable()
                         .Where(x => x.CodigoProducto == txtCodigoDeProducto.Text)
                         .FirstOrDefault();
 
-                    txtNombreProducto.Text = Producto.Nombre;
+                    if (Producto != null)
+                    {
+                        txtNombreProducto.Text = Producto.Nombre;
+                    }
                 }
             }
             catch (Exception)
@@ -163,7 +166,10 @@ namespace JuanApp.Formularios.Salida
                         .Where(x => x.CodigoDeCliente == txtCodigoDeCliente.Text)
                         .FirstOrDefault();
 
-                    txtNombreDeCliente.Text = Cliente.NombreDeCliente;
+                    if (Cliente != null)
+                    {
+                        txtNombreDeCliente.Text = Cliente.NombreDeCliente;
+                    }
                 }
             }
             catch (Exception)

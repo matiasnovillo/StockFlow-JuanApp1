@@ -127,7 +127,10 @@ namespace JuanApp.Formularios.Entrada
                         .Where(x => x.CodigoProducto == txtCodigoDeProducto.Text)
                         .FirstOrDefault();
 
-                    txtNombreDeProducto.Text = Producto.Nombre;
+                    if (Producto != null)
+                    {
+                        txtNombreDeProducto.Text = Producto.Nombre;
+                    }
                 }
             }
             catch (Exception)

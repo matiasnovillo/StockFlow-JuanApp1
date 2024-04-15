@@ -268,9 +268,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 123);
             label1.Name = "label1";
-            label1.Size = new Size(349, 20);
+            label1.Size = new Size(332, 20);
             label1.TabIndex = 27;
-            label1.Text = "Presione Enter para rellenar el nombre de producto";
+            label1.Text = "Presione Enter para rellenar el nombre de cliente";
             // 
             // FormularioSalida
             // 

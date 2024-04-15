@@ -344,9 +344,9 @@ namespace JuanApp.Formularios.Salida
                     PrecioTotal += salida.Precio;
                     SubtotalTotal += salida.Subtotal;
                 }
-                txtKilosRealesTotal.Text += KilosRealesTotal.ToString();
-                txtPrecioTotal.Text += PrecioTotal.ToString();
-                txtSubtotalTotal.Text += SubtotalTotal.ToString();
+                txtKilosRealesTotal.Text = KilosRealesTotal.ToString();
+                txtPrecioTotal.Text = PrecioTotal.ToString();
+                txtSubtotalTotal.Text = SubtotalTotal.ToString();
 
                 DataGridViewSalida.DataSource = lstSalida;
 

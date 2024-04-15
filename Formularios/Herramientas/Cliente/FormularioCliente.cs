@@ -24,8 +24,15 @@ namespace JuanApp.Formularios.Entrada
                 if (ClienteId > 0)
                 {
                     Cliente Cliente = _clienteRepository.GetByClienteId(ClienteId);
+
                     txtCodigoDeCliente.Text = Cliente.CodigoDeCliente;
                     txtNombreDeCliente.Text = Cliente.NombreDeCliente;
+                    txtCodigoPostal.Text = Cliente.CodigoPostal;
+                    txtCUIT.Text = Cliente.CUIT;
+                    txtProvincia.Text = Cliente.Provincia;
+                    txtTelefono.Text = Cliente.Telefono;
+                    txtDomicilio.Text = Cliente.Domicilio;
+                    txtLocalidad.Text = Cliente.Localidad;
                 }
 
                 statusLabel.Text = "";
@@ -66,6 +73,12 @@ namespace JuanApp.Formularios.Entrada
                             DateTimeLastModification = DateTime.Now,
                             NombreDeCliente = txtNombreDeCliente.Text,
                             CodigoDeCliente = txtCodigoDeCliente.Text,
+                            CodigoPostal = txtCodigoPostal.Text,
+                            CUIT = txtCUIT.Text,
+                            Domicilio = txtDomicilio.Text,
+                            Localidad = txtLocalidad.Text,
+                            Telefono = txtTelefono.Text,
+                            Provincia = txtProvincia.Text
                         };
                         _clienteRepository.Add(Cliente);
                     }
@@ -76,6 +89,13 @@ namespace JuanApp.Formularios.Entrada
 
                         Cliente.CodigoDeCliente = txtCodigoDeCliente.Text;
                         Cliente.NombreDeCliente = txtNombreDeCliente.Text;
+                        Cliente.CodigoPostal = txtCodigoPostal.Text;
+                        Cliente.CUIT = txtCUIT.Text;
+                        Cliente.Domicilio = txtDomicilio.Text;
+                        Cliente.Localidad = txtLocalidad.Text;
+                        Cliente.Telefono = txtTelefono.Text;
+                        Cliente.Provincia = txtProvincia.Text;
+
                         Cliente.UserLastModificationId = 1;
                         Cliente.DateTimeLastModification = DateTime.Now;
 
