@@ -32,134 +32,10 @@ namespace JuanApp.Areas.JuanApp.Services
         #region Exportations
         public DateTime ExportAsPDF(Ajax Ajax, string ExportationType)
         {
-            var Renderer = new HtmlToPdf();
-            DateTime Now = DateTime.Now;
-            string RowsAsHTML = "";
-            List<Salida> lstSalida = [];
-
-            if (ExportationType == "All")
-            {
-                lstSalida = _context.Salida.ToList();
-            }
-            else
-            {
-                string[] RowsChecked = Ajax.AjaxForString.Split(',');
-
-                foreach (string RowChecked in RowsChecked)
-                {
-                    Salida Salida = _context.Salida
-                                                .Where(x => x.SalidaId == Convert.ToInt32(RowChecked))
-                                                .FirstOrDefault();
-                    lstSalida.Add(Salida);
-                }
-            }
-
-            foreach (Salida row in lstSalida)
-            {
-                RowsAsHTML += $@"{row.ToStringOnlyValuesForHTML()}";
-            }
-
-            Renderer.RenderHtmlAsPdf($@"<table cellpadding=""0"" cellspacing=""0"" border=""0"" width=""88%"" style=""width: 88% !important; min-width: 88%; max-width: 88%;"">
-    <tr>
-    <td align=""left"" valign=""top"">
-        <font face=""'Source Sans Pro', sans-serif"" color=""#1a1a1a"" style=""font-size: 52px; line-height: 55px; font-weight: 300; letter-spacing: -1.5px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 52px; line-height: 55px; font-weight: 300; letter-spacing: -1.5px;"">Mikromatica</span>
-        </font>
-        <div style=""height: 25px; line-height: 25px; font-size: 23px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#4c4c4c"" style=""font-size: 36px; line-height: 45px; font-weight: 300; letter-spacing: -1px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #4c4c4c; font-size: 36px; line-height: 45px; font-weight: 300; letter-spacing: -1px;"">Registers of Salida</span>
-        </font>
-        <div style=""height: 35px; line-height: 35px; font-size: 33px;"">&nbsp;</div>
-    </td>
-    </tr>
-</table>
-<br>
-<table cellpadding=""0"" cellspacing=""0"" border=""0"" width=""100%"" style=""width: 100% !important; min-width: 100%; max-width: 100%;"">
-    <tr>
-        <th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">SalidaId&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Active&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeCreation&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeLastModification&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">UserCreationId&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">UserLastModificationId&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CodigoDeCliente&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">NombreDeCliente&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CodigoDeProducto&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">NombreDeProducto&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">KilosReales&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Precio&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Subtotal&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CodigoDeBarra&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th>
-    </tr>
-    {RowsAsHTML}
-</table>
-<br>
-<font face=""'Source Sans Pro', sans-serif"" color=""#868686"" style=""font-size: 17px; line-height: 20px;"">
-    <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Printed on: {Now}</span>
-</font>
-").SaveAs($@"wwwroot/PDFFiles/JuanApp/Salida/Salida_{Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.pdf");
-
-            return Now;
+            throw new NotImplementedException();
         }
 
-        public DateTime ExportAsExcel(Ajax Ajax, string ExportationType)
+        public DateTime ExportAsExcel(List<Salida> lstSalida, Ajax Ajax, string ExportationType, string pathToSave)
         {
             DateTime Now = DateTime.Now;
 
@@ -247,7 +123,7 @@ namespace JuanApp.Areas.JuanApp.Services
                 #endregion
 
                 #region Create another DataTable to copy
-                List<Salida> lstSalida = _context.Salida.ToList();
+                List<Salida> lstSalidaAll = _context.Salida.ToList();
 
                 DataTable DataTable = new();
                 DataTable.Columns.Add("SalidaId", typeof(string));
@@ -266,7 +142,7 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("CodigoDeBarra", typeof(string));
                 
 
-                foreach (Salida salida in lstSalida)
+                foreach (Salida salida in lstSalidaAll)
                         {
                             DataTable.Rows.Add(
                                 salida.SalidaId,
@@ -318,30 +194,10 @@ namespace JuanApp.Areas.JuanApp.Services
                     dtColumnSalidaIdFordtSalidaCopy.ColumnName = "SalidaId";
                     dtSalidaCopy.Columns.Add(dtColumnSalidaIdFordtSalidaCopy);
 
-                    DataColumn dtColumnActiveFordtSalidaCopy = new DataColumn();
-                    dtColumnActiveFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnActiveFordtSalidaCopy.ColumnName = "Active";
-                    dtSalidaCopy.Columns.Add(dtColumnActiveFordtSalidaCopy);
-
-                    DataColumn dtColumnDateTimeCreationFordtSalidaCopy = new DataColumn();
-                    dtColumnDateTimeCreationFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnDateTimeCreationFordtSalidaCopy.ColumnName = "DateTimeCreation";
-                    dtSalidaCopy.Columns.Add(dtColumnDateTimeCreationFordtSalidaCopy);
-
-                    DataColumn dtColumnDateTimeLastModificationFordtSalidaCopy = new DataColumn();
-                    dtColumnDateTimeLastModificationFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnDateTimeLastModificationFordtSalidaCopy.ColumnName = "DateTimeLastModification";
-                    dtSalidaCopy.Columns.Add(dtColumnDateTimeLastModificationFordtSalidaCopy);
-
-                    DataColumn dtColumnUserCreationIdFordtSalidaCopy = new DataColumn();
-                    dtColumnUserCreationIdFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnUserCreationIdFordtSalidaCopy.ColumnName = "UserCreationId";
-                    dtSalidaCopy.Columns.Add(dtColumnUserCreationIdFordtSalidaCopy);
-
-                    DataColumn dtColumnUserLastModificationIdFordtSalidaCopy = new DataColumn();
-                    dtColumnUserLastModificationIdFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnUserLastModificationIdFordtSalidaCopy.ColumnName = "UserLastModificationId";
-                    dtSalidaCopy.Columns.Add(dtColumnUserLastModificationIdFordtSalidaCopy);
+                    DataColumn dtColumnCodigoDeBarraFordtSalidaCopy = new DataColumn();
+                    dtColumnCodigoDeBarraFordtSalidaCopy.DataType = typeof(string);
+                    dtColumnCodigoDeBarraFordtSalidaCopy.ColumnName = "CodigoDeBarra";
+                    dtSalidaCopy.Columns.Add(dtColumnCodigoDeBarraFordtSalidaCopy);
 
                     DataColumn dtColumnCodigoDeClienteFordtSalidaCopy = new DataColumn();
                     dtColumnCodigoDeClienteFordtSalidaCopy.DataType = typeof(string);
@@ -377,61 +233,43 @@ namespace JuanApp.Areas.JuanApp.Services
                     dtColumnSubtotalFordtSalidaCopy.DataType = typeof(string);
                     dtColumnSubtotalFordtSalidaCopy.ColumnName = "Subtotal";
                     dtSalidaCopy.Columns.Add(dtColumnSubtotalFordtSalidaCopy);
-
-                    DataColumn dtColumnCodigoDeBarraFordtSalidaCopy = new DataColumn();
-                    dtColumnCodigoDeBarraFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnCodigoDeBarraFordtSalidaCopy.ColumnName = "CodigoDeBarra";
-                    dtSalidaCopy.Columns.Add(dtColumnCodigoDeBarraFordtSalidaCopy);
-
-                    
                     #endregion
 
                     dsSalida.Tables.Add(dtSalidaCopy);
 
-                    #region Create DataTable with data from DB
-                        Salida salida = _context.Salida
-                                                    .Where(x => x.SalidaId == Convert.ToInt32(RowChecked))
-                                                    .FirstOrDefault();
+                    #region Create another DataTable to copy
 
-                        DataTable DataTable = new();
-                        DataTable.Columns.Add("SalidaId", typeof(string));
-                        DataTable.Columns.Add("Active", typeof(string));
-                DataTable.Columns.Add("DateTimeCreation", typeof(string));
-                DataTable.Columns.Add("DateTimeLastModification", typeof(string));
-                DataTable.Columns.Add("UserCreationId", typeof(string));
-                DataTable.Columns.Add("UserLastModificationId", typeof(string));
-                DataTable.Columns.Add("CodigoDeCliente", typeof(string));
-                DataTable.Columns.Add("NombreDeCliente", typeof(string));
-                DataTable.Columns.Add("CodigoDeProducto", typeof(string));
-                DataTable.Columns.Add("NombreDeProducto", typeof(string));
-                DataTable.Columns.Add("KilosReales", typeof(string));
-                DataTable.Columns.Add("Precio", typeof(string));
-                DataTable.Columns.Add("Subtotal", typeof(string));
-                DataTable.Columns.Add("CodigoDeBarra", typeof(string));
-                
-                        
+                    DataTable DataTable = new();
+                    DataTable.Columns.Add("SalidaId", typeof(string));
+                    DataTable.Columns.Add("CodigoDeBarra", typeof(string));
+                    DataTable.Columns.Add("CodigoDeCliente", typeof(string));
+                    DataTable.Columns.Add("NombreDeCliente", typeof(string));
+                    DataTable.Columns.Add("CodigoDeProducto", typeof(string));
+                    DataTable.Columns.Add("NombreDeProducto", typeof(string));
+                    DataTable.Columns.Add("KilosReales", typeof(string));
+                    DataTable.Columns.Add("Precio", typeof(string));
+                    DataTable.Columns.Add("Subtotal", typeof(string));
+                    
+
+
+                    foreach (Salida salida in lstSalida)
+                    {
                         DataTable.Rows.Add(
-                                salida.SalidaId,
-                        salida.Active,
-                        salida.DateTimeCreation,
-                        salida.DateTimeLastModification,
-                        salida.UserCreationId,
-                        salida.UserLastModificationId,
-                        salida.CodigoDeCliente,
-                        salida.NombreDeCliente,
-                        salida.CodigoDeProducto,
-                        salida.NombreDeProducto,
-                        salida.KilosReales,
-                        salida.Precio,
-                        salida.Subtotal,
-                        salida.CodigoDeBarra
-                        
-                                );
-                        #endregion
+                            salida.SalidaId,
+                            salida.CodigoDeBarra,
+                            salida.CodigoDeCliente,
+                            salida.NombreDeCliente,
+                            salida.CodigoDeProducto,
+                            salida.NombreDeProducto,
+                            salida.KilosReales,
+                            salida.Precio,
+                            salida.Subtotal);
+                    }
+                    #endregion
 
-                        dtSalidaCopy = DataTable;
+                    dtSalidaCopy = DataTable;
 
-                        foreach (DataRow DataRow in dtSalidaCopy.Rows)
+                    foreach (DataRow DataRow in dtSalidaCopy.Rows)
                         {
                             dsSalida.Tables[0].Rows.Add(DataRow.ItemArray);
                         }
@@ -442,7 +280,7 @@ namespace JuanApp.Areas.JuanApp.Services
                     var Sheet = Book.Worksheets.Add(dsSalida.Tables[i]);
                     Sheet.ColumnsUsed().AdjustToContents();
                 }
-                Book.SaveAs($@"wwwroot/ExcelFiles/JuanApp/Salida/Salida_{Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.xlsx");
+                Book.SaveAs($@"{pathToSave}/Salida_{Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.xlsx");
             }
             return Now;
         }

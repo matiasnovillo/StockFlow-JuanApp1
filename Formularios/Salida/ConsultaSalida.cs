@@ -144,7 +144,7 @@ namespace JuanApp.Formularios.Salida
             string rutaArchivo = @"C:\documento.pdf";
 
             // Convertir HTML a PDF y guardar en un archivo
-            PdfDocument documento = PdfGenerator.GeneratePdf(html, PageSize.A4);
+            PdfSharp.Pdf.PdfDocument documento = PdfGenerator.GeneratePdf(html, PageSize.A4);
             documento.Save(rutaArchivo);
 
         }
