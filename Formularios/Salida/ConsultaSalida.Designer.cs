@@ -47,6 +47,12 @@
             btnGenerarExcel = new Button();
             btnAgregar = new Button();
             label1 = new Label();
+            lblKilosTotales = new Label();
+            txtKilosRealesTotal = new TextBox();
+            txtPrecioTotal = new TextBox();
+            lblPrecioUnidadTotal = new Label();
+            txtSubtotalTotal = new TextBox();
+            lblSubtotalTotal = new Label();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).BeginInit();
@@ -83,7 +89,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 561);
+            statusStrip1.Location = new Point(0, 620);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 26);
             statusStrip1.TabIndex = 1;
@@ -212,11 +218,68 @@
             label1.TabIndex = 19;
             label1.Text = "nombre de cliente o nombre de producto)";
             // 
+            // lblKilosTotales
+            // 
+            lblKilosTotales.AutoSize = true;
+            lblKilosTotales.Location = new Point(154, 561);
+            lblKilosTotales.Name = "lblKilosTotales";
+            lblKilosTotales.Size = new Size(148, 20);
+            lblKilosTotales.TabIndex = 20;
+            lblKilosTotales.Text = "Kilos reales TOTALES:";
+            // 
+            // txtKilosRealesTotal
+            // 
+            txtKilosRealesTotal.Location = new Point(154, 584);
+            txtKilosRealesTotal.Name = "txtKilosRealesTotal";
+            txtKilosRealesTotal.ReadOnly = true;
+            txtKilosRealesTotal.Size = new Size(202, 27);
+            txtKilosRealesTotal.TabIndex = 21;
+            // 
+            // txtPrecioTotal
+            // 
+            txtPrecioTotal.Location = new Point(367, 584);
+            txtPrecioTotal.Name = "txtPrecioTotal";
+            txtPrecioTotal.ReadOnly = true;
+            txtPrecioTotal.Size = new Size(202, 27);
+            txtPrecioTotal.TabIndex = 23;
+            // 
+            // lblPrecioUnidadTotal
+            // 
+            lblPrecioUnidadTotal.AutoSize = true;
+            lblPrecioUnidadTotal.Location = new Point(367, 561);
+            lblPrecioUnidadTotal.Name = "lblPrecioUnidadTotal";
+            lblPrecioUnidadTotal.Size = new Size(98, 20);
+            lblPrecioUnidadTotal.TabIndex = 22;
+            lblPrecioUnidadTotal.Text = "Precio TOTAL:";
+            // 
+            // txtSubtotalTotal
+            // 
+            txtSubtotalTotal.Location = new Point(577, 584);
+            txtSubtotalTotal.Name = "txtSubtotalTotal";
+            txtSubtotalTotal.ReadOnly = true;
+            txtSubtotalTotal.Size = new Size(202, 27);
+            txtSubtotalTotal.TabIndex = 25;
+            // 
+            // lblSubtotalTotal
+            // 
+            lblSubtotalTotal.AutoSize = true;
+            lblSubtotalTotal.Location = new Point(577, 561);
+            lblSubtotalTotal.Name = "lblSubtotalTotal";
+            lblSubtotalTotal.Size = new Size(113, 20);
+            lblSubtotalTotal.TabIndex = 24;
+            lblSubtotalTotal.Text = "Subtotal TOTAL:";
+            // 
             // ConsultaSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 587);
+            ClientSize = new Size(800, 646);
+            Controls.Add(txtSubtotalTotal);
+            Controls.Add(lblSubtotalTotal);
+            Controls.Add(txtPrecioTotal);
+            Controls.Add(lblPrecioUnidadTotal);
+            Controls.Add(txtKilosRealesTotal);
+            Controls.Add(lblKilosTotales);
             Controls.Add(label1);
             Controls.Add(btnAgregar);
             Controls.Add(btnGenerarExcel);
@@ -263,5 +326,11 @@
         private Button btnGenerarExcel;
         private Button btnAgregar;
         private Label label1;
+        private Label lblKilosTotales;
+        private TextBox txtKilosRealesTotal;
+        private TextBox txtPrecioTotal;
+        private Label lblPrecioUnidadTotal;
+        private TextBox txtSubtotalTotal;
+        private Label lblSubtotalTotal;
     }
 }

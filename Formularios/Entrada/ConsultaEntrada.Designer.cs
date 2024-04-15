@@ -44,6 +44,8 @@
             lblBarraDeBusqueda = new Label();
             txtBuscar = new TextBox();
             btnAgregar = new Button();
+            lblNeto = new Label();
+            txtNetoTotal = new TextBox();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).BeginInit();
@@ -80,7 +82,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 528);
+            statusStrip1.Location = new Point(0, 582);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(826, 26);
             statusStrip1.TabIndex = 1;
@@ -180,11 +182,30 @@
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
             // 
+            // lblNeto
+            // 
+            lblNeto.AutoSize = true;
+            lblNeto.Location = new Point(620, 528);
+            lblNeto.Name = "lblNeto";
+            lblNeto.Size = new Size(90, 20);
+            lblNeto.TabIndex = 12;
+            lblNeto.Text = "Neto TOTAL:";
+            // 
+            // txtNetoTotal
+            // 
+            txtNetoTotal.Location = new Point(620, 551);
+            txtNetoTotal.Name = "txtNetoTotal";
+            txtNetoTotal.ReadOnly = true;
+            txtNetoTotal.Size = new Size(194, 27);
+            txtNetoTotal.TabIndex = 13;
+            // 
             // ConsultaEntrada
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(826, 554);
+            ClientSize = new Size(826, 608);
+            Controls.Add(txtNetoTotal);
+            Controls.Add(lblNeto);
             Controls.Add(btnAgregar);
             Controls.Add(txtBuscar);
             Controls.Add(lblBarraDeBusqueda);
@@ -225,5 +246,7 @@
         private Label lblBarraDeBusqueda;
         private TextBox txtBuscar;
         private Button btnAgregar;
+        private Label lblNeto;
+        private TextBox txtNetoTotal;
     }
 }

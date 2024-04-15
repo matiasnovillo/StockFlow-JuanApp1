@@ -226,6 +226,19 @@ namespace JuanApp.Formularios.Salida
                     .ToList();
                 }
 
+                decimal KilosRealesTotal = 0;
+                decimal PrecioTotal = 0;
+                decimal SubtotalTotal = 0;
+                foreach (Areas.JuanApp.Entities.Salida salida in lstSalida)
+                {
+                    KilosRealesTotal += salida.KilosReales;
+                    PrecioTotal += salida.Precio;
+                    SubtotalTotal += salida.Subtotal;
+                }
+                txtKilosRealesTotal.Text += KilosRealesTotal.ToString();
+                txtPrecioTotal.Text += PrecioTotal.ToString();
+                txtSubtotalTotal.Text += SubtotalTotal.ToString();
+
                 DataGridViewSalida.DataSource = lstSalida;
 
                 statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstSalida.Count}. Se muestran solo los últimos 500 registros";

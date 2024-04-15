@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.RegularExpressions;
 using JuanApp.Areas.BasicCore.Entities;
+using JuanApp.Areas.JuanApp.Entities;
 
 namespace JuanApp.Formularios.Entrada
 {
@@ -175,6 +176,13 @@ namespace JuanApp.Formularios.Entrada
                     .Take(500)
                     .ToList();
                 }
+
+                decimal NetoTotal = 0;
+                foreach (Areas.JuanApp.Entities.Entrada entrada in lstEntrada)
+                {
+                    NetoTotal += entrada.Neto;
+                }
+                txtNetoTotal.Text += NetoTotal.ToString();
 
                 DataGridViewEntrada.DataSource = lstEntrada;
 
