@@ -1,4 +1,5 @@
-﻿using JuanApp.Areas.JuanApp.Interfaces;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using JuanApp.Areas.JuanApp.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using PdfSharp;
 using PdfSharp.Pdf;
@@ -130,23 +131,131 @@ namespace JuanApp.Formularios.Salida
                     "NotAll", 
                     SelectedPath);
 
-                MessageBox.Show($@"Generación realizada", "Información");
+                MessageBox.Show($@"Generación de Excel realizada correctamente", "Información");
             }    
         }
 
         private void btnGenerarPDF_Click(object sender, EventArgs e)
         {
-            string html = "<html><body><h1>Ejemplo de HTML a PDF</h1><p>¡Hola, mundo!</p></body></html>";
+            FolderBrowserDialog FolderBrowserDialog = new FolderBrowserDialog();
+            if (FolderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string SelectedPath = FolderBrowserDialog.SelectedPath;
 
-            
+                string HTML = $@"
+<html>
+    <head>
+    </head>
+    <body>
+        <p>&nbsp;</p>
+        <table style=""border-collapse: collapse; width: 100%;"" border=""1"">
+        <tbody>
+        <tr>
+        <td style=""width: 25%;"">[Logo]</td>
+        <td style=""width: 25%;"">
+        <p>Raz&oacute;n social</p>
+        <p>CUIT</p>
+        <p>Direcci&oacute;n</p>
+        <p>Localidad</p>
+        <p>Tel&eacute;fono</p>
+        </td>
+        <td style=""width: 25%;"">
+        <p>Pampa y Brasa SRL</p>
+        <p>30-71819155-2</p>
+        <p>Lima 1333</p>
+        <p>Martinez</p>
+        <p>1164943915</p>
+        </td>
+        <td style=""width: 25%;"">
+        <p>Remito</p>
+        <p>N&ordm; [NroDeRemito]</p>
+        <p>Fecha</p>
+        <p>[FechaDeRemito]</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <table style=""border-collapse: collapse; width: 100%; height: 142px;"" border=""1"">
+        <tbody>
+        <tr style=""height: 142px;"">
+        <td style=""width: 25%; height: 142px;"">
+        <p>Nombre</p>
+        <p>Domicilio</p>
+        <p>Localidad</p>
+        <p>CUIT</p>
+        </td>
+        <td style=""width: 25%; height: 142px;"">
+        <p>[NombreCliente]</p>
+        <p>[DireccionCliente]</p>
+        <p>[LocalidadCliente]</p>
+        <p>[CUITCliente]</p>
+        </td>
+        <td style=""width: 25%; height: 142px;"">
+        <p>Tel&eacute;fono</p>
+        <p>CP</p>
+        <p>Provincia</p>
+        </td>
+        <td style=""width: 25%; height: 142px;"">
+        <p>[TelefonoCliente]</p>
+        <p>[CodigoPostalCliente]</p>
+        <p>[ProvinciaCliente]</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <table style=""border-collapse: collapse; width: 100%;"" border=""1"">
+        <tbody>
+        <tr>
+        <td style=""width: 20%;"">Art&iacute;culo</td>
+        <td style=""width: 20%;"">Descripci&oacute;n</td>
+        <td style=""width: 20%;"">Cantidad (KG)</td>
+        <td style=""width: 20%;"">Precio ($)</td>
+        <td style=""width: 20%;"">Subtotal ($)</td>
+        </tr>
+        <tr>
+        <td style=""width: 20%;"">&nbsp;</td>
+        <td style=""width: 20%;"">&nbsp;</td>
+        <td style=""width: 20%;"">&nbsp;</td>
+        <td style=""width: 20%;"">&nbsp;</td>
+        <td style=""width: 20%;"">&nbsp;</td>
+        </tr>
+        </tbody>
+        </table>
+        <table style=""border-collapse: collapse; width: 100%;"" border=""1"">
+        <tbody>
+        <tr>
+        <td style=""width: 33.3333%;"">&nbsp;</td>
+        <td style=""width: 33.3333%;"">&nbsp;</td>
+        <td style=""width: 33.3333%;"">
+        <p>Cantidad total: [CantidadTotal]</p>
+        <p>Precio total: [PrecioTotal]</p>
+        <p>TOTAL: [Total]</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <table style=""border-collapse: collapse; width: 100%;"" border=""1"">
+        <tbody>
+        <tr>
+        <td style=""width: 50%;"">
+        <p>Recibi conforme:</p>
+        <p>&nbsp;</p>
+        </td>
+        <td style=""width: 50%;"">
+        <p>Firma y sello:</p>
+        <p>&nbsp;</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+    </body>
+</html>";
 
-            // Ruta donde guardar el PDF
-            string rutaArchivo = @"C:\documento.pdf";
+                PdfSharp.Pdf.PdfDocument documento = PdfGenerator.GeneratePdf(HTML, PageSize.A4);
+                documento.Save($@"{SelectedPath}\Salida_{DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.pdf");
 
-            // Convertir HTML a PDF y guardar en un archivo
-            PdfSharp.Pdf.PdfDocument documento = PdfGenerator.GeneratePdf(html, PageSize.A4);
-            documento.Save(rutaArchivo);
-
+                MessageBox.Show($@"Generación de PDF realizada correctamente", "Información");
+            }
         }
 
         private void DataGridViewSalida_CellContentClick(object sender, DataGridViewCellEventArgs e)

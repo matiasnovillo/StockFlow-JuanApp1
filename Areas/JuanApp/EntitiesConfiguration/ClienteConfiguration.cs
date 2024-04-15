@@ -61,6 +61,36 @@ namespace JuanApp.Areas.JuanApp.EntitiesConfiguration
                     .HasColumnType("varchar(100)")
                     .IsRequired(true);
 
+                //Domicilio
+                entity.Property(e => e.Domicilio)
+                    .HasColumnType("varchar(8000)")
+                    .IsRequired(false);
+
+                //Localidad
+                entity.Property(e => e.Localidad)
+                    .HasColumnType("varchar(1500)")
+                    .IsRequired(false);
+
+                //CUIT
+                entity.Property(e => e.CUIT)
+                    .HasColumnType("varchar(150)")
+                    .IsRequired(true);
+
+                //Telefono
+                entity.Property(e => e.Telefono)
+                    .HasColumnType("varchar(200)")
+                    .IsRequired(false);
+
+                //CodigoPostal
+                entity.Property(e => e.CodigoPostal)
+                    .HasColumnType("varchar(50)")
+                    .IsRequired(false);
+
+                //Provincia
+                entity.Property(e => e.Provincia)
+                    .HasColumnType("varchar(250)")
+                    .IsRequired(false);
+
                 
             }
             catch (Exception) { throw; }

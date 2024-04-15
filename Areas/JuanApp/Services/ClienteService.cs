@@ -32,7 +32,131 @@ namespace JuanApp.Areas.JuanApp.Services
         #region Exportations
         public DateTime ExportAsPDF(Ajax Ajax, string ExportationType)
         {
-            throw new NotImplementedException();
+            var Renderer = new HtmlToPdf();
+            DateTime Now = DateTime.Now;
+            string RowsAsHTML = "";
+            List<Cliente> lstCliente = [];
+
+            if (ExportationType == "All")
+            {
+                lstCliente = _context.Cliente.ToList();
+            }
+            else
+            {
+                string[] RowsChecked = Ajax.AjaxForString.Split(',');
+
+                foreach (string RowChecked in RowsChecked)
+                {
+                    Cliente Cliente = _context.Cliente
+                                                .Where(x => x.ClienteId == Convert.ToInt32(RowChecked))
+                                                .FirstOrDefault();
+                    lstCliente.Add(Cliente);
+                }
+            }
+
+            foreach (Cliente row in lstCliente)
+            {
+                RowsAsHTML += $@"{row.ToStringOnlyValuesForHTML()}";
+            }
+
+            Renderer.RenderHtmlAsPdf($@"<table cellpadding=""0"" cellspacing=""0"" border=""0"" width=""88%"" style=""width: 88% !important; min-width: 88%; max-width: 88%;"">
+    <tr>
+    <td align=""left"" valign=""top"">
+        <font face=""'Source Sans Pro', sans-serif"" color=""#1a1a1a"" style=""font-size: 52px; line-height: 55px; font-weight: 300; letter-spacing: -1.5px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 52px; line-height: 55px; font-weight: 300; letter-spacing: -1.5px;"">Mikromatica</span>
+        </font>
+        <div style=""height: 25px; line-height: 25px; font-size: 23px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#4c4c4c"" style=""font-size: 36px; line-height: 45px; font-weight: 300; letter-spacing: -1px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #4c4c4c; font-size: 36px; line-height: 45px; font-weight: 300; letter-spacing: -1px;"">Registers of Cliente</span>
+        </font>
+        <div style=""height: 35px; line-height: 35px; font-size: 33px;"">&nbsp;</div>
+    </td>
+    </tr>
+</table>
+<br>
+<table cellpadding=""0"" cellspacing=""0"" border=""0"" width=""100%"" style=""width: 100% !important; min-width: 100%; max-width: 100%;"">
+    <tr>
+        <th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">ClienteId&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Active&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeCreation&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeLastModification&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">UserCreationId&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">UserLastModificationId&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">NombreDeCliente&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CodigoDeCliente&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Domicilio&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Localidad&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CUIT&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Telefono&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CodigoPostal&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Provincia&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th>
+    </tr>
+    {RowsAsHTML}
+</table>
+<br>
+<font face=""'Source Sans Pro', sans-serif"" color=""#868686"" style=""font-size: 17px; line-height: 20px;"">
+    <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Printed on: {Now}</span>
+</font>
+").SaveAs($@"wwwroot/PDFFiles/JuanApp/Cliente/Cliente_{Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.pdf");
+
+            return Now;
         }
 
         public DateTime ExportAsExcel(Ajax Ajax, string ExportationType)
@@ -90,6 +214,36 @@ namespace JuanApp.Areas.JuanApp.Services
                     dtColumnCodigoDeClienteFordtClienteCopy.ColumnName = "CodigoDeCliente";
                     dtClienteCopy.Columns.Add(dtColumnCodigoDeClienteFordtClienteCopy);
 
+                    DataColumn dtColumnDomicilioFordtClienteCopy = new DataColumn();
+                    dtColumnDomicilioFordtClienteCopy.DataType = typeof(string);
+                    dtColumnDomicilioFordtClienteCopy.ColumnName = "Domicilio";
+                    dtClienteCopy.Columns.Add(dtColumnDomicilioFordtClienteCopy);
+
+                    DataColumn dtColumnLocalidadFordtClienteCopy = new DataColumn();
+                    dtColumnLocalidadFordtClienteCopy.DataType = typeof(string);
+                    dtColumnLocalidadFordtClienteCopy.ColumnName = "Localidad";
+                    dtClienteCopy.Columns.Add(dtColumnLocalidadFordtClienteCopy);
+
+                    DataColumn dtColumnCUITFordtClienteCopy = new DataColumn();
+                    dtColumnCUITFordtClienteCopy.DataType = typeof(string);
+                    dtColumnCUITFordtClienteCopy.ColumnName = "CUIT";
+                    dtClienteCopy.Columns.Add(dtColumnCUITFordtClienteCopy);
+
+                    DataColumn dtColumnTelefonoFordtClienteCopy = new DataColumn();
+                    dtColumnTelefonoFordtClienteCopy.DataType = typeof(string);
+                    dtColumnTelefonoFordtClienteCopy.ColumnName = "Telefono";
+                    dtClienteCopy.Columns.Add(dtColumnTelefonoFordtClienteCopy);
+
+                    DataColumn dtColumnCodigoPostalFordtClienteCopy = new DataColumn();
+                    dtColumnCodigoPostalFordtClienteCopy.DataType = typeof(string);
+                    dtColumnCodigoPostalFordtClienteCopy.ColumnName = "CodigoPostal";
+                    dtClienteCopy.Columns.Add(dtColumnCodigoPostalFordtClienteCopy);
+
+                    DataColumn dtColumnProvinciaFordtClienteCopy = new DataColumn();
+                    dtColumnProvinciaFordtClienteCopy.DataType = typeof(string);
+                    dtColumnProvinciaFordtClienteCopy.ColumnName = "Provincia";
+                    dtClienteCopy.Columns.Add(dtColumnProvinciaFordtClienteCopy);
+
                     
                 #endregion
 
@@ -105,6 +259,12 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("UserLastModificationId", typeof(string));
                 DataTable.Columns.Add("NombreDeCliente", typeof(string));
                 DataTable.Columns.Add("CodigoDeCliente", typeof(string));
+                DataTable.Columns.Add("Domicilio", typeof(string));
+                DataTable.Columns.Add("Localidad", typeof(string));
+                DataTable.Columns.Add("CUIT", typeof(string));
+                DataTable.Columns.Add("Telefono", typeof(string));
+                DataTable.Columns.Add("CodigoPostal", typeof(string));
+                DataTable.Columns.Add("Provincia", typeof(string));
                 
 
                 foreach (Cliente cliente in lstCliente)
@@ -117,9 +277,13 @@ namespace JuanApp.Areas.JuanApp.Services
                         cliente.UserCreationId,
                         cliente.UserLastModificationId,
                         cliente.NombreDeCliente,
-                        cliente.CodigoDeCliente
-                        
-                                );
+                        cliente.CodigoDeCliente,
+                        cliente.Domicilio,
+                        cliente.Localidad,
+                        cliente.CUIT,
+                        cliente.Telefono,
+                        cliente.CodigoPostal,
+                        cliente.Provincia);
                         }
                 #endregion
 
@@ -188,6 +352,36 @@ namespace JuanApp.Areas.JuanApp.Services
                     dtColumnCodigoDeClienteFordtClienteCopy.ColumnName = "CodigoDeCliente";
                     dtClienteCopy.Columns.Add(dtColumnCodigoDeClienteFordtClienteCopy);
 
+                    DataColumn dtColumnDomicilioFordtClienteCopy = new DataColumn();
+                    dtColumnDomicilioFordtClienteCopy.DataType = typeof(string);
+                    dtColumnDomicilioFordtClienteCopy.ColumnName = "Domicilio";
+                    dtClienteCopy.Columns.Add(dtColumnDomicilioFordtClienteCopy);
+
+                    DataColumn dtColumnLocalidadFordtClienteCopy = new DataColumn();
+                    dtColumnLocalidadFordtClienteCopy.DataType = typeof(string);
+                    dtColumnLocalidadFordtClienteCopy.ColumnName = "Localidad";
+                    dtClienteCopy.Columns.Add(dtColumnLocalidadFordtClienteCopy);
+
+                    DataColumn dtColumnCUITFordtClienteCopy = new DataColumn();
+                    dtColumnCUITFordtClienteCopy.DataType = typeof(string);
+                    dtColumnCUITFordtClienteCopy.ColumnName = "CUIT";
+                    dtClienteCopy.Columns.Add(dtColumnCUITFordtClienteCopy);
+
+                    DataColumn dtColumnTelefonoFordtClienteCopy = new DataColumn();
+                    dtColumnTelefonoFordtClienteCopy.DataType = typeof(string);
+                    dtColumnTelefonoFordtClienteCopy.ColumnName = "Telefono";
+                    dtClienteCopy.Columns.Add(dtColumnTelefonoFordtClienteCopy);
+
+                    DataColumn dtColumnCodigoPostalFordtClienteCopy = new DataColumn();
+                    dtColumnCodigoPostalFordtClienteCopy.DataType = typeof(string);
+                    dtColumnCodigoPostalFordtClienteCopy.ColumnName = "CodigoPostal";
+                    dtClienteCopy.Columns.Add(dtColumnCodigoPostalFordtClienteCopy);
+
+                    DataColumn dtColumnProvinciaFordtClienteCopy = new DataColumn();
+                    dtColumnProvinciaFordtClienteCopy.DataType = typeof(string);
+                    dtColumnProvinciaFordtClienteCopy.ColumnName = "Provincia";
+                    dtClienteCopy.Columns.Add(dtColumnProvinciaFordtClienteCopy);
+
                     
                     #endregion
 
@@ -207,6 +401,12 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("UserLastModificationId", typeof(string));
                 DataTable.Columns.Add("NombreDeCliente", typeof(string));
                 DataTable.Columns.Add("CodigoDeCliente", typeof(string));
+                DataTable.Columns.Add("Domicilio", typeof(string));
+                DataTable.Columns.Add("Localidad", typeof(string));
+                DataTable.Columns.Add("CUIT", typeof(string));
+                DataTable.Columns.Add("Telefono", typeof(string));
+                DataTable.Columns.Add("CodigoPostal", typeof(string));
+                DataTable.Columns.Add("Provincia", typeof(string));
                 
                         
                         DataTable.Rows.Add(
@@ -217,9 +417,13 @@ namespace JuanApp.Areas.JuanApp.Services
                         cliente.UserCreationId,
                         cliente.UserLastModificationId,
                         cliente.NombreDeCliente,
-                        cliente.CodigoDeCliente
-                        
-                                );
+                        cliente.CodigoDeCliente,
+                        cliente.Domicilio,
+                        cliente.Localidad,
+                        cliente.CUIT,
+                        cliente.Telefono,
+                        cliente.CodigoPostal,
+                        cliente.Provincia);
                         #endregion
 
                         dtClienteCopy = DataTable;
