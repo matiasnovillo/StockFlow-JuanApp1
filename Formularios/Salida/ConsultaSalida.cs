@@ -1,6 +1,9 @@
 ﻿using JuanApp.Areas.JuanApp.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using PdfSharp;
+using PdfSharp.Pdf;
 using System.Text.RegularExpressions;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
 
 namespace JuanApp.Formularios.Salida
 {
@@ -106,11 +109,43 @@ namespace JuanApp.Formularios.Salida
 
         private void btnGenerarExcel_Click(object sender, EventArgs e)
         {
-            //_salidaService.ExportAsExcel(new() { AjaxForString = "" });
+            FolderBrowserDialog FolderBrowserDialog = new FolderBrowserDialog();
+            if (FolderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string SelectedPath = FolderBrowserDialog.SelectedPath;
+
+                List<Areas.JuanApp.Entities.Salida> lstSalida = GetTabla();
+
+                string AjaxForString = "";
+
+                foreach (Areas.JuanApp.Entities.Salida salida in lstSalida)
+                {
+                    AjaxForString += $@"{salida.SalidaId},";
+                }
+
+                AjaxForString = AjaxForString.TrimEnd(',');
+
+                _salidaService.ExportAsExcel(lstSalida, 
+                    new() { AjaxForString = AjaxForString }, 
+                    "NotAll", 
+                    SelectedPath);
+
+                MessageBox.Show($@"Generación realizada", "Información");
+            }    
         }
 
         private void btnGenerarPDF_Click(object sender, EventArgs e)
         {
+            string html = "<html><body><h1>Ejemplo de HTML a PDF</h1><p>¡Hola, mundo!</p></body></html>";
+
+            
+
+            // Ruta donde guardar el PDF
+            string rutaArchivo = @"C:\documento.pdf";
+
+            // Convertir HTML a PDF y guardar en un archivo
+            PdfDocument documento = PdfGenerator.GeneratePdf(html, PageSize.A4);
+            documento.Save(rutaArchivo);
 
         }
 
@@ -155,7 +190,7 @@ namespace JuanApp.Formularios.Salida
             }
         }
 
-        private void GetTabla()
+        private List<Areas.JuanApp.Entities.Salida> GetTabla()
         {
             try
             {
@@ -194,6 +229,8 @@ namespace JuanApp.Formularios.Salida
                 DataGridViewSalida.DataSource = lstSalida;
 
                 statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstSalida.Count}. Se muestran solo los últimos 500 registros";
+
+                return lstSalida;
             }
             catch (Exception)
             {
