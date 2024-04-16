@@ -14,6 +14,7 @@ namespace JuanApp.Areas.BasicCore
         public DbSet<Failure> Failure { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<Remito> Remito { get; set; }
         public DbSet<Entrada> Entrada { get; set; }
         public DbSet<Salida> Salida { get; set; }
 
@@ -49,6 +50,7 @@ namespace JuanApp.Areas.BasicCore
             {
                 modelBuilder.ApplyConfiguration(new FailureConfiguration());
                 modelBuilder.ApplyConfiguration(new ProductoConfiguration());
+                modelBuilder.ApplyConfiguration(new RemitoConfiguration());
                 modelBuilder.ApplyConfiguration(new ClienteConfiguration());
                 modelBuilder.ApplyConfiguration(new EntradaConfiguration());
                 modelBuilder.ApplyConfiguration(new SalidaConfiguration());

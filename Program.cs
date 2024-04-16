@@ -30,6 +30,9 @@ namespace JuanApp
             services.AddScoped<IProductoRepository, ProductoRepository>();
             services.AddScoped<IProductoService, ProductoService>();
 
+            services.AddScoped<IRemitoRepository, RemitoRepository>();
+            services.AddScoped<IRemitoService, RemitoService>();
+
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IClienteService, ClienteService>();
 

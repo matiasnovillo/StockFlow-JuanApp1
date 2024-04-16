@@ -1,6 +1,6 @@
-﻿namespace JuanApp.Formularios.Herramientas.Producto
+﻿namespace JuanApp.Formularios.Herramientas.Remito
 {
-    partial class FormularioProducto
+    partial class FormularioRemito
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioProducto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioRemito));
             lblTitulo = new Label();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
@@ -36,12 +36,19 @@
             dropDownButton = new ToolStripDropDownButton();
             menuItemMain = new ToolStripMenuItem();
             btnGuardar = new Button();
-            txtCodigoDeProducto = new TextBox();
             lblCodigoDeProducto = new Label();
-            txtNombreDeProducto = new TextBox();
             lblNombreDeProducto = new Label();
+            DateTimePickerFechaDeEmision = new DateTimePicker();
+            NumericUpDownKilosTotales = new NumericUpDown();
+            NumericUpDownPrecioTotal = new NumericUpDown();
+            label1 = new Label();
+            NumericUpDownSubtotalTotal = new NumericUpDown();
+            label2 = new Label();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownKilosTotales).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownPrecioTotal).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownSubtotalTotal).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
@@ -50,15 +57,15 @@
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitulo.Location = new Point(12, 27);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(256, 31);
+            lblTitulo.Size = new Size(229, 31);
             lblTitulo.TabIndex = 0;
-            lblTitulo.Text = "Formulario de producto";
+            lblTitulo.Text = "Formulario de remito";
             // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 272);
+            statusStrip1.Location = new Point(0, 416);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(546, 26);
             statusStrip1.TabIndex = 1;
@@ -99,7 +106,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(408, 226);
+            btnGuardar.Location = new Point(408, 370);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(126, 43);
             btnGuardar.TabIndex = 11;
@@ -107,57 +114,96 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // txtCodigoDeProducto
-            // 
-            txtCodigoDeProducto.Location = new Point(12, 93);
-            txtCodigoDeProducto.Name = "txtCodigoDeProducto";
-            txtCodigoDeProducto.Size = new Size(232, 27);
-            txtCodigoDeProducto.TabIndex = 16;
-            // 
             // lblCodigoDeProducto
             // 
             lblCodigoDeProducto.AutoSize = true;
             lblCodigoDeProducto.Location = new Point(12, 70);
             lblCodigoDeProducto.Name = "lblCodigoDeProducto";
-            lblCodigoDeProducto.Size = new Size(144, 20);
+            lblCodigoDeProducto.Size = new Size(124, 20);
             lblCodigoDeProducto.TabIndex = 15;
-            lblCodigoDeProducto.Text = "Código de producto";
-            // 
-            // txtNombreDeProducto
-            // 
-            txtNombreDeProducto.Location = new Point(12, 164);
-            txtNombreDeProducto.Name = "txtNombreDeProducto";
-            txtNombreDeProducto.Size = new Size(232, 27);
-            txtNombreDeProducto.TabIndex = 18;
+            lblCodigoDeProducto.Text = "Fecha de emisión";
             // 
             // lblNombreDeProducto
             // 
             lblNombreDeProducto.AutoSize = true;
-            lblNombreDeProducto.Location = new Point(12, 141);
+            lblNombreDeProducto.Location = new Point(12, 146);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
-            lblNombreDeProducto.Size = new Size(150, 20);
+            lblNombreDeProducto.Size = new Size(90, 20);
             lblNombreDeProducto.TabIndex = 17;
-            lblNombreDeProducto.Text = "Nombre de producto";
+            lblNombreDeProducto.Text = "Kilos totales";
             // 
-            // FormularioProducto
+            // DateTimePickerFechaDeEmision
+            // 
+            DateTimePickerFechaDeEmision.Location = new Point(12, 93);
+            DateTimePickerFechaDeEmision.Name = "DateTimePickerFechaDeEmision";
+            DateTimePickerFechaDeEmision.Size = new Size(250, 27);
+            DateTimePickerFechaDeEmision.TabIndex = 19;
+            // 
+            // NumericUpDownKilosTotales
+            // 
+            NumericUpDownKilosTotales.Location = new Point(12, 169);
+            NumericUpDownKilosTotales.Name = "NumericUpDownKilosTotales";
+            NumericUpDownKilosTotales.Size = new Size(250, 27);
+            NumericUpDownKilosTotales.TabIndex = 20;
+            // 
+            // NumericUpDownPrecioTotal
+            // 
+            NumericUpDownPrecioTotal.Location = new Point(12, 249);
+            NumericUpDownPrecioTotal.Name = "NumericUpDownPrecioTotal";
+            NumericUpDownPrecioTotal.Size = new Size(250, 27);
+            NumericUpDownPrecioTotal.TabIndex = 22;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 226);
+            label1.Name = "label1";
+            label1.Size = new Size(85, 20);
+            label1.TabIndex = 21;
+            label1.Text = "Precio total";
+            // 
+            // NumericUpDownSubtotalTotal
+            // 
+            NumericUpDownSubtotalTotal.Location = new Point(12, 332);
+            NumericUpDownSubtotalTotal.Name = "NumericUpDownSubtotalTotal";
+            NumericUpDownSubtotalTotal.Size = new Size(250, 27);
+            NumericUpDownSubtotalTotal.TabIndex = 24;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 309);
+            label2.Name = "label2";
+            label2.Size = new Size(100, 20);
+            label2.TabIndex = 23;
+            label2.Text = "Subtotal total";
+            // 
+            // FormularioRemito
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(546, 298);
-            Controls.Add(txtNombreDeProducto);
+            ClientSize = new Size(546, 442);
+            Controls.Add(NumericUpDownSubtotalTotal);
+            Controls.Add(label2);
+            Controls.Add(NumericUpDownPrecioTotal);
+            Controls.Add(label1);
+            Controls.Add(NumericUpDownKilosTotales);
+            Controls.Add(DateTimePickerFechaDeEmision);
             Controls.Add(lblNombreDeProducto);
-            Controls.Add(txtCodigoDeProducto);
             Controls.Add(lblCodigoDeProducto);
             Controls.Add(btnGuardar);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Controls.Add(lblTitulo);
-            Name = "FormularioProducto";
-            Text = "Formulario de productos";
+            Name = "FormularioRemito";
+            Text = "Formulario de remitos";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownKilosTotales).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownPrecioTotal).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownSubtotalTotal).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -171,9 +217,13 @@
         private ToolStripDropDownButton dropDownButton;
         private Button btnGuardar;
         private ToolStripMenuItem menuItemMain;
-        private TextBox txtCodigoDeProducto;
         private Label lblCodigoDeProducto;
-        private TextBox txtNombreDeProducto;
         private Label lblNombreDeProducto;
+        private DateTimePicker DateTimePickerFechaDeEmision;
+        private NumericUpDown NumericUpDownKilosTotales;
+        private NumericUpDown NumericUpDownPrecioTotal;
+        private Label label1;
+        private NumericUpDown NumericUpDownSubtotalTotal;
+        private Label label2;
     }
 }

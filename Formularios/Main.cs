@@ -3,6 +3,7 @@ using JuanApp.Areas.BasicCore.Entities;
 using JuanApp.Areas.BasicCore.Interfaces;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Formularios.Herramientas;
+using JuanApp.Formularios.Herramientas.Remito;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace JuanApp
@@ -283,6 +284,35 @@ ya existe en la base de datos", "Atención");
             {
                 Formularios.Herramientas.Cliente.ConsultaCliente ConsultaCliente = new(_serviceProvider);
                 ConsultaCliente.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Failure Failure = new Failure()
+                {
+                    FailureId = 0,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = DateTime.Now,
+                    DateTimeLastModification = DateTime.Now,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace,
+                    Source = ex.Source,
+                    Comment = ""
+                };
+                _failureRepository.Add(Failure);
+
+                MessageBox.Show($@"Error: {ex.Message}", "Error");
+            }
+        }
+
+        private void btnRemito_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ConsultaRemito ConsultaRemito = new(_serviceProvider);
+                ConsultaRemito.ShowDialog();
             }
             catch (Exception ex)
             {

@@ -2,7 +2,7 @@ using JuanApp.Areas.JuanApp.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using JuanApp.Areas.JuanApp.Entities;
 
-namespace JuanApp.Formularios.Entrada
+namespace JuanApp.Formularios.Herramientas.Producto
 {
     public partial class FormularioProducto : Form
     {
@@ -24,7 +24,7 @@ namespace JuanApp.Formularios.Entrada
 
                 if (ProductoId > 0)
                 {
-                    Producto Producto = _productoRepository.GetByProductoId(ProductoId);
+                    Areas.JuanApp.Entities.Producto Producto = _productoRepository.GetByProductoId(ProductoId);
                     txtCodigoDeProducto.Text = Producto.CodigoProducto;
                     txtNombreDeProducto.Text = Producto.Nombre;
                 }
@@ -57,7 +57,7 @@ namespace JuanApp.Formularios.Entrada
                     if (_productoId == 0)
                     {
                         //Agregar
-                        Producto Producto = new()
+                        Areas.JuanApp.Entities.Producto Producto = new()
                         {
                             ProductoId = _productoId,
                             Active = true,
@@ -73,7 +73,7 @@ namespace JuanApp.Formularios.Entrada
                     else
                     {
                         //Actualizar
-                        Producto Producto = _productoRepository.GetByProductoId(_productoId);
+                        Areas.JuanApp.Entities.Producto Producto = _productoRepository.GetByProductoId(_productoId);
 
                         Producto.CodigoProducto = txtCodigoDeProducto.Text;
                         Producto.Nombre = txtNombreDeProducto.Text;
