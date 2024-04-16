@@ -30,6 +30,8 @@ namespace JuanApp.Formularios.Herramientas.Remito
                     NumericUpDownKilosTotales.Value = Remito.KilosTotales;
                     NumericUpDownPrecioTotal.Value = Remito.PrecioTotal;
                     NumericUpDownSubtotalTotal.Value = Remito.SubtotalTotal;
+                    txtCodigoCliente.Text = Remito.CodigoCliente;
+                    txtNombreCliente.Text = Remito.NombreCliente;
                 }
 
                 statusLabel.Text = "";
@@ -52,7 +54,9 @@ namespace JuanApp.Formularios.Herramientas.Remito
             {
                 if (NumericUpDownKilosTotales.Value == 0 ||
                     NumericUpDownPrecioTotal.Value == 0 ||
-                    NumericUpDownSubtotalTotal.Value == 0)
+                    NumericUpDownSubtotalTotal.Value == 0 ||
+                    txtCodigoCliente.Text == "" ||
+                    txtNombreCliente.Text == "")
                 {
                     statusLabel.Text = "Faltan datos a completar";
                 }
@@ -73,6 +77,8 @@ namespace JuanApp.Formularios.Herramientas.Remito
                             KilosTotales = NumericUpDownKilosTotales.Value,
                             PrecioTotal = NumericUpDownPrecioTotal.Value,
                             SubtotalTotal = NumericUpDownSubtotalTotal.Value,
+                            CodigoCliente = txtCodigoCliente.Text,
+                            NombreCliente = txtNombreCliente.Text
                         };
                         _remitoRepository.Add(Remito);
                     }
@@ -85,6 +91,8 @@ namespace JuanApp.Formularios.Herramientas.Remito
                         Remito.KilosTotales = NumericUpDownKilosTotales.Value;
                         Remito.PrecioTotal = NumericUpDownPrecioTotal.Value;
                         Remito.SubtotalTotal = NumericUpDownSubtotalTotal.Value;
+                        Remito.CodigoCliente = txtCodigoCliente.Text;
+                        Remito.NombreCliente = txtNombreCliente.Text;
 
                         Remito.UserLastModificationId = 1;
                         Remito.DateTimeLastModification = DateTime.Now;

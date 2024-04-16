@@ -44,6 +44,10 @@
             label1 = new Label();
             NumericUpDownSubtotalTotal = new NumericUpDown();
             label2 = new Label();
+            txtCodigoCliente = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
+            txtNombreCliente = new TextBox();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumericUpDownKilosTotales).BeginInit();
@@ -65,7 +69,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 416);
+            statusStrip1.Location = new Point(0, 411);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(546, 26);
             statusStrip1.TabIndex = 1;
@@ -106,7 +110,7 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(408, 370);
+            btnGuardar.Location = new Point(408, 365);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(126, 43);
             btnGuardar.TabIndex = 11;
@@ -126,7 +130,7 @@
             // lblNombreDeProducto
             // 
             lblNombreDeProducto.AutoSize = true;
-            lblNombreDeProducto.Location = new Point(12, 146);
+            lblNombreDeProducto.Location = new Point(279, 70);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
             lblNombreDeProducto.Size = new Size(90, 20);
             lblNombreDeProducto.TabIndex = 17;
@@ -141,14 +145,14 @@
             // 
             // NumericUpDownKilosTotales
             // 
-            NumericUpDownKilosTotales.Location = new Point(12, 169);
+            NumericUpDownKilosTotales.Location = new Point(279, 93);
             NumericUpDownKilosTotales.Name = "NumericUpDownKilosTotales";
             NumericUpDownKilosTotales.Size = new Size(250, 27);
             NumericUpDownKilosTotales.TabIndex = 20;
             // 
             // NumericUpDownPrecioTotal
             // 
-            NumericUpDownPrecioTotal.Location = new Point(12, 249);
+            NumericUpDownPrecioTotal.Location = new Point(279, 173);
             NumericUpDownPrecioTotal.Name = "NumericUpDownPrecioTotal";
             NumericUpDownPrecioTotal.Size = new Size(250, 27);
             NumericUpDownPrecioTotal.TabIndex = 22;
@@ -156,7 +160,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 226);
+            label1.Location = new Point(279, 150);
             label1.Name = "label1";
             label1.Size = new Size(85, 20);
             label1.TabIndex = 21;
@@ -164,7 +168,7 @@
             // 
             // NumericUpDownSubtotalTotal
             // 
-            NumericUpDownSubtotalTotal.Location = new Point(12, 332);
+            NumericUpDownSubtotalTotal.Location = new Point(279, 256);
             NumericUpDownSubtotalTotal.Name = "NumericUpDownSubtotalTotal";
             NumericUpDownSubtotalTotal.Size = new Size(250, 27);
             NumericUpDownSubtotalTotal.TabIndex = 24;
@@ -172,17 +176,53 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 309);
+            label2.Location = new Point(279, 233);
             label2.Name = "label2";
             label2.Size = new Size(100, 20);
             label2.TabIndex = 23;
             label2.Text = "Subtotal total";
             // 
+            // txtCodigoCliente
+            // 
+            txtCodigoCliente.Location = new Point(12, 172);
+            txtCodigoCliente.Name = "txtCodigoCliente";
+            txtCodigoCliente.Size = new Size(250, 27);
+            txtCodigoCliente.TabIndex = 25;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(12, 150);
+            label3.Name = "label3";
+            label3.Size = new Size(127, 20);
+            label3.TabIndex = 26;
+            label3.Text = "Codigo de cliente";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 233);
+            label4.Name = "label4";
+            label4.Size = new Size(133, 20);
+            label4.TabIndex = 28;
+            label4.Text = "Nombre de cliente";
+            // 
+            // txtNombreCliente
+            // 
+            txtNombreCliente.Location = new Point(12, 255);
+            txtNombreCliente.Name = "txtNombreCliente";
+            txtNombreCliente.Size = new Size(250, 27);
+            txtNombreCliente.TabIndex = 27;
+            // 
             // FormularioRemito
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(546, 442);
+            ClientSize = new Size(546, 437);
+            Controls.Add(label4);
+            Controls.Add(txtNombreCliente);
+            Controls.Add(label3);
+            Controls.Add(txtCodigoCliente);
             Controls.Add(NumericUpDownSubtotalTotal);
             Controls.Add(label2);
             Controls.Add(NumericUpDownPrecioTotal);
@@ -225,5 +265,9 @@
         private Label label1;
         private NumericUpDown NumericUpDownSubtotalTotal;
         private Label label2;
+        private TextBox txtCodigoCliente;
+        private Label label3;
+        private Label label4;
+        private TextBox txtNombreCliente;
     }
 }

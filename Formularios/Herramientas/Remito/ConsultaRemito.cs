@@ -29,9 +29,29 @@ namespace JuanApp.Formularios.Herramientas.Remito
                 DataGridViewRemito.Columns.Add(col1);
 
                 DataGridViewTextBoxColumn col2 = new();
-                col2.DataPropertyName = "SubtotalTotal";
-                col2.HeaderText = "SubtotalTotal";
+                col2.DataPropertyName = "CodigoCliente";
+                col2.HeaderText = "CodigoCliente";
                 DataGridViewRemito.Columns.Add(col2);
+
+                DataGridViewTextBoxColumn col3 = new();
+                col3.DataPropertyName = "NombreCliente";
+                col3.HeaderText = "NombreCliente";
+                DataGridViewRemito.Columns.Add(col3);
+
+                DataGridViewTextBoxColumn col4 = new();
+                col4.DataPropertyName = "KilosTotales";
+                col4.HeaderText = "KilosTotales";
+                DataGridViewRemito.Columns.Add(col4);
+
+                DataGridViewTextBoxColumn col5 = new();
+                col5.DataPropertyName = "PrecioTotal";
+                col5.HeaderText = "PrecioTotal";
+                DataGridViewRemito.Columns.Add(col5);
+
+                DataGridViewTextBoxColumn col6 = new();
+                col6.DataPropertyName = "SubtotalTotal";
+                col6.HeaderText = "SubtotalTotal";
+                DataGridViewRemito.Columns.Add(col6);
 
                 DataGridViewButtonColumn colActualizar = new();
                 colActualizar.HeaderText = "Actualizar";
@@ -78,7 +98,7 @@ namespace JuanApp.Formularios.Herramientas.Remito
         {
             try
             {
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 7)
                 {
                     //Actualizar
                     int RemitoId = Convert.ToInt32(DataGridViewRemito.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -91,7 +111,7 @@ namespace JuanApp.Formularios.Herramientas.Remito
 
                     GetTabla();
                 }
-                else if (e.ColumnIndex == 4)
+                else if (e.ColumnIndex == 8)
                 {
                     //Borrar
                     DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",
@@ -150,9 +170,8 @@ namespace JuanApp.Formularios.Herramientas.Remito
                 {
                     lstRemito = _remitoRepository
                     .AsQueryable()
-                    .Where(x => x.KilosTotales.ToString() == txtBuscar.Text ||
-                    x.PrecioTotal.ToString() == txtBuscar.Text ||
-                    x.SubtotalTotal.ToString() == txtBuscar.Text)
+                    .Where(x => x.CodigoCliente.ToString() == txtBuscar.Text ||
+                    x.NombreCliente.ToString() == txtBuscar.Text)
                     .OrderBy(x => x.RemitoId)
                     .ToList();
                 }
