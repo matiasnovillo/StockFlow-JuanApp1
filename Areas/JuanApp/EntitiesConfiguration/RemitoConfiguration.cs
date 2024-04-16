@@ -71,6 +71,16 @@ namespace JuanApp.Areas.JuanApp.EntitiesConfiguration
                     .HasColumnType("numeric(18, 2)")
                     .IsRequired(true);
 
+                //CodigoCliente
+                entity.Property(e => e.CodigoCliente)
+                    .HasColumnType("varchar(500)")
+                    .IsRequired(true);
+
+                //NombreCliente
+                entity.Property(e => e.NombreCliente)
+                    .HasColumnType("varchar(8000)")
+                    .IsRequired(true);
+
                 
             }
             catch (Exception) { throw; }

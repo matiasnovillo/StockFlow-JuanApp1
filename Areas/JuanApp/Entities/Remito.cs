@@ -58,6 +58,12 @@ namespace JuanApp.Areas.JuanApp.Entities
 
         [Library.ModelAttributeValidator.Decimal("SubtotalTotal", true, 0D, 999999999.000000D)]
         public decimal SubtotalTotal { get; set; }
+
+        [Library.ModelAttributeValidator.String("CodigoCliente", true, 1, 500, "")]
+        public string? CodigoCliente { get; set; }
+
+        [Library.ModelAttributeValidator.String("NombreCliente", true, 1, 8000, "")]
+        public string? NombreCliente { get; set; }
     
         public string ToStringOnlyValuesForHTML()
         {
@@ -120,6 +126,18 @@ namespace JuanApp.Areas.JuanApp.Entities
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{SubtotalTotal}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{CodigoCliente}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{NombreCliente}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td>

@@ -126,6 +126,16 @@ namespace JuanApp.Areas.JuanApp.Services
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">SubtotalTotal&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CodigoCliente&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">NombreCliente&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
     </tr>
     {RowsAsHTML}
@@ -204,6 +214,16 @@ namespace JuanApp.Areas.JuanApp.Services
                     dtColumnSubtotalTotalFordtRemitoCopy.ColumnName = "SubtotalTotal";
                     dtRemitoCopy.Columns.Add(dtColumnSubtotalTotalFordtRemitoCopy);
 
+                    DataColumn dtColumnCodigoClienteFordtRemitoCopy = new DataColumn();
+                    dtColumnCodigoClienteFordtRemitoCopy.DataType = typeof(string);
+                    dtColumnCodigoClienteFordtRemitoCopy.ColumnName = "CodigoCliente";
+                    dtRemitoCopy.Columns.Add(dtColumnCodigoClienteFordtRemitoCopy);
+
+                    DataColumn dtColumnNombreClienteFordtRemitoCopy = new DataColumn();
+                    dtColumnNombreClienteFordtRemitoCopy.DataType = typeof(string);
+                    dtColumnNombreClienteFordtRemitoCopy.ColumnName = "NombreCliente";
+                    dtRemitoCopy.Columns.Add(dtColumnNombreClienteFordtRemitoCopy);
+
                     
                 #endregion
 
@@ -221,6 +241,8 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("KilosTotales", typeof(string));
                 DataTable.Columns.Add("PrecioTotal", typeof(string));
                 DataTable.Columns.Add("SubtotalTotal", typeof(string));
+                DataTable.Columns.Add("CodigoCliente", typeof(string));
+                DataTable.Columns.Add("NombreCliente", typeof(string));
                 
 
                 foreach (Remito remito in lstRemito)
@@ -235,7 +257,9 @@ namespace JuanApp.Areas.JuanApp.Services
                         remito.Fecha,
                         remito.KilosTotales,
                         remito.PrecioTotal,
-                        remito.SubtotalTotal);
+                        remito.SubtotalTotal,
+                        remito.CodigoCliente,
+                        remito.NombreCliente);
                         }
                 #endregion
 
@@ -314,6 +338,16 @@ namespace JuanApp.Areas.JuanApp.Services
                     dtColumnSubtotalTotalFordtRemitoCopy.ColumnName = "SubtotalTotal";
                     dtRemitoCopy.Columns.Add(dtColumnSubtotalTotalFordtRemitoCopy);
 
+                    DataColumn dtColumnCodigoClienteFordtRemitoCopy = new DataColumn();
+                    dtColumnCodigoClienteFordtRemitoCopy.DataType = typeof(string);
+                    dtColumnCodigoClienteFordtRemitoCopy.ColumnName = "CodigoCliente";
+                    dtRemitoCopy.Columns.Add(dtColumnCodigoClienteFordtRemitoCopy);
+
+                    DataColumn dtColumnNombreClienteFordtRemitoCopy = new DataColumn();
+                    dtColumnNombreClienteFordtRemitoCopy.DataType = typeof(string);
+                    dtColumnNombreClienteFordtRemitoCopy.ColumnName = "NombreCliente";
+                    dtRemitoCopy.Columns.Add(dtColumnNombreClienteFordtRemitoCopy);
+
                     
                     #endregion
 
@@ -335,6 +369,8 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("KilosTotales", typeof(string));
                 DataTable.Columns.Add("PrecioTotal", typeof(string));
                 DataTable.Columns.Add("SubtotalTotal", typeof(string));
+                DataTable.Columns.Add("CodigoCliente", typeof(string));
+                DataTable.Columns.Add("NombreCliente", typeof(string));
                 
                         
                         DataTable.Rows.Add(
@@ -347,7 +383,9 @@ namespace JuanApp.Areas.JuanApp.Services
                         remito.Fecha,
                         remito.KilosTotales,
                         remito.PrecioTotal,
-                        remito.SubtotalTotal
+                        remito.SubtotalTotal,
+                        remito.CodigoCliente,
+                        remito.NombreCliente
                         
                                 );
                         #endregion
