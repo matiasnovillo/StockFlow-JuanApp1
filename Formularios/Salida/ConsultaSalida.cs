@@ -142,6 +142,8 @@ namespace JuanApp.Formularios.Salida
             {
                 string SelectedPath = FolderBrowserDialog.SelectedPath;
 
+                List<Areas.JuanApp.Entities.Salida> lstSalida = GetTabla();
+
                 string HTML = $@"
 <html>
     <head>
@@ -211,7 +213,10 @@ namespace JuanApp.Formularios.Salida
         <td style=""width: 20%;"">Cantidad (KG)</td>
         <td style=""width: 20%;"">Precio ($)</td>
         <td style=""width: 20%;"">Subtotal ($)</td>
-        </tr>
+        </tr>";
+
+
+                HTML += $@"
         <tr>
         <td style=""width: 20%;"">&nbsp;</td>
         <td style=""width: 20%;"">&nbsp;</td>
@@ -303,6 +308,12 @@ namespace JuanApp.Formularios.Salida
         {
             try
             {
+                if (dateTimePickerFechaInicio.Value > dateTimePickerFechaFin.Value)
+                {
+                    MessageBox.Show("Fecha de inicio debe ser menor a fecha fin", "Atención");
+                    return null;
+                }
+
                 List<Areas.JuanApp.Entities.Salida> lstSalida = [];
 
                 if (string.IsNullOrEmpty(txtBuscar.Text))

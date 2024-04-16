@@ -146,6 +146,12 @@ namespace JuanApp.Formularios.Entrada
         {
             try
             {
+                if (dateTimePickerFechaInicio.Value > dateTimePickerFechaFin.Value)
+                {
+                    MessageBox.Show("Fecha de inicio debe ser menor a fecha fin", "Atención");
+                    return;
+                }
+
                 List<Areas.JuanApp.Entities.Entrada> lstEntrada = [];
 
                 if (string.IsNullOrEmpty(txtBuscar.Text))
