@@ -1,6 +1,8 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
 using JuanApp.Areas.JuanApp.Interfaces;
+using JuanApp.Areas.JuanApp.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Win32;
 using PdfSharp;
 using PdfSharp.Pdf;
 using System.Text.RegularExpressions;
@@ -12,7 +14,15 @@ namespace JuanApp.Formularios.Salida
     {
         private readonly ISalidaRepository _salidaRepository;
         private readonly ISalidaService _salidaService;
+        private readonly IRemitoRepository _remitoRepository;
+        private readonly IClienteRepository _clienteRepository;
         private readonly ServiceProvider _serviceProvider;
+
+        private decimal KilosRealesTotal = 0;
+        private decimal PrecioTotal = 0;
+        private decimal SubtotalTotal = 0;
+        private string CodigoCliente = "";
+        private string NombreCliente = "";
 
         public ConsultaSalida(ServiceProvider serviceProvider)
         {
@@ -21,6 +31,8 @@ namespace JuanApp.Formularios.Salida
                 _serviceProvider = serviceProvider;
                 _salidaRepository = serviceProvider.GetRequiredService<ISalidaRepository>();
                 _salidaService = serviceProvider.GetRequiredService<ISalidaService>();
+                _remitoRepository = serviceProvider.GetRequiredService<IRemitoRepository>();
+                _clienteRepository = serviceProvider.GetRequiredService<IClienteRepository>();
 
                 InitializeComponent();
 
@@ -81,13 +93,36 @@ namespace JuanApp.Formularios.Salida
                 dateTimePickerFechaInicio.Value = DateTime.Now.AddDays(-30);
                 dateTimePickerFechaFin.Value = DateTime.Now.AddDays(1);
 
-                GetTabla();
+                List<Areas.JuanApp.Entities.Salida> lstSalida = GetTabla();
+
+                HacerCalculosDeTotales(lstSalida);
+
+                VerificarDuplicados(lstSalida);
+
             }
             catch (Exception)
             {
 
                 throw;
             }
+        }
+
+        private void HacerCalculosDeTotales(List<Areas.JuanApp.Entities.Salida> lstSalida)
+        {
+            KilosRealesTotal = 0;
+            PrecioTotal = 0;
+            SubtotalTotal = 0;
+
+            foreach (Areas.JuanApp.Entities.Salida salida in lstSalida)
+            {
+                KilosRealesTotal += salida.KilosReales;
+                PrecioTotal += salida.Precio;
+                SubtotalTotal += salida.Subtotal;
+            }
+
+            txtKilosRealesTotal.Text = KilosRealesTotal.ToString();
+            txtPrecioTotal.Text = PrecioTotal.ToString();
+            txtSubtotalTotal.Text = SubtotalTotal.ToString();
         }
 
         private void menuItemMain_Click(object sender, EventArgs e)
@@ -99,7 +134,11 @@ namespace JuanApp.Formularios.Salida
         {
             try
             {
-                GetTabla();
+                List<Areas.JuanApp.Entities.Salida> lstSalida = GetTabla();
+
+                VerificarDuplicados(lstSalida);
+
+                HacerCalculosDeTotales(lstSalida);
             }
             catch (Exception)
             {
@@ -143,6 +182,16 @@ namespace JuanApp.Formularios.Salida
                 string SelectedPath = FolderBrowserDialog.SelectedPath;
 
                 List<Areas.JuanApp.Entities.Salida> lstSalida = GetTabla();
+
+                HacerCalculosDeTotales(lstSalida);
+
+                bool HayDuplicados = VerificarDuplicados(lstSalida);
+
+                if (HayDuplicados)
+                {
+                    MessageBox.Show("Hay nombres de clientes diferentes en la tabla","Atención");
+                    return;
+                }
 
                 string HTML = $@"
 <html>
@@ -215,15 +264,54 @@ namespace JuanApp.Formularios.Salida
         <td style=""width: 20%;"">Subtotal ($)</td>
         </tr>";
 
+                DateTime Now = DateTime.Now;
+
+                Areas.JuanApp.Entities.Remito Remito = new()
+                {
+                    Fecha = Now,
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now,
+                    CodigoCliente = CodigoCliente,
+                    NombreCliente = NombreCliente,
+                    KilosTotales = KilosRealesTotal,
+                    PrecioTotal = PrecioTotal,
+                    SubtotalTotal = SubtotalTotal
+                };
+                int LastId = _remitoRepository.Add(Remito);
+
+                HTML = HTML.Replace("[NroDeRemito]", LastId.ToString());
+                HTML = HTML.Replace("[FechaDeRemito]", Now.ToString("dd/MM/yyyy HH:mm"));
+
+                Areas.JuanApp.Entities.Cliente Cliente = _clienteRepository
+                    .AsQueryable()
+                    .Where(x => x.CodigoDeCliente == CodigoCliente)
+                    .FirstOrDefault();
+
+                HTML = HTML.Replace("[NombreCliente]", Cliente.NombreDeCliente);
+                HTML = HTML.Replace("[DireccionCliente]", Cliente.Domicilio);
+                HTML = HTML.Replace("[LocalidadCliente]", Cliente.Localidad);
+                HTML = HTML.Replace("[CUITCliente]", Cliente.CUIT);
+                HTML = HTML.Replace("[TelefonoCliente]", Cliente.Telefono);
+                HTML = HTML.Replace("[CodigoPostalCliente]", Cliente.CodigoPostal);
+                HTML = HTML.Replace("[ProvinciaCliente]", Cliente.Provincia);
+                HTML = HTML.Replace("[Logo]", $@"<img src=""Logo.png"" alt=""Logo"" width=""150"">");
+
+                foreach (Areas.JuanApp.Entities.Salida salida in lstSalida)
+                {
+                    HTML += $@"<tr>
+        <td style=""width: 20%;"">{salida.CodigoDeProducto}</td>
+        <td style=""width: 20%;"">{salida.NombreDeProducto}</td>
+        <td style=""width: 20%;"">{salida.KilosReales}</td>
+        <td style=""width: 20%;"">{salida.Precio}</td>
+        <td style=""width: 20%;"">{salida.Subtotal}</td>
+        </tr>";
+                }
 
                 HTML += $@"
-        <tr>
-        <td style=""width: 20%;"">&nbsp;</td>
-        <td style=""width: 20%;"">&nbsp;</td>
-        <td style=""width: 20%;"">&nbsp;</td>
-        <td style=""width: 20%;"">&nbsp;</td>
-        <td style=""width: 20%;"">&nbsp;</td>
-        </tr>
+        
         </tbody>
         </table>
         <table style=""border-collapse: collapse; width: 100%;"" border=""1"">
@@ -232,9 +320,9 @@ namespace JuanApp.Formularios.Salida
         <td style=""width: 33.3333%;"">&nbsp;</td>
         <td style=""width: 33.3333%;"">&nbsp;</td>
         <td style=""width: 33.3333%;"">
-        <p>Cantidad total: [CantidadTotal]</p>
-        <p>Precio total: [PrecioTotal]</p>
-        <p>TOTAL: [Total]</p>
+        <p>Cantidad total (KGs): {KilosRealesTotal}</p>
+        <p>Precio total: {PrecioTotal}</p>
+        <p>TOTAL: {SubtotalTotal}</p>
         </td>
         </tr>
         </tbody>
@@ -346,19 +434,6 @@ namespace JuanApp.Formularios.Salida
                     .ToList();
                 }
 
-                decimal KilosRealesTotal = 0;
-                decimal PrecioTotal = 0;
-                decimal SubtotalTotal = 0;
-                foreach (Areas.JuanApp.Entities.Salida salida in lstSalida)
-                {
-                    KilosRealesTotal += salida.KilosReales;
-                    PrecioTotal += salida.Precio;
-                    SubtotalTotal += salida.Subtotal;
-                }
-                txtKilosRealesTotal.Text = KilosRealesTotal.ToString();
-                txtPrecioTotal.Text = PrecioTotal.ToString();
-                txtSubtotalTotal.Text = SubtotalTotal.ToString();
-
                 DataGridViewSalida.DataSource = lstSalida;
 
                 statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstSalida.Count}. Se muestran solo los últimos 500 registros";
@@ -386,6 +461,37 @@ namespace JuanApp.Formularios.Salida
 
                 throw;
             }
+        }
+
+        bool VerificarDuplicados(List<Areas.JuanApp.Entities.Salida> registros)
+        {
+            // Recorremos la lista de registros
+            foreach (var registro1 in registros)
+            {
+                // Por cada registro, comparamos con el resto de registros
+                foreach (var registro2 in registros)
+                {
+                    // Nos aseguramos de no comparar un registro consigo mismo
+                    if (registro1 != registro2)
+                    {
+                        // Si encontramos dos registros con NombreDeCliente diferentes, retornamos true
+                        if (registro1.NombreDeCliente != registro2.NombreDeCliente)
+                        {
+                            MessageBox.Show("Hay nombres de clientes diferentes en la tabla", "Atención");
+                            CodigoCliente = "";
+                            NombreCliente = "";
+                            btnGenerarPDF.Enabled = false;
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            CodigoCliente = registros[0].CodigoDeCliente;
+            NombreCliente = registros[0].NombreDeCliente;
+            btnGenerarPDF.Enabled = true;
+            // Si no encontramos duplicados, retornamos false
+            return false;
         }
     }
 }

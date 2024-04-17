@@ -5,6 +5,7 @@ using JuanApp.Areas.JuanApp.Entities;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Library;
 using System.Data;
+using Microsoft.Win32;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -74,8 +75,13 @@ namespace JuanApp.Areas.JuanApp.Repositories
             {
                 _context.Remito.Add(remito);
                 _context.SaveChanges();
-                
-                return remito.RemitoId;   
+
+                int LastId = _context.Remito
+                                        .OrderByDescending(r => r.RemitoId)
+                                        .First()
+                                        .RemitoId;
+
+                return LastId;   
             }
             catch (Exception) { throw; }
         }

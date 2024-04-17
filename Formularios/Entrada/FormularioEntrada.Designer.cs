@@ -209,6 +209,8 @@
             // 
             // numericUpDownNeto
             // 
+            numericUpDownNeto.DecimalPlaces = 2;
+            numericUpDownNeto.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownNeto.Location = new Point(286, 157);
             numericUpDownNeto.Name = "numericUpDownNeto";
             numericUpDownNeto.Size = new Size(232, 27);
