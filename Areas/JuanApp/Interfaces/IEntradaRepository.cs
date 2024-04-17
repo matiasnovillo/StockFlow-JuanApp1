@@ -39,6 +39,8 @@ namespace JuanApp.Areas.JuanApp.Interfaces
         int CopyByEntradaId(int EntradaId);
 
         int CopyManyOrAll(Ajax Ajax, string CopyType);
+
+        int DeleteAll();
         #endregion
     }
 }

@@ -5,6 +5,7 @@ using JuanApp.Areas.JuanApp.Entities;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Library;
 using System.Data;
+using DocumentFormat.OpenXml.InkML;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -187,6 +188,15 @@ namespace JuanApp.Areas.JuanApp.Repositories
                 return NumberOfRegistersEntered;
             }
             catch (Exception) { throw; }
+        }
+
+        public int DeleteAll()
+        {
+            var Entradas = _context.Entrada.ToList();
+
+            _context.Entrada.RemoveRange(Entradas);
+            
+            return _context.SaveChanges();
         }
         #endregion
     }

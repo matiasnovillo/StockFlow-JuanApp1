@@ -53,6 +53,7 @@
             lblPrecioUnidadTotal = new Label();
             txtSubtotalTotal = new TextBox();
             lblSubtotalTotal = new Label();
+            btnBorrarTodo = new Button();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).BeginInit();
@@ -269,11 +270,22 @@
             lblSubtotalTotal.TabIndex = 24;
             lblSubtotalTotal.Text = "Subtotal TOTAL:";
             // 
+            // btnBorrarTodo
+            // 
+            btnBorrarTodo.Location = new Point(12, 564);
+            btnBorrarTodo.Name = "btnBorrarTodo";
+            btnBorrarTodo.Size = new Size(97, 33);
+            btnBorrarTodo.TabIndex = 26;
+            btnBorrarTodo.Text = "Borrar todo";
+            btnBorrarTodo.UseVisualStyleBackColor = true;
+            btnBorrarTodo.Click += btnBorrarTodo_Click;
+            // 
             // ConsultaSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 646);
+            Controls.Add(btnBorrarTodo);
             Controls.Add(txtSubtotalTotal);
             Controls.Add(lblSubtotalTotal);
             Controls.Add(txtPrecioTotal);
@@ -332,5 +344,6 @@
         private Label lblPrecioUnidadTotal;
         private TextBox txtSubtotalTotal;
         private Label lblSubtotalTotal;
+        private Button btnBorrarTodo;
     }
 }

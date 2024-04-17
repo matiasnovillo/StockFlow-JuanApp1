@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Text.RegularExpressions;
 using JuanApp.Areas.BasicCore.Entities;
 using JuanApp.Areas.JuanApp.Entities;
+using DocumentFormat.OpenXml.InkML;
+using Microsoft.Win32;
 
 namespace JuanApp.Formularios.Entrada
 {
@@ -213,6 +215,28 @@ namespace JuanApp.Formularios.Entrada
             catch (Exception)
             {
 
+                throw;
+            }
+        }
+
+        private void btnBorrarTodo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar todos los registros?",
+                        "Confirmar eliminación",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    _entradaRepository.DeleteAll();
+
+                    MessageBox.Show("Todos los registros han sido borrados exitosamente", "Información");
+                }
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

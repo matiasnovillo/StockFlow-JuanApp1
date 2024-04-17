@@ -165,13 +165,13 @@ namespace JuanApp.Formularios.Salida
 
                 AjaxForString = AjaxForString.TrimEnd(',');
 
-                _salidaService.ExportAsExcel(lstSalida, 
-                    new() { AjaxForString = AjaxForString }, 
-                    "NotAll", 
+                _salidaService.ExportAsExcel(lstSalida,
+                    new() { AjaxForString = AjaxForString },
+                    "NotAll",
                     SelectedPath);
 
                 MessageBox.Show($@"Generación de Excel realizada correctamente", "Información");
-            }    
+            }
         }
 
         private void btnGenerarPDF_Click(object sender, EventArgs e)
@@ -189,7 +189,7 @@ namespace JuanApp.Formularios.Salida
 
                 if (HayDuplicados)
                 {
-                    MessageBox.Show("Hay nombres de clientes diferentes en la tabla","Atención");
+                    MessageBox.Show("Hay nombres de clientes diferentes en la tabla", "Atención");
                     return;
                 }
 
@@ -487,11 +487,37 @@ namespace JuanApp.Formularios.Salida
                 }
             }
 
-            CodigoCliente = registros[0].CodigoDeCliente;
-            NombreCliente = registros[0].NombreDeCliente;
-            btnGenerarPDF.Enabled = true;
+            if (registros.Count > 0) 
+            {
+                CodigoCliente = registros[0].CodigoDeCliente;
+                NombreCliente = registros[0].NombreDeCliente;
+                btnGenerarPDF.Enabled = true;
+            }
+            
             // Si no encontramos duplicados, retornamos false
             return false;
+        }
+
+        private void btnBorrarTodo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar todos los registros?",
+                        "Confirmar eliminación",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    _salidaRepository.DeleteAll();
+
+                    MessageBox.Show("Todos los registros han sido borrados exitosamente", "Información");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

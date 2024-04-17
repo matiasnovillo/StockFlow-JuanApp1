@@ -46,6 +46,7 @@
             btnAgregar = new Button();
             lblNeto = new Label();
             txtNetoTotal = new TextBox();
+            btnBorrarTodo = new Button();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).BeginInit();
@@ -199,11 +200,22 @@
             txtNetoTotal.Size = new Size(194, 27);
             txtNetoTotal.TabIndex = 13;
             // 
+            // btnBorrarTodo
+            // 
+            btnBorrarTodo.Location = new Point(12, 531);
+            btnBorrarTodo.Name = "btnBorrarTodo";
+            btnBorrarTodo.Size = new Size(94, 38);
+            btnBorrarTodo.TabIndex = 14;
+            btnBorrarTodo.Text = "Borrar todo";
+            btnBorrarTodo.UseVisualStyleBackColor = true;
+            btnBorrarTodo.Click += btnBorrarTodo_Click;
+            // 
             // ConsultaEntrada
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(826, 608);
+            Controls.Add(btnBorrarTodo);
             Controls.Add(txtNetoTotal);
             Controls.Add(lblNeto);
             Controls.Add(btnAgregar);
@@ -248,5 +260,6 @@
         private Button btnAgregar;
         private Label lblNeto;
         private TextBox txtNetoTotal;
+        private Button btnBorrarTodo;
     }
 }

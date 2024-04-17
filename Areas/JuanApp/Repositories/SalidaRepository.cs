@@ -188,6 +188,15 @@ namespace JuanApp.Areas.JuanApp.Repositories
             }
             catch (Exception) { throw; }
         }
+
+        public int DeleteAll()
+        {
+            var Salidas = _context.Salida.ToList();
+
+            _context.Salida.RemoveRange(Salidas);
+
+            return _context.SaveChanges();
+        }
         #endregion
     }
 }
