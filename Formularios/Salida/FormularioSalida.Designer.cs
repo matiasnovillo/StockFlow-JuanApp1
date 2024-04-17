@@ -217,6 +217,8 @@
             // 
             // numericUpDownKilosTotales
             // 
+            numericUpDownKilosTotales.DecimalPlaces = 2;
+            numericUpDownKilosTotales.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownKilosTotales.Location = new Point(284, 94);
             numericUpDownKilosTotales.Name = "numericUpDownKilosTotales";
             numericUpDownKilosTotales.Size = new Size(150, 27);
@@ -233,6 +235,8 @@
             // 
             // numericUpDownPrecio
             // 
+            numericUpDownPrecio.DecimalPlaces = 2;
+            numericUpDownPrecio.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownPrecio.Location = new Point(284, 183);
             numericUpDownPrecio.Name = "numericUpDownPrecio";
             numericUpDownPrecio.Size = new Size(150, 27);
@@ -249,6 +253,8 @@
             // 
             // numericUpDownSubtotal
             // 
+            numericUpDownSubtotal.DecimalPlaces = 2;
+            numericUpDownSubtotal.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownSubtotal.Location = new Point(284, 253);
             numericUpDownSubtotal.Name = "numericUpDownSubtotal";
             numericUpDownSubtotal.Size = new Size(150, 27);
