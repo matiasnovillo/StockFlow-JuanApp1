@@ -32,7 +32,6 @@ namespace JuanApp.Formularios.Entrada
                     Areas.JuanApp.Entities.Entrada Entrada = _entradaRepository
                                                                         .GetByEntradaId(entradaId);
 
-                    txtNroDeCodigoDeBarra.Text = Entrada.CodigoDeBarra;
                     txtNroDePesada.Text = Entrada.NroDePesaje.ToString();
                     txtCodigoDeProducto.Text = Entrada.CodigoDeProducto;
                     txtNombreDeProducto.Text = Entrada.NombreDeProducto;
@@ -58,8 +57,7 @@ namespace JuanApp.Formularios.Entrada
         {
             try
             {
-                if (string.IsNullOrEmpty(txtNroDeCodigoDeBarra.Text) ||
-                       string.IsNullOrEmpty(txtNroDePesada.Text) ||
+                if (string.IsNullOrEmpty(txtNroDePesada.Text) ||
                        string.IsNullOrEmpty(txtCodigoDeProducto.Text) ||
                        string.IsNullOrEmpty(txtTexContenido.Text) ||
                        numericUpDownNeto.Value == 0 ||
@@ -80,7 +78,7 @@ namespace JuanApp.Formularios.Entrada
                             UserLastModificationId = 1,
                             DateTimeCreation = DateTime.Now,
                             DateTimeLastModification = DateTime.Now,
-                            CodigoDeBarra = txtNroDeCodigoDeBarra.Text,
+                            CodigoDeBarra = "",
                             NroDePesaje = Convert.ToInt32(txtNroDePesada.Text),
                             CodigoDeProducto = txtCodigoDeProducto.Text,
                             NombreDeProducto = txtNombreDeProducto.Text,
@@ -94,7 +92,6 @@ namespace JuanApp.Formularios.Entrada
                         //Actualizar
                         Areas.JuanApp.Entities.Entrada Entrada = _entradaRepository.GetByEntradaId(_entradaId);
 
-                        Entrada.CodigoDeBarra = txtNroDeCodigoDeBarra.Text;
                         Entrada.NroDePesaje = Convert.ToInt32(txtNroDePesada.Text);
                         Entrada.CodigoDeProducto = txtCodigoDeProducto.Text;
                         Entrada.NombreDeProducto = txtNombreDeProducto.Text;

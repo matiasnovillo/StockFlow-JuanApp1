@@ -41,7 +41,6 @@ namespace JuanApp.Formularios.Salida
 
                     txtCodigoDeCliente.Text = Salida.CodigoDeCliente;
                     txtNombreDeCliente.Text = Salida.NombreDeCliente;
-                    txtCodigoDeBarra.Text = Salida.CodigoDeBarra;
                     txtCodigoDeProducto.Text = Salida.CodigoDeProducto.ToString();
                     txtNombreProducto.Text = Salida.NombreDeProducto;
                     numericUpDownKilosTotales.Value = Salida.KilosReales;
@@ -69,7 +68,6 @@ namespace JuanApp.Formularios.Salida
             {
                 if (string.IsNullOrEmpty(txtCodigoDeCliente.Text) ||
                        string.IsNullOrEmpty(txtNombreDeCliente.Text) ||
-                       string.IsNullOrEmpty(txtCodigoDeBarra.Text) ||
                        string.IsNullOrEmpty(txtCodigoDeProducto.Text) ||
                        string.IsNullOrEmpty(txtNombreProducto.Text) ||
                        numericUpDownKilosTotales.Value == 0 ||
@@ -93,7 +91,7 @@ namespace JuanApp.Formularios.Salida
                             DateTimeLastModification = DateTime.Now,
                             CodigoDeCliente = txtCodigoDeCliente.Text,
                             NombreDeCliente = txtNombreDeCliente.Text,
-                            CodigoDeBarra = txtCodigoDeBarra.Text,
+                            CodigoDeBarra = "",
                             CodigoDeProducto = Convert.ToInt32(txtCodigoDeProducto.Text),
                             NombreDeProducto = txtNombreProducto.Text,
                             KilosReales = numericUpDownKilosTotales.Value,
@@ -109,7 +107,6 @@ namespace JuanApp.Formularios.Salida
 
                         Salida.CodigoDeCliente = txtCodigoDeCliente.Text;
                         Salida.NombreDeCliente = txtNombreDeCliente.Text;
-                        Salida.CodigoDeBarra = txtCodigoDeBarra.Text;
                         Salida.CodigoDeProducto = Convert.ToInt32(txtCodigoDeProducto.Text);
                         Salida.NombreDeProducto = txtNombreProducto.Text;
                         Salida.KilosReales = numericUpDownKilosTotales.Value;

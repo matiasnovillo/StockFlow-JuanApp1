@@ -52,6 +52,7 @@
             label5 = new Label();
             txtProvincia = new TextBox();
             label6 = new Label();
+            label7 = new Label();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -131,9 +132,9 @@
             lblCodigoDeProducto.AutoSize = true;
             lblCodigoDeProducto.Location = new Point(12, 70);
             lblCodigoDeProducto.Name = "lblCodigoDeProducto";
-            lblCodigoDeProducto.Size = new Size(127, 20);
+            lblCodigoDeProducto.Size = new Size(147, 20);
             lblCodigoDeProducto.TabIndex = 15;
-            lblCodigoDeProducto.Text = "Código de cliente";
+            lblCodigoDeProducto.Text = "Código de cliente (*)";
             // 
             // txtNombreDeCliente
             // 
@@ -147,9 +148,9 @@
             lblNombreDeProducto.AutoSize = true;
             lblNombreDeProducto.Location = new Point(12, 141);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
-            lblNombreDeProducto.Size = new Size(133, 20);
+            lblNombreDeProducto.Size = new Size(153, 20);
             lblNombreDeProducto.TabIndex = 17;
-            lblNombreDeProducto.Text = "Nombre de cliente";
+            lblNombreDeProducto.Text = "Nombre de cliente (*)";
             // 
             // txtDomicilio
             // 
@@ -247,11 +248,21 @@
             label6.TabIndex = 29;
             label6.Text = "Provincia";
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(282, 272);
+            label7.Name = "label7";
+            label7.Size = new Size(98, 20);
+            label7.TabIndex = 31;
+            label7.Text = "(*) Requerido";
+            // 
             // FormularioCliente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(546, 456);
+            Controls.Add(label7);
             Controls.Add(txtProvincia);
             Controls.Add(label6);
             Controls.Add(txtCodigoPostal);
@@ -273,7 +284,7 @@
             Controls.Add(statusStrip1);
             Controls.Add(lblTitulo);
             Name = "FormularioCliente";
-            Text = "Formulario de entradas";
+            Text = "Formulario de clientes";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
@@ -307,5 +318,6 @@
         private Label label5;
         private TextBox txtProvincia;
         private Label label6;
+        private Label label7;
     }
 }

@@ -33,6 +33,16 @@ namespace JuanApp.Formularios.Herramientas.Cliente
                 col2.HeaderText = "NombreDeCliente";
                 DataGridViewCliente.Columns.Add(col2);
 
+                DataGridViewTextBoxColumn col3 = new();
+                col3.DataPropertyName = "Domicilio";
+                col3.HeaderText = "Domicilio";
+                DataGridViewCliente.Columns.Add(col3);
+
+                DataGridViewTextBoxColumn col4 = new();
+                col4.DataPropertyName = "Telefono";
+                col4.HeaderText = "Telefono";
+                DataGridViewCliente.Columns.Add(col4);
+
                 DataGridViewButtonColumn colActualizar = new();
                 colActualizar.HeaderText = "Actualizar";
                 colActualizar.Text = "Actualizar";

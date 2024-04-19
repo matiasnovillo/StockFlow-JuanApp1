@@ -30,11 +30,6 @@ namespace JuanApp.Formularios.Entrada
                 col0.HeaderText = "EntradaId";
                 DataGridViewEntrada.Columns.Add(col0);
 
-                DataGridViewTextBoxColumn col1 = new();
-                col1.DataPropertyName = "CodigoDeBarra";
-                col1.HeaderText = "CodigoDeBarra";
-                DataGridViewEntrada.Columns.Add(col1);
-
                 DataGridViewTextBoxColumn col2 = new();
                 col2.DataPropertyName = "NroDePesaje";
                 col2.HeaderText = "NroDePesaje";
@@ -107,7 +102,7 @@ namespace JuanApp.Formularios.Entrada
         {
             try
             {
-                if (e.ColumnIndex == 7)
+                if (e.ColumnIndex == 6)
                 {
                     //Actualizar
                     int EntradaId = Convert.ToInt32(DataGridViewEntrada.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -119,7 +114,7 @@ namespace JuanApp.Formularios.Entrada
 
                     GetTabla();
                 }
-                else if (e.ColumnIndex == 8)
+                else if (e.ColumnIndex == 7)
                 {
                     //Borrar
                     DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",

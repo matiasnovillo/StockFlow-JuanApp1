@@ -98,36 +98,37 @@ namespace JuanApp.Formularios.Herramientas.Remito
         {
             try
             {
-                if (e.ColumnIndex == 7)
-                {
-                    //Actualizar
-                    int RemitoId = Convert.ToInt32(DataGridViewRemito.Rows[e.RowIndex].Cells[0].Value.ToString());
+                //NOTE: Here we disable anything related to modify a register
+                //if (e.ColumnIndex == 7)
+                //{
+                //    //Actualizar
+                //    int RemitoId = Convert.ToInt32(DataGridViewRemito.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                    FormularioRemito FormularioRemito = new(_remitoRepository,
-                    _remitoService,
-                    RemitoId);
+                //    FormularioRemito FormularioRemito = new(_remitoRepository,
+                //    _remitoService,
+                //    RemitoId);
 
-                    FormularioRemito.ShowDialog();
+                //    FormularioRemito.ShowDialog();
 
-                    GetTabla();
-                }
-                else if (e.ColumnIndex == 8)
-                {
-                    //Borrar
-                    DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",
-                        "Confirmar eliminación",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
+                //    GetTabla();
+                //}
+                //else if (e.ColumnIndex == 8)
+                //{
+                //    //Borrar
+                //    DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",
+                //        "Confirmar eliminación",
+                //        MessageBoxButtons.YesNo,
+                //        MessageBoxIcon.Question);
 
-                    if (result == DialogResult.Yes)
-                    {
-                        int RemitoId = Convert.ToInt32(DataGridViewRemito.Rows[e.RowIndex].Cells[0].Value.ToString());
+                //    if (result == DialogResult.Yes)
+                //    {
+                //        int RemitoId = Convert.ToInt32(DataGridViewRemito.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                        _remitoRepository.DeleteByRemitoId(RemitoId);
+                //        _remitoRepository.DeleteByRemitoId(RemitoId);
 
-                        GetTabla();
-                    }
-                }
+                //        GetTabla();
+                //    }
+                //}
             }
             catch (Exception)
             {

@@ -140,6 +140,7 @@
             // 
             // btnAgregar
             // 
+            btnAgregar.Enabled = false;
             btnAgregar.Location = new Point(594, 88);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(94, 50);

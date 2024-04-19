@@ -36,8 +36,6 @@
             dropDownButton = new ToolStripDropDownButton();
             menuItemMain = new ToolStripMenuItem();
             btnGuardar = new Button();
-            lblNroDeCodigoDeBarra = new Label();
-            txtNroDeCodigoDeBarra = new TextBox();
             txtNroDePesada = new TextBox();
             lblNroDePesada = new Label();
             txtCodigoDeProducto = new TextBox();
@@ -49,6 +47,7 @@
             lblNeto = new Label();
             numericUpDownNeto = new NumericUpDown();
             lblInfo = new Label();
+            label1 = new Label();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNeto).BeginInit();
@@ -117,25 +116,9 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // lblNroDeCodigoDeBarra
-            // 
-            lblNroDeCodigoDeBarra.AutoSize = true;
-            lblNroDeCodigoDeBarra.Location = new Point(12, 70);
-            lblNroDeCodigoDeBarra.Name = "lblNroDeCodigoDeBarra";
-            lblNroDeCodigoDeBarra.Size = new Size(158, 20);
-            lblNroDeCodigoDeBarra.TabIndex = 6;
-            lblNroDeCodigoDeBarra.Text = "Nº de código de barra";
-            // 
-            // txtNroDeCodigoDeBarra
-            // 
-            txtNroDeCodigoDeBarra.Location = new Point(12, 93);
-            txtNroDeCodigoDeBarra.Name = "txtNroDeCodigoDeBarra";
-            txtNroDeCodigoDeBarra.Size = new Size(232, 27);
-            txtNroDeCodigoDeBarra.TabIndex = 12;
-            // 
             // txtNroDePesada
             // 
-            txtNroDePesada.Location = new Point(12, 156);
+            txtNroDePesada.Location = new Point(12, 93);
             txtNroDePesada.Name = "txtNroDePesada";
             txtNroDePesada.Size = new Size(232, 27);
             txtNroDePesada.TabIndex = 14;
@@ -143,15 +126,15 @@
             // lblNroDePesada
             // 
             lblNroDePesada.AutoSize = true;
-            lblNroDePesada.Location = new Point(12, 133);
+            lblNroDePesada.Location = new Point(12, 70);
             lblNroDePesada.Name = "lblNroDePesada";
-            lblNroDePesada.Size = new Size(99, 20);
+            lblNroDePesada.Size = new Size(119, 20);
             lblNroDePesada.TabIndex = 13;
-            lblNroDePesada.Text = "Nº de pesada";
+            lblNroDePesada.Text = "Nº de pesada (*)";
             // 
             // txtCodigoDeProducto
             // 
-            txtCodigoDeProducto.Location = new Point(12, 222);
+            txtCodigoDeProducto.Location = new Point(12, 159);
             txtCodigoDeProducto.Name = "txtCodigoDeProducto";
             txtCodigoDeProducto.Size = new Size(232, 27);
             txtCodigoDeProducto.TabIndex = 16;
@@ -160,15 +143,15 @@
             // lblCodigoDeProducto
             // 
             lblCodigoDeProducto.AutoSize = true;
-            lblCodigoDeProducto.Location = new Point(12, 199);
+            lblCodigoDeProducto.Location = new Point(12, 136);
             lblCodigoDeProducto.Name = "lblCodigoDeProducto";
-            lblCodigoDeProducto.Size = new Size(144, 20);
+            lblCodigoDeProducto.Size = new Size(168, 20);
             lblCodigoDeProducto.TabIndex = 15;
-            lblCodigoDeProducto.Text = "Código de producto";
+            lblCodigoDeProducto.Text = "Código de producto  (*)";
             // 
             // txtNombreDeProducto
             // 
-            txtNombreDeProducto.Location = new Point(12, 317);
+            txtNombreDeProducto.Location = new Point(12, 254);
             txtNombreDeProducto.Name = "txtNombreDeProducto";
             txtNombreDeProducto.Size = new Size(232, 27);
             txtNombreDeProducto.TabIndex = 18;
@@ -176,11 +159,11 @@
             // lblNombreDeProducto
             // 
             lblNombreDeProducto.AutoSize = true;
-            lblNombreDeProducto.Location = new Point(12, 294);
+            lblNombreDeProducto.Location = new Point(12, 231);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
-            lblNombreDeProducto.Size = new Size(150, 20);
+            lblNombreDeProducto.Size = new Size(174, 20);
             lblNombreDeProducto.TabIndex = 17;
-            lblNombreDeProducto.Text = "Nombre de producto";
+            lblNombreDeProducto.Text = "Nombre de producto  (*)";
             // 
             // txtTexContenido
             // 
@@ -194,18 +177,18 @@
             lblTexContenido.AutoSize = true;
             lblTexContenido.Location = new Point(286, 70);
             lblTexContenido.Name = "lblTexContenido";
-            lblTexContenido.Size = new Size(236, 20);
+            lblTexContenido.Size = new Size(256, 20);
             lblTexContenido.TabIndex = 19;
-            lblTexContenido.Text = "Tex Contenido (Cant. de unidades)";
+            lblTexContenido.Text = "Tex Contenido (Cant. de unidades) (*)";
             // 
             // lblNeto
             // 
             lblNeto.AutoSize = true;
             lblNeto.Location = new Point(286, 133);
             lblNeto.Name = "lblNeto";
-            lblNeto.Size = new Size(42, 20);
+            lblNeto.Size = new Size(62, 20);
             lblNeto.TabIndex = 21;
-            lblNeto.Text = "Neto";
+            lblNeto.Text = "Neto (*)";
             // 
             // numericUpDownNeto
             // 
@@ -219,17 +202,27 @@
             // lblInfo
             // 
             lblInfo.AutoSize = true;
-            lblInfo.Location = new Point(12, 252);
+            lblInfo.Location = new Point(12, 189);
             lblInfo.Name = "lblInfo";
             lblInfo.Size = new Size(349, 20);
             lblInfo.TabIndex = 23;
             lblInfo.Text = "Presione Enter para rellenar el nombre de producto";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 391);
+            label1.Name = "label1";
+            label1.Size = new Size(98, 20);
+            label1.TabIndex = 24;
+            label1.Text = "(*) Requerido";
             // 
             // FormularioEntrada
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(546, 447);
+            Controls.Add(label1);
             Controls.Add(lblInfo);
             Controls.Add(numericUpDownNeto);
             Controls.Add(lblNeto);
@@ -241,9 +234,7 @@
             Controls.Add(lblCodigoDeProducto);
             Controls.Add(txtNroDePesada);
             Controls.Add(lblNroDePesada);
-            Controls.Add(txtNroDeCodigoDeBarra);
             Controls.Add(btnGuardar);
-            Controls.Add(lblNroDeCodigoDeBarra);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Controls.Add(lblTitulo);
@@ -267,8 +258,6 @@
         private ToolStripDropDownButton dropDownButton;
         private Button btnGuardar;
         private ToolStripMenuItem menuItemMain;
-        private Label lblNroDeCodigoDeBarra;
-        private TextBox txtNroDeCodigoDeBarra;
         private TextBox txtNroDePesada;
         private Label lblNroDePesada;
         private TextBox txtCodigoDeProducto;
@@ -280,5 +269,6 @@
         private Label lblNeto;
         private NumericUpDown numericUpDownNeto;
         private Label lblInfo;
+        private Label label1;
     }
 }
