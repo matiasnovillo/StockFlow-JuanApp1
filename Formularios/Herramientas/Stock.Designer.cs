@@ -34,8 +34,11 @@
             menuItemMain = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
+            lblTitulo = new Label();
+            DataGridViewStock = new DataGridView();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DataGridViewStock).BeginInit();
             SuspendLayout();
             // 
             // toolStrip1
@@ -69,7 +72,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 424);
+            statusStrip1.Location = new Point(0, 523);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 26);
             statusStrip1.TabIndex = 1;
@@ -81,11 +84,36 @@
             statusLabel.Size = new Size(92, 20);
             statusLabel.Text = "Información:";
             // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitulo.Location = new Point(12, 42);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(218, 31);
+            lblTitulo.TabIndex = 5;
+            lblTitulo.Text = "Consulta de remitos";
+            // 
+            // DataGridViewStock
+            // 
+            DataGridViewStock.AllowUserToAddRows = false;
+            DataGridViewStock.AllowUserToDeleteRows = false;
+            DataGridViewStock.AllowUserToOrderColumns = true;
+            DataGridViewStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DataGridViewStock.Location = new Point(12, 92);
+            DataGridViewStock.Name = "DataGridViewStock";
+            DataGridViewStock.ReadOnly = true;
+            DataGridViewStock.RowHeadersWidth = 51;
+            DataGridViewStock.Size = new Size(776, 428);
+            DataGridViewStock.TabIndex = 4;
+            // 
             // Stock
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 549);
+            Controls.Add(lblTitulo);
+            Controls.Add(DataGridViewStock);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Name = "Stock";
@@ -94,6 +122,7 @@
             toolStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DataGridViewStock).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -105,5 +134,7 @@
         private ToolStripMenuItem menuItemMain;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
+        private Label lblTitulo;
+        private DataGridView DataGridViewStock;
     }
 }

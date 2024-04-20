@@ -11,6 +11,8 @@ namespace JuanApp.Formularios.Salida
         private readonly ISalidaRepository _salidaRepository;
         private readonly ISalidaService _salidaService;
 
+        private readonly IEntradaRepository _entradaRepository;
+
         private readonly IClienteRepository _clienteRepository;
         private readonly IClienteService _clienteService;
 
@@ -24,6 +26,8 @@ namespace JuanApp.Formularios.Salida
             {
                 _salidaRepository = serviceProvider.GetRequiredService<ISalidaRepository>();
                 _salidaService = serviceProvider.GetRequiredService<ISalidaService>();
+
+                _entradaRepository = serviceProvider.GetRequiredService<IEntradaRepository>();
 
                 _clienteRepository = serviceProvider.GetRequiredService<IClienteRepository>();
                 _clienteService = serviceProvider.GetRequiredService<IClienteService>();
@@ -166,6 +170,64 @@ namespace JuanApp.Formularios.Salida
                     if (Cliente != null)
                     {
                         txtNombreDeCliente.Text = Cliente.NombreDeCliente;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void numericUpDownKilosTotales_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    numericUpDownSubtotal.Value = numericUpDownPrecio.Value * numericUpDownKilosTotales.Value;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void numericUpDownPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    numericUpDownSubtotal.Value = numericUpDownPrecio.Value * numericUpDownKilosTotales.Value;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void txtNroDePesada_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    Areas.JuanApp.Entities.Entrada Entrada = _entradaRepository
+                        .AsQueryable()
+                        .Where(x => x.NroDePesaje == Convert.ToInt32(txtNroDePesada.Text))
+                        .FirstOrDefault();
+
+                    if (Entrada != null)
+                    {
+                        txtNombreProducto.Text = Entrada.NombreDeProducto;
+                        txtCodigoDeProducto.Text = Entrada.CodigoDeProducto;
+                        numericUpDownKilosTotales.Value = Entrada.Neto;
                     }
                 }
             }

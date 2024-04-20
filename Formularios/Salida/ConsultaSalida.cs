@@ -321,8 +321,7 @@ namespace JuanApp.Formularios.Salida
         <td style=""width: 33.3333%;"">&nbsp;</td>
         <td style=""width: 33.3333%;"">
         <p>Cantidad total (KGs): {KilosRealesTotal}</p>
-        <p>Precio total: {PrecioTotal}</p>
-        <p>TOTAL: {SubtotalTotal}</p>
+        <p>Subtotal ($): {SubtotalTotal}</p>
         </td>
         </tr>
         </tbody>
@@ -430,13 +429,13 @@ namespace JuanApp.Formularios.Salida
                     .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
                     x.DateTimeLastModification <= dateTimePickerFechaFin.Value)
                     .OrderBy(x => x.NombreDeProducto)
-                    .Take(500)
+                    .Take(Convert.ToInt32(numericUpDownRegistros.Value))
                     .ToList();
                 }
 
                 DataGridViewSalida.DataSource = lstSalida;
 
-                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstSalida.Count}. Se muestran solo los últimos 500 registros";
+                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstSalida.Count}.";
 
                 return lstSalida;
             }

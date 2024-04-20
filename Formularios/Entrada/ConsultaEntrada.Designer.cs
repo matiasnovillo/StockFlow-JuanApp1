@@ -46,10 +46,12 @@
             btnAgregar = new Button();
             lblNeto = new Label();
             txtNetoTotal = new TextBox();
-            btnBorrarTodo = new Button();
+            numericUpDownRegistrosPorPagina = new NumericUpDown();
+            label1 = new Label();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).BeginInit();
             SuspendLayout();
             // 
             // toolStrip1
@@ -200,22 +202,32 @@
             txtNetoTotal.Size = new Size(194, 27);
             txtNetoTotal.TabIndex = 13;
             // 
-            // btnBorrarTodo
+            // numericUpDownRegistrosPorPagina
             // 
-            btnBorrarTodo.Location = new Point(12, 531);
-            btnBorrarTodo.Name = "btnBorrarTodo";
-            btnBorrarTodo.Size = new Size(94, 38);
-            btnBorrarTodo.TabIndex = 14;
-            btnBorrarTodo.Text = "Borrar todo";
-            btnBorrarTodo.UseVisualStyleBackColor = true;
-            btnBorrarTodo.Click += btnBorrarTodo_Click;
+            numericUpDownRegistrosPorPagina.Location = new Point(564, 106);
+            numericUpDownRegistrosPorPagina.Maximum = new decimal(new int[] { 1410065407, 2, 0, 0 });
+            numericUpDownRegistrosPorPagina.Minimum = new decimal(new int[] { 500, 0, 0, 0 });
+            numericUpDownRegistrosPorPagina.Name = "numericUpDownRegistrosPorPagina";
+            numericUpDownRegistrosPorPagina.Size = new Size(150, 27);
+            numericUpDownRegistrosPorPagina.TabIndex = 15;
+            numericUpDownRegistrosPorPagina.Value = new decimal(new int[] { 500, 0, 0, 0 });
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(564, 83);
+            label1.Name = "label1";
+            label1.Size = new Size(147, 20);
+            label1.TabIndex = 16;
+            label1.Text = "Registros por página";
             // 
             // ConsultaEntrada
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(826, 608);
-            Controls.Add(btnBorrarTodo);
+            Controls.Add(label1);
+            Controls.Add(numericUpDownRegistrosPorPagina);
             Controls.Add(txtNetoTotal);
             Controls.Add(lblNeto);
             Controls.Add(btnAgregar);
@@ -237,6 +249,7 @@
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -260,6 +273,7 @@
         private Button btnAgregar;
         private Label lblNeto;
         private TextBox txtNetoTotal;
-        private Button btnBorrarTodo;
+        private NumericUpDown numericUpDownRegistrosPorPagina;
+        private Label label1;
     }
 }

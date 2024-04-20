@@ -53,10 +53,12 @@
             lblPrecioUnidadTotal = new Label();
             txtSubtotalTotal = new TextBox();
             lblSubtotalTotal = new Label();
-            btnBorrarTodo = new Button();
+            numericUpDownRegistros = new NumericUpDown();
+            label2 = new Label();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownRegistros).BeginInit();
             SuspendLayout();
             // 
             // toolStrip1
@@ -270,22 +272,32 @@
             lblSubtotalTotal.TabIndex = 24;
             lblSubtotalTotal.Text = "Subtotal TOTAL:";
             // 
-            // btnBorrarTodo
+            // numericUpDownRegistros
             // 
-            btnBorrarTodo.Location = new Point(12, 564);
-            btnBorrarTodo.Name = "btnBorrarTodo";
-            btnBorrarTodo.Size = new Size(97, 33);
-            btnBorrarTodo.TabIndex = 26;
-            btnBorrarTodo.Text = "Borrar todo";
-            btnBorrarTodo.UseVisualStyleBackColor = true;
-            btnBorrarTodo.Click += btnBorrarTodo_Click;
+            numericUpDownRegistros.Location = new Point(550, 107);
+            numericUpDownRegistros.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
+            numericUpDownRegistros.Minimum = new decimal(new int[] { 500, 0, 0, 0 });
+            numericUpDownRegistros.Name = "numericUpDownRegistros";
+            numericUpDownRegistros.Size = new Size(114, 27);
+            numericUpDownRegistros.TabIndex = 27;
+            numericUpDownRegistros.Value = new decimal(new int[] { 500, 0, 0, 0 });
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(550, 84);
+            label2.Name = "label2";
+            label2.Size = new Size(70, 20);
+            label2.TabIndex = 28;
+            label2.Text = "Registros";
             // 
             // ConsultaSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 646);
-            Controls.Add(btnBorrarTodo);
+            Controls.Add(label2);
+            Controls.Add(numericUpDownRegistros);
             Controls.Add(txtSubtotalTotal);
             Controls.Add(lblSubtotalTotal);
             Controls.Add(txtPrecioTotal);
@@ -314,6 +326,7 @@
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownRegistros).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -344,6 +357,7 @@
         private Label lblPrecioUnidadTotal;
         private TextBox txtSubtotalTotal;
         private Label lblSubtotalTotal;
-        private Button btnBorrarTodo;
+        private NumericUpDown numericUpDownRegistros;
+        private Label label2;
     }
 }

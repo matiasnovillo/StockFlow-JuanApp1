@@ -40,11 +40,10 @@
             groupBoxSalida = new GroupBox();
             btnSalidaConsulta = new Button();
             groupBoxHerramientas = new GroupBox();
+            btnRemito = new Button();
             btnCliente = new Button();
             btnProducto = new Button();
             btnStock = new Button();
-            btnEstadisticas = new Button();
-            btnRemito = new Button();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             groupBoxEntrada.SuspendLayout();
@@ -152,13 +151,22 @@
             groupBoxHerramientas.Controls.Add(btnCliente);
             groupBoxHerramientas.Controls.Add(btnProducto);
             groupBoxHerramientas.Controls.Add(btnStock);
-            groupBoxHerramientas.Controls.Add(btnEstadisticas);
             groupBoxHerramientas.Location = new Point(307, 46);
             groupBoxHerramientas.Name = "groupBoxHerramientas";
-            groupBoxHerramientas.Size = new Size(546, 355);
+            groupBoxHerramientas.Size = new Size(546, 329);
             groupBoxHerramientas.TabIndex = 5;
             groupBoxHerramientas.TabStop = false;
             groupBoxHerramientas.Text = "Herramientas";
+            // 
+            // btnRemito
+            // 
+            btnRemito.Location = new Point(61, 116);
+            btnRemito.Name = "btnRemito";
+            btnRemito.Size = new Size(142, 54);
+            btnRemito.TabIndex = 7;
+            btnRemito.Text = "Remitos";
+            btnRemito.UseVisualStyleBackColor = true;
+            btnRemito.Click += btnRemito_Click;
             // 
             // btnCliente
             // 
@@ -182,33 +190,13 @@
             // 
             // btnStock
             // 
-            btnStock.Location = new Point(56, 116);
+            btnStock.Location = new Point(61, 40);
             btnStock.Name = "btnStock";
             btnStock.Size = new Size(142, 54);
             btnStock.TabIndex = 4;
             btnStock.Text = "Stock";
             btnStock.UseVisualStyleBackColor = true;
             btnStock.Click += btnStock_Click;
-            // 
-            // btnEstadisticas
-            // 
-            btnEstadisticas.Location = new Point(56, 40);
-            btnEstadisticas.Name = "btnEstadisticas";
-            btnEstadisticas.Size = new Size(142, 54);
-            btnEstadisticas.TabIndex = 3;
-            btnEstadisticas.Text = "Estadisticas";
-            btnEstadisticas.UseVisualStyleBackColor = true;
-            btnEstadisticas.Click += btnEstadisticas_Click;
-            // 
-            // btnRemito
-            // 
-            btnRemito.Location = new Point(220, 116);
-            btnRemito.Name = "btnRemito";
-            btnRemito.Size = new Size(142, 54);
-            btnRemito.TabIndex = 7;
-            btnRemito.Text = "Remitos";
-            btnRemito.UseVisualStyleBackColor = true;
-            btnRemito.Click += btnRemito_Click;
             // 
             // Main
             // 
@@ -246,7 +234,6 @@
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem menuItemSalir;
         private GroupBox groupBoxHerramientas;
-        private Button btnEstadisticas;
         private Button btnStock;
         private Button btnProducto;
         private Button btnCliente;

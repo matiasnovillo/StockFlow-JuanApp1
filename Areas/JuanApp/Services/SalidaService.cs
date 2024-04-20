@@ -183,96 +183,93 @@ namespace JuanApp.Areas.JuanApp.Services
 
                 DataSet dsSalida = new();
 
-                foreach (string RowChecked in RowsChecked)
+                //We define another DataTable dtSalidaCopy to avoid issue related to DateTime conversion
+                DataTable dtSalidaCopy = new();
+
+                #region Define columns for dtSalidaCopy
+                DataColumn dtColumnSalidaIdFordtSalidaCopy = new DataColumn();
+                dtColumnSalidaIdFordtSalidaCopy.DataType = typeof(string);
+                dtColumnSalidaIdFordtSalidaCopy.ColumnName = "SalidaId";
+                dtSalidaCopy.Columns.Add(dtColumnSalidaIdFordtSalidaCopy);
+
+                DataColumn dtColumnCodigoDeBarraFordtSalidaCopy = new DataColumn();
+                dtColumnCodigoDeBarraFordtSalidaCopy.DataType = typeof(string);
+                dtColumnCodigoDeBarraFordtSalidaCopy.ColumnName = "CodigoDeBarra";
+                dtSalidaCopy.Columns.Add(dtColumnCodigoDeBarraFordtSalidaCopy);
+
+                DataColumn dtColumnCodigoDeClienteFordtSalidaCopy = new DataColumn();
+                dtColumnCodigoDeClienteFordtSalidaCopy.DataType = typeof(string);
+                dtColumnCodigoDeClienteFordtSalidaCopy.ColumnName = "CodigoDeCliente";
+                dtSalidaCopy.Columns.Add(dtColumnCodigoDeClienteFordtSalidaCopy);
+
+                DataColumn dtColumnNombreDeClienteFordtSalidaCopy = new DataColumn();
+                dtColumnNombreDeClienteFordtSalidaCopy.DataType = typeof(string);
+                dtColumnNombreDeClienteFordtSalidaCopy.ColumnName = "NombreDeCliente";
+                dtSalidaCopy.Columns.Add(dtColumnNombreDeClienteFordtSalidaCopy);
+
+                DataColumn dtColumnCodigoDeProductoFordtSalidaCopy = new DataColumn();
+                dtColumnCodigoDeProductoFordtSalidaCopy.DataType = typeof(string);
+                dtColumnCodigoDeProductoFordtSalidaCopy.ColumnName = "CodigoDeProducto";
+                dtSalidaCopy.Columns.Add(dtColumnCodigoDeProductoFordtSalidaCopy);
+
+                DataColumn dtColumnNombreDeProductoFordtSalidaCopy = new DataColumn();
+                dtColumnNombreDeProductoFordtSalidaCopy.DataType = typeof(string);
+                dtColumnNombreDeProductoFordtSalidaCopy.ColumnName = "NombreDeProducto";
+                dtSalidaCopy.Columns.Add(dtColumnNombreDeProductoFordtSalidaCopy);
+
+                DataColumn dtColumnKilosRealesFordtSalidaCopy = new DataColumn();
+                dtColumnKilosRealesFordtSalidaCopy.DataType = typeof(string);
+                dtColumnKilosRealesFordtSalidaCopy.ColumnName = "KilosReales";
+                dtSalidaCopy.Columns.Add(dtColumnKilosRealesFordtSalidaCopy);
+
+                DataColumn dtColumnPrecioFordtSalidaCopy = new DataColumn();
+                dtColumnPrecioFordtSalidaCopy.DataType = typeof(string);
+                dtColumnPrecioFordtSalidaCopy.ColumnName = "Precio";
+                dtSalidaCopy.Columns.Add(dtColumnPrecioFordtSalidaCopy);
+
+                DataColumn dtColumnSubtotalFordtSalidaCopy = new DataColumn();
+                dtColumnSubtotalFordtSalidaCopy.DataType = typeof(string);
+                dtColumnSubtotalFordtSalidaCopy.ColumnName = "Subtotal";
+                dtSalidaCopy.Columns.Add(dtColumnSubtotalFordtSalidaCopy);
+                #endregion
+
+                dsSalida.Tables.Add(dtSalidaCopy);
+
+                #region Create another DataTable to copy
+
+                DataTable DataTable = new();
+                DataTable.Columns.Add("SalidaId", typeof(string));
+                DataTable.Columns.Add("CodigoDeBarra", typeof(string));
+                DataTable.Columns.Add("CodigoDeCliente", typeof(string));
+                DataTable.Columns.Add("NombreDeCliente", typeof(string));
+                DataTable.Columns.Add("CodigoDeProducto", typeof(string));
+                DataTable.Columns.Add("NombreDeProducto", typeof(string));
+                DataTable.Columns.Add("KilosReales", typeof(string));
+                DataTable.Columns.Add("Precio", typeof(string));
+                DataTable.Columns.Add("Subtotal", typeof(string));
+
+
+
+                foreach (Salida salida in lstSalida)
                 {
-                    //We define another DataTable dtSalidaCopy to avoid issue related to DateTime conversion
-                    DataTable dtSalidaCopy = new();
+                    DataTable.Rows.Add(
+                        salida.SalidaId,
+                        salida.CodigoDeBarra,
+                        salida.CodigoDeCliente,
+                        salida.NombreDeCliente,
+                        salida.CodigoDeProducto,
+                        salida.NombreDeProducto,
+                        salida.KilosReales,
+                        salida.Precio,
+                        salida.Subtotal);
+                }
+                #endregion
 
-                    #region Define columns for dtSalidaCopy
-                    DataColumn dtColumnSalidaIdFordtSalidaCopy = new DataColumn();
-                    dtColumnSalidaIdFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnSalidaIdFordtSalidaCopy.ColumnName = "SalidaId";
-                    dtSalidaCopy.Columns.Add(dtColumnSalidaIdFordtSalidaCopy);
+                dtSalidaCopy = DataTable;
 
-                    DataColumn dtColumnCodigoDeBarraFordtSalidaCopy = new DataColumn();
-                    dtColumnCodigoDeBarraFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnCodigoDeBarraFordtSalidaCopy.ColumnName = "CodigoDeBarra";
-                    dtSalidaCopy.Columns.Add(dtColumnCodigoDeBarraFordtSalidaCopy);
-
-                    DataColumn dtColumnCodigoDeClienteFordtSalidaCopy = new DataColumn();
-                    dtColumnCodigoDeClienteFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnCodigoDeClienteFordtSalidaCopy.ColumnName = "CodigoDeCliente";
-                    dtSalidaCopy.Columns.Add(dtColumnCodigoDeClienteFordtSalidaCopy);
-
-                    DataColumn dtColumnNombreDeClienteFordtSalidaCopy = new DataColumn();
-                    dtColumnNombreDeClienteFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnNombreDeClienteFordtSalidaCopy.ColumnName = "NombreDeCliente";
-                    dtSalidaCopy.Columns.Add(dtColumnNombreDeClienteFordtSalidaCopy);
-
-                    DataColumn dtColumnCodigoDeProductoFordtSalidaCopy = new DataColumn();
-                    dtColumnCodigoDeProductoFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnCodigoDeProductoFordtSalidaCopy.ColumnName = "CodigoDeProducto";
-                    dtSalidaCopy.Columns.Add(dtColumnCodigoDeProductoFordtSalidaCopy);
-
-                    DataColumn dtColumnNombreDeProductoFordtSalidaCopy = new DataColumn();
-                    dtColumnNombreDeProductoFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnNombreDeProductoFordtSalidaCopy.ColumnName = "NombreDeProducto";
-                    dtSalidaCopy.Columns.Add(dtColumnNombreDeProductoFordtSalidaCopy);
-
-                    DataColumn dtColumnKilosRealesFordtSalidaCopy = new DataColumn();
-                    dtColumnKilosRealesFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnKilosRealesFordtSalidaCopy.ColumnName = "KilosReales";
-                    dtSalidaCopy.Columns.Add(dtColumnKilosRealesFordtSalidaCopy);
-
-                    DataColumn dtColumnPrecioFordtSalidaCopy = new DataColumn();
-                    dtColumnPrecioFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnPrecioFordtSalidaCopy.ColumnName = "Precio";
-                    dtSalidaCopy.Columns.Add(dtColumnPrecioFordtSalidaCopy);
-
-                    DataColumn dtColumnSubtotalFordtSalidaCopy = new DataColumn();
-                    dtColumnSubtotalFordtSalidaCopy.DataType = typeof(string);
-                    dtColumnSubtotalFordtSalidaCopy.ColumnName = "Subtotal";
-                    dtSalidaCopy.Columns.Add(dtColumnSubtotalFordtSalidaCopy);
-                    #endregion
-
-                    dsSalida.Tables.Add(dtSalidaCopy);
-
-                    #region Create another DataTable to copy
-
-                    DataTable DataTable = new();
-                    DataTable.Columns.Add("SalidaId", typeof(string));
-                    DataTable.Columns.Add("CodigoDeBarra", typeof(string));
-                    DataTable.Columns.Add("CodigoDeCliente", typeof(string));
-                    DataTable.Columns.Add("NombreDeCliente", typeof(string));
-                    DataTable.Columns.Add("CodigoDeProducto", typeof(string));
-                    DataTable.Columns.Add("NombreDeProducto", typeof(string));
-                    DataTable.Columns.Add("KilosReales", typeof(string));
-                    DataTable.Columns.Add("Precio", typeof(string));
-                    DataTable.Columns.Add("Subtotal", typeof(string));
-                    
-
-
-                    foreach (Salida salida in lstSalida)
-                    {
-                        DataTable.Rows.Add(
-                            salida.SalidaId,
-                            salida.CodigoDeBarra,
-                            salida.CodigoDeCliente,
-                            salida.NombreDeCliente,
-                            salida.CodigoDeProducto,
-                            salida.NombreDeProducto,
-                            salida.KilosReales,
-                            salida.Precio,
-                            salida.Subtotal);
-                    }
-                    #endregion
-
-                    dtSalidaCopy = DataTable;
-
-                    foreach (DataRow DataRow in dtSalidaCopy.Rows)
-                        {
-                            dsSalida.Tables[0].Rows.Add(DataRow.ItemArray);
-                        }
+                foreach (DataRow DataRow in dtSalidaCopy.Rows)
+                {
+                    dsSalida.Tables[0].Rows.Add(DataRow.ItemArray);
                 }
 
                 for (int i = 0; i < dsSalida.Tables.Count; i++)

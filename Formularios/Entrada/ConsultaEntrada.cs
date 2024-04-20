@@ -5,6 +5,7 @@ using JuanApp.Areas.BasicCore.Entities;
 using JuanApp.Areas.JuanApp.Entities;
 using DocumentFormat.OpenXml.InkML;
 using Microsoft.Win32;
+using System.Linq;
 
 namespace JuanApp.Formularios.Entrada
 {
@@ -55,6 +56,11 @@ namespace JuanApp.Formularios.Entrada
                 col6.HeaderText = "Neto";
                 DataGridViewEntrada.Columns.Add(col6);
 
+                DataGridViewTextBoxColumn col7 = new();
+                col7.DataPropertyName = "DateTimeLastModification";
+                col7.HeaderText = "Fecha de creacion";
+                DataGridViewEntrada.Columns.Add(col7);
+
                 DataGridViewButtonColumn colActualizar = new();
                 colActualizar.HeaderText = "Actualizar";
                 colActualizar.Text = "Actualizar";
@@ -71,6 +77,8 @@ namespace JuanApp.Formularios.Entrada
 
                 dateTimePickerFechaInicio.Value = DateTime.Now.AddDays(-30);
                 dateTimePickerFechaFin.Value = DateTime.Now.AddDays(1);
+
+                numericUpDownRegistrosPorPagina.Value = 500;
 
                 GetTabla();
             }
@@ -158,7 +166,7 @@ namespace JuanApp.Formularios.Entrada
                     .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
                     x.DateTimeLastModification <= dateTimePickerFechaFin.Value)
                     .OrderBy(x => x.NombreDeProducto)
-                    .Take(500)
+                    .Take(Convert.ToInt32(numericUpDownRegistrosPorPagina.Value))
                     .ToList();
                 }
                 else
@@ -189,7 +197,7 @@ namespace JuanApp.Formularios.Entrada
 
                 DataGridViewEntrada.DataSource = lstEntrada;
 
-                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstEntrada.Count}. Se muestran solo los últimos 500 registros";
+                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstEntrada.Count}";
             }
             catch (Exception)
             {
@@ -210,28 +218,6 @@ namespace JuanApp.Formularios.Entrada
             catch (Exception)
             {
 
-                throw;
-            }
-        }
-
-        private void btnBorrarTodo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar todos los registros?",
-                        "Confirmar eliminación",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    _entradaRepository.DeleteAll();
-
-                    MessageBox.Show("Todos los registros han sido borrados exitosamente", "Información");
-                }
-            }
-            catch (Exception)
-            {
                 throw;
             }
         }
