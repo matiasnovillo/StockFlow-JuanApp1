@@ -38,35 +38,6 @@ namespace JuanApp
             Close();
         }
 
-        private void btnEstadisticas_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Estadisticas Estadisticas = new();
-                Estadisticas.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                Failure Failure = new Failure()
-                {
-                    FailureId = 0,
-                    Active = true,
-                    UserCreationId = 1,
-                    UserLastModificationId = 1,
-                    DateTimeCreation = DateTime.Now,
-                    DateTimeLastModification = DateTime.Now,
-                    Message = ex.Message,
-                    EmergencyLevel = 1,
-                    StackTrace = ex.StackTrace,
-                    Source = ex.Source,
-                    Comment = ""
-                };
-                _failureRepository.Add(Failure);
-
-                MessageBox.Show($@"Error: {ex.Message}", "Error");
-            }
-        }
-
         private void btnEntradaConsulta_Click(object sender, EventArgs e)
         {
             try
@@ -224,7 +195,7 @@ ya existe en la base de datos", "Atención");
         {
             try
             {
-                Stock Stock = new();
+                Stock Stock = new(_serviceProvider);
                 Stock.ShowDialog();
             }
             catch (Exception ex)

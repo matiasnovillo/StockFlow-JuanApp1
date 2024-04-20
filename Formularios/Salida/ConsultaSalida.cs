@@ -41,6 +41,11 @@ namespace JuanApp.Formularios.Salida
                 col0.HeaderText = "SalidaId";
                 DataGridViewSalida.Columns.Add(col0);
 
+                DataGridViewTextBoxColumn col8 = new();
+                col8.DataPropertyName = "NroDePesaje";
+                col8.HeaderText = "NroDePesaje";
+                DataGridViewSalida.Columns.Add(col8);
+
                 DataGridViewTextBoxColumn col1 = new();
                 col1.DataPropertyName = "CodigoDeCliente";
                 col1.HeaderText = "CodigoDeCliente";
@@ -354,7 +359,7 @@ namespace JuanApp.Formularios.Salida
         {
             try
             {
-                if (e.ColumnIndex == 8)
+                if (e.ColumnIndex == 9)
                 {
                     //Actualizar
                     int EntradaId = Convert.ToInt32(DataGridViewSalida.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -366,7 +371,7 @@ namespace JuanApp.Formularios.Salida
 
                     GetTabla();
                 }
-                else if (e.ColumnIndex == 9)
+                else if (e.ColumnIndex == 10)
                 {
                     //Borrar
                     DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",
@@ -410,7 +415,7 @@ namespace JuanApp.Formularios.Salida
                     .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
                     x.DateTimeLastModification <= dateTimePickerFechaFin.Value)
                     .OrderBy(x => x.NombreDeProducto)
-                    .Take(500)
+                    .Take(Convert.ToInt32(numericUpDownRegistros.Value))
                     .ToList();
                 }
                 else

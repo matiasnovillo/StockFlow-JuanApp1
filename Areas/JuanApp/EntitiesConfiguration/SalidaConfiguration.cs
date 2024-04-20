@@ -86,9 +86,9 @@ namespace JuanApp.Areas.JuanApp.EntitiesConfiguration
                     .HasColumnType("numeric(18, 2)")
                     .IsRequired(true);
 
-                //CodigoDeBarra
-                entity.Property(e => e.CodigoDeBarra)
-                    .HasColumnType("varchar(8000)")
+                //NroDePesaje
+                entity.Property(e => e.NroDePesaje)
+                    .HasColumnType("int")
                     .IsRequired(true);
 
                 

@@ -206,6 +206,7 @@
             numericUpDownKilosTotales.DecimalPlaces = 2;
             numericUpDownKilosTotales.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownKilosTotales.Location = new Point(284, 94);
+            numericUpDownKilosTotales.Maximum = new decimal(new int[] { 1215752191, 23, 0, 0 });
             numericUpDownKilosTotales.Name = "numericUpDownKilosTotales";
             numericUpDownKilosTotales.Size = new Size(150, 27);
             numericUpDownKilosTotales.TabIndex = 6;
@@ -225,6 +226,7 @@
             numericUpDownPrecio.DecimalPlaces = 2;
             numericUpDownPrecio.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownPrecio.Location = new Point(284, 183);
+            numericUpDownPrecio.Maximum = new decimal(new int[] { 1215752191, 23, 0, 0 });
             numericUpDownPrecio.Name = "numericUpDownPrecio";
             numericUpDownPrecio.Size = new Size(150, 27);
             numericUpDownPrecio.TabIndex = 7;
@@ -244,6 +246,7 @@
             numericUpDownSubtotal.DecimalPlaces = 2;
             numericUpDownSubtotal.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownSubtotal.Location = new Point(284, 249);
+            numericUpDownSubtotal.Maximum = new decimal(new int[] { 1410065407, 2, 0, 0 });
             numericUpDownSubtotal.Name = "numericUpDownSubtotal";
             numericUpDownSubtotal.Size = new Size(150, 27);
             numericUpDownSubtotal.TabIndex = 8;

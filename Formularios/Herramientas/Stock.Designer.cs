@@ -36,9 +36,15 @@
             statusLabel = new ToolStripStatusLabel();
             lblTitulo = new Label();
             DataGridViewStock = new DataGridView();
+            txtBuscar = new TextBox();
+            lblBarraDeBusqueda = new Label();
+            btnBuscar = new Button();
+            numericUpDownRegistrosPorPagina = new NumericUpDown();
+            label1 = new Label();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).BeginInit();
             SuspendLayout();
             // 
             // toolStrip1
@@ -90,9 +96,9 @@
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitulo.Location = new Point(12, 42);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(218, 31);
+            lblTitulo.Size = new Size(194, 31);
             lblTitulo.TabIndex = 5;
-            lblTitulo.Text = "Consulta de remitos";
+            lblTitulo.Text = "Consulta de stock";
             // 
             // DataGridViewStock
             // 
@@ -100,18 +106,68 @@
             DataGridViewStock.AllowUserToDeleteRows = false;
             DataGridViewStock.AllowUserToOrderColumns = true;
             DataGridViewStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DataGridViewStock.Location = new Point(12, 92);
+            DataGridViewStock.Location = new Point(12, 172);
             DataGridViewStock.Name = "DataGridViewStock";
             DataGridViewStock.ReadOnly = true;
             DataGridViewStock.RowHeadersWidth = 51;
-            DataGridViewStock.Size = new Size(776, 428);
+            DataGridViewStock.Size = new Size(776, 348);
             DataGridViewStock.TabIndex = 4;
+            // 
+            // txtBuscar
+            // 
+            txtBuscar.Location = new Point(12, 139);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(532, 27);
+            txtBuscar.TabIndex = 12;
+            // 
+            // lblBarraDeBusqueda
+            // 
+            lblBarraDeBusqueda.AutoSize = true;
+            lblBarraDeBusqueda.Location = new Point(12, 116);
+            lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
+            lblBarraDeBusqueda.Size = new Size(588, 20);
+            lblBarraDeBusqueda.TabIndex = 11;
+            lblBarraDeBusqueda.Text = "Barra de búsqueda (Busque por Nº de pesaje, nombre de producto o cód. de producto)";
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(694, 116);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(94, 50);
+            btnBuscar.TabIndex = 13;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // numericUpDownRegistrosPorPagina
+            // 
+            numericUpDownRegistrosPorPagina.Location = new Point(260, 49);
+            numericUpDownRegistrosPorPagina.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
+            numericUpDownRegistrosPorPagina.Minimum = new decimal(new int[] { 500, 0, 0, 0 });
+            numericUpDownRegistrosPorPagina.Name = "numericUpDownRegistrosPorPagina";
+            numericUpDownRegistrosPorPagina.Size = new Size(150, 27);
+            numericUpDownRegistrosPorPagina.TabIndex = 14;
+            numericUpDownRegistrosPorPagina.Value = new decimal(new int[] { 500, 0, 0, 0 });
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(260, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(191, 20);
+            label1.TabIndex = 15;
+            label1.Text = "Cant. de registros a mostrar";
             // 
             // Stock
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 549);
+            Controls.Add(label1);
+            Controls.Add(numericUpDownRegistrosPorPagina);
+            Controls.Add(btnBuscar);
+            Controls.Add(txtBuscar);
+            Controls.Add(lblBarraDeBusqueda);
             Controls.Add(lblTitulo);
             Controls.Add(DataGridViewStock);
             Controls.Add(statusStrip1);
@@ -123,6 +179,7 @@
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,5 +193,10 @@
         private ToolStripStatusLabel statusLabel;
         private Label lblTitulo;
         private DataGridView DataGridViewStock;
+        private TextBox txtBuscar;
+        private Label lblBarraDeBusqueda;
+        private Button btnBuscar;
+        private NumericUpDown numericUpDownRegistrosPorPagina;
+        private Label label1;
     }
 }

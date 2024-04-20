@@ -95,7 +95,7 @@ namespace JuanApp.Formularios.Salida
                             DateTimeLastModification = DateTime.Now,
                             CodigoDeCliente = txtCodigoDeCliente.Text,
                             NombreDeCliente = txtNombreDeCliente.Text,
-                            CodigoDeBarra = "",
+                            NroDePesaje = Convert.ToInt32(txtNroDePesada.Text),
                             CodigoDeProducto = Convert.ToInt32(txtCodigoDeProducto.Text),
                             NombreDeProducto = txtNombreProducto.Text,
                             KilosReales = numericUpDownKilosTotales.Value,
@@ -109,6 +109,7 @@ namespace JuanApp.Formularios.Salida
                         //Actualizar
                         Areas.JuanApp.Entities.Salida Salida = _salidaRepository.GetBySalidaId(_salidaId);
 
+                        Salida.NroDePesaje = Convert.ToInt32(txtNroDePesada.Text);
                         Salida.CodigoDeCliente = txtCodigoDeCliente.Text;
                         Salida.NombreDeCliente = txtNombreDeCliente.Text;
                         Salida.CodigoDeProducto = Convert.ToInt32(txtCodigoDeProducto.Text);

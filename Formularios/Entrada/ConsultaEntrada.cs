@@ -184,7 +184,7 @@ namespace JuanApp.Formularios.Entrada
                     .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
                     x.DateTimeLastModification <= dateTimePickerFechaFin.Value)
                     .OrderBy(x => x.NombreDeProducto)
-                    .Take(500)
+                    .Take(Convert.ToInt32(numericUpDownRegistrosPorPagina.Value))
                     .ToList();
                 }
 

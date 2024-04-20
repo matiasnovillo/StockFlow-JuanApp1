@@ -158,7 +158,7 @@ namespace JuanApp.Areas.JuanApp.Services
                         salida.KilosReales,
                         salida.Precio,
                         salida.Subtotal,
-                        salida.CodigoDeBarra
+                        salida.NroDePesaje
                         
                                 );
                         }
@@ -254,7 +254,7 @@ namespace JuanApp.Areas.JuanApp.Services
                 {
                     DataTable.Rows.Add(
                         salida.SalidaId,
-                        salida.CodigoDeBarra,
+                        salida.NroDePesaje,
                         salida.CodigoDeCliente,
                         salida.NombreDeCliente,
                         salida.CodigoDeProducto,
