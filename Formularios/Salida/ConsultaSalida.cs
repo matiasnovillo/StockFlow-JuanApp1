@@ -83,6 +83,11 @@ namespace JuanApp.Formularios.Salida
                 col7.HeaderText = "Subtotal";
                 DataGridViewSalida.Columns.Add(col7);
 
+                DataGridViewTextBoxColumn col9 = new();
+                col9.DataPropertyName = "DateTimeLastModification";
+                col9.HeaderText = "Fecha de última modificación";
+                DataGridViewSalida.Columns.Add(col9);
+
                 DataGridViewButtonColumn colActualizar = new();
                 colActualizar.HeaderText = "Actualizar";
                 colActualizar.Text = "Actualizar";

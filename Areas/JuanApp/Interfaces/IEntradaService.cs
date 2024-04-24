@@ -1,4 +1,5 @@
 using System.Data;
+using JuanApp.Areas.JuanApp.Entities;
 using JuanApp.Library;
 
 /*
@@ -19,7 +20,7 @@ namespace JuanApp.Areas.JuanApp.Interfaces
         #region Exportations
         DateTime ExportAsPDF(Ajax Ajax, string ExportationType);
 
-        DateTime ExportAsExcel(Ajax Ajax, string ExportationType);
+        DateTime ExportAsExcel(List<Entrada> lstEntrada, Ajax Ajax, string ExportationType, string pathToSave);
 
         DateTime ExportAsCSV(Ajax Ajax, string ExportationType);
         #endregion

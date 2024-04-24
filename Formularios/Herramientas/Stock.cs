@@ -1,5 +1,7 @@
-﻿using JuanApp.Areas.JuanApp.Entities;
+﻿using DocumentFormat.OpenXml.ExtendedProperties;
+using JuanApp.Areas.JuanApp.Entities;
 using JuanApp.Areas.JuanApp.Interfaces;
+using JuanApp.Areas.JuanApp.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -10,6 +12,7 @@ namespace JuanApp.Formularios.Herramientas
     {
         private readonly ISalidaRepository _salidaRepository;
         private readonly IEntradaRepository _entradaRepository;
+        private readonly IEntradaService _entradaService;
         private readonly ServiceProvider _serviceProvider;
 
         public Stock(ServiceProvider serviceProvider)
@@ -17,6 +20,7 @@ namespace JuanApp.Formularios.Herramientas
             _serviceProvider = serviceProvider;
             _salidaRepository = serviceProvider.GetRequiredService<ISalidaRepository>();
             _entradaRepository = serviceProvider.GetRequiredService<IEntradaRepository>();
+            _entradaService = serviceProvider.GetRequiredService<IEntradaService>();
 
             InitializeComponent();
 
@@ -24,7 +28,7 @@ namespace JuanApp.Formularios.Herramientas
             col0.DataPropertyName = "EntradaId";
             col0.HeaderText = "ID del sistema";
             DataGridViewStock.Columns.Add(col0);
-            
+
             DataGridViewTextBoxColumn col2 = new();
             col2.DataPropertyName = "NroDePesaje";
             col2.HeaderText = "Nº de pesaje";
@@ -53,8 +57,15 @@ namespace JuanApp.Formularios.Herramientas
 
             DataGridViewTextBoxColumn col7 = new();
             col7.DataPropertyName = "DateTimeLastModification";
-            col7.HeaderText = "Fecha de creación";
+            col7.HeaderText = "Fecha de última modificación";
             DataGridViewStock.Columns.Add(col7);
+
+            DateTime now = DateTime.Now;
+            DateTime NowIn030DaysBefore = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
+            DateTime NowIn2359 = new DateTime(now.Year, now.Month, now.Day, 23, 59, 59);
+
+            DateTimePickerFechaInicio.Value = NowIn030DaysBefore.AddDays(-30);
+            DateTimePickerFechaFin.Value = NowIn2359;
 
             numericUpDownRegistrosPorPagina.Value = 500;
 
@@ -79,23 +90,32 @@ namespace JuanApp.Formularios.Herramientas
             }
         }
 
-        private void GetTabla()
+        private List<Areas.JuanApp.Entities.Entrada> GetTabla()
         {
             try
             {
-                List<Areas.JuanApp.Entities.Entrada> lstStock = [];
+                if (DateTimePickerFechaInicio.Value > DateTimePickerFechaFin.Value)
+                {
+                    MessageBox.Show("Fecha de inicio debe ser menor a fecha fin", "Atención");
+                    return null;
+                }
 
-                List<Areas.JuanApp.Entities.Entrada> lstEntrada = _entradaRepository.GetAll();
+                List<Areas.JuanApp.Entities.Entrada> lstEntrada = [];
 
                 List<Areas.JuanApp.Entities.Salida> lstSalida = _salidaRepository.GetAll();
 
+                var nrosDePesajeSalida = lstSalida.Select(salida => salida.NroDePesaje).ToList();
+
                 if (string.IsNullOrEmpty(txtBuscar.Text))
                 {
-                    lstStock = lstEntrada.Where(entrada =>
-                            !lstSalida.Any(salida => salida.NroDePesaje == entrada.NroDePesaje))
-                            .OrderBy(x => x.NombreDeProducto)
-                            .Take(Convert.ToInt32(numericUpDownRegistrosPorPagina.Value))
-                            .ToList();
+                    lstEntrada = _entradaRepository
+                    .AsQueryable()
+                    .Where(entrada => !nrosDePesajeSalida.Contains(entrada.NroDePesaje))
+                    .Where(x => x.DateTimeLastModification >= DateTimePickerFechaInicio.Value &&
+                    x.DateTimeLastModification <= DateTimePickerFechaFin.Value)
+                    .OrderBy(x => x.NombreDeProducto)
+                    .Take(Convert.ToInt32(numericUpDownRegistrosPorPagina.Value))
+                    .ToList();
                 }
                 else
                 {
@@ -104,19 +124,31 @@ namespace JuanApp.Formularios.Herramientas
                         .Trim(), @"\s+", " ")
                         .Split(" ");
 
-                    lstStock = lstEntrada.Where(entrada =>
-                            !lstSalida.Any(salida => salida.NroDePesaje == entrada.NroDePesaje))
-                            .Where(x => words.Any(word => x.NombreDeProducto.Contains(word)) ||
-                            words.Any(word => x.NroDePesaje.ToString().Contains(word)) ||
-                            words.Any(word => x.CodigoDeProducto.ToString().Contains(word)))
-                            .OrderBy(x => x.NombreDeProducto)
-                            .Take(Convert.ToInt32(numericUpDownRegistrosPorPagina.Value))
-                            .ToList();
+                    lstEntrada = _entradaRepository
+                    .AsQueryable()
+                    .Where(entrada => !nrosDePesajeSalida.Contains(entrada.NroDePesaje))
+                    .Where(x => words.Any(word => x.CodigoDeProducto.Contains(word)) ||
+                    words.All(word => x.NombreDeProducto.ToString().Contains(word)) ||
+                    words.All(word => x.NroDePesaje.ToString().Contains(word)))
+                    .Where(x => x.DateTimeLastModification >= DateTimePickerFechaInicio.Value &&
+                    x.DateTimeLastModification <= DateTimePickerFechaFin.Value)
+                    .OrderBy(x => x.NombreDeProducto)
+                    .Take(Convert.ToInt32(numericUpDownRegistrosPorPagina.Value))
+                    .ToList();
                 }
 
-                DataGridViewStock.DataSource = lstStock;
+                DataGridViewStock.DataSource = lstEntrada;
 
-                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstStock.Count}";
+                decimal Neto = 0;
+                foreach (var entrada in lstEntrada)
+                {
+                    Neto += entrada.Neto;
+                }
+                txtNetoTotal.Text = Neto.ToString();
+
+                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstEntrada.Count}.";
+
+                return lstEntrada;
             }
             catch (Exception)
             {
@@ -128,6 +160,33 @@ namespace JuanApp.Formularios.Herramientas
         private void btnShowHideTabla_Click(object sender, EventArgs e)
         {
             pnlSearchBar.Visible = !pnlSearchBar.Visible;
+        }
+
+        private void btnGenerarExcel_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog FolderBrowserDialog = new FolderBrowserDialog();
+            if (FolderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string SelectedPath = FolderBrowserDialog.SelectedPath;
+
+                List<Areas.JuanApp.Entities.Entrada> lstEntrada = GetTabla();
+
+                string AjaxForString = "";
+
+                foreach (Areas.JuanApp.Entities.Entrada entrada in lstEntrada)
+                {
+                    AjaxForString += $@"{entrada.EntradaId},";
+                }
+
+                AjaxForString = AjaxForString.TrimEnd(',');
+
+                _entradaService.ExportAsExcel(lstEntrada,
+                    new() { AjaxForString = AjaxForString },
+                    "NotAll",
+                    SelectedPath);
+
+                MessageBox.Show($@"Generación de Excel realizada correctamente", "Información");
+            }
         }
     }
 }

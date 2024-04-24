@@ -32,6 +32,7 @@
             toolStrip1 = new ToolStrip();
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             menuItemMain = new ToolStripMenuItem();
+            btnShowHideTabla = new ToolStripButton();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             lblTitulo = new Label();
@@ -42,7 +43,13 @@
             numericUpDownRegistrosPorPagina = new NumericUpDown();
             label1 = new Label();
             pnlSearchBar = new Panel();
-            btnShowHideTabla = new ToolStripButton();
+            label3 = new Label();
+            DateTimePickerFechaFin = new DateTimePicker();
+            label2 = new Label();
+            DateTimePickerFechaInicio = new DateTimePicker();
+            btnGenerarExcel = new Button();
+            txtNetoTotal = new TextBox();
+            lblNeto = new Label();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).BeginInit();
@@ -73,9 +80,19 @@
             // menuItemMain
             // 
             menuItemMain.Name = "menuItemMain";
-            menuItemMain.Size = new Size(224, 26);
+            menuItemMain.Size = new Size(189, 26);
             menuItemMain.Text = "Volver al inicio";
             menuItemMain.Click += menuItemMain_Click;
+            // 
+            // btnShowHideTabla
+            // 
+            btnShowHideTabla.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnShowHideTabla.Image = (Image)resources.GetObject("btnShowHideTabla.Image");
+            btnShowHideTabla.ImageTransparentColor = Color.Magenta;
+            btnShowHideTabla.Name = "btnShowHideTabla";
+            btnShowHideTabla.Size = new Size(48, 24);
+            btnShowHideTabla.Text = "Tabla";
+            btnShowHideTabla.Click += btnShowHideTabla_Click;
             // 
             // statusStrip1
             // 
@@ -119,7 +136,7 @@
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(12, 122);
+            txtBuscar.Location = new Point(12, 185);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(532, 27);
             txtBuscar.TabIndex = 12;
@@ -127,7 +144,7 @@
             // lblBarraDeBusqueda
             // 
             lblBarraDeBusqueda.AutoSize = true;
-            lblBarraDeBusqueda.Location = new Point(12, 99);
+            lblBarraDeBusqueda.Location = new Point(12, 162);
             lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
             lblBarraDeBusqueda.Size = new Size(588, 20);
             lblBarraDeBusqueda.TabIndex = 11;
@@ -135,7 +152,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(694, 99);
+            btnBuscar.Location = new Point(694, 319);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(94, 50);
             btnBuscar.TabIndex = 13;
@@ -164,6 +181,13 @@
             // 
             // pnlSearchBar
             // 
+            pnlSearchBar.Controls.Add(txtNetoTotal);
+            pnlSearchBar.Controls.Add(lblNeto);
+            pnlSearchBar.Controls.Add(label3);
+            pnlSearchBar.Controls.Add(DateTimePickerFechaFin);
+            pnlSearchBar.Controls.Add(label2);
+            pnlSearchBar.Controls.Add(DateTimePickerFechaInicio);
+            pnlSearchBar.Controls.Add(btnGenerarExcel);
             pnlSearchBar.Controls.Add(lblTitulo);
             pnlSearchBar.Controls.Add(label1);
             pnlSearchBar.Controls.Add(lblBarraDeBusqueda);
@@ -173,18 +197,67 @@
             pnlSearchBar.Dock = DockStyle.Top;
             pnlSearchBar.Location = new Point(0, 27);
             pnlSearchBar.Name = "pnlSearchBar";
-            pnlSearchBar.Size = new Size(800, 172);
+            pnlSearchBar.Size = new Size(800, 372);
             pnlSearchBar.TabIndex = 16;
             // 
-            // btnShowHideTabla
+            // label3
             // 
-            btnShowHideTabla.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnShowHideTabla.Image = (Image)resources.GetObject("btnShowHideTabla.Image");
-            btnShowHideTabla.ImageTransparentColor = Color.Magenta;
-            btnShowHideTabla.Name = "btnShowHideTabla";
-            btnShowHideTabla.Size = new Size(48, 24);
-            btnShowHideTabla.Text = "Tabla";
-            btnShowHideTabla.Click += btnShowHideTabla_Click;
+            label3.AutoSize = true;
+            label3.Location = new Point(294, 91);
+            label3.Name = "label3";
+            label3.Size = new Size(92, 20);
+            label3.TabIndex = 20;
+            label3.Text = "Fecha de fin:";
+            // 
+            // DateTimePickerFechaFin
+            // 
+            DateTimePickerFechaFin.Location = new Point(294, 114);
+            DateTimePickerFechaFin.Name = "DateTimePickerFechaFin";
+            DateTimePickerFechaFin.Size = new Size(250, 27);
+            DateTimePickerFechaFin.TabIndex = 19;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 91);
+            label2.Name = "label2";
+            label2.Size = new Size(111, 20);
+            label2.TabIndex = 18;
+            label2.Text = "Fecha de inicio:";
+            // 
+            // DateTimePickerFechaInicio
+            // 
+            DateTimePickerFechaInicio.Location = new Point(12, 114);
+            DateTimePickerFechaInicio.Name = "DateTimePickerFechaInicio";
+            DateTimePickerFechaInicio.Size = new Size(250, 27);
+            DateTimePickerFechaInicio.TabIndex = 17;
+            // 
+            // btnGenerarExcel
+            // 
+            btnGenerarExcel.Location = new Point(12, 319);
+            btnGenerarExcel.Name = "btnGenerarExcel";
+            btnGenerarExcel.Size = new Size(113, 50);
+            btnGenerarExcel.TabIndex = 16;
+            btnGenerarExcel.Text = "Generar Excel";
+            btnGenerarExcel.UseVisualStyleBackColor = true;
+            btnGenerarExcel.Click += btnGenerarExcel_Click;
+            // 
+            // txtNetoTotal
+            // 
+            txtNetoTotal.Location = new Point(12, 260);
+            txtNetoTotal.Name = "txtNetoTotal";
+            txtNetoTotal.ReadOnly = true;
+            txtNetoTotal.Size = new Size(194, 27);
+            txtNetoTotal.TabIndex = 23;
+            // 
+            // lblNeto
+            // 
+            lblNeto.AutoSize = true;
+            lblNeto.Location = new Point(12, 237);
+            lblNeto.Name = "lblNeto";
+            lblNeto.Size = new Size(90, 20);
+            lblNeto.TabIndex = 22;
+            lblNeto.Text = "Neto TOTAL:";
             // 
             // Stock
             // 
@@ -225,5 +298,12 @@
         private Label label1;
         private Panel pnlSearchBar;
         private ToolStripButton btnShowHideTabla;
+        private Button btnGenerarExcel;
+        private Label label3;
+        private DateTimePicker DateTimePickerFechaFin;
+        private Label label2;
+        private DateTimePicker DateTimePickerFechaInicio;
+        private TextBox txtNetoTotal;
+        private Label lblNeto;
     }
 }

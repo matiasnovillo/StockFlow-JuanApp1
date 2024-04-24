@@ -217,9 +217,9 @@
             lblPrecio.AutoSize = true;
             lblPrecio.Location = new Point(284, 159);
             lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(70, 20);
+            lblPrecio.Size = new Size(50, 20);
             lblPrecio.TabIndex = 23;
-            lblPrecio.Text = "Precio (*)";
+            lblPrecio.Text = "Precio";
             // 
             // numericUpDownPrecio
             // 
@@ -237,9 +237,9 @@
             lblSubtotal.AutoSize = true;
             lblSubtotal.Location = new Point(284, 225);
             lblSubtotal.Name = "lblSubtotal";
-            lblSubtotal.Size = new Size(85, 20);
+            lblSubtotal.Size = new Size(65, 20);
             lblSubtotal.TabIndex = 25;
-            lblSubtotal.Text = "Subtotal (*)";
+            lblSubtotal.Text = "Subtotal";
             // 
             // numericUpDownSubtotal
             // 

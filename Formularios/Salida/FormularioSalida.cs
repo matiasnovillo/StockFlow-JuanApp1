@@ -74,9 +74,7 @@ namespace JuanApp.Formularios.Salida
                        string.IsNullOrEmpty(txtNombreDeCliente.Text) ||
                        string.IsNullOrEmpty(txtCodigoDeProducto.Text) ||
                        string.IsNullOrEmpty(txtNombreProducto.Text) ||
-                       numericUpDownKilosTotales.Value == 0 ||
-                       numericUpDownPrecio.Value == 0 ||
-                       numericUpDownSubtotal.Value == 0)
+                       numericUpDownKilosTotales.Value == 0)
                 {
                     statusLabel.Text = "Faltan datos a completar";
                 }

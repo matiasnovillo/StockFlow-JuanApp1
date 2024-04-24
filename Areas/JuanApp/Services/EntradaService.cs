@@ -29,13 +29,12 @@ namespace JuanApp.Areas.JuanApp.Services
             _context = context;
         }
 
-        #region Exportations
         public DateTime ExportAsPDF(Ajax Ajax, string ExportationType)
         {
             throw new NotImplementedException();
         }
 
-        public DateTime ExportAsExcel(Ajax Ajax, string ExportationType)
+        public DateTime ExportAsExcel(List<Entrada> lstEntrada, Ajax Ajax, string ExportationType, string pathToSave)
         {
             DateTime Now = DateTime.Now;
 
@@ -48,72 +47,77 @@ namespace JuanApp.Areas.JuanApp.Services
                 //We define another DataTable dtEntradaCopy to avoid issue related to DateTime conversion
                 DataTable dtEntradaCopy = new();
 
-                #region Define columns for dtEntradaCopy
                 DataColumn dtColumnEntradaIdFordtEntradaCopy = new DataColumn();
-                    dtColumnEntradaIdFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnEntradaIdFordtEntradaCopy.ColumnName = "EntradaId";
-                    dtEntradaCopy.Columns.Add(dtColumnEntradaIdFordtEntradaCopy);
+                dtColumnEntradaIdFordtEntradaCopy.DataType = typeof(string);
+                dtColumnEntradaIdFordtEntradaCopy.ColumnName = "EntradaId";
+                dtEntradaCopy.Columns.Add(dtColumnEntradaIdFordtEntradaCopy);
 
-                    DataColumn dtColumnActiveFordtEntradaCopy = new DataColumn();
-                    dtColumnActiveFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnActiveFordtEntradaCopy.ColumnName = "Active";
-                    dtEntradaCopy.Columns.Add(dtColumnActiveFordtEntradaCopy);
+                DataColumn dtColumnActiveFordtEntradaCopy = new DataColumn();
+                dtColumnActiveFordtEntradaCopy.DataType = typeof(string);
+                dtColumnActiveFordtEntradaCopy.ColumnName = "Active";
+                dtEntradaCopy.Columns.Add(dtColumnActiveFordtEntradaCopy);
 
-                    DataColumn dtColumnDateTimeCreationFordtEntradaCopy = new DataColumn();
-                    dtColumnDateTimeCreationFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnDateTimeCreationFordtEntradaCopy.ColumnName = "DateTimeCreation";
-                    dtEntradaCopy.Columns.Add(dtColumnDateTimeCreationFordtEntradaCopy);
+                DataColumn dtColumnDateTimeCreationFordtEntradaCopy = new DataColumn();
+                dtColumnDateTimeCreationFordtEntradaCopy.DataType = typeof(string);
+                dtColumnDateTimeCreationFordtEntradaCopy.ColumnName = "DateTimeCreation";
+                dtEntradaCopy.Columns.Add(dtColumnDateTimeCreationFordtEntradaCopy);
 
-                    DataColumn dtColumnDateTimeLastModificationFordtEntradaCopy = new DataColumn();
-                    dtColumnDateTimeLastModificationFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnDateTimeLastModificationFordtEntradaCopy.ColumnName = "DateTimeLastModification";
-                    dtEntradaCopy.Columns.Add(dtColumnDateTimeLastModificationFordtEntradaCopy);
+                DataColumn dtColumnDateTimeLastModificationFordtEntradaCopy = new DataColumn();
+                dtColumnDateTimeLastModificationFordtEntradaCopy.DataType = typeof(string);
+                dtColumnDateTimeLastModificationFordtEntradaCopy.ColumnName = "DateTimeLastModification";
+                dtEntradaCopy.Columns.Add(dtColumnDateTimeLastModificationFordtEntradaCopy);
 
-                    DataColumn dtColumnUserCreationIdFordtEntradaCopy = new DataColumn();
-                    dtColumnUserCreationIdFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnUserCreationIdFordtEntradaCopy.ColumnName = "UserCreationId";
-                    dtEntradaCopy.Columns.Add(dtColumnUserCreationIdFordtEntradaCopy);
+                DataColumn dtColumnUserCreationIdFordtEntradaCopy = new DataColumn();
+                dtColumnUserCreationIdFordtEntradaCopy.DataType = typeof(string);
+                dtColumnUserCreationIdFordtEntradaCopy.ColumnName = "UserCreationId";
+                dtEntradaCopy.Columns.Add(dtColumnUserCreationIdFordtEntradaCopy);
 
-                    DataColumn dtColumnUserLastModificationIdFordtEntradaCopy = new DataColumn();
-                    dtColumnUserLastModificationIdFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnUserLastModificationIdFordtEntradaCopy.ColumnName = "UserLastModificationId";
-                    dtEntradaCopy.Columns.Add(dtColumnUserLastModificationIdFordtEntradaCopy);
+                DataColumn dtColumnUserLastModificationIdFordtEntradaCopy = new DataColumn();
+                dtColumnUserLastModificationIdFordtEntradaCopy.DataType = typeof(string);
+                dtColumnUserLastModificationIdFordtEntradaCopy.ColumnName = "UserLastModificationId";
+                dtEntradaCopy.Columns.Add(dtColumnUserLastModificationIdFordtEntradaCopy);
 
-                    DataColumn dtColumnCodigoDeBarraFordtEntradaCopy = new DataColumn();
-                    dtColumnCodigoDeBarraFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnCodigoDeBarraFordtEntradaCopy.ColumnName = "CodigoDeBarra";
-                    dtEntradaCopy.Columns.Add(dtColumnCodigoDeBarraFordtEntradaCopy);
+                DataColumn dtColumnCodigoDeClienteFordtEntradaCopy = new DataColumn();
+                dtColumnCodigoDeClienteFordtEntradaCopy.DataType = typeof(string);
+                dtColumnCodigoDeClienteFordtEntradaCopy.ColumnName = "CodigoDeCliente";
+                dtEntradaCopy.Columns.Add(dtColumnCodigoDeClienteFordtEntradaCopy);
 
-                    DataColumn dtColumnNroDePesajeFordtEntradaCopy = new DataColumn();
-                    dtColumnNroDePesajeFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnNroDePesajeFordtEntradaCopy.ColumnName = "NroDePesaje";
-                    dtEntradaCopy.Columns.Add(dtColumnNroDePesajeFordtEntradaCopy);
+                DataColumn dtColumnNombreDeClienteFordtEntradaCopy = new DataColumn();
+                dtColumnNombreDeClienteFordtEntradaCopy.DataType = typeof(string);
+                dtColumnNombreDeClienteFordtEntradaCopy.ColumnName = "NombreDeCliente";
+                dtEntradaCopy.Columns.Add(dtColumnNombreDeClienteFordtEntradaCopy);
 
-                    DataColumn dtColumnCodigoDeProductoFordtEntradaCopy = new DataColumn();
-                    dtColumnCodigoDeProductoFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnCodigoDeProductoFordtEntradaCopy.ColumnName = "CodigoDeProducto";
-                    dtEntradaCopy.Columns.Add(dtColumnCodigoDeProductoFordtEntradaCopy);
+                DataColumn dtColumnCodigoDeProductoFordtEntradaCopy = new DataColumn();
+                dtColumnCodigoDeProductoFordtEntradaCopy.DataType = typeof(string);
+                dtColumnCodigoDeProductoFordtEntradaCopy.ColumnName = "CodigoDeProducto";
+                dtEntradaCopy.Columns.Add(dtColumnCodigoDeProductoFordtEntradaCopy);
 
-                    DataColumn dtColumnNombreDeProductoFordtEntradaCopy = new DataColumn();
-                    dtColumnNombreDeProductoFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnNombreDeProductoFordtEntradaCopy.ColumnName = "NombreDeProducto";
-                    dtEntradaCopy.Columns.Add(dtColumnNombreDeProductoFordtEntradaCopy);
+                DataColumn dtColumnNombreDeProductoFordtEntradaCopy = new DataColumn();
+                dtColumnNombreDeProductoFordtEntradaCopy.DataType = typeof(string);
+                dtColumnNombreDeProductoFordtEntradaCopy.ColumnName = "NombreDeProducto";
+                dtEntradaCopy.Columns.Add(dtColumnNombreDeProductoFordtEntradaCopy);
 
-                    DataColumn dtColumnTexContenidoFordtEntradaCopy = new DataColumn();
-                    dtColumnTexContenidoFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnTexContenidoFordtEntradaCopy.ColumnName = "TexContenido";
-                    dtEntradaCopy.Columns.Add(dtColumnTexContenidoFordtEntradaCopy);
+                DataColumn dtColumnKilosRealesFordtEntradaCopy = new DataColumn();
+                dtColumnKilosRealesFordtEntradaCopy.DataType = typeof(string);
+                dtColumnKilosRealesFordtEntradaCopy.ColumnName = "KilosReales";
+                dtEntradaCopy.Columns.Add(dtColumnKilosRealesFordtEntradaCopy);
 
-                    DataColumn dtColumnNetoFordtEntradaCopy = new DataColumn();
-                    dtColumnNetoFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnNetoFordtEntradaCopy.ColumnName = "Neto";
-                    dtEntradaCopy.Columns.Add(dtColumnNetoFordtEntradaCopy);
+                DataColumn dtColumnPrecioFordtEntradaCopy = new DataColumn();
+                dtColumnPrecioFordtEntradaCopy.DataType = typeof(string);
+                dtColumnPrecioFordtEntradaCopy.ColumnName = "Precio";
+                dtEntradaCopy.Columns.Add(dtColumnPrecioFordtEntradaCopy);
 
-                    
-                #endregion
+                DataColumn dtColumnSubtotalFordtEntradaCopy = new DataColumn();
+                dtColumnSubtotalFordtEntradaCopy.DataType = typeof(string);
+                dtColumnSubtotalFordtEntradaCopy.ColumnName = "Subtotal";
+                dtEntradaCopy.Columns.Add(dtColumnSubtotalFordtEntradaCopy);
 
-                #region Create another DataTable to copy
-                List<Entrada> lstEntrada = _context.Entrada.ToList();
+                DataColumn dtColumnCodigoDeBarraFordtEntradaCopy = new DataColumn();
+                dtColumnCodigoDeBarraFordtEntradaCopy.DataType = typeof(string);
+                dtColumnCodigoDeBarraFordtEntradaCopy.ColumnName = "CodigoDeBarra";
+                dtEntradaCopy.Columns.Add(dtColumnCodigoDeBarraFordtEntradaCopy);
+
+                List<Entrada> lstEntradaAll = _context.Entrada.ToList();
 
                 DataTable DataTable = new();
                 DataTable.Columns.Add("EntradaId", typeof(string));
@@ -122,35 +126,14 @@ namespace JuanApp.Areas.JuanApp.Services
                 DataTable.Columns.Add("DateTimeLastModification", typeof(string));
                 DataTable.Columns.Add("UserCreationId", typeof(string));
                 DataTable.Columns.Add("UserLastModificationId", typeof(string));
-                DataTable.Columns.Add("CodigoDeBarra", typeof(string));
-                DataTable.Columns.Add("NroDePesaje", typeof(string));
+                DataTable.Columns.Add("CodigoDeCliente", typeof(string));
+                DataTable.Columns.Add("NombreDeCliente", typeof(string));
                 DataTable.Columns.Add("CodigoDeProducto", typeof(string));
                 DataTable.Columns.Add("NombreDeProducto", typeof(string));
-                DataTable.Columns.Add("TexContenido", typeof(string));
-                DataTable.Columns.Add("Neto", typeof(string));
-                
-
-                foreach (Entrada entrada in lstEntrada)
-                        {
-                            DataTable.Rows.Add(
-                                entrada.EntradaId,
-                        entrada.Active,
-                        entrada.DateTimeCreation,
-                        entrada.DateTimeLastModification,
-                        entrada.UserCreationId,
-                        entrada.UserLastModificationId,
-                        entrada.CodigoDeBarra,
-                        entrada.NroDePesaje,
-                        entrada.CodigoDeProducto,
-                        entrada.NombreDeProducto,
-                        entrada.TexContenido,
-                        entrada.Neto
-                        
-                                );
-                        }
-                #endregion
-
-                dtEntrada = DataTable;
+                DataTable.Columns.Add("KilosReales", typeof(string));
+                DataTable.Columns.Add("Precio", typeof(string));
+                DataTable.Columns.Add("Subtotal", typeof(string));
+                DataTable.Columns.Add("CodigoDeBarra", typeof(string));
 
                 foreach (DataRow DataRow in dtEntrada.Rows)
                 {
@@ -169,120 +152,72 @@ namespace JuanApp.Areas.JuanApp.Services
 
                 DataSet dsEntrada = new();
 
-                foreach (string RowChecked in RowsChecked)
-                {
-                    //We define another DataTable dtEntradaCopy to avoid issue related to DateTime conversion
-                    DataTable dtEntradaCopy = new();
+                //We define another DataTable dtEntradaCopy to avoid issue related to DateTime conversion
+                DataTable dtEntradaCopy = new();
 
-                    #region Define columns for dtEntradaCopy
-                    DataColumn dtColumnEntradaIdFordtEntradaCopy = new DataColumn();
-                    dtColumnEntradaIdFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnEntradaIdFordtEntradaCopy.ColumnName = "EntradaId";
-                    dtEntradaCopy.Columns.Add(dtColumnEntradaIdFordtEntradaCopy);
+                DataColumn dtColumnEntradaIdFordtEntradaCopy = new DataColumn();
+                dtColumnEntradaIdFordtEntradaCopy.DataType = typeof(string);
+                dtColumnEntradaIdFordtEntradaCopy.ColumnName = "ID del sistema";
+                dtEntradaCopy.Columns.Add(dtColumnEntradaIdFordtEntradaCopy);
 
-                    DataColumn dtColumnActiveFordtEntradaCopy = new DataColumn();
-                    dtColumnActiveFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnActiveFordtEntradaCopy.ColumnName = "Active";
-                    dtEntradaCopy.Columns.Add(dtColumnActiveFordtEntradaCopy);
+                DataColumn dtColumnCodigoDeBarraFordtEntradaCopy = new DataColumn();
+                dtColumnCodigoDeBarraFordtEntradaCopy.DataType = typeof(string);
+                dtColumnCodigoDeBarraFordtEntradaCopy.ColumnName = "Nº de pesaje";
+                dtEntradaCopy.Columns.Add(dtColumnCodigoDeBarraFordtEntradaCopy);
 
-                    DataColumn dtColumnDateTimeCreationFordtEntradaCopy = new DataColumn();
-                    dtColumnDateTimeCreationFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnDateTimeCreationFordtEntradaCopy.ColumnName = "DateTimeCreation";
-                    dtEntradaCopy.Columns.Add(dtColumnDateTimeCreationFordtEntradaCopy);
+                DataColumn dtColumnCodigoDeClienteFordtEntradaCopy = new DataColumn();
+                dtColumnCodigoDeClienteFordtEntradaCopy.DataType = typeof(string);
+                dtColumnCodigoDeClienteFordtEntradaCopy.ColumnName = "Código de producto";
+                dtEntradaCopy.Columns.Add(dtColumnCodigoDeClienteFordtEntradaCopy);
 
-                    DataColumn dtColumnDateTimeLastModificationFordtEntradaCopy = new DataColumn();
-                    dtColumnDateTimeLastModificationFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnDateTimeLastModificationFordtEntradaCopy.ColumnName = "DateTimeLastModification";
-                    dtEntradaCopy.Columns.Add(dtColumnDateTimeLastModificationFordtEntradaCopy);
+                DataColumn dtColumnNombreDeClienteFordtEntradaCopy = new DataColumn();
+                dtColumnNombreDeClienteFordtEntradaCopy.DataType = typeof(string);
+                dtColumnNombreDeClienteFordtEntradaCopy.ColumnName = "Nombre de producto";
+                dtEntradaCopy.Columns.Add(dtColumnNombreDeClienteFordtEntradaCopy);
 
-                    DataColumn dtColumnUserCreationIdFordtEntradaCopy = new DataColumn();
-                    dtColumnUserCreationIdFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnUserCreationIdFordtEntradaCopy.ColumnName = "UserCreationId";
-                    dtEntradaCopy.Columns.Add(dtColumnUserCreationIdFordtEntradaCopy);
+                DataColumn dtColumnCodigoDeProductoFordtEntradaCopy = new DataColumn();
+                dtColumnCodigoDeProductoFordtEntradaCopy.DataType = typeof(string);
+                dtColumnCodigoDeProductoFordtEntradaCopy.ColumnName = "Tex. Contenido";
+                dtEntradaCopy.Columns.Add(dtColumnCodigoDeProductoFordtEntradaCopy);
 
-                    DataColumn dtColumnUserLastModificationIdFordtEntradaCopy = new DataColumn();
-                    dtColumnUserLastModificationIdFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnUserLastModificationIdFordtEntradaCopy.ColumnName = "UserLastModificationId";
-                    dtEntradaCopy.Columns.Add(dtColumnUserLastModificationIdFordtEntradaCopy);
+                DataColumn dtColumnNombreDeProductoFordtEntradaCopy = new DataColumn();
+                dtColumnNombreDeProductoFordtEntradaCopy.DataType = typeof(string);
+                dtColumnNombreDeProductoFordtEntradaCopy.ColumnName = "Neto";
+                dtEntradaCopy.Columns.Add(dtColumnNombreDeProductoFordtEntradaCopy);
 
-                    DataColumn dtColumnCodigoDeBarraFordtEntradaCopy = new DataColumn();
-                    dtColumnCodigoDeBarraFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnCodigoDeBarraFordtEntradaCopy.ColumnName = "CodigoDeBarra";
-                    dtEntradaCopy.Columns.Add(dtColumnCodigoDeBarraFordtEntradaCopy);
+                DataColumn dtColumnKilosRealesFordtEntradaCopy = new DataColumn();
+                dtColumnKilosRealesFordtEntradaCopy.DataType = typeof(string);
+                dtColumnKilosRealesFordtEntradaCopy.ColumnName = "Fecha de creación";
+                dtEntradaCopy.Columns.Add(dtColumnKilosRealesFordtEntradaCopy);
 
-                    DataColumn dtColumnNroDePesajeFordtEntradaCopy = new DataColumn();
-                    dtColumnNroDePesajeFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnNroDePesajeFordtEntradaCopy.ColumnName = "NroDePesaje";
-                    dtEntradaCopy.Columns.Add(dtColumnNroDePesajeFordtEntradaCopy);
+                dsEntrada.Tables.Add(dtEntradaCopy);
 
-                    DataColumn dtColumnCodigoDeProductoFordtEntradaCopy = new DataColumn();
-                    dtColumnCodigoDeProductoFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnCodigoDeProductoFordtEntradaCopy.ColumnName = "CodigoDeProducto";
-                    dtEntradaCopy.Columns.Add(dtColumnCodigoDeProductoFordtEntradaCopy);
-
-                    DataColumn dtColumnNombreDeProductoFordtEntradaCopy = new DataColumn();
-                    dtColumnNombreDeProductoFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnNombreDeProductoFordtEntradaCopy.ColumnName = "NombreDeProducto";
-                    dtEntradaCopy.Columns.Add(dtColumnNombreDeProductoFordtEntradaCopy);
-
-                    DataColumn dtColumnTexContenidoFordtEntradaCopy = new DataColumn();
-                    dtColumnTexContenidoFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnTexContenidoFordtEntradaCopy.ColumnName = "TexContenido";
-                    dtEntradaCopy.Columns.Add(dtColumnTexContenidoFordtEntradaCopy);
-
-                    DataColumn dtColumnNetoFordtEntradaCopy = new DataColumn();
-                    dtColumnNetoFordtEntradaCopy.DataType = typeof(string);
-                    dtColumnNetoFordtEntradaCopy.ColumnName = "Neto";
-                    dtEntradaCopy.Columns.Add(dtColumnNetoFordtEntradaCopy);
-
-                    
-                    #endregion
-
-                    dsEntrada.Tables.Add(dtEntradaCopy);
-
-                    #region Create DataTable with data from DB
-                        Entrada entrada = _context.Entrada
-                                                    .Where(x => x.EntradaId == Convert.ToInt32(RowChecked))
-                                                    .FirstOrDefault();
-
-                        DataTable DataTable = new();
-                        DataTable.Columns.Add("EntradaId", typeof(string));
-                        DataTable.Columns.Add("Active", typeof(string));
-                DataTable.Columns.Add("DateTimeCreation", typeof(string));
-                DataTable.Columns.Add("DateTimeLastModification", typeof(string));
-                DataTable.Columns.Add("UserCreationId", typeof(string));
-                DataTable.Columns.Add("UserLastModificationId", typeof(string));
-                DataTable.Columns.Add("CodigoDeBarra", typeof(string));
+                DataTable DataTable = new();
+                DataTable.Columns.Add("EntradaId", typeof(string));
                 DataTable.Columns.Add("NroDePesaje", typeof(string));
                 DataTable.Columns.Add("CodigoDeProducto", typeof(string));
                 DataTable.Columns.Add("NombreDeProducto", typeof(string));
                 DataTable.Columns.Add("TexContenido", typeof(string));
                 DataTable.Columns.Add("Neto", typeof(string));
-                
-                        
-                        DataTable.Rows.Add(
-                                entrada.EntradaId,
-                        entrada.Active,
-                        entrada.DateTimeCreation,
-                        entrada.DateTimeLastModification,
-                        entrada.UserCreationId,
-                        entrada.UserLastModificationId,
-                        entrada.CodigoDeBarra,
+                DataTable.Columns.Add("DateTimeLastModification", typeof(string));
+
+                foreach (Entrada entrada in lstEntrada)
+                {
+                    DataTable.Rows.Add(
+                        entrada.EntradaId,
                         entrada.NroDePesaje,
                         entrada.CodigoDeProducto,
                         entrada.NombreDeProducto,
                         entrada.TexContenido,
-                        entrada.Neto
-                        
-                                );
-                        #endregion
+                        entrada.Neto,
+                        entrada.DateTimeLastModification);
+                }
 
-                        dtEntradaCopy = DataTable;
+                dtEntradaCopy = DataTable;
 
-                        foreach (DataRow DataRow in dtEntradaCopy.Rows)
-                        {
-                            dsEntrada.Tables[0].Rows.Add(DataRow.ItemArray);
-                        }
+                foreach (DataRow DataRow in dtEntradaCopy.Rows)
+                {
+                    dsEntrada.Tables[0].Rows.Add(DataRow.ItemArray);
                 }
 
                 for (int i = 0; i < dsEntrada.Tables.Count; i++)
@@ -290,7 +225,7 @@ namespace JuanApp.Areas.JuanApp.Services
                     var Sheet = Book.Worksheets.Add(dsEntrada.Tables[i]);
                     Sheet.ColumnsUsed().AdjustToContents();
                 }
-                Book.SaveAs($@"wwwroot/ExcelFiles/JuanApp/Entrada/Entrada_{Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.xlsx");
+                Book.SaveAs($@"{pathToSave}/Stock_{Now.ToString("yyyy_MM_dd_HH_mm_ss_fff")}.xlsx");
             }
             return Now;
         }
@@ -325,6 +260,5 @@ namespace JuanApp.Areas.JuanApp.Services
 
             return Now;
         }
-        #endregion
     }
 }
