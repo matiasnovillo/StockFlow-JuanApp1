@@ -38,37 +38,39 @@ namespace JuanApp.Formularios.Salida
 
                 DataGridViewTextBoxColumn col0 = new();
                 col0.DataPropertyName = "SalidaId";
-                col0.HeaderText = "SalidaId";
+                col0.HeaderText = "ID del sistema";
                 DataGridViewSalida.Columns.Add(col0);
 
                 DataGridViewTextBoxColumn col8 = new();
                 col8.DataPropertyName = "NroDePesaje";
-                col8.HeaderText = "NroDePesaje";
+                col8.HeaderText = "Nº de pesaje";
                 DataGridViewSalida.Columns.Add(col8);
 
                 DataGridViewTextBoxColumn col1 = new();
                 col1.DataPropertyName = "CodigoDeCliente";
-                col1.HeaderText = "CodigoDeCliente";
+                col1.HeaderText = "Código de cliente";
                 DataGridViewSalida.Columns.Add(col1);
 
                 DataGridViewTextBoxColumn col2 = new();
                 col2.DataPropertyName = "NombreDeCliente";
-                col2.HeaderText = "NombreDeCliente";
+                col2.HeaderText = "Nombre de cliente";
+                col2.Width = 250;
                 DataGridViewSalida.Columns.Add(col2);
 
                 DataGridViewTextBoxColumn col3 = new();
                 col3.DataPropertyName = "CodigoDeProducto";
-                col3.HeaderText = "CodigoDeProducto";
+                col3.HeaderText = "Código de producto";
                 DataGridViewSalida.Columns.Add(col3);
 
                 DataGridViewTextBoxColumn col4 = new();
                 col4.DataPropertyName = "NombreDeProducto";
-                col4.HeaderText = "NombreDeProducto";
+                col4.HeaderText = "Nombre de producto";
+                col4.Width = 250;
                 DataGridViewSalida.Columns.Add(col4);
 
                 DataGridViewTextBoxColumn col5 = new();
                 col5.DataPropertyName = "KilosReales";
-                col5.HeaderText = "KilosReales";
+                col5.HeaderText = "Kilos Reales";
                 DataGridViewSalida.Columns.Add(col5);
 
                 DataGridViewTextBoxColumn col6 = new();
@@ -95,8 +97,12 @@ namespace JuanApp.Formularios.Salida
 
                 DataGridViewSalida.AutoGenerateColumns = false;
 
-                dateTimePickerFechaInicio.Value = DateTime.Now.AddDays(-30);
-                dateTimePickerFechaFin.Value = DateTime.Now.AddDays(1);
+                DateTime now = DateTime.Now;
+                DateTime NowIn030DaysBefore = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
+                DateTime NowIn2359 = new DateTime(now.Year, now.Month, now.Day, 23, 59, 59);
+
+                dateTimePickerFechaInicio.Value = NowIn030DaysBefore.AddDays(-30);
+                dateTimePickerFechaFin.Value = NowIn2359;
 
                 List<Areas.JuanApp.Entities.Salida> lstSalida = GetTabla();
 
@@ -194,7 +200,6 @@ namespace JuanApp.Formularios.Salida
 
                 if (HayDuplicados)
                 {
-                    MessageBox.Show("Hay nombres de clientes diferentes en la tabla", "Atención");
                     return;
                 }
 
@@ -481,7 +486,7 @@ namespace JuanApp.Formularios.Salida
                         // Si encontramos dos registros con NombreDeCliente diferentes, retornamos true
                         if (registro1.NombreDeCliente != registro2.NombreDeCliente)
                         {
-                            MessageBox.Show("Hay nombres de clientes diferentes en la tabla", "Atención");
+                            //MessageBox.Show("Hay nombres de clientes diferentes en la tabla", "Atención");
                             CodigoCliente = "";
                             NombreCliente = "";
                             btnGenerarPDF.Enabled = false;
@@ -491,13 +496,13 @@ namespace JuanApp.Formularios.Salida
                 }
             }
 
-            if (registros.Count > 0) 
+            if (registros.Count > 0)
             {
                 CodigoCliente = registros[0].CodigoDeCliente;
                 NombreCliente = registros[0].NombreDeCliente;
                 btnGenerarPDF.Enabled = true;
             }
-            
+
             // Si no encontramos duplicados, retornamos false
             return false;
         }
@@ -522,6 +527,11 @@ namespace JuanApp.Formularios.Salida
             {
                 throw;
             }
+        }
+
+        private void btnHideShowTable_Click(object sender, EventArgs e)
+        {
+            pnlSearchBar.Visible = !pnlSearchBar.Visible;
         }
     }
 }

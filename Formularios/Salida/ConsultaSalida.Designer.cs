@@ -32,6 +32,7 @@
             toolStrip1 = new ToolStrip();
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             menuItemMain = new ToolStripMenuItem();
+            btnHideShowTable = new ToolStripButton();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             DataGridViewSalida = new DataGridView();
@@ -55,16 +56,18 @@
             lblSubtotalTotal = new Label();
             numericUpDownRegistros = new NumericUpDown();
             label2 = new Label();
+            pnlSearchBar = new Panel();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownRegistros).BeginInit();
+            pnlSearchBar.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, btnHideShowTable });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 27);
@@ -88,11 +91,21 @@
             menuItemMain.Text = "Volver al inicio";
             menuItemMain.Click += menuItemMain_Click;
             // 
+            // btnHideShowTable
+            // 
+            btnHideShowTable.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnHideShowTable.Image = (Image)resources.GetObject("btnHideShowTable.Image");
+            btnHideShowTable.ImageTransparentColor = Color.Magenta;
+            btnHideShowTable.Name = "btnHideShowTable";
+            btnHideShowTable.Size = new Size(48, 24);
+            btnHideShowTable.Text = "Tabla";
+            btnHideShowTable.Click += btnHideShowTable_Click;
+            // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 620);
+            statusStrip1.Location = new Point(0, 853);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 26);
             statusStrip1.TabIndex = 1;
@@ -106,11 +119,15 @@
             // 
             // DataGridViewSalida
             // 
+            DataGridViewSalida.AllowUserToAddRows = false;
+            DataGridViewSalida.AllowUserToDeleteRows = false;
             DataGridViewSalida.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DataGridViewSalida.Location = new Point(12, 239);
+            DataGridViewSalida.Dock = DockStyle.Fill;
+            DataGridViewSalida.Location = new Point(0, 27);
             DataGridViewSalida.Name = "DataGridViewSalida";
+            DataGridViewSalida.ReadOnly = true;
             DataGridViewSalida.RowHeadersWidth = 51;
-            DataGridViewSalida.Size = new Size(776, 319);
+            DataGridViewSalida.Size = new Size(800, 826);
             DataGridViewSalida.TabIndex = 2;
             DataGridViewSalida.CellContentClick += DataGridViewSalida_CellContentClick;
             // 
@@ -118,7 +135,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(12, 41);
+            lblTitulo.Location = new Point(12, 11);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(211, 31);
             lblTitulo.TabIndex = 3;
@@ -126,7 +143,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(691, 183);
+            btnBuscar.Location = new Point(700, 360);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(97, 50);
             btnBuscar.TabIndex = 4;
@@ -136,7 +153,7 @@
             // 
             // btnGenerarPDF
             // 
-            btnGenerarPDF.Location = new Point(670, 38);
+            btnGenerarPDF.Location = new Point(3, 360);
             btnGenerarPDF.Name = "btnGenerarPDF";
             btnGenerarPDF.Size = new Size(118, 50);
             btnGenerarPDF.TabIndex = 5;
@@ -146,7 +163,7 @@
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(12, 206);
+            txtBuscar.Location = new Point(12, 176);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(532, 27);
             txtBuscar.TabIndex = 16;
@@ -154,7 +171,7 @@
             // lblBarraDeBusqueda
             // 
             lblBarraDeBusqueda.AutoSize = true;
-            lblBarraDeBusqueda.Location = new Point(12, 163);
+            lblBarraDeBusqueda.Location = new Point(12, 133);
             lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
             lblBarraDeBusqueda.Size = new Size(447, 20);
             lblBarraDeBusqueda.TabIndex = 15;
@@ -162,7 +179,7 @@
             // 
             // dateTimePickerFechaFin
             // 
-            dateTimePickerFechaFin.Location = new Point(294, 108);
+            dateTimePickerFechaFin.Location = new Point(294, 78);
             dateTimePickerFechaFin.Name = "dateTimePickerFechaFin";
             dateTimePickerFechaFin.Size = new Size(250, 27);
             dateTimePickerFechaFin.TabIndex = 14;
@@ -170,7 +187,7 @@
             // lblFechaFin
             // 
             lblFechaFin.AutoSize = true;
-            lblFechaFin.Location = new Point(294, 85);
+            lblFechaFin.Location = new Point(294, 55);
             lblFechaFin.Name = "lblFechaFin";
             lblFechaFin.Size = new Size(89, 20);
             lblFechaFin.TabIndex = 13;
@@ -178,7 +195,7 @@
             // 
             // dateTimePickerFechaInicio
             // 
-            dateTimePickerFechaInicio.Location = new Point(12, 108);
+            dateTimePickerFechaInicio.Location = new Point(12, 78);
             dateTimePickerFechaInicio.Name = "dateTimePickerFechaInicio";
             dateTimePickerFechaInicio.Size = new Size(250, 27);
             dateTimePickerFechaInicio.TabIndex = 12;
@@ -186,7 +203,7 @@
             // lblFechaInicio
             // 
             lblFechaInicio.AutoSize = true;
-            lblFechaInicio.Location = new Point(12, 85);
+            lblFechaInicio.Location = new Point(12, 55);
             lblFechaInicio.Name = "lblFechaInicio";
             lblFechaInicio.Size = new Size(108, 20);
             lblFechaInicio.TabIndex = 11;
@@ -194,7 +211,7 @@
             // 
             // btnGenerarExcel
             // 
-            btnGenerarExcel.Location = new Point(670, 94);
+            btnGenerarExcel.Location = new Point(127, 360);
             btnGenerarExcel.Name = "btnGenerarExcel";
             btnGenerarExcel.Size = new Size(118, 50);
             btnGenerarExcel.TabIndex = 17;
@@ -204,7 +221,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(588, 183);
+            btnAgregar.Location = new Point(597, 360);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(97, 50);
             btnAgregar.TabIndex = 18;
@@ -215,7 +232,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 183);
+            label1.Location = new Point(12, 153);
             label1.Name = "label1";
             label1.Size = new Size(290, 20);
             label1.TabIndex = 19;
@@ -224,7 +241,7 @@
             // lblKilosTotales
             // 
             lblKilosTotales.AutoSize = true;
-            lblKilosTotales.Location = new Point(154, 561);
+            lblKilosTotales.Location = new Point(12, 206);
             lblKilosTotales.Name = "lblKilosTotales";
             lblKilosTotales.Size = new Size(148, 20);
             lblKilosTotales.TabIndex = 20;
@@ -232,7 +249,7 @@
             // 
             // txtKilosRealesTotal
             // 
-            txtKilosRealesTotal.Location = new Point(154, 584);
+            txtKilosRealesTotal.Location = new Point(12, 229);
             txtKilosRealesTotal.Name = "txtKilosRealesTotal";
             txtKilosRealesTotal.ReadOnly = true;
             txtKilosRealesTotal.Size = new Size(202, 27);
@@ -240,7 +257,7 @@
             // 
             // txtPrecioTotal
             // 
-            txtPrecioTotal.Location = new Point(367, 584);
+            txtPrecioTotal.Location = new Point(225, 229);
             txtPrecioTotal.Name = "txtPrecioTotal";
             txtPrecioTotal.ReadOnly = true;
             txtPrecioTotal.Size = new Size(202, 27);
@@ -249,7 +266,7 @@
             // lblPrecioUnidadTotal
             // 
             lblPrecioUnidadTotal.AutoSize = true;
-            lblPrecioUnidadTotal.Location = new Point(367, 561);
+            lblPrecioUnidadTotal.Location = new Point(225, 206);
             lblPrecioUnidadTotal.Name = "lblPrecioUnidadTotal";
             lblPrecioUnidadTotal.Size = new Size(98, 20);
             lblPrecioUnidadTotal.TabIndex = 22;
@@ -257,7 +274,7 @@
             // 
             // txtSubtotalTotal
             // 
-            txtSubtotalTotal.Location = new Point(577, 584);
+            txtSubtotalTotal.Location = new Point(435, 229);
             txtSubtotalTotal.Name = "txtSubtotalTotal";
             txtSubtotalTotal.ReadOnly = true;
             txtSubtotalTotal.Size = new Size(202, 27);
@@ -266,7 +283,7 @@
             // lblSubtotalTotal
             // 
             lblSubtotalTotal.AutoSize = true;
-            lblSubtotalTotal.Location = new Point(577, 561);
+            lblSubtotalTotal.Location = new Point(435, 206);
             lblSubtotalTotal.Name = "lblSubtotalTotal";
             lblSubtotalTotal.Size = new Size(113, 20);
             lblSubtotalTotal.TabIndex = 24;
@@ -274,7 +291,7 @@
             // 
             // numericUpDownRegistros
             // 
-            numericUpDownRegistros.Location = new Point(550, 107);
+            numericUpDownRegistros.Location = new Point(550, 77);
             numericUpDownRegistros.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
             numericUpDownRegistros.Minimum = new decimal(new int[] { 500, 0, 0, 0 });
             numericUpDownRegistros.Name = "numericUpDownRegistros";
@@ -285,37 +302,46 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(550, 84);
+            label2.Location = new Point(550, 54);
             label2.Name = "label2";
             label2.Size = new Size(70, 20);
             label2.TabIndex = 28;
             label2.Text = "Registros";
             // 
+            // pnlSearchBar
+            // 
+            pnlSearchBar.Controls.Add(lblTitulo);
+            pnlSearchBar.Controls.Add(label2);
+            pnlSearchBar.Controls.Add(btnBuscar);
+            pnlSearchBar.Controls.Add(numericUpDownRegistros);
+            pnlSearchBar.Controls.Add(btnGenerarPDF);
+            pnlSearchBar.Controls.Add(txtSubtotalTotal);
+            pnlSearchBar.Controls.Add(lblFechaInicio);
+            pnlSearchBar.Controls.Add(lblSubtotalTotal);
+            pnlSearchBar.Controls.Add(dateTimePickerFechaInicio);
+            pnlSearchBar.Controls.Add(txtPrecioTotal);
+            pnlSearchBar.Controls.Add(lblFechaFin);
+            pnlSearchBar.Controls.Add(lblPrecioUnidadTotal);
+            pnlSearchBar.Controls.Add(dateTimePickerFechaFin);
+            pnlSearchBar.Controls.Add(txtKilosRealesTotal);
+            pnlSearchBar.Controls.Add(lblBarraDeBusqueda);
+            pnlSearchBar.Controls.Add(lblKilosTotales);
+            pnlSearchBar.Controls.Add(txtBuscar);
+            pnlSearchBar.Controls.Add(label1);
+            pnlSearchBar.Controls.Add(btnGenerarExcel);
+            pnlSearchBar.Controls.Add(btnAgregar);
+            pnlSearchBar.Dock = DockStyle.Top;
+            pnlSearchBar.Location = new Point(0, 27);
+            pnlSearchBar.Name = "pnlSearchBar";
+            pnlSearchBar.Size = new Size(800, 419);
+            pnlSearchBar.TabIndex = 29;
+            // 
             // ConsultaSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 646);
-            Controls.Add(label2);
-            Controls.Add(numericUpDownRegistros);
-            Controls.Add(txtSubtotalTotal);
-            Controls.Add(lblSubtotalTotal);
-            Controls.Add(txtPrecioTotal);
-            Controls.Add(lblPrecioUnidadTotal);
-            Controls.Add(txtKilosRealesTotal);
-            Controls.Add(lblKilosTotales);
-            Controls.Add(label1);
-            Controls.Add(btnAgregar);
-            Controls.Add(btnGenerarExcel);
-            Controls.Add(txtBuscar);
-            Controls.Add(lblBarraDeBusqueda);
-            Controls.Add(dateTimePickerFechaFin);
-            Controls.Add(lblFechaFin);
-            Controls.Add(dateTimePickerFechaInicio);
-            Controls.Add(lblFechaInicio);
-            Controls.Add(btnGenerarPDF);
-            Controls.Add(btnBuscar);
-            Controls.Add(lblTitulo);
+            ClientSize = new Size(800, 879);
+            Controls.Add(pnlSearchBar);
             Controls.Add(DataGridViewSalida);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
@@ -327,6 +353,8 @@
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewSalida).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownRegistros).EndInit();
+            pnlSearchBar.ResumeLayout(false);
+            pnlSearchBar.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -359,5 +387,7 @@
         private Label lblSubtotalTotal;
         private NumericUpDown numericUpDownRegistros;
         private Label label2;
+        private Panel pnlSearchBar;
+        private ToolStripButton btnHideShowTable;
     }
 }

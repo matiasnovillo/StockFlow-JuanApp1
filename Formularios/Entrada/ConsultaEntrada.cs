@@ -6,6 +6,7 @@ using JuanApp.Areas.JuanApp.Entities;
 using DocumentFormat.OpenXml.InkML;
 using Microsoft.Win32;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace JuanApp.Formularios.Entrada
 {
@@ -28,27 +29,28 @@ namespace JuanApp.Formularios.Entrada
 
                 DataGridViewTextBoxColumn col0 = new();
                 col0.DataPropertyName = "EntradaId";
-                col0.HeaderText = "EntradaId";
+                col0.HeaderText = "ID del sistema";
                 DataGridViewEntrada.Columns.Add(col0);
 
                 DataGridViewTextBoxColumn col2 = new();
                 col2.DataPropertyName = "NroDePesaje";
-                col2.HeaderText = "NroDePesaje";
+                col2.HeaderText = "Nº de pesaje";
                 DataGridViewEntrada.Columns.Add(col2);
 
                 DataGridViewTextBoxColumn col3 = new();
                 col3.DataPropertyName = "CodigoDeProducto";
-                col3.HeaderText = "CodigoDeProducto";
+                col3.HeaderText = "Código de producto";
                 DataGridViewEntrada.Columns.Add(col3);
 
                 DataGridViewTextBoxColumn col4 = new();
                 col4.DataPropertyName = "NombreDeProducto";
-                col4.HeaderText = "NombreDeProducto";
+                col4.HeaderText = "Nombre de producto";
+                col4.Width = 250;
                 DataGridViewEntrada.Columns.Add(col4);
 
                 DataGridViewTextBoxColumn col5 = new();
                 col5.DataPropertyName = "TexContenido";
-                col5.HeaderText = "TexContenido";
+                col5.HeaderText = "Tex. Contenido";
                 DataGridViewEntrada.Columns.Add(col5);
 
                 DataGridViewTextBoxColumn col6 = new();
@@ -75,8 +77,12 @@ namespace JuanApp.Formularios.Entrada
 
                 DataGridViewEntrada.AutoGenerateColumns = false;
 
-                dateTimePickerFechaInicio.Value = DateTime.Now.AddDays(-30);
-                dateTimePickerFechaFin.Value = DateTime.Now.AddDays(1);
+                DateTime now = DateTime.Now;
+                DateTime NowIn030DaysBefore = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
+                DateTime NowIn2359 = new DateTime(now.Year, now.Month, now.Day, 23, 59, 59);
+
+                dateTimePickerFechaInicio.Value = NowIn030DaysBefore.AddDays(-30);
+                dateTimePickerFechaFin.Value = NowIn2359;
 
                 numericUpDownRegistrosPorPagina.Value = 500;
 
@@ -110,7 +116,7 @@ namespace JuanApp.Formularios.Entrada
         {
             try
             {
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 7)
                 {
                     //Actualizar
                     int EntradaId = Convert.ToInt32(DataGridViewEntrada.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -122,7 +128,7 @@ namespace JuanApp.Formularios.Entrada
 
                     GetTabla();
                 }
-                else if (e.ColumnIndex == 7)
+                else if (e.ColumnIndex == 8)
                 {
                     //Borrar
                     DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",
@@ -178,9 +184,9 @@ namespace JuanApp.Formularios.Entrada
 
                     lstEntrada = _entradaRepository
                     .AsQueryable()
-                    .Where(x => words.Any(word => x.NombreDeProducto.Contains(word)) ||
-                    words.Any(word => x.NroDePesaje.ToString().Contains(word)) ||
-                    words.Any(word => x.CodigoDeProducto.ToString().Contains(word)))
+                    .Where(x => words.All(word => x.NombreDeProducto.Contains(word)) ||
+                    words.All(word => x.NroDePesaje.ToString().Contains(word)) ||
+                    words.All(word => x.CodigoDeProducto.ToString().Contains(word)))
                     .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
                     x.DateTimeLastModification <= dateTimePickerFechaFin.Value)
                     .OrderBy(x => x.NombreDeProducto)
@@ -220,6 +226,16 @@ namespace JuanApp.Formularios.Entrada
 
                 throw;
             }
+        }
+
+        private void btnShowHideTable_Click(object sender, EventArgs e)
+        {
+            pnlFiltersAndSearchBar.Visible = !pnlFiltersAndSearchBar.Visible;
+        }
+
+        private void btnShowHideFilters_Click(object sender, EventArgs e)
+        {
+            pnlFilters.Visible = !pnlFilters.Visible;
         }
     }
 }

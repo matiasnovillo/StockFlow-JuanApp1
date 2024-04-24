@@ -41,16 +41,19 @@
             btnBuscar = new Button();
             numericUpDownRegistrosPorPagina = new NumericUpDown();
             label1 = new Label();
+            pnlSearchBar = new Panel();
+            btnShowHideTabla = new ToolStripButton();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).BeginInit();
+            pnlSearchBar.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, btnShowHideTabla });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 27);
@@ -70,7 +73,7 @@
             // menuItemMain
             // 
             menuItemMain.Name = "menuItemMain";
-            menuItemMain.Size = new Size(189, 26);
+            menuItemMain.Size = new Size(224, 26);
             menuItemMain.Text = "Volver al inicio";
             menuItemMain.Click += menuItemMain_Click;
             // 
@@ -78,7 +81,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 523);
+            statusStrip1.Location = new Point(0, 667);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 26);
             statusStrip1.TabIndex = 1;
@@ -94,7 +97,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(12, 42);
+            lblTitulo.Location = new Point(12, 25);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(194, 31);
             lblTitulo.TabIndex = 5;
@@ -106,16 +109,17 @@
             DataGridViewStock.AllowUserToDeleteRows = false;
             DataGridViewStock.AllowUserToOrderColumns = true;
             DataGridViewStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DataGridViewStock.Location = new Point(12, 172);
+            DataGridViewStock.Dock = DockStyle.Fill;
+            DataGridViewStock.Location = new Point(0, 27);
             DataGridViewStock.Name = "DataGridViewStock";
             DataGridViewStock.ReadOnly = true;
             DataGridViewStock.RowHeadersWidth = 51;
-            DataGridViewStock.Size = new Size(776, 348);
+            DataGridViewStock.Size = new Size(800, 640);
             DataGridViewStock.TabIndex = 4;
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(12, 139);
+            txtBuscar.Location = new Point(12, 122);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(532, 27);
             txtBuscar.TabIndex = 12;
@@ -123,7 +127,7 @@
             // lblBarraDeBusqueda
             // 
             lblBarraDeBusqueda.AutoSize = true;
-            lblBarraDeBusqueda.Location = new Point(12, 116);
+            lblBarraDeBusqueda.Location = new Point(12, 99);
             lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
             lblBarraDeBusqueda.Size = new Size(588, 20);
             lblBarraDeBusqueda.TabIndex = 11;
@@ -131,7 +135,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(694, 116);
+            btnBuscar.Location = new Point(694, 99);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(94, 50);
             btnBuscar.TabIndex = 13;
@@ -141,7 +145,7 @@
             // 
             // numericUpDownRegistrosPorPagina
             // 
-            numericUpDownRegistrosPorPagina.Location = new Point(260, 49);
+            numericUpDownRegistrosPorPagina.Location = new Point(260, 32);
             numericUpDownRegistrosPorPagina.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
             numericUpDownRegistrosPorPagina.Minimum = new decimal(new int[] { 500, 0, 0, 0 });
             numericUpDownRegistrosPorPagina.Name = "numericUpDownRegistrosPorPagina";
@@ -152,23 +156,42 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(260, 26);
+            label1.Location = new Point(260, 9);
             label1.Name = "label1";
             label1.Size = new Size(191, 20);
             label1.TabIndex = 15;
             label1.Text = "Cant. de registros a mostrar";
             // 
+            // pnlSearchBar
+            // 
+            pnlSearchBar.Controls.Add(lblTitulo);
+            pnlSearchBar.Controls.Add(label1);
+            pnlSearchBar.Controls.Add(lblBarraDeBusqueda);
+            pnlSearchBar.Controls.Add(numericUpDownRegistrosPorPagina);
+            pnlSearchBar.Controls.Add(txtBuscar);
+            pnlSearchBar.Controls.Add(btnBuscar);
+            pnlSearchBar.Dock = DockStyle.Top;
+            pnlSearchBar.Location = new Point(0, 27);
+            pnlSearchBar.Name = "pnlSearchBar";
+            pnlSearchBar.Size = new Size(800, 172);
+            pnlSearchBar.TabIndex = 16;
+            // 
+            // btnShowHideTabla
+            // 
+            btnShowHideTabla.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnShowHideTabla.Image = (Image)resources.GetObject("btnShowHideTabla.Image");
+            btnShowHideTabla.ImageTransparentColor = Color.Magenta;
+            btnShowHideTabla.Name = "btnShowHideTabla";
+            btnShowHideTabla.Size = new Size(48, 24);
+            btnShowHideTabla.Text = "Tabla";
+            btnShowHideTabla.Click += btnShowHideTabla_Click;
+            // 
             // Stock
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 549);
-            Controls.Add(label1);
-            Controls.Add(numericUpDownRegistrosPorPagina);
-            Controls.Add(btnBuscar);
-            Controls.Add(txtBuscar);
-            Controls.Add(lblBarraDeBusqueda);
-            Controls.Add(lblTitulo);
+            ClientSize = new Size(800, 693);
+            Controls.Add(pnlSearchBar);
             Controls.Add(DataGridViewStock);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
@@ -180,6 +203,8 @@
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).EndInit();
+            pnlSearchBar.ResumeLayout(false);
+            pnlSearchBar.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -198,5 +223,7 @@
         private Button btnBuscar;
         private NumericUpDown numericUpDownRegistrosPorPagina;
         private Label label1;
+        private Panel pnlSearchBar;
+        private ToolStripButton btnShowHideTabla;
     }
 }
