@@ -56,10 +56,11 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(12, 27);
+            lblTitulo.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = SystemColors.Window;
+            lblTitulo.Location = new Point(12, 45);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(251, 31);
+            lblTitulo.Size = new Size(649, 81);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Formulario de entradas";
             // 
@@ -67,14 +68,16 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 421);
+            statusStrip1.Location = new Point(0, 467);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(546, 26);
+            statusStrip1.Size = new Size(821, 26);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
             // statusLabel
             // 
+            statusLabel.BackColor = SystemColors.Window;
+            statusLabel.ForeColor = Color.Black;
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new Size(92, 20);
             statusLabel.Text = "Información:";
@@ -85,7 +88,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { dropDownButton });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(546, 27);
+            toolStrip1.Size = new Size(821, 27);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -108,17 +111,20 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(408, 368);
+            btnGuardar.BackColor = Color.Black;
+            btnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.ForeColor = SystemColors.Window;
+            btnGuardar.Location = new Point(629, 381);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(126, 43);
+            btnGuardar.Size = new Size(180, 78);
             btnGuardar.TabIndex = 11;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
             // txtNroDePesada
             // 
-            txtNroDePesada.Location = new Point(12, 93);
+            txtNroDePesada.Location = new Point(12, 179);
             txtNroDePesada.Name = "txtNroDePesada";
             txtNroDePesada.Size = new Size(232, 27);
             txtNroDePesada.TabIndex = 14;
@@ -126,15 +132,17 @@
             // lblNroDePesada
             // 
             lblNroDePesada.AutoSize = true;
-            lblNroDePesada.Location = new Point(12, 70);
+            lblNroDePesada.Font = new Font("Segoe UI", 12F);
+            lblNroDePesada.ForeColor = SystemColors.Window;
+            lblNroDePesada.Location = new Point(12, 148);
             lblNroDePesada.Name = "lblNroDePesada";
-            lblNroDePesada.Size = new Size(119, 20);
+            lblNroDePesada.Size = new Size(155, 28);
             lblNroDePesada.TabIndex = 13;
             lblNroDePesada.Text = "Nº de pesada (*)";
             // 
             // txtCodigoDeProducto
             // 
-            txtCodigoDeProducto.Location = new Point(12, 159);
+            txtCodigoDeProducto.Location = new Point(12, 253);
             txtCodigoDeProducto.Name = "txtCodigoDeProducto";
             txtCodigoDeProducto.Size = new Size(232, 27);
             txtCodigoDeProducto.TabIndex = 16;
@@ -143,15 +151,17 @@
             // lblCodigoDeProducto
             // 
             lblCodigoDeProducto.AutoSize = true;
-            lblCodigoDeProducto.Location = new Point(12, 136);
+            lblCodigoDeProducto.Font = new Font("Segoe UI", 12F);
+            lblCodigoDeProducto.ForeColor = SystemColors.Window;
+            lblCodigoDeProducto.Location = new Point(12, 222);
             lblCodigoDeProducto.Name = "lblCodigoDeProducto";
-            lblCodigoDeProducto.Size = new Size(168, 20);
+            lblCodigoDeProducto.Size = new Size(221, 28);
             lblCodigoDeProducto.TabIndex = 15;
             lblCodigoDeProducto.Text = "Código de producto  (*)";
             // 
             // txtNombreDeProducto
             // 
-            txtNombreDeProducto.Location = new Point(12, 254);
+            txtNombreDeProducto.Location = new Point(12, 365);
             txtNombreDeProducto.Name = "txtNombreDeProducto";
             txtNombreDeProducto.Size = new Size(232, 27);
             txtNombreDeProducto.TabIndex = 18;
@@ -159,15 +169,17 @@
             // lblNombreDeProducto
             // 
             lblNombreDeProducto.AutoSize = true;
-            lblNombreDeProducto.Location = new Point(12, 231);
+            lblNombreDeProducto.Font = new Font("Segoe UI", 12F);
+            lblNombreDeProducto.ForeColor = SystemColors.Window;
+            lblNombreDeProducto.Location = new Point(12, 334);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
-            lblNombreDeProducto.Size = new Size(174, 20);
+            lblNombreDeProducto.Size = new Size(229, 28);
             lblNombreDeProducto.TabIndex = 17;
             lblNombreDeProducto.Text = "Nombre de producto  (*)";
             // 
             // txtTexContenido
             // 
-            txtTexContenido.Location = new Point(286, 93);
+            txtTexContenido.Location = new Point(477, 179);
             txtTexContenido.Name = "txtTexContenido";
             txtTexContenido.Size = new Size(232, 27);
             txtTexContenido.TabIndex = 20;
@@ -175,18 +187,22 @@
             // lblTexContenido
             // 
             lblTexContenido.AutoSize = true;
-            lblTexContenido.Location = new Point(286, 70);
+            lblTexContenido.Font = new Font("Segoe UI", 12F);
+            lblTexContenido.ForeColor = SystemColors.Window;
+            lblTexContenido.Location = new Point(477, 148);
             lblTexContenido.Name = "lblTexContenido";
-            lblTexContenido.Size = new Size(256, 20);
+            lblTexContenido.Size = new Size(333, 28);
             lblTexContenido.TabIndex = 19;
             lblTexContenido.Text = "Tex Contenido (Cant. de unidades) (*)";
             // 
             // lblNeto
             // 
             lblNeto.AutoSize = true;
-            lblNeto.Location = new Point(286, 133);
+            lblNeto.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNeto.ForeColor = SystemColors.Window;
+            lblNeto.Location = new Point(477, 222);
             lblNeto.Name = "lblNeto";
-            lblNeto.Size = new Size(62, 20);
+            lblNeto.Size = new Size(81, 28);
             lblNeto.TabIndex = 21;
             lblNeto.Text = "Neto (*)";
             // 
@@ -194,7 +210,7 @@
             // 
             numericUpDownNeto.DecimalPlaces = 2;
             numericUpDownNeto.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            numericUpDownNeto.Location = new Point(286, 157);
+            numericUpDownNeto.Location = new Point(477, 253);
             numericUpDownNeto.Name = "numericUpDownNeto";
             numericUpDownNeto.Size = new Size(232, 27);
             numericUpDownNeto.TabIndex = 22;
@@ -202,18 +218,22 @@
             // lblInfo
             // 
             lblInfo.AutoSize = true;
-            lblInfo.Location = new Point(12, 189);
+            lblInfo.Font = new Font("Segoe UI", 12F);
+            lblInfo.ForeColor = SystemColors.Window;
+            lblInfo.Location = new Point(12, 283);
             lblInfo.Name = "lblInfo";
-            lblInfo.Size = new Size(349, 20);
+            lblInfo.Size = new Size(458, 28);
             lblInfo.TabIndex = 23;
             lblInfo.Text = "Presione Enter para rellenar el nombre de producto";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 391);
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(12, 431);
             label1.Name = "label1";
-            label1.Size = new Size(98, 20);
+            label1.Size = new Size(127, 28);
             label1.TabIndex = 24;
             label1.Text = "(*) Requerido";
             // 
@@ -221,7 +241,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(546, 447);
+            BackColor = Color.Black;
+            ClientSize = new Size(821, 493);
             Controls.Add(label1);
             Controls.Add(lblInfo);
             Controls.Add(numericUpDownNeto);
@@ -238,7 +259,10 @@
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Controls.Add(lblTitulo);
+            ForeColor = Color.Goldenrod;
+            MaximizeBox = false;
             Name = "FormularioEntrada";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Formulario de entradas";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();

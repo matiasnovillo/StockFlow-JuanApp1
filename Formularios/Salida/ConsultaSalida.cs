@@ -102,6 +102,8 @@ namespace JuanApp.Formularios.Salida
 
                 DataGridViewSalida.AutoGenerateColumns = false;
 
+                WindowState = FormWindowState.Maximized;
+
                 DateTime now = DateTime.Now;
                 DateTime NowIn030DaysBefore = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
                 DateTime NowIn2359 = new DateTime(now.Year, now.Month, now.Day, 23, 59, 59);
@@ -369,7 +371,7 @@ namespace JuanApp.Formularios.Salida
         {
             try
             {
-                if (e.ColumnIndex == 9)
+                if (e.ColumnIndex == 10)
                 {
                     //Actualizar
                     int EntradaId = Convert.ToInt32(DataGridViewSalida.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -381,7 +383,7 @@ namespace JuanApp.Formularios.Salida
 
                     GetTabla();
                 }
-                else if (e.ColumnIndex == 10)
+                else if (e.ColumnIndex == 11)
                 {
                     //Borrar
                     DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",

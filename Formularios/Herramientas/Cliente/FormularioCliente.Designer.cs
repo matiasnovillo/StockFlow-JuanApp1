@@ -60,10 +60,12 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(12, 27);
+            lblTitulo.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = SystemColors.Window;
+            lblTitulo.Location = new Point(16, 50);
+            lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(230, 31);
+            lblTitulo.Size = new Size(595, 81);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Formulario de cliente";
             // 
@@ -71,14 +73,17 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 430);
+            statusStrip1.Location = new Point(0, 699);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(546, 26);
+            statusStrip1.Padding = new Padding(1, 0, 19, 0);
+            statusStrip1.Size = new Size(819, 26);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
             // statusLabel
             // 
+            statusLabel.BackColor = SystemColors.Window;
+            statusLabel.ForeColor = Color.Black;
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new Size(92, 20);
             statusLabel.Text = "Información:";
@@ -89,7 +94,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { dropDownButton });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(546, 27);
+            toolStrip1.Size = new Size(819, 27);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -112,156 +117,187 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(408, 384);
+            btnGuardar.BackColor = Color.Black;
+            btnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.ForeColor = SystemColors.Window;
+            btnGuardar.Location = new Point(633, 613);
+            btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(126, 43);
+            btnGuardar.Size = new Size(173, 82);
             btnGuardar.TabIndex = 11;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
             // txtCodigoDeCliente
             // 
-            txtCodigoDeCliente.Location = new Point(12, 93);
+            txtCodigoDeCliente.Location = new Point(16, 163);
+            txtCodigoDeCliente.Margin = new Padding(4);
             txtCodigoDeCliente.Name = "txtCodigoDeCliente";
-            txtCodigoDeCliente.Size = new Size(232, 27);
+            txtCodigoDeCliente.Size = new Size(318, 34);
             txtCodigoDeCliente.TabIndex = 16;
             // 
             // lblCodigoDeProducto
             // 
             lblCodigoDeProducto.AutoSize = true;
-            lblCodigoDeProducto.Location = new Point(12, 70);
+            lblCodigoDeProducto.ForeColor = SystemColors.Window;
+            lblCodigoDeProducto.Location = new Point(16, 131);
+            lblCodigoDeProducto.Margin = new Padding(4, 0, 4, 0);
             lblCodigoDeProducto.Name = "lblCodigoDeProducto";
-            lblCodigoDeProducto.Size = new Size(147, 20);
+            lblCodigoDeProducto.Size = new Size(191, 28);
             lblCodigoDeProducto.TabIndex = 15;
             lblCodigoDeProducto.Text = "Código de cliente (*)";
             // 
             // txtNombreDeCliente
             // 
-            txtNombreDeCliente.Location = new Point(12, 164);
+            txtNombreDeCliente.Location = new Point(16, 263);
+            txtNombreDeCliente.Margin = new Padding(4);
             txtNombreDeCliente.Name = "txtNombreDeCliente";
-            txtNombreDeCliente.Size = new Size(232, 27);
+            txtNombreDeCliente.Size = new Size(318, 34);
             txtNombreDeCliente.TabIndex = 18;
             // 
             // lblNombreDeProducto
             // 
             lblNombreDeProducto.AutoSize = true;
-            lblNombreDeProducto.Location = new Point(12, 141);
+            lblNombreDeProducto.ForeColor = SystemColors.Window;
+            lblNombreDeProducto.Location = new Point(16, 230);
+            lblNombreDeProducto.Margin = new Padding(4, 0, 4, 0);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
-            lblNombreDeProducto.Size = new Size(153, 20);
+            lblNombreDeProducto.Size = new Size(199, 28);
             lblNombreDeProducto.TabIndex = 17;
             lblNombreDeProducto.Text = "Nombre de cliente (*)";
             // 
             // txtDomicilio
             // 
-            txtDomicilio.Location = new Point(12, 242);
+            txtDomicilio.Location = new Point(16, 372);
+            txtDomicilio.Margin = new Padding(4);
             txtDomicilio.Name = "txtDomicilio";
-            txtDomicilio.Size = new Size(232, 27);
+            txtDomicilio.Size = new Size(318, 34);
             txtDomicilio.TabIndex = 20;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 219);
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(16, 340);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(74, 20);
+            label1.Size = new Size(96, 28);
             label1.TabIndex = 19;
             label1.Text = "Domicilio";
             // 
             // txtLocalidad
             // 
-            txtLocalidad.Location = new Point(12, 316);
+            txtLocalidad.Location = new Point(16, 475);
+            txtLocalidad.Margin = new Padding(4);
             txtLocalidad.Name = "txtLocalidad";
-            txtLocalidad.Size = new Size(232, 27);
+            txtLocalidad.Size = new Size(318, 34);
             txtLocalidad.TabIndex = 22;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 293);
+            label2.ForeColor = SystemColors.Window;
+            label2.Location = new Point(16, 443);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(74, 20);
+            label2.Size = new Size(96, 28);
             label2.TabIndex = 21;
             label2.Text = "Localidad";
             // 
             // txtCUIT
             // 
-            txtCUIT.Location = new Point(12, 393);
+            txtCUIT.Location = new Point(16, 583);
+            txtCUIT.Margin = new Padding(4);
             txtCUIT.Name = "txtCUIT";
-            txtCUIT.Size = new Size(232, 27);
+            txtCUIT.Size = new Size(318, 34);
             txtCUIT.TabIndex = 24;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 370);
+            label3.ForeColor = SystemColors.Window;
+            label3.Location = new Point(16, 551);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(40, 20);
+            label3.Size = new Size(53, 28);
             label3.TabIndex = 23;
             label3.Text = "CUIT";
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(282, 93);
+            txtTelefono.Location = new Point(388, 163);
+            txtTelefono.Margin = new Padding(4);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(232, 27);
+            txtTelefono.Size = new Size(318, 34);
             txtTelefono.TabIndex = 26;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(282, 70);
+            label4.ForeColor = SystemColors.Window;
+            label4.Location = new Point(388, 131);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(67, 20);
+            label4.Size = new Size(86, 28);
             label4.TabIndex = 25;
             label4.Text = "Teléfono";
             // 
             // txtCodigoPostal
             // 
-            txtCodigoPostal.Location = new Point(282, 164);
+            txtCodigoPostal.Location = new Point(388, 263);
+            txtCodigoPostal.Margin = new Padding(4);
             txtCodigoPostal.Name = "txtCodigoPostal";
-            txtCodigoPostal.Size = new Size(232, 27);
+            txtCodigoPostal.Size = new Size(318, 34);
             txtCodigoPostal.TabIndex = 28;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(282, 141);
+            label5.ForeColor = SystemColors.Window;
+            label5.Location = new Point(388, 230);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(103, 20);
+            label5.Size = new Size(136, 28);
             label5.TabIndex = 27;
             label5.Text = "Código postal";
             // 
             // txtProvincia
             // 
-            txtProvincia.Location = new Point(282, 242);
+            txtProvincia.Location = new Point(388, 372);
+            txtProvincia.Margin = new Padding(4);
             txtProvincia.Name = "txtProvincia";
-            txtProvincia.Size = new Size(232, 27);
+            txtProvincia.Size = new Size(318, 34);
             txtProvincia.TabIndex = 30;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(282, 219);
+            label6.ForeColor = SystemColors.Window;
+            label6.Location = new Point(388, 340);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(69, 20);
+            label6.Size = new Size(92, 28);
             label6.TabIndex = 29;
             label6.Text = "Provincia";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(282, 272);
+            label7.ForeColor = SystemColors.Window;
+            label7.Location = new Point(16, 667);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(98, 20);
+            label7.Size = new Size(127, 28);
             label7.TabIndex = 31;
             label7.Text = "(*) Requerido";
             // 
             // FormularioCliente
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(546, 456);
+            BackColor = Color.Black;
+            ClientSize = new Size(819, 725);
             Controls.Add(label7);
             Controls.Add(txtProvincia);
             Controls.Add(label6);
@@ -283,6 +319,9 @@
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Controls.Add(lblTitulo);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ForeColor = Color.Goldenrod;
+            Margin = new Padding(4);
             Name = "FormularioCliente";
             Text = "Formulario de clientes";
             statusStrip1.ResumeLayout(false);

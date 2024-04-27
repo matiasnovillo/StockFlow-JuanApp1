@@ -20,17 +20,17 @@ namespace JuanApp.Formularios.Herramientas.Cliente
 
                 DataGridViewTextBoxColumn col0 = new();
                 col0.DataPropertyName = "ClienteId";
-                col0.HeaderText = "ClienteId";
+                col0.HeaderText = "ID del sistema";
                 DataGridViewCliente.Columns.Add(col0);
 
                 DataGridViewTextBoxColumn col1 = new();
                 col1.DataPropertyName = "CodigoDeCliente";
-                col1.HeaderText = "CodigoDeCliente";
+                col1.HeaderText = "Código de cliente";
                 DataGridViewCliente.Columns.Add(col1);
 
                 DataGridViewTextBoxColumn col2 = new();
                 col2.DataPropertyName = "NombreDeCliente";
-                col2.HeaderText = "NombreDeCliente";
+                col2.HeaderText = "Nombre de cliente";
                 DataGridViewCliente.Columns.Add(col2);
 
                 DataGridViewTextBoxColumn col3 = new();
@@ -40,7 +40,7 @@ namespace JuanApp.Formularios.Herramientas.Cliente
 
                 DataGridViewTextBoxColumn col4 = new();
                 col4.DataPropertyName = "Telefono";
-                col4.HeaderText = "Telefono";
+                col4.HeaderText = "Teléfono";
                 DataGridViewCliente.Columns.Add(col4);
 
                 DataGridViewButtonColumn colActualizar = new();
@@ -56,6 +56,8 @@ namespace JuanApp.Formularios.Herramientas.Cliente
                 DataGridViewCliente.Columns.Add(colBorrar);
 
                 DataGridViewCliente.AutoGenerateColumns = false;
+
+                WindowState = FormWindowState.Maximized;
 
                 GetTabla();
             }

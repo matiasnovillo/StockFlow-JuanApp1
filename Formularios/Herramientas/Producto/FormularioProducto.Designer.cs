@@ -47,10 +47,11 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(12, 27);
+            lblTitulo.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = SystemColors.Window;
+            lblTitulo.Location = new Point(12, 28);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(256, 31);
+            lblTitulo.Size = new Size(664, 81);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Formulario de producto";
             // 
@@ -58,14 +59,16 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 272);
+            statusStrip1.Location = new Point(0, 331);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(546, 26);
+            statusStrip1.Size = new Size(832, 26);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
             // statusLabel
             // 
+            statusLabel.BackColor = SystemColors.Window;
+            statusLabel.ForeColor = Color.Black;
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new Size(92, 20);
             statusLabel.Text = "Información:";
@@ -76,7 +79,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { dropDownButton });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(546, 27);
+            toolStrip1.Size = new Size(832, 27);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -99,43 +102,52 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(408, 226);
+            btnGuardar.BackColor = Color.Black;
+            btnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.ForeColor = SystemColors.Window;
+            btnGuardar.Location = new Point(665, 247);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(126, 43);
+            btnGuardar.Size = new Size(155, 81);
             btnGuardar.TabIndex = 11;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
             // txtCodigoDeProducto
             // 
-            txtCodigoDeProducto.Location = new Point(12, 93);
+            txtCodigoDeProducto.Font = new Font("Segoe UI", 12F);
+            txtCodigoDeProducto.Location = new Point(12, 163);
             txtCodigoDeProducto.Name = "txtCodigoDeProducto";
-            txtCodigoDeProducto.Size = new Size(232, 27);
+            txtCodigoDeProducto.Size = new Size(285, 34);
             txtCodigoDeProducto.TabIndex = 16;
             // 
             // lblCodigoDeProducto
             // 
             lblCodigoDeProducto.AutoSize = true;
-            lblCodigoDeProducto.Location = new Point(12, 70);
+            lblCodigoDeProducto.Font = new Font("Segoe UI", 12F);
+            lblCodigoDeProducto.ForeColor = SystemColors.Window;
+            lblCodigoDeProducto.Location = new Point(12, 132);
             lblCodigoDeProducto.Name = "lblCodigoDeProducto";
-            lblCodigoDeProducto.Size = new Size(144, 20);
+            lblCodigoDeProducto.Size = new Size(191, 28);
             lblCodigoDeProducto.TabIndex = 15;
             lblCodigoDeProducto.Text = "Código de producto";
             // 
             // txtNombreDeProducto
             // 
-            txtNombreDeProducto.Location = new Point(12, 164);
+            txtNombreDeProducto.Font = new Font("Segoe UI", 12F);
+            txtNombreDeProducto.Location = new Point(12, 242);
             txtNombreDeProducto.Name = "txtNombreDeProducto";
-            txtNombreDeProducto.Size = new Size(232, 27);
+            txtNombreDeProducto.Size = new Size(285, 34);
             txtNombreDeProducto.TabIndex = 18;
             // 
             // lblNombreDeProducto
             // 
             lblNombreDeProducto.AutoSize = true;
-            lblNombreDeProducto.Location = new Point(12, 141);
+            lblNombreDeProducto.Font = new Font("Segoe UI", 12F);
+            lblNombreDeProducto.ForeColor = SystemColors.Window;
+            lblNombreDeProducto.Location = new Point(12, 211);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
-            lblNombreDeProducto.Size = new Size(150, 20);
+            lblNombreDeProducto.Size = new Size(199, 28);
             lblNombreDeProducto.TabIndex = 17;
             lblNombreDeProducto.Text = "Nombre de producto";
             // 
@@ -143,7 +155,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(546, 298);
+            BackColor = Color.Black;
+            ClientSize = new Size(832, 357);
             Controls.Add(txtNombreDeProducto);
             Controls.Add(lblNombreDeProducto);
             Controls.Add(txtCodigoDeProducto);
@@ -152,7 +165,9 @@
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
             Controls.Add(lblTitulo);
+            ForeColor = Color.Goldenrod;
             Name = "FormularioProducto";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Formulario de productos";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();

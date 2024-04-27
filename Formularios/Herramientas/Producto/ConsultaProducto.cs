@@ -20,12 +20,12 @@ namespace JuanApp.Formularios.Herramientas.Producto
 
                 DataGridViewTextBoxColumn col0 = new();
                 col0.DataPropertyName = "ProductoId";
-                col0.HeaderText = "ProductoId";
+                col0.HeaderText = "ID del sistema";
                 DataGridViewProducto.Columns.Add(col0);
 
                 DataGridViewTextBoxColumn col1 = new();
                 col1.DataPropertyName = "CodigoProducto";
-                col1.HeaderText = "CodigoProducto";
+                col1.HeaderText = "Código de producto";
                 DataGridViewProducto.Columns.Add(col1);
 
                 DataGridViewTextBoxColumn col2 = new();
@@ -46,6 +46,8 @@ namespace JuanApp.Formularios.Herramientas.Producto
                 DataGridViewProducto.Columns.Add(colBorrar);
 
                 DataGridViewProducto.AutoGenerateColumns = false;
+
+                WindowState = FormWindowState.Maximized;
 
                 GetTabla();
             }

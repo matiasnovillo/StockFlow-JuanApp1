@@ -58,20 +58,22 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(12, 27);
+            lblTitulo.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = SystemColors.Window;
+            lblTitulo.Location = new Point(12, 42);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(229, 31);
+            lblTitulo.Size = new Size(595, 81);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Formulario de remito";
             // 
             // statusStrip1
             // 
+            statusStrip1.BackColor = SystemColors.Window;
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 411);
+            statusStrip1.Location = new Point(0, 499);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(546, 26);
+            statusStrip1.Size = new Size(644, 26);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -87,7 +89,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { dropDownButton });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(546, 27);
+            toolStrip1.Size = new Size(644, 27);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -110,35 +112,42 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(408, 365);
+            btnGuardar.BackColor = Color.Black;
+            btnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.ForeColor = SystemColors.Window;
+            btnGuardar.Location = new Point(482, 410);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(126, 43);
+            btnGuardar.Size = new Size(150, 86);
             btnGuardar.TabIndex = 11;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Text = "GUARDAR";
+            btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
             // lblCodigoDeProducto
             // 
             lblCodigoDeProducto.AutoSize = true;
-            lblCodigoDeProducto.Location = new Point(12, 70);
+            lblCodigoDeProducto.Font = new Font("Segoe UI", 12F);
+            lblCodigoDeProducto.ForeColor = SystemColors.Window;
+            lblCodigoDeProducto.Location = new Point(12, 146);
             lblCodigoDeProducto.Name = "lblCodigoDeProducto";
-            lblCodigoDeProducto.Size = new Size(124, 20);
+            lblCodigoDeProducto.Size = new Size(162, 28);
             lblCodigoDeProducto.TabIndex = 15;
             lblCodigoDeProducto.Text = "Fecha de emisión";
             // 
             // lblNombreDeProducto
             // 
             lblNombreDeProducto.AutoSize = true;
-            lblNombreDeProducto.Location = new Point(279, 70);
+            lblNombreDeProducto.Font = new Font("Segoe UI", 12F);
+            lblNombreDeProducto.ForeColor = SystemColors.Window;
+            lblNombreDeProducto.Location = new Point(373, 146);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
-            lblNombreDeProducto.Size = new Size(90, 20);
+            lblNombreDeProducto.Size = new Size(118, 28);
             lblNombreDeProducto.TabIndex = 17;
             lblNombreDeProducto.Text = "Kilos totales";
             // 
             // DateTimePickerFechaDeEmision
             // 
-            DateTimePickerFechaDeEmision.Location = new Point(12, 93);
+            DateTimePickerFechaDeEmision.Location = new Point(12, 177);
             DateTimePickerFechaDeEmision.Name = "DateTimePickerFechaDeEmision";
             DateTimePickerFechaDeEmision.Size = new Size(250, 27);
             DateTimePickerFechaDeEmision.TabIndex = 19;
@@ -147,7 +156,7 @@
             // 
             NumericUpDownKilosTotales.DecimalPlaces = 2;
             NumericUpDownKilosTotales.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            NumericUpDownKilosTotales.Location = new Point(279, 93);
+            NumericUpDownKilosTotales.Location = new Point(373, 177);
             NumericUpDownKilosTotales.Name = "NumericUpDownKilosTotales";
             NumericUpDownKilosTotales.Size = new Size(250, 27);
             NumericUpDownKilosTotales.TabIndex = 20;
@@ -156,7 +165,7 @@
             // 
             NumericUpDownPrecioTotal.DecimalPlaces = 2;
             NumericUpDownPrecioTotal.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            NumericUpDownPrecioTotal.Location = new Point(279, 173);
+            NumericUpDownPrecioTotal.Location = new Point(373, 257);
             NumericUpDownPrecioTotal.Name = "NumericUpDownPrecioTotal";
             NumericUpDownPrecioTotal.Size = new Size(250, 27);
             NumericUpDownPrecioTotal.TabIndex = 22;
@@ -164,9 +173,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(279, 150);
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(373, 226);
             label1.Name = "label1";
-            label1.Size = new Size(85, 20);
+            label1.Size = new Size(112, 28);
             label1.TabIndex = 21;
             label1.Text = "Precio total";
             // 
@@ -174,7 +185,7 @@
             // 
             NumericUpDownSubtotalTotal.DecimalPlaces = 2;
             NumericUpDownSubtotalTotal.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            NumericUpDownSubtotalTotal.Location = new Point(279, 256);
+            NumericUpDownSubtotalTotal.Location = new Point(373, 340);
             NumericUpDownSubtotalTotal.Name = "NumericUpDownSubtotalTotal";
             NumericUpDownSubtotalTotal.Size = new Size(250, 27);
             NumericUpDownSubtotalTotal.TabIndex = 24;
@@ -182,15 +193,17 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(279, 233);
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.ForeColor = SystemColors.Window;
+            label2.Location = new Point(373, 309);
             label2.Name = "label2";
-            label2.Size = new Size(100, 20);
+            label2.Size = new Size(133, 28);
             label2.TabIndex = 23;
             label2.Text = "Subtotal total";
             // 
             // txtCodigoCliente
             // 
-            txtCodigoCliente.Location = new Point(12, 172);
+            txtCodigoCliente.Location = new Point(12, 257);
             txtCodigoCliente.Name = "txtCodigoCliente";
             txtCodigoCliente.Size = new Size(250, 27);
             txtCodigoCliente.TabIndex = 25;
@@ -198,24 +211,28 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 150);
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.ForeColor = SystemColors.Window;
+            label3.Location = new Point(12, 226);
             label3.Name = "label3";
-            label3.Size = new Size(127, 20);
+            label3.Size = new Size(166, 28);
             label3.TabIndex = 26;
             label3.Text = "Codigo de cliente";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 233);
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.ForeColor = SystemColors.Window;
+            label4.Location = new Point(12, 309);
             label4.Name = "label4";
-            label4.Size = new Size(133, 20);
+            label4.Size = new Size(174, 28);
             label4.TabIndex = 28;
             label4.Text = "Nombre de cliente";
             // 
             // txtNombreCliente
             // 
-            txtNombreCliente.Location = new Point(12, 255);
+            txtNombreCliente.Location = new Point(12, 340);
             txtNombreCliente.Name = "txtNombreCliente";
             txtNombreCliente.Size = new Size(250, 27);
             txtNombreCliente.TabIndex = 27;
@@ -224,7 +241,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(546, 437);
+            BackColor = Color.Black;
+            ClientSize = new Size(644, 525);
             Controls.Add(label4);
             Controls.Add(txtNombreCliente);
             Controls.Add(label3);
@@ -242,6 +260,7 @@
             Controls.Add(statusStrip1);
             Controls.Add(lblTitulo);
             Name = "FormularioRemito";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Formulario de remitos";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();

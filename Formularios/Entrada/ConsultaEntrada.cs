@@ -75,6 +75,8 @@ namespace JuanApp.Formularios.Entrada
                 colBorrar.UseColumnTextForButtonValue = true;
                 DataGridViewEntrada.Columns.Add(colBorrar);
 
+                WindowState = FormWindowState.Maximized;
+
                 DataGridViewEntrada.AutoGenerateColumns = false;
 
                 DateTime now = DateTime.Now;
@@ -226,16 +228,6 @@ namespace JuanApp.Formularios.Entrada
 
                 throw;
             }
-        }
-
-        private void btnShowHideTable_Click(object sender, EventArgs e)
-        {
-            pnlFiltersAndSearchBar.Visible = !pnlFiltersAndSearchBar.Visible;
-        }
-
-        private void btnShowHideFilters_Click(object sender, EventArgs e)
-        {
-            pnlFilters.Visible = !pnlFilters.Visible;
         }
     }
 }

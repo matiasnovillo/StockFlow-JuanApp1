@@ -43,6 +43,7 @@ namespace JuanApp.Formularios.Salida
                     Areas.JuanApp.Entities.Salida Salida = _salidaRepository
                                                                         .GetBySalidaId(salidaId);
 
+                    txtNroDePesada.Text = Salida.NroDePesaje.ToString();
                     txtCodigoDeCliente.Text = Salida.CodigoDeCliente;
                     txtNombreDeCliente.Text = Salida.NombreDeCliente;
                     txtCodigoDeProducto.Text = Salida.CodigoDeProducto.ToString();
@@ -72,6 +73,7 @@ namespace JuanApp.Formularios.Salida
             {
                 if (string.IsNullOrEmpty(txtCodigoDeCliente.Text) ||
                        string.IsNullOrEmpty(txtNombreDeCliente.Text) ||
+                       string.IsNullOrEmpty(txtNroDePesada.Text) ||
                        string.IsNullOrEmpty(txtCodigoDeProducto.Text) ||
                        string.IsNullOrEmpty(txtNombreProducto.Text) ||
                        numericUpDownKilosTotales.Value == 0)
@@ -82,25 +84,38 @@ namespace JuanApp.Formularios.Salida
                 {
                     if (_salidaId == 0)
                     {
-                        //Agregar
-                        Areas.JuanApp.Entities.Salida Salida = new()
+                        int NroDePesaje = _salidaRepository
+                            .AsQueryable()
+                            .Where(x => x.NroDePesaje == Convert.ToInt32(txtNroDePesada.Text))
+                            .FirstOrDefault()
+                            .NroDePesaje;
+
+                        if (NroDePesaje == 0)
                         {
-                            SalidaId = _salidaId,
-                            Active = true,
-                            UserCreationId = 1,
-                            UserLastModificationId = 1,
-                            DateTimeCreation = DateTime.Now,
-                            DateTimeLastModification = DateTime.Now,
-                            CodigoDeCliente = txtCodigoDeCliente.Text,
-                            NombreDeCliente = txtNombreDeCliente.Text,
-                            NroDePesaje = Convert.ToInt32(txtNroDePesada.Text),
-                            CodigoDeProducto = Convert.ToInt32(txtCodigoDeProducto.Text),
-                            NombreDeProducto = txtNombreProducto.Text,
-                            KilosReales = numericUpDownKilosTotales.Value,
-                            Precio = numericUpDownPrecio.Value,
-                            Subtotal = numericUpDownSubtotal.Value
-                        };
-                        _salidaRepository.Add(Salida);
+                            //Agregar
+                            Areas.JuanApp.Entities.Salida Salida = new()
+                            {
+                                SalidaId = _salidaId,
+                                Active = true,
+                                UserCreationId = 1,
+                                UserLastModificationId = 1,
+                                DateTimeCreation = DateTime.Now,
+                                DateTimeLastModification = DateTime.Now,
+                                CodigoDeCliente = txtCodigoDeCliente.Text,
+                                NombreDeCliente = txtNombreDeCliente.Text,
+                                NroDePesaje = Convert.ToInt32(txtNroDePesada.Text),
+                                CodigoDeProducto = Convert.ToInt32(txtCodigoDeProducto.Text),
+                                NombreDeProducto = txtNombreProducto.Text,
+                                KilosReales = numericUpDownKilosTotales.Value,
+                                Precio = numericUpDownPrecio.Value,
+                                Subtotal = numericUpDownSubtotal.Value
+                            };
+                            _salidaRepository.Add(Salida);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este Nº de pesaje ya existe en el sistema. No se guardará como nuevo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else
                     {

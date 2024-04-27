@@ -67,6 +67,8 @@ namespace JuanApp.Formularios.Herramientas.Remito
 
                 DataGridViewRemito.AutoGenerateColumns = false;
 
+                WindowState = FormWindowState.Maximized;
+
                 GetTabla();
             }
             catch (Exception)

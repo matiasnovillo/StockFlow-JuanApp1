@@ -60,6 +60,8 @@ namespace JuanApp.Formularios.Herramientas
             col7.HeaderText = "Fecha de última modificación";
             DataGridViewStock.Columns.Add(col7);
 
+            WindowState = FormWindowState.Maximized;
+
             DateTime now = DateTime.Now;
             DateTime NowIn030DaysBefore = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
             DateTime NowIn2359 = new DateTime(now.Year, now.Month, now.Day, 23, 59, 59);
