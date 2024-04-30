@@ -84,13 +84,12 @@ namespace JuanApp.Formularios.Salida
                 {
                     if (_salidaId == 0)
                     {
-                        int NroDePesaje = _salidaRepository
+                        Areas.JuanApp.Entities.Salida SalidaTest = _salidaRepository
                             .AsQueryable()
                             .Where(x => x.NroDePesaje == Convert.ToInt32(txtNroDePesada.Text))
-                            .FirstOrDefault()
-                            .NroDePesaje;
+                            .FirstOrDefault();
 
-                        if (NroDePesaje == 0)
+                        if (SalidaTest == null)
                         {
                             //Agregar
                             Areas.JuanApp.Entities.Salida Salida = new()
@@ -161,6 +160,8 @@ namespace JuanApp.Formularios.Salida
                     {
                         txtNombreProducto.Text = Producto.Nombre;
                     }
+
+                    numericUpDownPrecio.Focus();
                 }
             }
             catch (Exception)
@@ -185,6 +186,8 @@ namespace JuanApp.Formularios.Salida
                     {
                         txtNombreDeCliente.Text = Cliente.NombreDeCliente;
                     }
+
+                    txtCodigoDeProducto.Focus();
                 }
             }
             catch (Exception)
@@ -217,6 +220,8 @@ namespace JuanApp.Formularios.Salida
                 if (e.KeyChar == (char)Keys.Enter)
                 {
                     numericUpDownSubtotal.Value = numericUpDownPrecio.Value * numericUpDownKilosTotales.Value;
+
+                    btnGuardar.Focus();
                 }
             }
             catch (Exception)
@@ -243,6 +248,8 @@ namespace JuanApp.Formularios.Salida
                         txtCodigoDeProducto.Text = Entrada.CodigoDeProducto;
                         numericUpDownKilosTotales.Value = Entrada.Neto;
                     }
+
+                    txtCodigoDeCliente.Focus();
                 }
             }
             catch (Exception)

@@ -70,22 +70,35 @@ namespace JuanApp.Formularios.Entrada
                     if (_entradaId == 0)
                     {
                         //Agregar
-                        Areas.JuanApp.Entities.Entrada Entrada = new()
+                        JuanApp.Areas.JuanApp.Entities.Entrada EntradaTest = _entradaRepository
+                            .AsQueryable()
+                            .Where(x => x.NroDePesaje == Convert.ToInt32(txtNroDePesada.Text))
+                            .FirstOrDefault();
+
+                        if (EntradaTest == null)
                         {
-                            EntradaId = _entradaId,
-                            Active = true,
-                            UserCreationId = 1,
-                            UserLastModificationId = 1,
-                            DateTimeCreation = DateTime.Now,
-                            DateTimeLastModification = DateTime.Now,
-                            CodigoDeBarra = "",
-                            NroDePesaje = Convert.ToInt32(txtNroDePesada.Text),
-                            CodigoDeProducto = txtCodigoDeProducto.Text,
-                            NombreDeProducto = txtNombreDeProducto.Text,
-                            TexContenido = Convert.ToInt32(txtTexContenido.Text),
-                            Neto = numericUpDownNeto.Value
-                        };
-                        _entradaRepository.Add(Entrada);
+                            Areas.JuanApp.Entities.Entrada Entrada = new()
+                            {
+                                EntradaId = _entradaId,
+                                Active = true,
+                                UserCreationId = 1,
+                                UserLastModificationId = 1,
+                                DateTimeCreation = DateTime.Now,
+                                DateTimeLastModification = DateTime.Now,
+                                CodigoDeBarra = "",
+                                NroDePesaje = Convert.ToInt32(txtNroDePesada.Text),
+                                CodigoDeProducto = txtCodigoDeProducto.Text,
+                                NombreDeProducto = txtNombreDeProducto.Text,
+                                TexContenido = Convert.ToInt32(txtTexContenido.Text),
+                                Neto = numericUpDownNeto.Value
+                            };
+                            _entradaRepository.Add(Entrada);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este Nº de pesaje ya existe en el sistema. No se guardará como nuevo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
                     }
                     else
                     {
@@ -127,12 +140,68 @@ namespace JuanApp.Formularios.Entrada
                     if (Producto != null)
                     {
                         txtNombreDeProducto.Text = Producto.Nombre;
+                        txtTexContenido.Focus();
                     }
                 }
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
 
+        private void txtNroDePesada_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    Areas.JuanApp.Entities.Entrada Entrada = _entradaRepository
+                        .AsQueryable()
+                        .Where(x => x.NroDePesaje == Convert.ToInt32(txtNroDePesada.Text))
+                        .FirstOrDefault();
+
+                    if (Entrada != null)
+                    {
+                        txtTexContenido.Text = Entrada.TexContenido.ToString();
+                        numericUpDownNeto.Value = Entrada.Neto;
+                    }
+
+                    txtCodigoDeProducto.Focus();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void txtTexContenido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    numericUpDownNeto.Focus();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void numericUpDownNeto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    btnGuardar.Focus();
+                }
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

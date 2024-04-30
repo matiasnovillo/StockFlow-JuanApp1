@@ -46,7 +46,6 @@
             lblTexContenido = new Label();
             lblNeto = new Label();
             numericUpDownNeto = new NumericUpDown();
-            lblInfo = new Label();
             label1 = new Label();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -128,6 +127,7 @@
             txtNroDePesada.Name = "txtNroDePesada";
             txtNroDePesada.Size = new Size(232, 27);
             txtNroDePesada.TabIndex = 14;
+            txtNroDePesada.KeyPress += txtNroDePesada_KeyPress;
             // 
             // lblNroDePesada
             // 
@@ -161,7 +161,7 @@
             // 
             // txtNombreDeProducto
             // 
-            txtNombreDeProducto.Location = new Point(12, 365);
+            txtNombreDeProducto.Location = new Point(12, 341);
             txtNombreDeProducto.Name = "txtNombreDeProducto";
             txtNombreDeProducto.Size = new Size(232, 27);
             txtNombreDeProducto.TabIndex = 18;
@@ -171,7 +171,7 @@
             lblNombreDeProducto.AutoSize = true;
             lblNombreDeProducto.Font = new Font("Segoe UI", 12F);
             lblNombreDeProducto.ForeColor = SystemColors.Window;
-            lblNombreDeProducto.Location = new Point(12, 334);
+            lblNombreDeProducto.Location = new Point(12, 310);
             lblNombreDeProducto.Name = "lblNombreDeProducto";
             lblNombreDeProducto.Size = new Size(229, 28);
             lblNombreDeProducto.TabIndex = 17;
@@ -183,6 +183,7 @@
             txtTexContenido.Name = "txtTexContenido";
             txtTexContenido.Size = new Size(232, 27);
             txtTexContenido.TabIndex = 20;
+            txtTexContenido.KeyPress += txtTexContenido_KeyPress;
             // 
             // lblTexContenido
             // 
@@ -214,17 +215,7 @@
             numericUpDownNeto.Name = "numericUpDownNeto";
             numericUpDownNeto.Size = new Size(232, 27);
             numericUpDownNeto.TabIndex = 22;
-            // 
-            // lblInfo
-            // 
-            lblInfo.AutoSize = true;
-            lblInfo.Font = new Font("Segoe UI", 12F);
-            lblInfo.ForeColor = SystemColors.Window;
-            lblInfo.Location = new Point(12, 283);
-            lblInfo.Name = "lblInfo";
-            lblInfo.Size = new Size(458, 28);
-            lblInfo.TabIndex = 23;
-            lblInfo.Text = "Presione Enter para rellenar el nombre de producto";
+            numericUpDownNeto.KeyPress += numericUpDownNeto_KeyPress;
             // 
             // label1
             // 
@@ -244,7 +235,6 @@
             BackColor = Color.Black;
             ClientSize = new Size(821, 493);
             Controls.Add(label1);
-            Controls.Add(lblInfo);
             Controls.Add(numericUpDownNeto);
             Controls.Add(lblNeto);
             Controls.Add(txtTexContenido);
@@ -292,7 +282,6 @@
         private Label lblTexContenido;
         private Label lblNeto;
         private NumericUpDown numericUpDownNeto;
-        private Label lblInfo;
         private Label label1;
     }
 }

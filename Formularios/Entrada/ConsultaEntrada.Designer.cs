@@ -190,6 +190,7 @@
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(532, 38);
             txtBuscar.TabIndex = 10;
+            txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
             // btnAgregar
             // 
@@ -275,6 +276,7 @@
             Controls.Add(DataGridViewEntrada);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "ConsultaEntrada";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Consulta de entradas - Pesajes";

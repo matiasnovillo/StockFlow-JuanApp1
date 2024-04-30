@@ -79,5 +79,15 @@ namespace JuanApp.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Oswald_VariableFont_wght {
+            get {
+                object obj = ResourceManager.GetObject("Oswald_VariableFont_wght", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

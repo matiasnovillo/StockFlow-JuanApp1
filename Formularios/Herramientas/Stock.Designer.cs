@@ -38,22 +38,17 @@
             lblTitulo = new Label();
             DataGridViewStock = new DataGridView();
             txtBuscar = new TextBox();
-            lblBarraDeBusqueda = new Label();
             btnBuscar = new Button();
-            numericUpDownRegistrosPorPagina = new NumericUpDown();
-            label1 = new Label();
             pnlSearchBar = new Panel();
+            txtNroTotalDeProductos = new TextBox();
+            label1 = new Label();
             txtNetoTotal = new TextBox();
             lblNeto = new Label();
-            label3 = new Label();
-            DateTimePickerFechaFin = new DateTimePicker();
-            label2 = new Label();
-            DateTimePickerFechaInicio = new DateTimePicker();
             btnGenerarExcel = new Button();
+            lblBarraDeBusqueda = new Label();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).BeginInit();
             pnlSearchBar.SuspendLayout();
             SuspendLayout();
             // 
@@ -129,37 +124,27 @@
             DataGridViewStock.BackgroundColor = Color.Black;
             DataGridViewStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridViewStock.Dock = DockStyle.Bottom;
-            DataGridViewStock.Location = new Point(0, 630);
+            DataGridViewStock.Location = new Point(0, 526);
             DataGridViewStock.Name = "DataGridViewStock";
             DataGridViewStock.ReadOnly = true;
             DataGridViewStock.RowHeadersWidth = 51;
-            DataGridViewStock.Size = new Size(1028, 399);
+            DataGridViewStock.Size = new Size(1028, 503);
             DataGridViewStock.TabIndex = 4;
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(12, 226);
+            txtBuscar.Location = new Point(12, 163);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(532, 27);
             txtBuscar.TabIndex = 12;
-            // 
-            // lblBarraDeBusqueda
-            // 
-            lblBarraDeBusqueda.AutoSize = true;
-            lblBarraDeBusqueda.Font = new Font("Segoe UI", 12F);
-            lblBarraDeBusqueda.ForeColor = SystemColors.Window;
-            lblBarraDeBusqueda.Location = new Point(12, 195);
-            lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
-            lblBarraDeBusqueda.Size = new Size(772, 28);
-            lblBarraDeBusqueda.TabIndex = 11;
-            lblBarraDeBusqueda.Text = "Barra de búsqueda (Busque por Nº de pesaje, nombre de producto o cód. de producto)";
+            txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
             // btnBuscar
             // 
             btnBuscar.BackColor = Color.Black;
             btnBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBuscar.ForeColor = SystemColors.Window;
-            btnBuscar.Location = new Point(843, 372);
+            btnBuscar.Location = new Point(843, 309);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(173, 82);
             btnBuscar.TabIndex = 13;
@@ -167,52 +152,46 @@
             btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
-            // numericUpDownRegistrosPorPagina
+            // pnlSearchBar
             // 
-            numericUpDownRegistrosPorPagina.Location = new Point(574, 155);
-            numericUpDownRegistrosPorPagina.Maximum = new decimal(new int[] { 999999999, 0, 0, 0 });
-            numericUpDownRegistrosPorPagina.Minimum = new decimal(new int[] { 500, 0, 0, 0 });
-            numericUpDownRegistrosPorPagina.Name = "numericUpDownRegistrosPorPagina";
-            numericUpDownRegistrosPorPagina.Size = new Size(150, 27);
-            numericUpDownRegistrosPorPagina.TabIndex = 14;
-            numericUpDownRegistrosPorPagina.Value = new decimal(new int[] { 500, 0, 0, 0 });
+            pnlSearchBar.BackColor = Color.Black;
+            pnlSearchBar.Controls.Add(txtNroTotalDeProductos);
+            pnlSearchBar.Controls.Add(label1);
+            pnlSearchBar.Controls.Add(txtNetoTotal);
+            pnlSearchBar.Controls.Add(lblNeto);
+            pnlSearchBar.Controls.Add(btnGenerarExcel);
+            pnlSearchBar.Controls.Add(lblTitulo);
+            pnlSearchBar.Controls.Add(lblBarraDeBusqueda);
+            pnlSearchBar.Controls.Add(txtBuscar);
+            pnlSearchBar.Controls.Add(btnBuscar);
+            pnlSearchBar.Dock = DockStyle.Fill;
+            pnlSearchBar.Location = new Point(0, 27);
+            pnlSearchBar.Name = "pnlSearchBar";
+            pnlSearchBar.Size = new Size(1028, 499);
+            pnlSearchBar.TabIndex = 16;
+            // 
+            // txtNroTotalDeProductos
+            // 
+            txtNroTotalDeProductos.Location = new Point(12, 244);
+            txtNroTotalDeProductos.Name = "txtNroTotalDeProductos";
+            txtNroTotalDeProductos.ReadOnly = true;
+            txtNroTotalDeProductos.Size = new Size(194, 27);
+            txtNroTotalDeProductos.TabIndex = 25;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(574, 124);
+            label1.Location = new Point(12, 213);
             label1.Name = "label1";
-            label1.Size = new Size(252, 28);
-            label1.TabIndex = 15;
-            label1.Text = "Cant. de registros a mostrar";
-            // 
-            // pnlSearchBar
-            // 
-            pnlSearchBar.BackColor = Color.Black;
-            pnlSearchBar.Controls.Add(txtNetoTotal);
-            pnlSearchBar.Controls.Add(lblNeto);
-            pnlSearchBar.Controls.Add(label3);
-            pnlSearchBar.Controls.Add(DateTimePickerFechaFin);
-            pnlSearchBar.Controls.Add(label2);
-            pnlSearchBar.Controls.Add(DateTimePickerFechaInicio);
-            pnlSearchBar.Controls.Add(btnGenerarExcel);
-            pnlSearchBar.Controls.Add(lblTitulo);
-            pnlSearchBar.Controls.Add(label1);
-            pnlSearchBar.Controls.Add(lblBarraDeBusqueda);
-            pnlSearchBar.Controls.Add(numericUpDownRegistrosPorPagina);
-            pnlSearchBar.Controls.Add(txtBuscar);
-            pnlSearchBar.Controls.Add(btnBuscar);
-            pnlSearchBar.Dock = DockStyle.Fill;
-            pnlSearchBar.Location = new Point(0, 27);
-            pnlSearchBar.Name = "pnlSearchBar";
-            pnlSearchBar.Size = new Size(1028, 603);
-            pnlSearchBar.TabIndex = 16;
+            label1.Size = new Size(192, 28);
+            label1.TabIndex = 24;
+            label1.Text = "TOTAL de productos:";
             // 
             // txtNetoTotal
             // 
-            txtNetoTotal.Location = new Point(12, 301);
+            txtNetoTotal.Location = new Point(229, 244);
             txtNetoTotal.Name = "txtNetoTotal";
             txtNetoTotal.ReadOnly = true;
             txtNetoTotal.Size = new Size(194, 27);
@@ -223,60 +202,35 @@
             lblNeto.AutoSize = true;
             lblNeto.Font = new Font("Segoe UI", 12F);
             lblNeto.ForeColor = SystemColors.Window;
-            lblNeto.Location = new Point(12, 270);
+            lblNeto.Location = new Point(229, 213);
             lblNeto.Name = "lblNeto";
             lblNeto.Size = new Size(119, 28);
             lblNeto.TabIndex = 22;
             lblNeto.Text = "Neto TOTAL:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.ForeColor = SystemColors.Window;
-            label3.Location = new Point(294, 124);
-            label3.Name = "label3";
-            label3.Size = new Size(120, 28);
-            label3.TabIndex = 20;
-            label3.Text = "Fecha de fin:";
-            // 
-            // DateTimePickerFechaFin
-            // 
-            DateTimePickerFechaFin.Location = new Point(294, 155);
-            DateTimePickerFechaFin.Name = "DateTimePickerFechaFin";
-            DateTimePickerFechaFin.Size = new Size(250, 27);
-            DateTimePickerFechaFin.TabIndex = 19;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.ForeColor = SystemColors.Window;
-            label2.Location = new Point(12, 124);
-            label2.Name = "label2";
-            label2.Size = new Size(145, 28);
-            label2.TabIndex = 18;
-            label2.Text = "Fecha de inicio:";
-            // 
-            // DateTimePickerFechaInicio
-            // 
-            DateTimePickerFechaInicio.Location = new Point(12, 155);
-            DateTimePickerFechaInicio.Name = "DateTimePickerFechaInicio";
-            DateTimePickerFechaInicio.Size = new Size(250, 27);
-            DateTimePickerFechaInicio.TabIndex = 17;
             // 
             // btnGenerarExcel
             // 
             btnGenerarExcel.BackColor = Color.Black;
             btnGenerarExcel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGenerarExcel.ForeColor = SystemColors.Window;
-            btnGenerarExcel.Location = new Point(12, 372);
+            btnGenerarExcel.Location = new Point(12, 309);
             btnGenerarExcel.Name = "btnGenerarExcel";
             btnGenerarExcel.Size = new Size(194, 82);
             btnGenerarExcel.TabIndex = 16;
             btnGenerarExcel.Text = "GENERAR EXCEL";
             btnGenerarExcel.UseVisualStyleBackColor = false;
             btnGenerarExcel.Click += btnGenerarExcel_Click;
+            // 
+            // lblBarraDeBusqueda
+            // 
+            lblBarraDeBusqueda.AutoSize = true;
+            lblBarraDeBusqueda.Font = new Font("Segoe UI", 12F);
+            lblBarraDeBusqueda.ForeColor = SystemColors.Window;
+            lblBarraDeBusqueda.Location = new Point(12, 132);
+            lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
+            lblBarraDeBusqueda.Size = new Size(772, 28);
+            lblBarraDeBusqueda.TabIndex = 11;
+            lblBarraDeBusqueda.Text = "Barra de búsqueda (Busque por Nº de pesaje, nombre de producto o cód. de producto)";
             // 
             // Stock
             // 
@@ -294,7 +248,6 @@
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).EndInit();
             pnlSearchBar.ResumeLayout(false);
             pnlSearchBar.PerformLayout();
             ResumeLayout(false);
@@ -311,18 +264,14 @@
         private Label lblTitulo;
         private DataGridView DataGridViewStock;
         private TextBox txtBuscar;
-        private Label lblBarraDeBusqueda;
         private Button btnBuscar;
-        private NumericUpDown numericUpDownRegistrosPorPagina;
-        private Label label1;
         private Panel pnlSearchBar;
         private ToolStripButton btnShowHideTabla;
         private Button btnGenerarExcel;
-        private Label label3;
-        private DateTimePicker DateTimePickerFechaFin;
-        private Label label2;
-        private DateTimePicker DateTimePickerFechaInicio;
         private TextBox txtNetoTotal;
         private Label lblNeto;
+        private Label lblBarraDeBusqueda;
+        private TextBox txtNroTotalDeProductos;
+        private Label label1;
     }
 }

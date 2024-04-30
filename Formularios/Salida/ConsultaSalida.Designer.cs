@@ -32,7 +32,6 @@
             toolStrip1 = new ToolStrip();
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             menuItemMain = new ToolStripMenuItem();
-            btnHideShowTable = new ToolStripButton();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             DataGridViewSalida = new DataGridView();
@@ -67,7 +66,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, btnHideShowTable });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1267, 27);
@@ -90,16 +89,6 @@
             menuItemMain.Size = new Size(189, 26);
             menuItemMain.Text = "Volver al inicio";
             menuItemMain.Click += menuItemMain_Click;
-            // 
-            // btnHideShowTable
-            // 
-            btnHideShowTable.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnHideShowTable.Image = (Image)resources.GetObject("btnHideShowTable.Image");
-            btnHideShowTable.ImageTransparentColor = Color.Magenta;
-            btnHideShowTable.Name = "btnHideShowTable";
-            btnHideShowTable.Size = new Size(48, 24);
-            btnHideShowTable.Text = "Tabla";
-            btnHideShowTable.Click += btnHideShowTable_Click;
             // 
             // statusStrip1
             // 
@@ -176,6 +165,7 @@
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(696, 34);
             txtBuscar.TabIndex = 16;
+            txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
             // lblBarraDeBusqueda
             // 
@@ -259,9 +249,9 @@
             label1.ForeColor = SystemColors.Window;
             label1.Location = new Point(12, 233);
             label1.Name = "label1";
-            label1.Size = new Size(381, 28);
+            label1.Size = new Size(501, 28);
             label1.TabIndex = 19;
-            label1.Text = "nombre de cliente o nombre de producto)";
+            label1.Text = "nombre de cliente, nombre de producto o Nº de pesaje)";
             // 
             // lblKilosTotales
             // 
@@ -426,6 +416,5 @@
         private NumericUpDown numericUpDownRegistros;
         private Label label2;
         private Panel pnlSearchBar;
-        private ToolStripButton btnHideShowTable;
     }
 }

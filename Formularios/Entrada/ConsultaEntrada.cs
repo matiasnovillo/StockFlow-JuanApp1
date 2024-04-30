@@ -7,6 +7,7 @@ using DocumentFormat.OpenXml.InkML;
 using Microsoft.Win32;
 using System.Linq;
 using System.Windows.Forms;
+using JuanApp.Areas.JuanApp.Repositories;
 
 namespace JuanApp.Formularios.Entrada
 {
@@ -226,6 +227,21 @@ namespace JuanApp.Formularios.Entrada
             catch (Exception)
             {
 
+                throw;
+            }
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    GetTabla();
+                }
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

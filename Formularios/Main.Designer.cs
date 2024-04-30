@@ -105,7 +105,7 @@
             btnEntradaCargarExcel.BackColor = Color.Black;
             btnEntradaCargarExcel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnEntradaCargarExcel.ForeColor = SystemColors.Window;
-            btnEntradaCargarExcel.Location = new Point(61, 248);
+            btnEntradaCargarExcel.Location = new Point(288, 248);
             btnEntradaCargarExcel.Name = "btnEntradaCargarExcel";
             btnEntradaCargarExcel.Size = new Size(167, 71);
             btnEntradaCargarExcel.TabIndex = 4;
@@ -118,7 +118,7 @@
             btnEntradaConsulta.BackColor = Color.Black;
             btnEntradaConsulta.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnEntradaConsulta.ForeColor = SystemColors.Window;
-            btnEntradaConsulta.Location = new Point(61, 83);
+            btnEntradaConsulta.Location = new Point(288, 83);
             btnEntradaConsulta.Name = "btnEntradaConsulta";
             btnEntradaConsulta.Size = new Size(167, 148);
             btnEntradaConsulta.TabIndex = 3;
@@ -166,7 +166,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.Window;
-            label4.Location = new Point(1615, 34);
+            label4.Location = new Point(1392, 34);
             label4.Name = "label4";
             label4.Size = new Size(261, 46);
             label4.TabIndex = 11;
@@ -188,7 +188,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.Window;
-            label2.Location = new Point(61, 34);
+            label2.Location = new Point(288, 34);
             label2.Name = "label2";
             label2.Size = new Size(167, 46);
             label2.TabIndex = 9;
@@ -212,7 +212,7 @@
             btnCliente.BackColor = Color.Black;
             btnCliente.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCliente.ForeColor = SystemColors.Window;
-            btnCliente.Location = new Point(1709, 248);
+            btnCliente.Location = new Point(1486, 248);
             btnCliente.Name = "btnCliente";
             btnCliente.Size = new Size(167, 77);
             btnCliente.TabIndex = 6;
@@ -225,7 +225,7 @@
             btnProducto.BackColor = Color.Black;
             btnProducto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnProducto.ForeColor = SystemColors.Window;
-            btnProducto.Location = new Point(1709, 346);
+            btnProducto.Location = new Point(1486, 346);
             btnProducto.Name = "btnProducto";
             btnProducto.Size = new Size(167, 89);
             btnProducto.TabIndex = 5;
@@ -238,7 +238,7 @@
             btnStock.BackColor = Color.Black;
             btnStock.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnStock.ForeColor = SystemColors.Window;
-            btnStock.Location = new Point(1709, 83);
+            btnStock.Location = new Point(1486, 83);
             btnStock.Name = "btnStock";
             btnStock.Size = new Size(167, 148);
             btnStock.TabIndex = 4;

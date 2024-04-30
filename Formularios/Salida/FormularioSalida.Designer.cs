@@ -50,12 +50,9 @@
             numericUpDownPrecio = new NumericUpDown();
             lblSubtotal = new Label();
             numericUpDownSubtotal = new NumericUpDown();
-            lblInfo = new Label();
-            label1 = new Label();
             label2 = new Label();
             txtNroDePesada = new TextBox();
             lblNroDePesada = new Label();
-            label3 = new Label();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownKilosTotales).BeginInit();
@@ -277,28 +274,6 @@
             numericUpDownSubtotal.Size = new Size(238, 34);
             numericUpDownSubtotal.TabIndex = 8;
             // 
-            // lblInfo
-            // 
-            lblInfo.AutoSize = true;
-            lblInfo.Font = new Font("Segoe UI", 12F);
-            lblInfo.ForeColor = SystemColors.Window;
-            lblInfo.Location = new Point(12, 547);
-            lblInfo.Name = "lblInfo";
-            lblInfo.Size = new Size(458, 28);
-            lblInfo.TabIndex = 26;
-            lblInfo.Text = "Presione Enter para rellenar el nombre de producto";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(12, 307);
-            label1.Name = "label1";
-            label1.Size = new Size(250, 28);
-            label1.TabIndex = 27;
-            label1.Text = "Presione Enter para rellenar";
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -330,29 +305,15 @@
             lblNroDePesada.TabIndex = 29;
             lblNroDePesada.Text = "Nº de pesada (*)";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.ForeColor = SystemColors.Window;
-            label3.Location = new Point(12, 194);
-            label3.Name = "label3";
-            label3.Size = new Size(250, 28);
-            label3.TabIndex = 31;
-            label3.Text = "Presione Enter para rellenar";
-            // 
             // FormularioSalida
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(741, 826);
-            Controls.Add(label3);
             Controls.Add(txtNroDePesada);
             Controls.Add(lblNroDePesada);
             Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(lblInfo);
             Controls.Add(numericUpDownSubtotal);
             Controls.Add(lblSubtotal);
             Controls.Add(numericUpDownPrecio);
@@ -407,11 +368,8 @@
         private NumericUpDown numericUpDownPrecio;
         private Label lblSubtotal;
         private NumericUpDown numericUpDownSubtotal;
-        private Label lblInfo;
-        private Label label1;
         private Label label2;
         private TextBox txtNroDePesada;
         private Label lblNroDePesada;
-        private Label label3;
     }
 }

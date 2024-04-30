@@ -441,6 +441,7 @@ namespace JuanApp.Formularios.Salida
                     .AsQueryable()
                     .Where(x => words.Any(word => x.CodigoDeCliente.Contains(word)) ||
                     words.Any(word => x.NombreDeCliente.ToString().Contains(word)) ||
+                    words.Any(word => x.NroDePesaje.ToString().Contains(word)) ||
                     words.Any(word => x.NombreDeProducto.ToString().Contains(word)) ||
                     words.Any(word => x.CodigoDeProducto.ToString().Contains(word)))
                     .Where(x => x.DateTimeLastModification >= dateTimePickerFechaInicio.Value &&
@@ -539,6 +540,25 @@ namespace JuanApp.Formularios.Salida
         private void btnHideShowTable_Click(object sender, EventArgs e)
         {
             pnlSearchBar.Visible = !pnlSearchBar.Visible;
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    List<Areas.JuanApp.Entities.Salida> lstSalida = GetTabla();
+
+                    VerificarDuplicados(lstSalida);
+
+                    HacerCalculosDeTotales(lstSalida);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -62,15 +62,6 @@ namespace JuanApp.Formularios.Herramientas
 
             WindowState = FormWindowState.Maximized;
 
-            DateTime now = DateTime.Now;
-            DateTime NowIn030DaysBefore = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
-            DateTime NowIn2359 = new DateTime(now.Year, now.Month, now.Day, 23, 59, 59);
-
-            DateTimePickerFechaInicio.Value = NowIn030DaysBefore.AddDays(-30);
-            DateTimePickerFechaFin.Value = NowIn2359;
-
-            numericUpDownRegistrosPorPagina.Value = 500;
-
             GetTabla();
         }
 
@@ -96,12 +87,6 @@ namespace JuanApp.Formularios.Herramientas
         {
             try
             {
-                if (DateTimePickerFechaInicio.Value > DateTimePickerFechaFin.Value)
-                {
-                    MessageBox.Show("Fecha de inicio debe ser menor a fecha fin", "Atención");
-                    return null;
-                }
-
                 List<Areas.JuanApp.Entities.Entrada> lstEntrada = [];
 
                 List<Areas.JuanApp.Entities.Salida> lstSalida = _salidaRepository.GetAll();
@@ -113,10 +98,7 @@ namespace JuanApp.Formularios.Herramientas
                     lstEntrada = _entradaRepository
                     .AsQueryable()
                     .Where(entrada => !nrosDePesajeSalida.Contains(entrada.NroDePesaje))
-                    .Where(x => x.DateTimeLastModification >= DateTimePickerFechaInicio.Value &&
-                    x.DateTimeLastModification <= DateTimePickerFechaFin.Value)
                     .OrderBy(x => x.NombreDeProducto)
-                    .Take(Convert.ToInt32(numericUpDownRegistrosPorPagina.Value))
                     .ToList();
                 }
                 else
@@ -132,10 +114,7 @@ namespace JuanApp.Formularios.Herramientas
                     .Where(x => words.Any(word => x.CodigoDeProducto.Contains(word)) ||
                     words.All(word => x.NombreDeProducto.ToString().Contains(word)) ||
                     words.All(word => x.NroDePesaje.ToString().Contains(word)))
-                    .Where(x => x.DateTimeLastModification >= DateTimePickerFechaInicio.Value &&
-                    x.DateTimeLastModification <= DateTimePickerFechaFin.Value)
                     .OrderBy(x => x.NombreDeProducto)
-                    .Take(Convert.ToInt32(numericUpDownRegistrosPorPagina.Value))
                     .ToList();
                 }
 
@@ -147,6 +126,8 @@ namespace JuanApp.Formularios.Herramientas
                     Neto += entrada.Neto;
                 }
                 txtNetoTotal.Text = Neto.ToString();
+
+                txtNroTotalDeProductos.Text = lstEntrada.Count.ToString();
 
                 statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstEntrada.Count}.";
 
@@ -188,6 +169,21 @@ namespace JuanApp.Formularios.Herramientas
                     SelectedPath);
 
                 MessageBox.Show($@"Generación de Excel realizada correctamente", "Información");
+            }
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    GetTabla();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }
