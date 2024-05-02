@@ -78,7 +78,7 @@ namespace JuanApp
                     foreach (var row in Rows)
                     {
                         string ExitWords = row.Cell(1).GetString();
-                        if (ExitWords == "Total KG")
+                        if (ExitWords == "TOTAL KG")
                         {
                             break;
                         }

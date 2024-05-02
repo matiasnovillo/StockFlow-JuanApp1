@@ -134,10 +134,14 @@ namespace JuanApp.Formularios.Salida
             foreach (Areas.JuanApp.Entities.Salida salida in lstSalida)
             {
                 KilosRealesTotal += salida.KilosReales;
-                PrecioTotal += salida.Precio;
                 SubtotalTotal += salida.Subtotal;
             }
 
+            if (KilosRealesTotal != 0)
+            {
+                PrecioTotal = SubtotalTotal / KilosRealesTotal;
+            }
+            
             txtKilosRealesTotal.Text = KilosRealesTotal.ToString();
             txtPrecioTotal.Text = PrecioTotal.ToString();
             txtSubtotalTotal.Text = SubtotalTotal.ToString();
