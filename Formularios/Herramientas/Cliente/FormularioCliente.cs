@@ -1,5 +1,6 @@
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Areas.JuanApp.Entities;
+using JuanApp.Areas.JuanApp.Repositories;
 
 namespace JuanApp.Formularios.Entrada
 {
@@ -63,24 +64,37 @@ namespace JuanApp.Formularios.Entrada
                     if (_clienteId == 0)
                     {
                         //Agregar
-                        Cliente Cliente = new()
+
+                        Cliente ClienteTest = _clienteRepository
+                            .AsQueryable()
+                            .Where(x => x.CodigoDeCliente == txtCodigoDeCliente.Text)
+                            .FirstOrDefault();
+
+                        if (ClienteTest == null)
                         {
-                            ClienteId = _clienteId,
-                            Active = true,
-                            UserCreationId = 1,
-                            UserLastModificationId = 1,
-                            DateTimeCreation = DateTime.Now,
-                            DateTimeLastModification = DateTime.Now,
-                            NombreDeCliente = txtNombreDeCliente.Text,
-                            CodigoDeCliente = txtCodigoDeCliente.Text,
-                            CodigoPostal = txtCodigoPostal.Text,
-                            CUIT = txtCUIT.Text,
-                            Domicilio = txtDomicilio.Text,
-                            Localidad = txtLocalidad.Text,
-                            Telefono = txtTelefono.Text,
-                            Provincia = txtProvincia.Text
-                        };
-                        _clienteRepository.Add(Cliente);
+                            Cliente Cliente = new()
+                            {
+                                ClienteId = _clienteId,
+                                Active = true,
+                                UserCreationId = 1,
+                                UserLastModificationId = 1,
+                                DateTimeCreation = DateTime.Now,
+                                DateTimeLastModification = DateTime.Now,
+                                NombreDeCliente = txtNombreDeCliente.Text,
+                                CodigoDeCliente = txtCodigoDeCliente.Text,
+                                CodigoPostal = txtCodigoPostal.Text,
+                                CUIT = txtCUIT.Text,
+                                Domicilio = txtDomicilio.Text,
+                                Localidad = txtLocalidad.Text,
+                                Telefono = txtTelefono.Text,
+                                Provincia = txtProvincia.Text
+                            };
+                            _clienteRepository.Add(Cliente);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este código de cliente ya existe en el sistema. No se guardará como nuevo", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else
                     {

@@ -90,7 +90,7 @@ namespace JuanApp.Formularios.Herramientas.Cliente
         {
             try
             {
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 5)
                 {
                     //Actualizar
                     int ClienteId = Convert.ToInt32(DataGridViewCliente.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -103,7 +103,7 @@ namespace JuanApp.Formularios.Herramientas.Cliente
 
                     GetTabla();
                 }
-                else if (e.ColumnIndex == 4)
+                else if (e.ColumnIndex == 6)
                 {
                     //Borrar
                     DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",
@@ -174,6 +174,21 @@ namespace JuanApp.Formularios.Herramientas.Cliente
             catch (Exception)
             {
 
+                throw;
+            }
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    GetTabla();
+                }
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

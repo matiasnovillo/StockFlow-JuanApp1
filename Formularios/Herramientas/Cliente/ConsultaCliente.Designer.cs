@@ -147,6 +147,7 @@
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(532, 27);
             txtBuscar.TabIndex = 10;
+            txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
             // btnAgregar
             // 
