@@ -1,4 +1,6 @@
-﻿using JuanApp.Areas.JuanApp.Interfaces;
+﻿using ClosedXML.Excel;
+using JuanApp.Areas.JuanApp.Interfaces;
+using JuanApp.Areas.JuanApp.Repositories;
 using JuanApp.Formularios.Entrada;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -185,6 +187,86 @@ namespace JuanApp.Formularios.Herramientas.Cliente
                 if (e.KeyChar == (char)Keys.Enter)
                 {
                     GetTabla();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void btnCargarExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string FilePath = openFileDialog.FileName;
+
+                    var WorkBook = new XLWorkbook(FilePath);
+                    var Rows = WorkBook.Worksheet(1).RangeUsed().RowsUsed();
+
+                    foreach (var row in Rows)
+                    {
+                        string ExitWords = row.Cell(1).GetString();
+                        if (ExitWords == "FIN")
+                        {
+                            break;
+                        }
+
+                        var rowNumber = row.RowNumber();
+
+                        if (rowNumber > 2)
+                        {
+                            string Codigo = row.Cell(1).GetString();
+                            string Nombre = row.Cell(2).GetString();
+                            string Telefono = row.Cell(4).GetString();
+                            string CUIT = row.Cell(5).GetString();
+                            string Domicilio = row.Cell(6).GetString();
+                            string CodigoPostal = row.Cell(7).GetString();
+
+                            Areas.JuanApp.Entities.Cliente Cliente = new()
+                            {
+                                ClienteId = 0,
+                                Active = true,
+                                DateTimeCreation = DateTime.Now,
+                                DateTimeLastModification = DateTime.Now,
+                                UserCreationId = 1,
+                                UserLastModificationId = 1,
+                                CodigoDeCliente = Codigo,
+                                NombreDeCliente = Nombre,
+                                Telefono = Telefono,
+                                CUIT = CUIT,
+                                Domicilio = Domicilio,
+                                CodigoPostal = CodigoPostal,
+                                Localidad = "",
+                                Provincia = ""
+                            };
+
+                            Areas.JuanApp.Entities.Cliente ClienteDePrueba = _clienteRepository
+                                .AsQueryable()
+                                .Where(x => x.CodigoDeCliente == Cliente.CodigoDeCliente)
+                                .FirstOrDefault();
+
+                            if (ClienteDePrueba == null)
+                            {
+                                _clienteRepository.Add(Cliente);
+                            }
+                            else
+                            {
+                                MessageBox.Show($@"El cliente con código ", "Atención");
+
+                                // Mostrar la ventana de confirmación
+                                if (MessageBox.Show("¿Desea cancelar el proceso?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    MessageBox.Show($@"Carga de datos realizada correctamente", "Información");
                 }
             }
             catch (Exception)

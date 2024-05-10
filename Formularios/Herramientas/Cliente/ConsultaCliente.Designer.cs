@@ -41,6 +41,7 @@
             txtBuscar = new TextBox();
             btnAgregar = new Button();
             pnlSearchBar = new Panel();
+            btnCargarExcel = new Button();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewCliente).BeginInit();
@@ -53,7 +54,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1022, 27);
+            toolStrip1.Size = new Size(1170, 27);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -80,7 +81,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
             statusStrip1.Location = new Point(0, 1029);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1022, 26);
+            statusStrip1.Size = new Size(1170, 26);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -102,7 +103,7 @@
             DataGridViewCliente.Name = "DataGridViewCliente";
             DataGridViewCliente.ReadOnly = true;
             DataGridViewCliente.RowHeadersWidth = 51;
-            DataGridViewCliente.Size = new Size(1022, 699);
+            DataGridViewCliente.Size = new Size(1170, 699);
             DataGridViewCliente.TabIndex = 2;
             DataGridViewCliente.CellContentClick += DataGridViewCliente_CellContentClick;
             // 
@@ -122,7 +123,7 @@
             btnBuscar.BackColor = Color.Black;
             btnBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBuscar.ForeColor = SystemColors.Window;
-            btnBuscar.Location = new Point(844, 140);
+            btnBuscar.Location = new Point(992, 140);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(166, 80);
             btnBuscar.TabIndex = 4;
@@ -154,7 +155,7 @@
             btnAgregar.BackColor = Color.Black;
             btnAgregar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAgregar.ForeColor = SystemColors.Window;
-            btnAgregar.Location = new Point(655, 137);
+            btnAgregar.Location = new Point(803, 137);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(166, 78);
             btnAgregar.TabIndex = 11;
@@ -165,6 +166,7 @@
             // pnlSearchBar
             // 
             pnlSearchBar.BackColor = Color.Black;
+            pnlSearchBar.Controls.Add(btnCargarExcel);
             pnlSearchBar.Controls.Add(lblTitulo);
             pnlSearchBar.Controls.Add(btnAgregar);
             pnlSearchBar.Controls.Add(btnBuscar);
@@ -173,14 +175,27 @@
             pnlSearchBar.Dock = DockStyle.Fill;
             pnlSearchBar.Location = new Point(0, 27);
             pnlSearchBar.Name = "pnlSearchBar";
-            pnlSearchBar.Size = new Size(1022, 303);
+            pnlSearchBar.Size = new Size(1170, 303);
             pnlSearchBar.TabIndex = 12;
+            // 
+            // btnCargarExcel
+            // 
+            btnCargarExcel.BackColor = Color.Black;
+            btnCargarExcel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCargarExcel.ForeColor = SystemColors.Window;
+            btnCargarExcel.Location = new Point(611, 137);
+            btnCargarExcel.Name = "btnCargarExcel";
+            btnCargarExcel.Size = new Size(166, 78);
+            btnCargarExcel.TabIndex = 12;
+            btnCargarExcel.Text = "CARGAR EXCEL";
+            btnCargarExcel.UseVisualStyleBackColor = false;
+            btnCargarExcel.Click += btnCargarExcel_Click;
             // 
             // ConsultaCliente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1022, 1055);
+            ClientSize = new Size(1170, 1055);
             Controls.Add(pnlSearchBar);
             Controls.Add(DataGridViewCliente);
             Controls.Add(statusStrip1);
@@ -213,5 +228,6 @@
         private TextBox txtBuscar;
         private Button btnAgregar;
         private Panel pnlSearchBar;
+        private Button btnCargarExcel;
     }
 }
