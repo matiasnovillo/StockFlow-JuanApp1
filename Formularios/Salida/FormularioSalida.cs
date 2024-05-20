@@ -51,6 +51,8 @@ namespace JuanApp.Formularios.Salida
                     numericUpDownKilosTotales.Value = Salida.KilosReales;
                     numericUpDownPrecio.Value = Salida.Precio;
                     numericUpDownSubtotal.Value = Salida.Subtotal;
+
+                    txtNroDePesada.Enabled = false;
                 }
 
                 statusLabel.Text = "";

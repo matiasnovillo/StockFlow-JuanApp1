@@ -37,6 +37,8 @@ namespace JuanApp.Formularios.Entrada
                     txtNombreDeProducto.Text = Entrada.NombreDeProducto;
                     txtTexContenido.Text = Entrada.TexContenido.ToString();
                     numericUpDownNeto.Value = Entrada.Neto;
+
+                    txtNroDePesada.Enabled = false;
                 }
 
                 statusLabel.Text = "";

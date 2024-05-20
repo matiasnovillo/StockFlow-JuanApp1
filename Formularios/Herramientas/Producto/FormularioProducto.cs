@@ -27,6 +27,8 @@ namespace JuanApp.Formularios.Herramientas.Producto
                     Areas.JuanApp.Entities.Producto Producto = _productoRepository.GetByProductoId(ProductoId);
                     txtCodigoDeProducto.Text = Producto.CodigoProducto;
                     txtNombreDeProducto.Text = Producto.Nombre;
+
+                    txtCodigoDeProducto.Enabled = false;
                 }
 
                 statusLabel.Text = "";

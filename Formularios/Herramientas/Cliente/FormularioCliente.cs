@@ -34,6 +34,8 @@ namespace JuanApp.Formularios.Entrada
                     txtTelefono.Text = Cliente.Telefono;
                     txtDomicilio.Text = Cliente.Domicilio;
                     txtLocalidad.Text = Cliente.Localidad;
+
+                    txtCodigoDeCliente.Enabled = false;
                 }
 
                 statusLabel.Text = "";
