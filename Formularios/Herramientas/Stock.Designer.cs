@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Stock));
             toolStrip1 = new ToolStrip();
-            toolStripDropDownButton1 = new ToolStripDropDownButton();
-            menuItemMain = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             lblTitulo = new Label();
@@ -45,7 +42,6 @@
             lblNeto = new Label();
             btnGenerarExcel = new Button();
             lblBarraDeBusqueda = new Label();
-            toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).BeginInit();
             pnlSearchBar.SuspendLayout();
@@ -54,28 +50,11 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1924, 27);
+            toolStrip1.Size = new Size(1924, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { menuItemMain });
-            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
-            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
-            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            toolStripDropDownButton1.Size = new Size(34, 24);
-            // 
-            // menuItemMain
-            // 
-            menuItemMain.Name = "menuItemMain";
-            menuItemMain.Size = new Size(189, 26);
-            menuItemMain.Text = "Volver al inicio";
-            menuItemMain.Click += menuItemMain_Click;
             // 
             // statusStrip1
             // 
@@ -156,9 +135,9 @@
             pnlSearchBar.Controls.Add(txtBuscar);
             pnlSearchBar.Controls.Add(btnBuscar);
             pnlSearchBar.Dock = DockStyle.Fill;
-            pnlSearchBar.Location = new Point(0, 27);
+            pnlSearchBar.Location = new Point(0, 25);
             pnlSearchBar.Name = "pnlSearchBar";
-            pnlSearchBar.Size = new Size(1924, 491);
+            pnlSearchBar.Size = new Size(1924, 493);
             pnlSearchBar.TabIndex = 16;
             // 
             // txtNroTotalDeProductos
@@ -236,8 +215,6 @@
             Controls.Add(toolStrip1);
             Name = "Stock";
             Text = "Consulta de Stock";
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewStock).EndInit();
@@ -250,8 +227,6 @@
         #endregion
 
         private ToolStrip toolStrip1;
-        private ToolStripDropDownButton toolStripDropDownButton1;
-        private ToolStripMenuItem menuItemMain;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
         private Label lblTitulo;

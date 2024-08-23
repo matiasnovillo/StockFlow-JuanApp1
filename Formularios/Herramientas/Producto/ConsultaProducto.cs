@@ -157,15 +157,75 @@ namespace JuanApp.Formularios.Herramientas.Producto
                     .ToList();
                 }
 
-                DataGridViewProducto.DataSource = lstProducto;
+                DataGridViewProducto.Rows.Clear();
 
-                statusLabel.Text = $@"Información: Cantidad de productos listados: {lstProducto.Count}";
+                foreach (Areas.JuanApp.Entities.Producto producto in lstProducto)
+                {
+                    int rowIndex = DataGridViewProducto.Rows.Add(
+                        producto.ProductoId,
+                        producto.CodigoProducto,
+                        producto.Nombre,
+                        "",
+                        "");
+
+                    // Intercalar colores
+                    if (rowIndex % 2 == 0)
+                    {
+                        DataGridViewProducto.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGray;  // Color para filas pares
+                    }
+                    else
+                    {
+                        DataGridViewProducto.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;  // Color para filas impares
+                    }
+                }
+
+                statusLabel.Text = $@"Cantidad de Productos Listados: {lstProducto.Count}";
             }
             catch (Exception)
             {
 
                 throw;
             }
+        }
+
+        private void DataGridViewProducto_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Asegurarse de que se haga clic en una fila válida y no en el encabezado
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in DataGridViewProducto.Rows)
+                {
+                    if (row.Index == e.RowIndex)
+                    {
+                        // Colorear la fila seleccionada
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        // Restaurar el color intercalado
+                        if (row.Index % 2 == 0)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightGray;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    GetTabla();
+                }
+            }
+            catch (Exception) { throw; }
         }
     }
 }

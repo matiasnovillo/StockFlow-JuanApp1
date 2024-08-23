@@ -141,10 +141,10 @@ namespace JuanApp.Formularios.Salida
             {
                 PrecioTotal = SubtotalTotal / KilosRealesTotal;
             }
-            
-            txtKilosRealesTotal.Text = KilosRealesTotal.ToString();
-            txtPrecioTotal.Text = PrecioTotal.ToString();
-            txtSubtotalTotal.Text = SubtotalTotal.ToString();
+
+            txtKilosRealesTotal.Text = $@"{KilosRealesTotal.ToString("N2")} kg";
+            txtPrecioTotal.Text = $@"${PrecioTotal.ToString("N2")}";
+            txtSubtotalTotal.Text = $@"${SubtotalTotal.ToString("N2")}";
         }
 
         private void menuItemMain_Click(object sender, EventArgs e)
@@ -455,17 +455,40 @@ namespace JuanApp.Formularios.Salida
                     .ToList();
                 }
 
-                DataGridViewSalida.DataSource = lstSalida;
+                DataGridViewSalida.Rows.Clear();
 
-                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstSalida.Count}.";
+                foreach (Areas.JuanApp.Entities.Salida salida in lstSalida)
+                {
+                    int rowIndex = DataGridViewSalida.Rows.Add(
+                        salida.SalidaId,
+                        salida.NroDePesaje,
+                        salida.CodigoDeCliente,
+                        salida.NombreDeCliente,
+                        salida.CodigoDeProducto,
+                        salida.NombreDeProducto,
+                        salida.KilosReales.ToString("N2"),
+                        salida.Precio.ToString("N2"),
+                        salida.Subtotal.ToString("N2"),
+                        salida.DateTimeLastModification.ToString("dd/MM/yyyy HH:mm"),
+                        "",
+                        "");
+
+                    // Intercalar colores
+                    if (rowIndex % 2 == 0)
+                    {
+                        DataGridViewSalida.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.LightGray;  // Color para filas pares
+                    }
+                    else
+                    {
+                        DataGridViewSalida.Rows[rowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.White;  // Color para filas impares
+                    }
+                }
+
+                statusLabel.Text = $@"Cantidad de Salidas Listadas: {lstSalida.Count}.";
 
                 return lstSalida;
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception) { throw; }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -501,7 +524,7 @@ namespace JuanApp.Formularios.Salida
                             //MessageBox.Show("Hay nombres de clientes diferentes en la tabla", "Atención");
                             CodigoCliente = "";
                             NombreCliente = "";
-                            btnGenerarPDF.Enabled = false;
+                            btnGenerarPDF.Visible = false;
                             return true;
                         }
                     }
@@ -512,7 +535,7 @@ namespace JuanApp.Formularios.Salida
             {
                 CodigoCliente = registros[0].CodigoDeCliente;
                 NombreCliente = registros[0].NombreDeCliente;
-                btnGenerarPDF.Enabled = true;
+                btnGenerarPDF.Visible = true;
             }
 
             // Si no encontramos duplicados, retornamos false
@@ -562,6 +585,34 @@ namespace JuanApp.Formularios.Salida
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private void DataGridViewSalida_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Asegurarse de que se haga clic en una fila válida y no en el encabezado
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in DataGridViewSalida.Rows)
+                {
+                    if (row.Index == e.RowIndex)
+                    {
+                        // Colorear la fila seleccionada
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                    }
+                    else
+                    {
+                        // Restaurar el color intercalado
+                        if (row.Index % 2 == 0)
+                        {
+                            row.DefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                        }
+                    }
+                }
             }
         }
     }

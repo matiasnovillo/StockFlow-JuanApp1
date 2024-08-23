@@ -3,6 +3,7 @@ using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Areas.JuanApp.Repositories;
 using JuanApp.Formularios.Entrada;
 using Microsoft.Extensions.DependencyInjection;
+using System.Windows.Forms;
 
 namespace JuanApp.Formularios.Herramientas.Cliente
 {
@@ -169,9 +170,31 @@ namespace JuanApp.Formularios.Herramientas.Cliente
                     .ToList();
                 }
 
-                DataGridViewCliente.DataSource = lstCliente;
+                DataGridViewCliente.Rows.Clear();
 
-                statusLabel.Text = $@"Información: Cantidad de clientes listados: {lstCliente.Count}";
+                foreach (Areas.JuanApp.Entities.Cliente cliente in lstCliente)
+                {
+                    int rowIndex = DataGridViewCliente.Rows.Add(
+                        cliente.ClienteId,
+                        cliente.CodigoDeCliente,
+                        cliente.NombreDeCliente,
+                        cliente.Domicilio,
+                        cliente.Telefono,
+                        "",
+                        "");
+
+                    // Intercalar colores
+                    if (rowIndex % 2 == 0)
+                    {
+                        DataGridViewCliente.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGray;  // Color para filas pares
+                    }
+                    else
+                    {
+                        DataGridViewCliente.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;  // Color para filas impares
+                    }
+                }
+
+                statusLabel.Text = $@"Cantidad de Clientes Listados: {lstCliente.Count}";
             }
             catch (Exception)
             {
@@ -189,10 +212,7 @@ namespace JuanApp.Formularios.Herramientas.Cliente
                     GetTabla();
                 }
             }
-            catch (Exception)
-            {
-                throw;
-            }
+            catch (Exception) { throw; }
         }
 
         private void btnCargarExcel_Click(object sender, EventArgs e)
@@ -272,6 +292,34 @@ namespace JuanApp.Formularios.Herramientas.Cliente
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private void DataGridViewCliente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Asegurarse de que se haga clic en una fila válida y no en el encabezado
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in DataGridViewCliente.Rows)
+                {
+                    if (row.Index == e.RowIndex)
+                    {
+                        // Colorear la fila seleccionada
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        // Restaurar el color intercalado
+                        if (row.Index % 2 == 0)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightGray;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
+                }
             }
         }
     }

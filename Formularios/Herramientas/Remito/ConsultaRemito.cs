@@ -20,7 +20,7 @@ namespace JuanApp.Formularios.Herramientas.Remito
 
                 DataGridViewTextBoxColumn col0 = new();
                 col0.DataPropertyName = "RemitoId";
-                col0.HeaderText = "RemitoId";
+                col0.HeaderText = "ID del remito";
                 DataGridViewRemito.Columns.Add(col0);
 
                 DataGridViewTextBoxColumn col1 = new();
@@ -30,27 +30,27 @@ namespace JuanApp.Formularios.Herramientas.Remito
 
                 DataGridViewTextBoxColumn col2 = new();
                 col2.DataPropertyName = "CodigoCliente";
-                col2.HeaderText = "CodigoCliente";
+                col2.HeaderText = "Código de Cliente";
                 DataGridViewRemito.Columns.Add(col2);
 
                 DataGridViewTextBoxColumn col3 = new();
                 col3.DataPropertyName = "NombreCliente";
-                col3.HeaderText = "NombreCliente";
+                col3.HeaderText = "Nombre de Cliente";
                 DataGridViewRemito.Columns.Add(col3);
 
                 DataGridViewTextBoxColumn col4 = new();
                 col4.DataPropertyName = "KilosTotales";
-                col4.HeaderText = "KilosTotales";
+                col4.HeaderText = "Kilos Totales [kg]";
                 DataGridViewRemito.Columns.Add(col4);
 
                 DataGridViewTextBoxColumn col5 = new();
                 col5.DataPropertyName = "PrecioTotal";
-                col5.HeaderText = "PrecioTotal";
+                col5.HeaderText = "Precio Total";
                 DataGridViewRemito.Columns.Add(col5);
 
                 DataGridViewTextBoxColumn col6 = new();
                 col6.DataPropertyName = "SubtotalTotal";
-                col6.HeaderText = "SubtotalTotal";
+                col6.HeaderText = "Subtotal TOTAL";
                 DataGridViewRemito.Columns.Add(col6);
 
                 DataGridViewButtonColumn colActualizar = new();
@@ -178,14 +178,62 @@ namespace JuanApp.Formularios.Herramientas.Remito
                     .ToList();
                 }
 
-                DataGridViewRemito.DataSource = lstRemito;
+                DataGridViewRemito.Rows.Clear();
 
-                statusLabel.Text = $@"Información: Cantidad de remitos listados: {lstRemito.Count}";
+                foreach (Areas.JuanApp.Entities.Remito remito in lstRemito)
+                {
+                    int rowIndex = DataGridViewRemito.Rows.Add(
+                        remito.RemitoId,
+                        remito.Fecha.ToString("dd/MM/yyyy HH:mm"),
+                        remito.CodigoCliente,
+                        remito.NombreCliente,
+                        remito.KilosTotales.ToString("N2"),
+                        remito.PrecioTotal.ToString("N2"),
+                        remito.SubtotalTotal.ToString("N2"),
+                        "",
+                        "");
+
+                    // Intercalar colores
+                    if (rowIndex % 2 == 0)
+                    {
+                        DataGridViewRemito.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGray;  // Color para filas pares
+                    }
+                    else
+                    {
+                        DataGridViewRemito.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;  // Color para filas impares
+                    }
+                }
+
+                statusLabel.Text = $@"Cantidad de Remitos Listados: {lstRemito.Count}";
             }
-            catch (Exception)
-            {
+            catch (Exception) { throw; }
+        }
 
-                throw;
+        private void DataGridViewRemito_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Asegurarse de que se haga clic en una fila válida y no en el encabezado
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in DataGridViewRemito.Rows)
+                {
+                    if (row.Index == e.RowIndex)
+                    {
+                        // Colorear la fila seleccionada
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        // Restaurar el color intercalado
+                        if (row.Index % 2 == 0)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightGray;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
+                }
             }
         }
     }

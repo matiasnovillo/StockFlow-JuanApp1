@@ -339,7 +339,7 @@ ya existe en la base de datos", "Atención");
 
         private void ToolStripButtonHerramientas_Click(object sender, EventArgs e)
         {
-            Formularios.HerramientasGenerales.Herramientas Herramientas = new Formularios.HerramientasGenerales.Herramientas();
+            Formularios.HerramientasGenerales.Herramientas Herramientas = new Formularios.HerramientasGenerales.Herramientas(_serviceProvider);
             Herramientas.ShowDialog();
         }
     }

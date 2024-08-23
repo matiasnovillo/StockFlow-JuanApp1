@@ -35,17 +35,17 @@ namespace JuanApp.Formularios.Entrada
 
                 DataGridViewTextBoxColumn col2 = new();
                 col2.DataPropertyName = "NroDePesaje";
-                col2.HeaderText = "Nº de pesaje";
+                col2.HeaderText = "Nº de Pesaje";
                 DataGridViewEntrada.Columns.Add(col2);
 
                 DataGridViewTextBoxColumn col3 = new();
                 col3.DataPropertyName = "CodigoDeProducto";
-                col3.HeaderText = "Código de producto";
+                col3.HeaderText = "Código de Producto";
                 DataGridViewEntrada.Columns.Add(col3);
 
                 DataGridViewTextBoxColumn col4 = new();
                 col4.DataPropertyName = "NombreDeProducto";
-                col4.HeaderText = "Nombre de producto";
+                col4.HeaderText = "Nombre de Producto";
                 col4.Width = 250;
                 DataGridViewEntrada.Columns.Add(col4);
 
@@ -56,12 +56,12 @@ namespace JuanApp.Formularios.Entrada
 
                 DataGridViewTextBoxColumn col6 = new();
                 col6.DataPropertyName = "Neto";
-                col6.HeaderText = "Neto";
+                col6.HeaderText = "Neto [kg]";
                 DataGridViewEntrada.Columns.Add(col6);
 
                 DataGridViewTextBoxColumn col7 = new();
                 col7.DataPropertyName = "DateTimeLastModification";
-                col7.HeaderText = "Fecha de creacion";
+                col7.HeaderText = "Fecha de Creación";
                 DataGridViewEntrada.Columns.Add(col7);
 
                 DataGridViewButtonColumn colActualizar = new();
@@ -198,15 +198,38 @@ namespace JuanApp.Formularios.Entrada
                 }
 
                 decimal NetoTotal = 0;
+
+                DataGridViewEntrada.Rows.Clear();
+
                 foreach (Areas.JuanApp.Entities.Entrada entrada in lstEntrada)
                 {
                     NetoTotal += entrada.Neto;
+
+                    int rowIndex = DataGridViewEntrada.Rows.Add(
+                        entrada.EntradaId,
+                        entrada.NroDePesaje,
+                        entrada.CodigoDeProducto,
+                        entrada.NombreDeProducto,
+                        entrada.TexContenido,
+                        entrada.Neto.ToString("N2"),
+                        entrada.DateTimeLastModification.ToString("dd/MM/yyyy HH:mm"),
+                        "",
+                        "");
+
+                    // Intercalar colores
+                    if (rowIndex % 2 == 0)
+                    {
+                        DataGridViewEntrada.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGray;  // Color para filas pares
+                    }
+                    else
+                    {
+                        DataGridViewEntrada.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;  // Color para filas impares
+                    }
                 }
-                txtNetoTotal.Text = NetoTotal.ToString();
 
-                DataGridViewEntrada.DataSource = lstEntrada;
+                txtNetoTotal.Text = $@"{NetoTotal.ToString("N2")} kg";
 
-                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstEntrada.Count}";
+                statusLabel.Text = $@"Cantidad de Entradas Listadas: {lstEntrada.Count}";
             }
             catch (Exception)
             {
@@ -243,6 +266,34 @@ namespace JuanApp.Formularios.Entrada
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private void DataGridViewEntrada_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Asegurarse de que se haga clic en una fila válida y no en el encabezado
+            if (e.RowIndex >= 0)
+            {
+                foreach (DataGridViewRow row in DataGridViewEntrada.Rows)
+                {
+                    if (row.Index == e.RowIndex)
+                    {
+                        // Colorear la fila seleccionada
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        // Restaurar el color intercalado
+                        if (row.Index % 2 == 0)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightGray;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
+                }
             }
         }
     }

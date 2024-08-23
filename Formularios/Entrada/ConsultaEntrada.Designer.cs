@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaEntrada));
             toolStrip1 = new ToolStrip();
-            toolStripDropDownButton1 = new ToolStripDropDownButton();
-            menuItemMain = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             DataGridViewEntrada = new DataGridView();
@@ -49,7 +46,6 @@
             numericUpDownRegistrosPorPagina = new NumericUpDown();
             label1 = new Label();
             pnlFiltersAndSearchBar = new Panel();
-            toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownRegistrosPorPagina).BeginInit();
@@ -59,29 +55,11 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1257, 27);
+            toolStrip1.Size = new Size(1924, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { menuItemMain });
-            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
-            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
-            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            toolStripDropDownButton1.Size = new Size(34, 24);
-            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            // 
-            // menuItemMain
-            // 
-            menuItemMain.Name = "menuItemMain";
-            menuItemMain.Size = new Size(189, 26);
-            menuItemMain.Text = "Volver al inicio";
-            menuItemMain.Click += menuItemMain_Click;
             // 
             // statusStrip1
             // 
@@ -89,7 +67,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
             statusStrip1.Location = new Point(0, 1029);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1257, 26);
+            statusStrip1.Size = new Size(1924, 26);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -111,8 +89,9 @@
             DataGridViewEntrada.Name = "DataGridViewEntrada";
             DataGridViewEntrada.ReadOnly = true;
             DataGridViewEntrada.RowHeadersWidth = 51;
-            DataGridViewEntrada.Size = new Size(1257, 414);
+            DataGridViewEntrada.Size = new Size(1924, 414);
             DataGridViewEntrada.TabIndex = 2;
+            DataGridViewEntrada.CellClick += DataGridViewEntrada_CellClick;
             DataGridViewEntrada.CellContentClick += DataGridViewEntrada_CellContentClick;
             // 
             // lblTitulo
@@ -131,7 +110,7 @@
             btnBuscar.BackColor = Color.Black;
             btnBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnBuscar.ForeColor = SystemColors.Window;
-            btnBuscar.Location = new Point(924, 349);
+            btnBuscar.Location = new Point(1723, 349);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(189, 84);
             btnBuscar.TabIndex = 4;
@@ -188,7 +167,7 @@
             // 
             txtBuscar.Location = new Point(12, 274);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(532, 38);
+            txtBuscar.Size = new Size(677, 38);
             txtBuscar.TabIndex = 10;
             txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
@@ -197,7 +176,7 @@
             btnAgregar.BackColor = Color.Black;
             btnAgregar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnAgregar.ForeColor = SystemColors.Window;
-            btnAgregar.Location = new Point(710, 349);
+            btnAgregar.Location = new Point(1509, 349);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(189, 84);
             btnAgregar.TabIndex = 11;
@@ -211,16 +190,16 @@
             lblNeto.ForeColor = SystemColors.Window;
             lblNeto.Location = new Point(12, 363);
             lblNeto.Name = "lblNeto";
-            lblNeto.Size = new Size(138, 31);
+            lblNeto.Size = new Size(140, 31);
             lblNeto.TabIndex = 12;
-            lblNeto.Text = "Neto TOTAL:";
+            lblNeto.Text = "NETO TOTAL";
             // 
             // txtNetoTotal
             // 
             txtNetoTotal.Location = new Point(12, 395);
             txtNetoTotal.Name = "txtNetoTotal";
             txtNetoTotal.ReadOnly = true;
-            txtNetoTotal.Size = new Size(194, 38);
+            txtNetoTotal.Size = new Size(250, 38);
             txtNetoTotal.TabIndex = 13;
             // 
             // numericUpDownRegistrosPorPagina
@@ -262,16 +241,16 @@
             pnlFiltersAndSearchBar.Dock = DockStyle.Fill;
             pnlFiltersAndSearchBar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             pnlFiltersAndSearchBar.ForeColor = Color.Goldenrod;
-            pnlFiltersAndSearchBar.Location = new Point(0, 27);
+            pnlFiltersAndSearchBar.Location = new Point(0, 25);
             pnlFiltersAndSearchBar.Name = "pnlFiltersAndSearchBar";
-            pnlFiltersAndSearchBar.Size = new Size(1257, 588);
+            pnlFiltersAndSearchBar.Size = new Size(1924, 590);
             pnlFiltersAndSearchBar.TabIndex = 17;
             // 
             // ConsultaEntrada
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1257, 1055);
+            ClientSize = new Size(1924, 1055);
             Controls.Add(pnlFiltersAndSearchBar);
             Controls.Add(DataGridViewEntrada);
             Controls.Add(statusStrip1);
@@ -279,9 +258,7 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "ConsultaEntrada";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Consulta de entradas - Pesajes";
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
+            Text = "Consulta de Entradas - Pesaje de mercadería";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewEntrada).EndInit();
@@ -295,8 +272,6 @@
         #endregion
 
         private ToolStrip toolStrip1;
-        private ToolStripDropDownButton toolStripDropDownButton1;
-        private ToolStripMenuItem menuItemMain;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
         private DataGridView DataGridViewEntrada;

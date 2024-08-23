@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaRemito));
             toolStrip1 = new ToolStrip();
-            toolStripDropDownButton1 = new ToolStripDropDownButton();
-            menuItemMain = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             DataGridViewRemito = new DataGridView();
@@ -41,7 +38,6 @@
             txtBuscar = new TextBox();
             btnAgregar = new Button();
             panel1 = new Panel();
-            toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewRemito).BeginInit();
             panel1.SuspendLayout();
@@ -50,46 +46,29 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(964, 27);
+            toolStrip1.Size = new Size(1924, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { menuItemMain });
-            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
-            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
-            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            toolStripDropDownButton1.Size = new Size(34, 24);
-            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            // 
-            // menuItemMain
-            // 
-            menuItemMain.Name = "menuItemMain";
-            menuItemMain.Size = new Size(189, 26);
-            menuItemMain.Text = "Volver al inicio";
-            menuItemMain.Click += menuItemMain_Click;
             // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 1029);
+            statusStrip1.Location = new Point(0, 1021);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(964, 26);
+            statusStrip1.Size = new Size(1924, 34);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
             // statusLabel
             // 
             statusLabel.BackColor = SystemColors.Window;
+            statusLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             statusLabel.ForeColor = SystemColors.ControlText;
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(92, 20);
+            statusLabel.Size = new Size(132, 28);
             statusLabel.Text = "Información:";
             // 
             // DataGridViewRemito
@@ -100,12 +79,13 @@
             DataGridViewRemito.BackgroundColor = Color.Black;
             DataGridViewRemito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridViewRemito.Dock = DockStyle.Bottom;
-            DataGridViewRemito.Location = new Point(0, 368);
+            DataGridViewRemito.Location = new Point(0, 360);
             DataGridViewRemito.Name = "DataGridViewRemito";
             DataGridViewRemito.ReadOnly = true;
             DataGridViewRemito.RowHeadersWidth = 51;
-            DataGridViewRemito.Size = new Size(964, 661);
+            DataGridViewRemito.Size = new Size(1924, 661);
             DataGridViewRemito.TabIndex = 2;
+            DataGridViewRemito.CellClick += DataGridViewRemito_CellClick;
             DataGridViewRemito.CellContentClick += DataGridViewRemito_CellContentClick;
             // 
             // lblTitulo
@@ -124,7 +104,7 @@
             btnBuscar.BackColor = Color.Black;
             btnBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnBuscar.ForeColor = SystemColors.Window;
-            btnBuscar.Location = new Point(779, 143);
+            btnBuscar.Location = new Point(1739, 143);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(173, 75);
             btnBuscar.TabIndex = 4;
@@ -137,7 +117,7 @@
             lblBarraDeBusqueda.AutoSize = true;
             lblBarraDeBusqueda.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblBarraDeBusqueda.ForeColor = SystemColors.Window;
-            lblBarraDeBusqueda.Location = new Point(12, 160);
+            lblBarraDeBusqueda.Location = new Point(12, 153);
             lblBarraDeBusqueda.Name = "lblBarraDeBusqueda";
             lblBarraDeBusqueda.Size = new Size(175, 28);
             lblBarraDeBusqueda.TabIndex = 9;
@@ -145,9 +125,10 @@
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(12, 191);
+            txtBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBuscar.Location = new Point(12, 184);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(532, 27);
+            txtBuscar.Size = new Size(532, 34);
             txtBuscar.TabIndex = 10;
             // 
             // btnAgregar
@@ -156,7 +137,7 @@
             btnAgregar.Enabled = false;
             btnAgregar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnAgregar.ForeColor = SystemColors.Window;
-            btnAgregar.Location = new Point(588, 143);
+            btnAgregar.Location = new Point(1547, 143);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(173, 75);
             btnAgregar.TabIndex = 11;
@@ -173,9 +154,9 @@
             panel1.Controls.Add(txtBuscar);
             panel1.Controls.Add(lblBarraDeBusqueda);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 27);
+            panel1.Location = new Point(0, 25);
             panel1.Name = "panel1";
-            panel1.Size = new Size(964, 341);
+            panel1.Size = new Size(1924, 335);
             panel1.TabIndex = 12;
             // 
             // ConsultaRemito
@@ -183,16 +164,14 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(964, 1055);
+            ClientSize = new Size(1924, 1055);
             Controls.Add(panel1);
             Controls.Add(DataGridViewRemito);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Name = "ConsultaRemito";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Consulta de remitos";
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
+            Text = "Consulta de Remitos";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewRemito).EndInit();
@@ -205,8 +184,6 @@
         #endregion
 
         private ToolStrip toolStrip1;
-        private ToolStripDropDownButton toolStripDropDownButton1;
-        private ToolStripMenuItem menuItemMain;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
         private DataGridView DataGridViewRemito;

@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaProducto));
             toolStrip1 = new ToolStrip();
-            toolStripDropDownButton1 = new ToolStripDropDownButton();
-            menuItemMain = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             DataGridViewProducto = new DataGridView();
@@ -41,7 +38,6 @@
             txtBuscar = new TextBox();
             btnAgregar = new Button();
             pnlSearchBar = new Panel();
-            toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewProducto).BeginInit();
             pnlSearchBar.SuspendLayout();
@@ -50,44 +46,27 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1019, 27);
+            toolStrip1.Size = new Size(1924, 25);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripDropDownButton1
-            // 
-            toolStripDropDownButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { menuItemMain });
-            toolStripDropDownButton1.Image = (Image)resources.GetObject("toolStripDropDownButton1.Image");
-            toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
-            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            toolStripDropDownButton1.Size = new Size(34, 24);
-            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            // 
-            // menuItemMain
-            // 
-            menuItemMain.Name = "menuItemMain";
-            menuItemMain.Size = new Size(189, 26);
-            menuItemMain.Text = "Volver al inicio";
-            menuItemMain.Click += menuItemMain_Click;
             // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 1029);
+            statusStrip1.Location = new Point(0, 1021);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(1019, 26);
+            statusStrip1.Size = new Size(1924, 34);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
             // statusLabel
             // 
+            statusLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(92, 20);
+            statusLabel.Size = new Size(132, 28);
             statusLabel.Text = "Información:";
             // 
             // DataGridViewProducto
@@ -98,12 +77,13 @@
             DataGridViewProducto.BackgroundColor = Color.Black;
             DataGridViewProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridViewProducto.Dock = DockStyle.Bottom;
-            DataGridViewProducto.Location = new Point(0, 302);
+            DataGridViewProducto.Location = new Point(0, 294);
             DataGridViewProducto.Name = "DataGridViewProducto";
             DataGridViewProducto.ReadOnly = true;
             DataGridViewProducto.RowHeadersWidth = 51;
-            DataGridViewProducto.Size = new Size(1019, 727);
+            DataGridViewProducto.Size = new Size(1924, 727);
             DataGridViewProducto.TabIndex = 2;
+            DataGridViewProducto.CellClick += DataGridViewProducto_CellClick;
             DataGridViewProducto.CellContentClick += DataGridViewProducto_CellContentClick;
             // 
             // lblTitulo
@@ -122,7 +102,7 @@
             btnBuscar.BackColor = Color.Black;
             btnBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnBuscar.ForeColor = SystemColors.Window;
-            btnBuscar.Location = new Point(821, 109);
+            btnBuscar.Location = new Point(1717, 109);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(195, 80);
             btnBuscar.TabIndex = 4;
@@ -146,13 +126,14 @@
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(532, 34);
             txtBuscar.TabIndex = 10;
+            txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
             // btnAgregar
             // 
             btnAgregar.BackColor = Color.Black;
             btnAgregar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnAgregar.ForeColor = SystemColors.Window;
-            btnAgregar.Location = new Point(602, 109);
+            btnAgregar.Location = new Point(1498, 109);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(195, 80);
             btnAgregar.TabIndex = 11;
@@ -170,24 +151,22 @@
             pnlSearchBar.Controls.Add(lblBarraDeBusqueda);
             pnlSearchBar.Dock = DockStyle.Fill;
             pnlSearchBar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            pnlSearchBar.Location = new Point(0, 27);
+            pnlSearchBar.Location = new Point(0, 25);
             pnlSearchBar.Name = "pnlSearchBar";
-            pnlSearchBar.Size = new Size(1019, 275);
+            pnlSearchBar.Size = new Size(1924, 269);
             pnlSearchBar.TabIndex = 12;
             // 
             // ConsultaProducto
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1019, 1055);
+            ClientSize = new Size(1924, 1055);
             Controls.Add(pnlSearchBar);
             Controls.Add(DataGridViewProducto);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Name = "ConsultaProducto";
-            Text = "Consulta de productos";
-            toolStrip1.ResumeLayout(false);
-            toolStrip1.PerformLayout();
+            Text = "Consulta de Productos";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DataGridViewProducto).EndInit();
@@ -200,8 +179,6 @@
         #endregion
 
         private ToolStrip toolStrip1;
-        private ToolStripDropDownButton toolStripDropDownButton1;
-        private ToolStripMenuItem menuItemMain;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
         private DataGridView DataGridViewProducto;

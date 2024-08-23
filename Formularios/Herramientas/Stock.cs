@@ -118,6 +118,8 @@ namespace JuanApp.Formularios.Herramientas
                     .ToList();
                 }
 
+                DataGridViewStock.Rows.Clear();
+
                 decimal NetoTotal = 0;
 
                 foreach (Areas.JuanApp.Entities.Entrada entrada in lstEntrada)
