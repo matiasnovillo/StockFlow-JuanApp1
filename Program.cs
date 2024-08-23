@@ -1,9 +1,9 @@
-using JuanApp.Areas.BasicCore;
-using JuanApp.Areas.BasicCore.Interfaces;
-using JuanApp.Areas.BasicCore.Repositories;
+using JuanApp.Areas.System.Interfaces;
+using JuanApp.Areas.System.Repositories;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Areas.JuanApp.Repositories;
 using JuanApp.Areas.JuanApp.Services;
+using JuanApp.DatabaseContexts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

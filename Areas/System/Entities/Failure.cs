@@ -11,7 +11,7 @@
  * 
  */
 
-namespace JuanApp.Areas.BasicCore.Entities
+namespace JuanApp.Areas.System.Entities
 {
     public class Failure
     {

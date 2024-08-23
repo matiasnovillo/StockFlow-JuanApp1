@@ -1,6 +1,6 @@
 ﻿using ClosedXML.Excel;
-using JuanApp.Areas.BasicCore.Entities;
-using JuanApp.Areas.BasicCore.Interfaces;
+using JuanApp.Areas.System.Entities;
+using JuanApp.Areas.System.Interfaces;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Formularios;
 using JuanApp.Formularios.Herramientas;

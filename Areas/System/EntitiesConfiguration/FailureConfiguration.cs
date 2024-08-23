@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using JuanApp.Areas.System.Entities;
+
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -12,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
  * 
  */
 
-namespace JuanApp.Areas.BasicCore.Entities.EntitiesConfiguration
+namespace JuanApp.Areas.System.EntitiesConfiguration
 {
     public class FailureConfiguration : IEntityTypeConfiguration<Failure>
     {
@@ -65,7 +67,7 @@ namespace JuanApp.Areas.BasicCore.Entities.EntitiesConfiguration
                     .HasColumnType("text")
                     .IsRequired(false);
 
-                
+
             }
             catch (Exception) { throw; }
         }

@@ -54,9 +54,7 @@
     <Compile Update="Formularios\Herramientas\Stock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\Salida\ConsultaSalida.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Formularios\Salida\ConsultaSalida.cs" />
     <Compile Update="Formularios\Salida\FormularioSalida.cs">
       <SubType>Form</SubType>
     </Compile>

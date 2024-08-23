@@ -1,4 +1,4 @@
-using JuanApp.Areas.BasicCore.Entities;
+using JuanApp.Areas.System.Entities;
 using System.Data;
 
 /*
@@ -12,7 +12,7 @@ using System.Data;
  * 
  */
 
-namespace JuanApp.Areas.BasicCore.Interfaces
+namespace JuanApp.Areas.System.Interfaces
 {
     public interface IFailureRepository
     {

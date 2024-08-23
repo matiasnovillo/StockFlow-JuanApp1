@@ -2,10 +2,10 @@ using System.Data;
 using System.Globalization;
 using ClosedXML.Excel;
 using CsvHelper;
-using JuanApp.Areas.BasicCore;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Areas.JuanApp.Entities;
 using JuanApp.Library;
+using JuanApp.DatabaseContexts;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b

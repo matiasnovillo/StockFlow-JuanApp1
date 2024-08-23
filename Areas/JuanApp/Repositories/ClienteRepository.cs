@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
-using JuanApp.Areas.BasicCore;
 using JuanApp.Areas.JuanApp.Entities;
 using JuanApp.Areas.JuanApp.Interfaces;
 using JuanApp.Library;
 using System.Data;
+using JuanApp.DatabaseContexts;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b

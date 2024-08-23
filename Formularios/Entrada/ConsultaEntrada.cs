@@ -1,7 +1,7 @@
 ﻿using JuanApp.Areas.JuanApp.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.RegularExpressions;
-using JuanApp.Areas.BasicCore.Entities;
+using JuanApp.Areas.System.Entities;
 using JuanApp.Areas.JuanApp.Entities;
 using DocumentFormat.OpenXml.InkML;
 using Microsoft.Win32;

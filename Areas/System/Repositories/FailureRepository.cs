@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
-using JuanApp.Areas.BasicCore.Entities;
-using JuanApp.Areas.BasicCore.Interfaces;
+using JuanApp.Areas.System.Entities;
+using JuanApp.Areas.System.Interfaces;
 using System.Data;
+using JuanApp.DatabaseContexts;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -15,7 +16,7 @@ using System.Data;
  * 
  */
 
-namespace JuanApp.Areas.BasicCore.Repositories
+namespace JuanApp.Areas.System.Repositories
 {
     public class FailureRepository : IFailureRepository
     {

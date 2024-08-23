@@ -52,7 +52,7 @@ namespace JuanApp.Formularios.Herramientas
 
             DataGridViewTextBoxColumn col6 = new();
             col6.DataPropertyName = "Neto";
-            col6.HeaderText = "Neto";
+            col6.HeaderText = "Neto [kg]";
             DataGridViewStock.Columns.Add(col6);
 
             DataGridViewTextBoxColumn col7 = new();
@@ -91,13 +91,13 @@ namespace JuanApp.Formularios.Herramientas
 
                 List<Areas.JuanApp.Entities.Salida> lstSalida = _salidaRepository.GetAll();
 
-                var nrosDePesajeSalida = lstSalida.Select(salida => salida.NroDePesaje).ToList();
+                var lstNroDePesajeSalida = lstSalida.Select(salida => salida.NroDePesaje).ToList();
 
                 if (string.IsNullOrEmpty(txtBuscar.Text))
                 {
                     lstEntrada = _entradaRepository
                     .AsQueryable()
-                    .Where(entrada => !nrosDePesajeSalida.Contains(entrada.NroDePesaje))
+                    .Where(entrada => !lstNroDePesajeSalida.Contains(entrada.NroDePesaje))
                     .OrderBy(x => x.NombreDeProducto)
                     .ToList();
                 }
@@ -110,7 +110,7 @@ namespace JuanApp.Formularios.Herramientas
 
                     lstEntrada = _entradaRepository
                     .AsQueryable()
-                    .Where(entrada => !nrosDePesajeSalida.Contains(entrada.NroDePesaje))
+                    .Where(entrada => !lstNroDePesajeSalida.Contains(entrada.NroDePesaje))
                     .Where(x => words.Any(word => x.CodigoDeProducto.Contains(word)) ||
                     words.All(word => x.NombreDeProducto.ToString().Contains(word)) ||
                     words.All(word => x.NroDePesaje.ToString().Contains(word)))
@@ -118,26 +118,30 @@ namespace JuanApp.Formularios.Herramientas
                     .ToList();
                 }
 
-                DataGridViewStock.DataSource = lstEntrada;
+                decimal NetoTotal = 0;
 
-                decimal Neto = 0;
-                foreach (var entrada in lstEntrada)
+                foreach (Areas.JuanApp.Entities.Entrada entrada in lstEntrada)
                 {
-                    Neto += entrada.Neto;
+                    NetoTotal += entrada.Neto;
+
+                    DataGridViewStock.Rows.Add(entrada.EntradaId,
+                        entrada.NroDePesaje,
+                        entrada.CodigoDeProducto,
+                        entrada.NombreDeProducto,
+                        entrada.TexContenido,
+                        $"{entrada.Neto.ToString("N2")}",
+                        entrada.DateTimeLastModification.ToString("dd/MM/yyyy HH:mm"));
                 }
-                txtNetoTotal.Text = Neto.ToString();
 
-                txtNroTotalDeProductos.Text = lstEntrada.Count.ToString();
+                txtNetoTotal.Text = $@"{NetoTotal.ToString("N2")} kg";
 
-                statusLabel.Text = $@"Información: Cantidad de entradas listadas: {lstEntrada.Count}.";
+                txtNroTotalDeProductos.Text = $@"{lstEntrada.Count.ToString()} u";
+
+                statusLabel.Text = $@"TOTAL DE PRODUCTOS: {lstEntrada.Count} u | NETO TOTAL: {NetoTotal.ToString("N2")} kg";
 
                 return lstEntrada;
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            catch (Exception) { throw; }
         }
 
         private void btnShowHideTabla_Click(object sender, EventArgs e)
