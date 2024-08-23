@@ -1,6 +1,6 @@
 ﻿namespace JuanApp.Formularios.HerramientasGenerales
 {
-    partial class Herramientas
+    partial class ValidarResetearStock
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             btnResetearStock = new Button();
-            label3 = new Label();
-            label4 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            txtAValidar = new TextBox();
             SuspendLayout();
             // 
             // btnResetearStock
@@ -38,52 +39,61 @@
             btnResetearStock.BackColor = Color.Black;
             btnResetearStock.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnResetearStock.ForeColor = SystemColors.Window;
-            btnResetearStock.Location = new Point(41, 131);
+            btnResetearStock.Location = new Point(367, 133);
             btnResetearStock.Name = "btnResetearStock";
-            btnResetearStock.Size = new Size(161, 77);
+            btnResetearStock.Size = new Size(157, 77);
             btnResetearStock.TabIndex = 4;
             btnResetearStock.Text = "RESETEAR STOCK";
             btnResetearStock.UseVisualStyleBackColor = false;
             btnResetearStock.Click += btnResetearStock_Click;
             // 
-            // label3
+            // label2
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.Window;
-            label3.Location = new Point(41, 75);
-            label3.Name = "label3";
-            label3.Size = new Size(770, 28);
-            label3.TabIndex = 13;
-            label3.Text = "Usar estas herramientas implica validaciones. Haga los backups correspondientes antes.";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.Window;
+            label2.Location = new Point(41, 41);
+            label2.Name = "label2";
+            label2.Size = new Size(413, 31);
+            label2.TabIndex = 10;
+            label2.Text = "OPERACIÓN CRÍTICA: RESETEAR STOCK";
             // 
-            // label4
+            // label1
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 22.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = SystemColors.Window;
-            label4.Location = new Point(41, 25);
-            label4.Name = "label4";
-            label4.Size = new Size(651, 50);
-            label4.TabIndex = 12;
-            label4.Text = "OPERACIONES CRÍTICAS DEL SISTEMA";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(41, 86);
+            label1.Name = "label1";
+            label1.Size = new Size(483, 28);
+            label1.TabIndex = 11;
+            label1.Text = "Para resetear, escriba debajo, la frase: PAMPA Y BRASA";
             // 
-            // Herramientas
+            // txtAValidar
+            // 
+            txtAValidar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtAValidar.Location = new Point(41, 151);
+            txtAValidar.Name = "txtAValidar";
+            txtAValidar.Size = new Size(290, 34);
+            txtAValidar.TabIndex = 12;
+            // 
+            // ValidarResetearStock
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(848, 350);
-            Controls.Add(label3);
-            Controls.Add(label4);
+            ClientSize = new Size(573, 258);
+            Controls.Add(txtAValidar);
+            Controls.Add(label1);
+            Controls.Add(label2);
             Controls.Add(btnResetearStock);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "Herramientas";
+            Name = "ValidarResetearStock";
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Herramientas";
+            Text = "Validación necesaria";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -91,7 +101,8 @@
         #endregion
 
         private Button btnResetearStock;
-        private Label label3;
-        private Label label4;
+        private Label label2;
+        private Label label1;
+        private TextBox txtAValidar;
     }
 }
