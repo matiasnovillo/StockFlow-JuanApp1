@@ -124,13 +124,24 @@ namespace JuanApp.Formularios.Herramientas
                 {
                     NetoTotal += entrada.Neto;
 
-                    DataGridViewStock.Rows.Add(entrada.EntradaId,
+                    int rowIndex = DataGridViewStock.Rows.Add(
+                        entrada.EntradaId,
                         entrada.NroDePesaje,
                         entrada.CodigoDeProducto,
                         entrada.NombreDeProducto,
                         entrada.TexContenido,
                         $"{entrada.Neto.ToString("N2")}",
                         entrada.DateTimeLastModification.ToString("dd/MM/yyyy HH:mm"));
+
+                    // Intercalar colores
+                    if (rowIndex % 2 == 0)
+                    {
+                        DataGridViewStock.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGray;  // Color para filas pares
+                    }
+                    else
+                    {
+                        DataGridViewStock.Rows[rowIndex].DefaultCellStyle.BackColor = Color.White;  // Color para filas impares
+                    }
                 }
 
                 txtNetoTotal.Text = $@"{NetoTotal.ToString("N2")} kg";
@@ -142,11 +153,6 @@ namespace JuanApp.Formularios.Herramientas
                 return lstEntrada;
             }
             catch (Exception) { throw; }
-        }
-
-        private void btnShowHideTabla_Click(object sender, EventArgs e)
-        {
-            pnlSearchBar.Visible = !pnlSearchBar.Visible;
         }
 
         private void btnGenerarExcel_Click(object sender, EventArgs e)
@@ -185,9 +191,34 @@ namespace JuanApp.Formularios.Herramientas
                     GetTabla();
                 }
             }
-            catch (Exception)
+            catch (Exception) { throw; }
+        }
+
+        private void DataGridViewStock_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Asegurarse de que se haga clic en una fila válida y no en el encabezado
+            if (e.RowIndex >= 0)
             {
-                throw;
+                foreach (DataGridViewRow row in DataGridViewStock.Rows)
+                {
+                    if (row.Index == e.RowIndex)
+                    {
+                        // Colorear la fila seleccionada
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        // Restaurar el color intercalado
+                        if (row.Index % 2 == 0)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightGray;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
+                }
             }
         }
     }

@@ -32,7 +32,6 @@
             toolStrip1 = new ToolStrip();
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             menuItemMain = new ToolStripMenuItem();
-            btnShowHideTabla = new ToolStripButton();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             lblTitulo = new Label();
@@ -55,7 +54,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, btnShowHideTabla });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1924, 27);
@@ -70,7 +69,6 @@
             toolStripDropDownButton1.ImageTransparentColor = Color.Magenta;
             toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             toolStripDropDownButton1.Size = new Size(34, 24);
-            toolStripDropDownButton1.Text = "toolStripDropDownButton1";
             // 
             // menuItemMain
             // 
@@ -78,16 +76,6 @@
             menuItemMain.Size = new Size(189, 26);
             menuItemMain.Text = "Volver al inicio";
             menuItemMain.Click += menuItemMain_Click;
-            // 
-            // btnShowHideTabla
-            // 
-            btnShowHideTabla.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnShowHideTabla.Image = (Image)resources.GetObject("btnShowHideTabla.Image");
-            btnShowHideTabla.ImageTransparentColor = Color.Magenta;
-            btnShowHideTabla.Name = "btnShowHideTabla";
-            btnShowHideTabla.Size = new Size(48, 24);
-            btnShowHideTabla.Text = "Tabla";
-            btnShowHideTabla.Click += btnShowHideTabla_Click;
             // 
             // statusStrip1
             // 
@@ -131,12 +119,14 @@
             DataGridViewStock.RowHeadersWidth = 51;
             DataGridViewStock.Size = new Size(1924, 503);
             DataGridViewStock.TabIndex = 4;
+            DataGridViewStock.CellClick += DataGridViewStock_CellClick;
             // 
             // txtBuscar
             // 
+            txtBuscar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtBuscar.Location = new Point(12, 163);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(532, 27);
+            txtBuscar.Size = new Size(772, 38);
             txtBuscar.TabIndex = 12;
             txtBuscar.KeyPress += txtBuscar_KeyPress;
             // 
@@ -174,7 +164,7 @@
             // txtNroTotalDeProductos
             // 
             txtNroTotalDeProductos.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            txtNroTotalDeProductos.Location = new Point(12, 244);
+            txtNroTotalDeProductos.Location = new Point(12, 251);
             txtNroTotalDeProductos.Name = "txtNroTotalDeProductos";
             txtNroTotalDeProductos.ReadOnly = true;
             txtNroTotalDeProductos.Size = new Size(257, 38);
@@ -185,7 +175,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
             label1.ForeColor = SystemColors.Window;
-            label1.Location = new Point(12, 213);
+            label1.Location = new Point(12, 220);
             label1.Name = "label1";
             label1.Size = new Size(213, 28);
             label1.TabIndex = 24;
@@ -194,7 +184,7 @@
             // txtNetoTotal
             // 
             txtNetoTotal.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            txtNetoTotal.Location = new Point(295, 244);
+            txtNetoTotal.Location = new Point(295, 251);
             txtNetoTotal.Name = "txtNetoTotal";
             txtNetoTotal.ReadOnly = true;
             txtNetoTotal.Size = new Size(257, 38);
@@ -205,7 +195,7 @@
             lblNeto.AutoSize = true;
             lblNeto.Font = new Font("Segoe UI", 12F);
             lblNeto.ForeColor = SystemColors.Window;
-            lblNeto.Location = new Point(295, 213);
+            lblNeto.Location = new Point(295, 220);
             lblNeto.Name = "lblNeto";
             lblNeto.Size = new Size(120, 28);
             lblNeto.TabIndex = 22;
@@ -218,9 +208,9 @@
             btnGenerarExcel.ForeColor = SystemColors.Window;
             btnGenerarExcel.Location = new Point(12, 318);
             btnGenerarExcel.Name = "btnGenerarExcel";
-            btnGenerarExcel.Size = new Size(194, 82);
+            btnGenerarExcel.Size = new Size(235, 82);
             btnGenerarExcel.TabIndex = 16;
-            btnGenerarExcel.Text = "GENERAR EXCEL";
+            btnGenerarExcel.Text = "EXPORTAR A EXCEL";
             btnGenerarExcel.UseVisualStyleBackColor = false;
             btnGenerarExcel.Click += btnGenerarExcel_Click;
             // 
@@ -245,7 +235,7 @@
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Name = "Stock";
-            Text = "Stock";
+            Text = "Consulta de Stock";
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
@@ -269,7 +259,6 @@
         private TextBox txtBuscar;
         private Button btnBuscar;
         private Panel pnlSearchBar;
-        private ToolStripButton btnShowHideTabla;
         private Button btnGenerarExcel;
         private TextBox txtNetoTotal;
         private Label lblNeto;

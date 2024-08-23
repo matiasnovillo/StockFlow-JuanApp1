@@ -336,5 +336,11 @@ ya existe en la base de datos", "Atención");
                 MessageBox.Show($@"Error: {ex.Message}", "Error");
             }
         }
+
+        private void ToolStripButtonHerramientas_Click(object sender, EventArgs e)
+        {
+            Formularios.HerramientasGenerales.Herramientas Herramientas = new Formularios.HerramientasGenerales.Herramientas();
+            Herramientas.ShowDialog();
+        }
     }
 }

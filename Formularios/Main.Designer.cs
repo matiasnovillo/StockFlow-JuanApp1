@@ -32,7 +32,8 @@
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
-            toolStripButton2 = new ToolStripButton();
+            ToolStripButtonSalir = new ToolStripButton();
+            ToolStripButtonHerramientas = new ToolStripButton();
             ToolStripButtonAcercaDe = new ToolStripButton();
             btnEntradaCargarExcel = new Button();
             btnEntradaConsulta = new Button();
@@ -73,22 +74,32 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton2, ToolStripButtonAcercaDe });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { ToolStripButtonSalir, ToolStripButtonHerramientas, ToolStripButtonAcercaDe });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1924, 27);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton2
+            // ToolStripButtonSalir
             // 
-            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(42, 24);
-            toolStripButton2.Text = "Salir";
-            toolStripButton2.Click += toolStripButton2_Click;
+            ToolStripButtonSalir.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            ToolStripButtonSalir.Image = (Image)resources.GetObject("ToolStripButtonSalir.Image");
+            ToolStripButtonSalir.ImageTransparentColor = Color.Magenta;
+            ToolStripButtonSalir.Name = "ToolStripButtonSalir";
+            ToolStripButtonSalir.Size = new Size(42, 24);
+            ToolStripButtonSalir.Text = "Salir";
+            ToolStripButtonSalir.Click += toolStripButton2_Click;
+            // 
+            // ToolStripButtonHerramientas
+            // 
+            ToolStripButtonHerramientas.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            ToolStripButtonHerramientas.Image = (Image)resources.GetObject("ToolStripButtonHerramientas.Image");
+            ToolStripButtonHerramientas.ImageTransparentColor = Color.Magenta;
+            ToolStripButtonHerramientas.Name = "ToolStripButtonHerramientas";
+            ToolStripButtonHerramientas.Size = new Size(102, 24);
+            ToolStripButtonHerramientas.Text = "Herramientas";
+            ToolStripButtonHerramientas.Click += ToolStripButtonHerramientas_Click;
             // 
             // ToolStripButtonAcercaDe
             // 
@@ -278,7 +289,7 @@
             Controls.Add(statusStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Main";
-            Text = "JuanApp";
+            Text = "Pampa y Brasa - Gestor de Mercadería Alimenticia";
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
@@ -309,7 +320,8 @@
         private Label label3;
         private Label label2;
         private Label label4;
-        private ToolStripButton toolStripButton2;
+        private ToolStripButton ToolStripButtonSalir;
         private ToolStripButton ToolStripButtonAcercaDe;
+        private ToolStripButton ToolStripButtonHerramientas;
     }
 }
