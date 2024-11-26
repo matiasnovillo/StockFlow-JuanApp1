@@ -40,8 +40,11 @@
             lblCodigoDeProducto = new Label();
             txtNombreDeProducto = new TextBox();
             lblNombreDeProducto = new Label();
+            numPrecio = new NumericUpDown();
+            label1 = new Label();
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numPrecio).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
@@ -59,7 +62,7 @@
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabel });
-            statusStrip1.Location = new Point(0, 331);
+            statusStrip1.Location = new Point(0, 396);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(832, 26);
             statusStrip1.TabIndex = 1;
@@ -151,12 +154,34 @@
             lblNombreDeProducto.TabIndex = 17;
             lblNombreDeProducto.Text = "Nombre de producto";
             // 
+            // numPrecio
+            // 
+            numPrecio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            numPrecio.Location = new Point(12, 326);
+            numPrecio.Maximum = new decimal(new int[] { -1486618625, 232830643, 0, 0 });
+            numPrecio.Name = "numPrecio";
+            numPrecio.Size = new Size(285, 34);
+            numPrecio.TabIndex = 19;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.ForeColor = SystemColors.Window;
+            label1.Location = new Point(12, 295);
+            label1.Name = "label1";
+            label1.Size = new Size(66, 28);
+            label1.TabIndex = 20;
+            label1.Text = "Precio";
+            // 
             // FormularioProducto
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(832, 357);
+            ClientSize = new Size(832, 422);
+            Controls.Add(label1);
+            Controls.Add(numPrecio);
             Controls.Add(txtNombreDeProducto);
             Controls.Add(lblNombreDeProducto);
             Controls.Add(txtCodigoDeProducto);
@@ -173,6 +198,7 @@
             statusStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numPrecio).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -190,5 +216,7 @@
         private Label lblCodigoDeProducto;
         private TextBox txtNombreDeProducto;
         private Label lblNombreDeProducto;
+        private NumericUpDown numPrecio;
+        private Label label1;
     }
 }

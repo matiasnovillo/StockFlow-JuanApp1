@@ -145,7 +145,7 @@
             txtCodigoDeCliente.Location = new Point(12, 277);
             txtCodigoDeCliente.Name = "txtCodigoDeCliente";
             txtCodigoDeCliente.Size = new Size(232, 34);
-            txtCodigoDeCliente.TabIndex = 1;
+            txtCodigoDeCliente.TabIndex = 2;
             txtCodigoDeCliente.KeyPress += txtCodigoDeCliente_KeyPress;
             // 
             // txtNombreDeCliente
@@ -291,7 +291,7 @@
             txtNroDePesada.Location = new Point(12, 164);
             txtNroDePesada.Name = "txtNroDePesada";
             txtNroDePesada.Size = new Size(232, 34);
-            txtNroDePesada.TabIndex = 30;
+            txtNroDePesada.TabIndex = 1;
             txtNroDePesada.KeyPress += txtNroDePesada_KeyPress;
             // 
             // lblNroDePesada

@@ -55,6 +55,8 @@ namespace JuanApp.Formularios.Salida
                     txtNroDePesada.Enabled = false;
                 }
 
+                txtNroDePesada.Focus();
+
                 statusLabel.Text = "";
             }
             catch (Exception)
@@ -249,6 +251,15 @@ namespace JuanApp.Formularios.Salida
                         txtNombreProducto.Text = Entrada.NombreDeProducto;
                         txtCodigoDeProducto.Text = Entrada.CodigoDeProducto;
                         numericUpDownKilosTotales.Value = Entrada.Neto;
+
+                        Areas.JuanApp.Entities.Producto Producto = _productoRepository
+                        .AsQueryable()
+                        .Where(x => x.CodigoProducto == Entrada.CodigoDeProducto)
+                        .FirstOrDefault();
+
+                        numericUpDownPrecio.Value = Producto.Precio;
+
+                        numericUpDownSubtotal.Value = Producto.Precio * Entrada.Neto;
                     }
 
                     txtCodigoDeCliente.Focus();

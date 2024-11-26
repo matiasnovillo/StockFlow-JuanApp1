@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using JuanApp.Areas.JuanApp.Entities;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using JuanApp.Areas.JuanApp.Interfaces;
-using JuanApp.Library;
-using System.Data;
-using DocumentFormat.OpenXml.InkML;
-using Irony.Parsing;
 using JuanApp.DatabaseContexts;
+using System.Text.RegularExpressions;
+using System.Data;
+using JuanApp.Areas.JuanApp.Entities;
+using JuanApp.Library;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -58,6 +59,16 @@ namespace JuanApp.Areas.JuanApp.Repositories
             catch (Exception) { throw; }
         }
 
+        public Producto? GetByCodigoDeProducto(int codigoDeProducto)
+        {
+            try
+            {
+                return _context.Producto
+                            .FirstOrDefault(x => x.ProductoId == codigoDeProducto);
+            }
+            catch (Exception) { throw; }
+        }
+
         public List<Producto?> GetAll()
         {
             try
@@ -75,8 +86,8 @@ namespace JuanApp.Areas.JuanApp.Repositories
             {
                 _context.Producto.Add(producto);
                 _context.SaveChanges();
-                
-                return producto.ProductoId;   
+
+                return producto.ProductoId;
             }
             catch (Exception) { throw; }
         }
@@ -186,6 +197,91 @@ namespace JuanApp.Areas.JuanApp.Repositories
                 }
 
                 return NumberOfRegistersEntered;
+            }
+            catch (Exception) { throw; }
+        }
+        #endregion
+
+        #region Methods for DataTable
+        public DataTable GetAllByProductoIdInDataTable(List<int> lstProductoChecked)
+        {
+            try
+            {
+                DataTable DataTable = new();
+                DataTable.Columns.Add("ProductoId", typeof(string));
+                DataTable.Columns.Add("Active", typeof(string));
+                DataTable.Columns.Add("DateTimeCreation", typeof(string));
+                DataTable.Columns.Add("DateTimeLastModification", typeof(string));
+                DataTable.Columns.Add("UserCreationId", typeof(string));
+                DataTable.Columns.Add("UserLastModificationId", typeof(string));
+                DataTable.Columns.Add("Nombre", typeof(string));
+                DataTable.Columns.Add("CodigoProducto", typeof(string));
+                DataTable.Columns.Add("Precio", typeof(string));
+
+
+                foreach (int ProductoId in lstProductoChecked)
+                {
+                    Producto producto = _context.Producto.Where(x => x.ProductoId == ProductoId).FirstOrDefault();
+
+                    if (producto != null)
+                    {
+                        DataTable.Rows.Add(
+                        producto.ProductoId,
+                        producto.Active,
+                        producto.DateTimeCreation,
+                        producto.DateTimeLastModification,
+                        producto.UserCreationId,
+                        producto.UserLastModificationId,
+                        producto.Nombre,
+                        producto.CodigoProducto,
+                        producto.Precio
+
+
+                        );
+                    }
+                }
+
+                return DataTable;
+            }
+            catch (Exception) { throw; }
+        }
+
+        public DataTable GetAllInDataTable()
+        {
+            try
+            {
+                List<Producto> lstProducto = _context.Producto.ToList();
+
+                DataTable DataTable = new();
+                DataTable.Columns.Add("ProductoId", typeof(string));
+                DataTable.Columns.Add("Active", typeof(string));
+                DataTable.Columns.Add("DateTimeCreation", typeof(string));
+                DataTable.Columns.Add("DateTimeLastModification", typeof(string));
+                DataTable.Columns.Add("UserCreationId", typeof(string));
+                DataTable.Columns.Add("UserLastModificationId", typeof(string));
+                DataTable.Columns.Add("Nombre", typeof(string));
+                DataTable.Columns.Add("CodigoProducto", typeof(string));
+                DataTable.Columns.Add("Precio", typeof(string));
+
+
+                foreach (Producto producto in lstProducto)
+                {
+                    DataTable.Rows.Add(
+                        producto.ProductoId,
+                        producto.Active,
+                        producto.DateTimeCreation,
+                        producto.DateTimeLastModification,
+                        producto.UserCreationId,
+                        producto.UserLastModificationId,
+                        producto.Nombre,
+                        producto.CodigoProducto,
+                        producto.Precio
+
+
+                        );
+                }
+
+                return DataTable;
             }
             catch (Exception) { throw; }
         }

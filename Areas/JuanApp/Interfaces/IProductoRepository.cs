@@ -40,5 +40,11 @@ namespace JuanApp.Areas.JuanApp.Interfaces
 
         int CopyManyOrAll(Ajax Ajax, string CopyType);
         #endregion
+
+        #region Methods for DataTable
+        DataTable GetAllByProductoIdInDataTable(List<int> lstProductoChecked);
+
+        DataTable GetAllInDataTable();
+        #endregion
     }
 }

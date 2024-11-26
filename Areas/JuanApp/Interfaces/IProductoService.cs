@@ -1,5 +1,5 @@
+using JuanApp.Areas.JuanApp.Entities;
 using System.Data;
-using JuanApp.Library;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -16,12 +16,12 @@ namespace JuanApp.Areas.JuanApp.Interfaces
 {
     public interface IProductoService
     {
-        #region Exportations
-        DateTime ExportAsPDF(Ajax Ajax, string ExportationType);
+        void ExportToExcel(string path, DataTable dtProducto);
 
-        DateTime ExportAsExcel(Ajax Ajax, string ExportationType);
+        void ExportToCSV(string path, List<Producto> lstProducto);
 
-        DateTime ExportAsCSV(Ajax Ajax, string ExportationType);
-        #endregion
+        void ExportToPDF(string path, List<Producto> lstProducto);
+
+        List<Producto> ImportExcel(string path, int userId);
     }
 }

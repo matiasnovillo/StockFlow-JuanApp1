@@ -212,6 +212,7 @@
             numericUpDownNeto.DecimalPlaces = 2;
             numericUpDownNeto.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             numericUpDownNeto.Location = new Point(477, 253);
+            numericUpDownNeto.Maximum = new decimal(new int[] { 1215752191, 23, 0, 0 });
             numericUpDownNeto.Name = "numericUpDownNeto";
             numericUpDownNeto.Size = new Size(232, 27);
             numericUpDownNeto.TabIndex = 22;

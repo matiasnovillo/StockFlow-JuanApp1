@@ -1,5 +1,3 @@
-
-
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
@@ -15,7 +13,7 @@ namespace JuanApp.Areas.JuanApp.Entities
 {
     public class Producto
     {
-        [Library.ModelAttributeValidator.Key("ProductoId")]
+
         public int ProductoId { get; set; }
 
         ///<summary>
@@ -26,36 +24,32 @@ namespace JuanApp.Areas.JuanApp.Entities
         ///<summary>
         /// For auditing purposes
         ///</summary>
-        [Library.ModelAttributeValidator.DateTime("DateTimeCreation", false, "1753-01-01T00:00", "9998-12-30T23:59")]
         public DateTime DateTimeCreation { get; set; }
 
         ///<summary>
         /// For auditing purposes
         ///</summary>
-        [Library.ModelAttributeValidator.DateTime("DateTimeLastModification", false, "1753-01-01T00:00", "9998-12-30T23:59")]
         public DateTime DateTimeLastModification { get; set; }
 
         ///<summary>
         /// For auditing purposes
         ///</summary>
-        [Library.ModelAttributeValidator.Key("UserCreationId")]
         public int UserCreationId { get; set; }
 
         ///<summary>
         /// For auditing purposes
         ///</summary>
-        [Library.ModelAttributeValidator.Key("UserLastModificationId")]
         public int UserLastModificationId { get; set; }
 
-        [Library.ModelAttributeValidator.String("Nombre", true, 1, 500, "")]
         public string? Nombre { get; set; }
 
-        [Library.ModelAttributeValidator.String("CodigoProducto", true, 1, 100, "")]
         public string? CodigoProducto { get; set; }
-    
+
+        public decimal Precio { get; set; }
+
         public string ToStringOnlyValuesForHTML()
         {
-                return $@"<tr>
+            return $@"<tr>
                     <td align=""left"" valign=""top"">
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
@@ -102,6 +96,12 @@ namespace JuanApp.Areas.JuanApp.Entities
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{CodigoProducto}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{Precio}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td>

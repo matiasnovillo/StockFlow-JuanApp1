@@ -1,6 +1,6 @@
-using JuanApp.Areas.JuanApp.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using JuanApp.Areas.JuanApp.Entities;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -61,7 +61,12 @@ namespace JuanApp.Areas.JuanApp.EntitiesConfiguration
                     .HasColumnType("varchar(100)")
                     .IsRequired(true);
 
-                
+                //Precio
+                entity.Property(e => e.Precio)
+                    .HasColumnType("numeric(18, 2)")
+                    .IsRequired(true);
+
+
             }
             catch (Exception) { throw; }
         }

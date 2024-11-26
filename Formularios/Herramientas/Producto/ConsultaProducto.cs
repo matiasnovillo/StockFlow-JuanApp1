@@ -33,6 +33,11 @@ namespace JuanApp.Formularios.Herramientas.Producto
                 col2.HeaderText = "Nombre";
                 DataGridViewProducto.Columns.Add(col2);
 
+                DataGridViewTextBoxColumn col3 = new();
+                col3.DataPropertyName = "Precio";
+                col3.HeaderText = "Precio X KG.";
+                DataGridViewProducto.Columns.Add(col3);
+
                 DataGridViewButtonColumn colActualizar = new();
                 colActualizar.HeaderText = "Actualizar";
                 colActualizar.Text = "Actualizar";
@@ -80,7 +85,7 @@ namespace JuanApp.Formularios.Herramientas.Producto
         {
             try
             {
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 4)
                 {
                     //Actualizar
                     int ProductoId = Convert.ToInt32(DataGridViewProducto.Rows[e.RowIndex].Cells[0].Value.ToString());
@@ -93,7 +98,7 @@ namespace JuanApp.Formularios.Herramientas.Producto
 
                     GetTabla();
                 }
-                else if (e.ColumnIndex == 4)
+                else if (e.ColumnIndex == 5)
                 {
                     //Borrar
                     DialogResult result = MessageBox.Show("¿Estás seguro de que deseas borrar este registro?",
@@ -165,6 +170,7 @@ namespace JuanApp.Formularios.Herramientas.Producto
                         producto.ProductoId,
                         producto.CodigoProducto,
                         producto.Nombre,
+                        producto.Precio,
                         "",
                         "");
 

@@ -27,6 +27,7 @@ namespace JuanApp.Formularios.Herramientas.Producto
                     Areas.JuanApp.Entities.Producto Producto = _productoRepository.GetByProductoId(ProductoId);
                     txtCodigoDeProducto.Text = Producto.CodigoProducto;
                     txtNombreDeProducto.Text = Producto.Nombre;
+                    numPrecio.Value = Producto.Precio;
 
                     txtCodigoDeProducto.Enabled = false;
                 }
@@ -69,6 +70,7 @@ namespace JuanApp.Formularios.Herramientas.Producto
                             DateTimeLastModification = DateTime.Now,
                             Nombre = txtNombreDeProducto.Text,
                             CodigoProducto = txtCodigoDeProducto.Text,
+                            Precio = numPrecio.Value
                         };
                         _productoRepository.Add(Producto);
                     }
@@ -79,6 +81,7 @@ namespace JuanApp.Formularios.Herramientas.Producto
 
                         Producto.CodigoProducto = txtCodigoDeProducto.Text;
                         Producto.Nombre = txtNombreDeProducto.Text;
+                        Producto.Precio = numPrecio.Value;
                         Producto.UserLastModificationId = 1;
                         Producto.DateTimeLastModification = DateTime.Now;
 
