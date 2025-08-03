@@ -95,27 +95,38 @@ namespace JuanApp.Formularios.Herramientas
 
                 if (string.IsNullOrEmpty(txtBuscar.Text))
                 {
-                    lstEntrada = _entradaRepository
-                    .AsQueryable()
-                    .Where(entrada => !lstNroDePesajeSalida.Contains(entrada.NroDePesaje))
-                    .OrderBy(x => x.NombreDeProducto)
-                    .ToList();
+                    lstEntrada = (from entrada in _entradaRepository.AsQueryable()
+                                      join salida in _salidaRepository.AsQueryable()
+                                      on entrada.NroDePesaje equals salida.NroDePesaje into joined
+                                      from salidaLeft in joined.DefaultIfEmpty()
+                                      where salidaLeft == null
+                                      orderby entrada.NombreDeProducto
+                                      select entrada).ToList();
                 }
                 else
                 {
+                    // 🧠 Primero hago un LEFT JOIN para excluir los registros que ya están en Salida
+                    var entradaFiltrada = from entrada in _entradaRepository.AsQueryable()
+                                          join salida in _salidaRepository.AsQueryable()
+                                          on entrada.NroDePesaje equals salida.NroDePesaje into joined
+                                          from salidaLeft in joined.DefaultIfEmpty()
+                                          where salidaLeft == null
+                                          select entrada;
+
+                    // 🔎 Procesamiento del texto de búsqueda
                     string[] words = Regex
-                        .Replace(txtBuscar.Text
-                        .Trim(), @"\s+", " ")
+                        .Replace(txtBuscar.Text.Trim(), @"\s+", " ")
                         .Split(" ");
 
-                    lstEntrada = _entradaRepository
-                    .AsQueryable()
-                    .Where(entrada => !lstNroDePesajeSalida.Contains(entrada.NroDePesaje))
-                    .Where(x => words.Any(word => x.CodigoDeProducto.Contains(word)) ||
-                    words.All(word => x.NombreDeProducto.ToString().Contains(word)) ||
-                    words.All(word => x.NroDePesaje.ToString().Contains(word)))
-                    .OrderBy(x => x.NombreDeProducto)
-                    .ToList();
+                    // 📋 Aplico los filtros sobre la búsqueda
+                    lstEntrada = entradaFiltrada
+                        .Where(x =>
+                            words.Any(word => x.CodigoDeProducto.Contains(word)) ||
+                            words.All(word => x.NombreDeProducto.Contains(word)) ||
+                            words.All(word => x.NroDePesaje.ToString().Contains(word))
+                        )
+                        .OrderBy(x => x.NombreDeProducto)
+                        .ToList();
                 }
 
                 DataGridViewStock.Rows.Clear();
